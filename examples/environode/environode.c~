@@ -12,8 +12,12 @@ static void callback(struct websocket *s, websocket_result r,
 #define RECONNECT_INTERVAL 10 * CLOCK_SECOND
 static struct ctimer reconnect_timer;
 
+char * ctemp;
+char * chum;
+char * ctemps;
+
 /*---------------------------------------------------------------------------*/
-PROCESS(environode_process, "Environode Sensing");
+PROCESS(environode_process, "Environode sensing and sending");
 AUTOSTART_PROCESSES(&environode_process);
 /*---------------------------------------------------------------------------*/
 static void
@@ -50,71 +54,35 @@ PROCESS_THREAD(environode_process, ev, data)
   while(1) {
     etimer_set(&et, CLOCK_SECOND / 8);
     PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&et));
-    char buf[] = "012345678";
+  
+    ctemp = malloc(10 * sizeof(char));
+    read_temperature(&ctemp); // temperature SHT21
+    free(ctemp);
+
+    /*
+    chum = malloc(10 * sizeof(char));
+    read_humidity(&chum); // humidity SHT21
+    free(chum);
+    */
+
+    /*
+    ctemps = malloc(NUM_DEVICES * sizeof(char*));
+    for(int num_dev = 0; num_dev <NUM_DEVICES; num_dev++) {
+      ctemps[num_dev] = malloc(10 * sizeof(char));
+    }
+    read_temperatures(ctemps); // temperatures DS18b20
+    free(ctemps);
+    */
+
     static int count;
-    buf[0] = (count % 9) + '0';
     count++;
     websocket_send_str(&s, buf);
   }
 
   PROCESS_END();
 }
-/*---------------------------------------------------------------------------*/
 
-/*---------------------------------------------------------------------------*/
-PROCESS(i2c_example, "Example of I2C using TCN75 / SHT21");
-AUTOSTART_PROCESSES(&i2c_example);
-/*---------------------------------------------------------------------------*/
-PROCESS_THREAD(i2c_example, ev, data)
-{
-	PROCESS_BEGIN();
-
-	while(1) {
-		etimer_set(&timer, CLOCK_CONF_SECOND * MEASURE_INTERVAL_TIME_SECOND);
-		PROCESS_WAIT_EVENT_UNTIL(ev == PROCESS_EVENT_TIMER);
-		/* We must init I2C each time, because the module lose his state when enter PM2 */
-		i2c_init(I2C_SDA_PORT, I2C_SDA_PIN, I2C_SCL_PORT, I2C_SCL_PIN, I2C_SCL_NORMAL_BUS_SPEED);
-		#if TCN75_ENABLE
-			if(read_temp_TCN75(&temp) == I2C_MASTER_ERR_NONE) {
-				temp = temp>>7;
-				printf("\n%d.%d", temp/2, (temp%2)*5);
-			} else {
-				printf("\nError");
-			}
-		#endif //TCN75_ENABLE
-		#if SHT21_ENABLE
-			if(read_temp_SHT21(&temp) == I2C_MASTER_ERR_NONE) {
-				printf("\n");
-				print_float(((((float)temp)/65536)*175.72-46.85), SHT21_DECIMAL_PRECISION);
-			} else {
-				printf("\nError");
-			}
-		#endif //SHT21_ENABLE
-	}
-
-	PROCESS_END();
-}
 /*---------------------------------------------------------------------------*/
 /**
  * @}
  */
-
-void main()
-{
-    /* speed up clock */
-    OSCCONbits.IRCF = 7;
-
-    /* turn on a led to show life sign */
-    TRISD = 0;
-    LATD = 1;
-
-    /* enable digital input */
-    ANSEL = 0;
-
-    ds18b20_init();
-
-    while ( 1 )
-    {
-        ds18b20_work();
-    }
-}

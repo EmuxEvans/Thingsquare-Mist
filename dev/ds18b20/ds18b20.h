@@ -32,6 +32,6 @@
 #define NUM_DEVICES 4
 
 void ds18b20_init(void);
-void ds18b20_work(void);
+void read_temperatures(void);
 
 #endif

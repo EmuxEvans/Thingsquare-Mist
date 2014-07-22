@@ -34,7 +34,7 @@
 typedef struct
 {
     unsigned char serial[ 8 ];
-    signed short lastTemp;
+    float lastTemp;
 }device_t;
 
 static device_t devices[ NUM_DEVICES ];
@@ -61,7 +61,7 @@ void ds18b20_init()
     state = STATE_SCAN;
 }
 
-void ds18b20_work()
+void read_temperatures(char ** ctemps)
 {
     static unsigned char fetchDevice = 0;
     switch ( state )
@@ -86,7 +86,8 @@ void ds18b20_work()
 
         case STATE_FETCH_TEMPS:
             ds18b20_fetchTemp( fetchDevice );
-            fetchDevice++;
+            fetchDevice++;            
+            sprintf(ctemps[fetchDevice], "%.2f",  devices[fetchDevice].lastTemp);
             if ( fetchDevice >= NUM_DEVICES )
                 state = STATE_CONVERT;
             break;
@@ -127,7 +128,7 @@ static void ds18b20_fetchTemp( unsigned char device )
     if ( device < NUM_DEVICES && devices[ device ].serial[ 0 ] != 0 )
     {
         unsigned char i;
-        unsigned char b1, b2;
+        unsigned char data[10];
 
         /*address specified device*/
         owTouchReset();
@@ -139,10 +140,11 @@ static void ds18b20_fetchTemp( unsigned char device )
 
         /*read the first two bytes of scratchpad*/
         owWriteByte(0xBE);
-        b1 = owReadByte();
-        b2 = owReadByte();
 
-        devices[ device ].lastTemp = ( (signed short) b2 << 8 ) | ( b1 & 0xFF );
+        for ( int i = 0; i < 9; i++) {
+          data[i]owReadByte();
+        }
+        devices[ device ].lastTemp = ( (data[1] << 8) + data[0] )*0.0625;
     }
 }
 

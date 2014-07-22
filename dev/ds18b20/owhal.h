@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, Jens Nielsen
+ * Copyright (c) 2013, Jens Nielsen
  * All rights reserved.
 
  * Redistribution and use in source and binary forms, with or without
@@ -25,13 +25,23 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+#ifndef OWHAL_H
+#define OWHAL_H
 
-#ifndef DS18B20_H
-#define DS18B20_H
+#define DS_PORT_BASE GPIO_A_BASE // PORT A
+#define DS_PIN 0x01              // PIN 0 
 
-#define NUM_DEVICES 4
+#include "dev/gpio.h"
 
-void ds18b20_init(void);
-void ds18b20_work(void);
+#define OW_OUTPUT() GPIO_SET_OUTPUT(DS_PORT_BASE, DS_PIN)
+#define OW_INPUT() GPIO_SET_INPUT(DS_PORT_BASE, DS_PIN)
+
+#define OW_HIGH() GPIO_SET_PIN(DS_PORT_BASE, DS_PIN)
+#define OW_LOW() GPIO_CLR_PIN(DS_PORT_BASE, DS_PIN)
+
+#define OW_READ() GPIO_READ_PIN(DS_PORT_BASE, DS_PIN)
+
+/* 4 MHz, 3 cycles per loop iteration. Overhead will compensate for rounding error */
+#define __delay_us( a ) clock_delay_usec( a )
 
 #endif

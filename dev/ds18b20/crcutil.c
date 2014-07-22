@@ -25,13 +25,26 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+#include "crcutil.h"
 
-#ifndef DS18B20_H
-#define DS18B20_H
+void crc_check( unsigned char data, unsigned char * crc_byte )
+{
+    unsigned char bit_count;
+    unsigned char tmp = *crc_byte;
 
-#define NUM_DEVICES 4
+    for ( bit_count = 0; bit_count < 8; bit_count++ )
+    {
+        if ( ( data & 0x01 ) ^ ( tmp & 0x01 ) )
+        {
+            tmp = tmp >> 1;
+            tmp = tmp ^ 0x8c;//0b10001100;
+        }
+        else
+        {
+            tmp = tmp >> 1;
+        }
 
-void ds18b20_init(void);
-void ds18b20_work(void);
-
-#endif
+        data = data >> 1;
+    }
+    *crc_byte = tmp;
+}

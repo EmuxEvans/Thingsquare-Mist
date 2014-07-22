@@ -26,12 +26,13 @@
  */
 
 
-#ifndef DS18B20_H
-#define DS18B20_H
+#ifndef OWLINK_H
+#define OWLINK_H
 
-#define NUM_DEVICES 4
-
-void ds18b20_init(void);
-void ds18b20_work(void);
+unsigned char owReadByte(void);
+void owWriteByte(unsigned char data);
+char owReadBit(void);
+void owWriteBit(char bit_out);
+char owTouchReset(void);
 
 #endif

@@ -26,12 +26,9 @@
  */
 
 
-#ifndef DS18B20_H
-#define DS18B20_H
+#ifndef CRCUTIL_H
+#define CRCUTIL_H
 
-#define NUM_DEVICES 4
-
-void ds18b20_init(void);
-void ds18b20_work(void);
+void crc_check( unsigned char data, unsigned char * crc_byte );
 
 #endif

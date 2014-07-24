@@ -372,6 +372,11 @@ void uart_write_byte(uint8_t b);
  */
 void uart_set_input(int (* input)(unsigned char c));
 
+/** \brief Assigns a callback to be called when the UART finished transmit a byte
+ * \param input A pointer to the function
+ */
+void uart_set_output(int (* output)(unsigned char c));
+
 /** @} */
 
 #endif /* UART_H_ */

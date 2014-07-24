@@ -47,6 +47,7 @@
 #include <string.h>
 
 static int (* input_handler)(unsigned char c);
+static int (* output_handler)(unsigned char c);
 /*---------------------------------------------------------------------------*/
 static void
 reset(void)
@@ -138,6 +139,12 @@ uart_write_byte(uint8_t b)
   REG(UART_0_BASE | UART_DR) = b;
 }
 /*---------------------------------------------------------------------------*/
+void 
+uart_set_output(int (* output)(unsigned char c))
+{
+  output_handler = output;
+}
+/*---------------------------------------------------------------------------*/
 void
 uart_isr(void)
 {
@@ -159,6 +166,13 @@ uart_isr(void)
         /* To prevent an Overrun Error, we need to flush the FIFO even if we
          * don't have an input_handler. Use mis as a data trash can */
         mis = REG(UART_0_BASE | UART_DR);
+      }
+    }
+  } else if(mis & (UART_MIS_TXMIS)) {
+    /* ISR triggered due to transmit empty buffer */
+    while(REG(UART_0_BASE | UART_FR) & UART_FR_TXFE) {
+      if(output_handler != NULL) {
+        output_handler();
       }
     }
   } else if(mis & (UART_MIS_OEMIS | UART_MIS_BEMIS | UART_MIS_FEMIS)) {

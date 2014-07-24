@@ -35,7 +35,7 @@ static USHORT   usRegInputBuf[REG_INPUT_NREGS];
 int
 main( void )
 {
-    eMBErrorCode eStatus;
+    eMBErrorCode    eStatus;
 
     eStatus = eMBInit( MB_RTU, 0x0A, 0, 38400, MB_PAR_EVEN );
 

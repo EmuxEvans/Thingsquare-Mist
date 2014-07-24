@@ -1,8 +1,12 @@
+/* ----------------------- Will communicate with linux embedded via SPI/UART ----------------------------------*/
+/* V1: implement modbus MSTP */
+
 #include "mist.h"
 #include "websocket.h"
 #include "dev/uart.h"
-// will communicate with linux embedded via SPI/UART
-// ModBus, BACNet, SNMP will be handled by linux embedded
+/* ----------------------- Modbus includes ----------------------------------*/
+#include "mb.h"
+#include "mbport.h"
 
 static struct websocket s;
 

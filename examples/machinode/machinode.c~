@@ -1,8 +1,12 @@
+/* ----------------------- Will communicate with linux embedded via SPI/UART ----------------------------------*/
+/* V1: implement modbus MSTP*/
+
 #include "mist.h"
 #include "websocket.h"
 #include "dev/uart.h"
-// will communicate with linux embedded via SPI/UART
-// ModBus, BACNet, SNMP will be handled by linux embedded
+/* ----------------------- Modbus includes ----------------------------------*/
+#include "mb.h"
+#include "mbport.h"
 
 static struct websocket s;
 
@@ -14,7 +18,7 @@ static void callback(struct websocket *s, websocket_result r,
 static struct ctimer reconnect_timer;
 
 /*---------------------------------------------------------------------------*/
-PROCESS(ionode_process, "Digital output - set digital pin - and input - read digital pin and ADC");
+PROCESS(ionode_process, "Machinode will get machines data teaming up with embedded Linux");
 AUTOSTART_PROCESSES(&ionode_process);
 /*---------------------------------------------------------------------------*/
 static void

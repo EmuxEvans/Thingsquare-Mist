@@ -45,9 +45,9 @@
 #define LPM_H_
 
 #include "contiki-conf.h"
-#include "lpm-conf.h"
 #include "rtimer.h"
 
+#include <stdbool.h>
 #include <stdint.h>
 /*---------------------------------------------------------------------------*/
 /**
@@ -101,7 +101,7 @@ void lpm_init(void);
  *
  * This PM selection heuristic has the following primary criteria:
  * - Is the RF off?
- * - Is the USB PLL off?
+ * - Are all registered peripherals permitting PM1+?
  * - Is the Sleep Timer scheduled to fire an interrupt?
  *
  * If the answer to any of those questions is no, we will drop to PM0 and
@@ -126,9 +126,11 @@ void lpm_init(void);
  * lpm_exit(), which will always be called from within the Sleep Timer ISR
  * context.
  *
- * \note Dropping to PM2 means that data in the SRAM Non-Retention area will
+ * \note Dropping to PM2 means that data in the SRAM non-retention area will
  * be lost. It is recommended to disable PM2 if the total RAM footprint is
  * larger than what will fit in the retention area.
+ * .nrdata* sections can be used to place uninitialized data in the SRAM
+ * non-retention area.
  *
  * \sa main(), rtimer_arch_next_trigger(), lpm_exit(), lpm_set_max_pm()
  */
@@ -148,6 +150,12 @@ void lpm_enter(void);
  * interrupt. This may lead to other parts of the code trying to use the RF,
  * so we need to switch the clock source \e before said code gets executed.
  *
+ * This function also makes sure that the sleep timer value is up-to-date
+ * following wake-up from PM1/2 so that RTIMER_NOW() works.
+ *
+ * \note This function should be called at the very beginning of ISRs waking up
+ * the SoC in order to restore all clocks and timers.
+ *
  * \sa lpm_enter(), rtimer_isr()
  */
 void lpm_exit(void);
@@ -165,7 +173,8 @@ void lpm_exit(void);
  * If an application wants to avoid PM1 as well, it would call
  * lpm_set_max_pm(LPM_PM0)
  *
- * PM0 can not be disabled.
+ * PM0 can not be disabled at runtime. Use LPM_CONF_ENABLE to disable LPM
+ * support altogether
  *
  * \note If the value of argument \e pm is greater than the value of the
  *       LPM_CONF_MAX_PM configuration directive, LPM_CONF_MAX_PM is used. Thus
@@ -176,6 +185,35 @@ void lpm_exit(void);
  * \sa lpm_enter()
  */
 void lpm_set_max_pm(uint8_t pm);
+/*---------------------------------------------------------------------------*/
+typedef bool (*lpm_periph_permit_pm1_func_t)(void);
+
+/**
+ * \brief Register a peripheral function which will get called by the LPM
+ * module to get 'permission' to drop to PM1+
+ * \param permit_pm1_func Pointer to the function
+ *
+ * Some peripherals are sensitive to PM changes. For instance, we don't want to
+ * drop to PM1+ if the USB PLL is active or if the UART TX FIFO is not clear.
+ *
+ * When changing power modes, the LPM driver will call all FPs registered with
+ * this function. The peripheral's function will return true or false to permit
+ * / prohibit PM1+ respectively. If at least one peripheral returns false, the
+ * SoC will drop to PM0 Deep Sleep instead.
+ *
+ * Registering several times the same function makes the LPM module behave as if
+ * the function had been registered once.
+ */
+void lpm_register_peripheral(lpm_periph_permit_pm1_func_t permit_pm1_func);
+/*---------------------------------------------------------------------------*/
+/* Disable the entire module if required */
+#if LPM_CONF_ENABLE==0
+#define lpm_init()
+#define lpm_enter()
+#define lpm_exit()
+#define lpm_set_max_pm(...)
+#define lpm_register_peripheral(...)
+#endif
 
 #endif /* LPM_H_ */
 

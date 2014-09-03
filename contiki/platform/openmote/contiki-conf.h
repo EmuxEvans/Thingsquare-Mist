@@ -48,6 +48,39 @@ typedef uint32_t rtimer_clock_t;
 #ifndef FLASH_CCA_CONF_BOOTLDR_BACKDOOR
 #define FLASH_CCA_CONF_BOOTLDR_BACKDOOR	1 /**<Enable the boot loader backdoor */
 #endif
+
+#ifndef FLASH_CCA_CONF_BOOTLDR_BACKDOOR_PORT_A_PIN
+#define FLASH_CCA_CONF_BOOTLDR_BACKDOOR_PORT_A_PIN 6 /**< Pin PA_6 (Select button) activates the boot loader */
+#endif
+
+#ifndef FLASH_CCA_CONF_BOOTLDR_BACKDOOR_ACTIVE_HIGH
+#define FLASH_CCA_CONF_BOOTLDR_BACKDOOR_ACTIVE_HIGH 0 /**< A logic low level activates the boot loader */
+#endif
+/** @} */
+
+/*---------------------------------------------------------------------------*/
+/**
+ * \name Flash Memory configuration
+ *
+ * @{
+ */
+#ifndef FLASH_CONF_ORIGIN
+#define FLASH_CONF_ORIGIN  0x00200000
+#endif
+
+#ifndef FLASH_CONF_SIZE
+#define FLASH_CONF_SIZE    0x00080000 /* 512 KiB */
+#endif
+/** @} */
+/*---------------------------------------------------------------------------*/
+/**
+ * \name Watchdog Timer configuration
+ *
+ * @{
+ */
+#ifndef WATCHDOG_CONF_ENABLE
+#define WATCHDOG_CONF_ENABLE	      1 /**< Enable the watchdog timer */
+#endif
 /** @} */
 /*---------------------------------------------------------------------------*/
 /**
@@ -104,19 +137,13 @@ typedef uint32_t rtimer_clock_t;
 #define UART_CONF_ENABLE            1 /**< Enable/Disable UART I/O */
 #endif
 
-#ifndef UART_CONF_BAUD_RATE
-#define UART_CONF_BAUD_RATE   115200
-#endif
-
-/** FROM original openmote
 #ifndef UART0_CONF_BAUD_RATE
-#define UART0_CONF_BAUD_RATE   115200
+#define UART0_CONF_BAUD_RATE   115200 /**< Default UART0 baud rate */
 #endif
 
 #ifndef UART1_CONF_BAUD_RATE
-#define UART1_CONF_BAUD_RATE   115200 
+#define UART1_CONF_BAUD_RATE   115200 /**< Default UART1 baud rate */
 #endif
-*/
 
 #ifndef SLIP_ARCH_CONF_USB
 #define SLIP_ARCH_CONF_USB          0 /**< SLIP over UART by default */
@@ -332,10 +359,6 @@ typedef uint32_t rtimer_clock_t;
  */
 #ifndef IEEE_ADDR_CONF_HARDCODED
 #define IEEE_ADDR_CONF_HARDCODED             0
-#endif
-
-#ifndef IEEE_ADDR_CONF_IN_FLASH
-#define IEEE_ADDR_CONF_IN_FLASH              0
 #endif
 
 /**

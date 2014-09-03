@@ -99,6 +99,30 @@ void clock_adjust(clock_time_t ticks);
 /* Stores the currently specified MAX allowed PM */
 static uint8_t max_pm;
 /*---------------------------------------------------------------------------*/
+/* Buffer to store peripheral PM1+ permission FPs */
+#ifdef LPM_CONF_PERIPH_PERMIT_PM1_FUNCS_MAX
+#define LPM_PERIPH_PERMIT_PM1_FUNCS_MAX LPM_CONF_PERIPH_PERMIT_PM1_FUNCS_MAX
+#else
+#define LPM_PERIPH_PERMIT_PM1_FUNCS_MAX 2
+#endif
+
+static lpm_periph_permit_pm1_func_t
+periph_permit_pm1_funcs[LPM_PERIPH_PERMIT_PM1_FUNCS_MAX];
+/*---------------------------------------------------------------------------*/
+static bool
+periph_permit_pm1(void)
+{
+  int i;
+
+  for(i = 0; i < LPM_PERIPH_PERMIT_PM1_FUNCS_MAX &&
+      periph_permit_pm1_funcs[i] != NULL; i++) {
+    if(!periph_permit_pm1_funcs[i]()) {
+      return false;
+    }
+  }
+  return true;
+}
+/*---------------------------------------------------------------------------*/
 /*
  * Routine to put is in PM0. We also need to do some housekeeping if the stats
  * or the energest module is enabled
@@ -298,6 +322,21 @@ void
 lpm_set_max_pm(uint8_t pm)
 {
   max_pm = pm > LPM_CONF_MAX_PM ? LPM_CONF_MAX_PM : pm;
+}
+/*---------------------------------------------------------------------------*/
+void
+lpm_register_peripheral(lpm_periph_permit_pm1_func_t permit_pm1_func)
+{
+  int i;
+
+  for(i = 0; i < LPM_PERIPH_PERMIT_PM1_FUNCS_MAX; i++) {
+    if(periph_permit_pm1_funcs[i] == permit_pm1_func) {
+      break;
+    } else if(periph_permit_pm1_funcs[i] == NULL) {
+      periph_permit_pm1_funcs[i] = permit_pm1_func;
+      break;
+    }
+  }
 }
 /*---------------------------------------------------------------------------*/
 void

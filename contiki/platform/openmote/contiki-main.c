@@ -35,7 +35,7 @@
  * \defgroup cc2538 The OpenMote-CC2538 platform
  *
  * The OpenMote-CC2538 is based on the CC2538, the new platform by Texas Instruments
- *  based on the cc2530 SoC with an ARM Cortex-M3 core.
+ *  based on an ARM Cortex-M3 core and a IEEE 802.15.4 radio.
  * @{
  *
  * \file
@@ -66,6 +66,8 @@
 #include "reg.h"
 #include "ieee-addr.h"
 #include "lpm.h"
+
+#include "antenna.h"
 
 #include <stdint.h>
 #include <string.h>
@@ -117,8 +119,8 @@ set_rime_addr()
     printf("%02x\n", rimeaddr_node_addr.u8[i]);
   }
 #endif
-
 }
+
 /*---------------------------------------------------------------------------*/
 /**
  * \brief Main routine for the OpenMote-CC2538 platform
@@ -153,13 +155,9 @@ main(void)
    * slip_input_byte instead
    */
 #if UART_CONF_ENABLE
-  /* FROM original openmote
   uart_init(0);
   uart_init(1);
   uart_set_input(SERIAL_LINE_CONF_UART, serial_line_input_byte);
-  */
-  uart_init();
-  uart_set_input(serial_line_input_byte);
 #endif
 
 #if USB_SERIAL_CONF_ENABLE
@@ -193,6 +191,10 @@ main(void)
   set_rime_addr();
   netstack_init();
   cc2538_rf_set_addr(IEEE802154_PANID);
+
+  antenna_init();
+  antenna_external();
+  printf("Using external antenna\n");
 
 #if UIP_CONF_IPV6
   memcpy(&uip_lladdr.addr, &rimeaddr_node_addr, sizeof(uip_lladdr.addr));

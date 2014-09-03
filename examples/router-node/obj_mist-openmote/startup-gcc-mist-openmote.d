@@ -1,4 +1,5 @@
-obj_mist-openmote/rtimer-arch.o: ../../contiki/cpu/cc2538/./rtimer-arch.c \
+obj_mist-openmote/startup-gcc-mist-openmote.o: \
+ ../../platform/mist-openmote/./startup-gcc-mist-openmote.c \
  ../../contiki/core/./contiki.h ../../contiki/core/./contiki-version.h \
  ../../contiki/platform/openmote/contiki-conf.h \
  ../../contiki/platform/openmote/dev/board.h \
@@ -16,12 +17,11 @@ obj_mist-openmote/rtimer-arch.o: ../../contiki/cpu/cc2538/./rtimer-arch.c \
  ../../contiki/cpu/cc2538/./dev/gptimer.h ../../contiki/core/./sys/pt.h \
  ../../contiki/core/./sys/procinit.h ../../contiki/core/./sys/loader.h \
  ../../contiki/core/./sys/clock.h ../../contiki/core/./sys/energest.h \
- ../../contiki/core/./sys/rtimer.h ../../contiki/core/./sys/energest.h \
- ../../contiki/cpu/cc2538/./dev/nvic.h \
- ../../contiki/cpu/cc2538/./dev/smwdthrosc.h \
- ../../contiki/cpu/cc2538/./cpu.h ../../contiki/cpu/cc2538/./lpm.h \
- ../../contiki/core/sys/rtimer.h
-../../contiki/cpu/cc2538/./rtimer-arch.c :
+ ../../contiki/core/./sys/rtimer.h \
+ ../../contiki/cpu/cc2538/dev/flash-cca.h \
+ ../../contiki/cpu/cc2538/dev/sys-ctrl.h \
+ ../../contiki/cpu/cc2538/dev/uart.h
+ ../../platform/mist-openmote/./startup-gcc-mist-openmote.c :
  ../../contiki/core/./contiki.h ../../contiki/core/./contiki-version.h :
  ../../contiki/platform/openmote/contiki-conf.h :
  ../../contiki/platform/openmote/dev/board.h :
@@ -39,8 +39,7 @@ obj_mist-openmote/rtimer-arch.o: ../../contiki/cpu/cc2538/./rtimer-arch.c \
  ../../contiki/cpu/cc2538/./dev/gptimer.h ../../contiki/core/./sys/pt.h :
  ../../contiki/core/./sys/procinit.h ../../contiki/core/./sys/loader.h :
  ../../contiki/core/./sys/clock.h ../../contiki/core/./sys/energest.h :
- ../../contiki/core/./sys/rtimer.h ../../contiki/core/./sys/energest.h :
- ../../contiki/cpu/cc2538/./dev/nvic.h :
- ../../contiki/cpu/cc2538/./dev/smwdthrosc.h :
- ../../contiki/cpu/cc2538/./cpu.h ../../contiki/cpu/cc2538/./lpm.h :
- ../../contiki/core/sys/rtimer.h :
+ ../../contiki/core/./sys/rtimer.h :
+ ../../contiki/cpu/cc2538/dev/flash-cca.h :
+ ../../contiki/cpu/cc2538/dev/sys-ctrl.h :
+ ../../contiki/cpu/cc2538/dev/uart.h :

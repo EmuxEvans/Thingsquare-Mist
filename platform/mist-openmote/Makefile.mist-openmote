@@ -7,8 +7,8 @@ MISTOPENMOTEDIR=$(MIST)/platform/mist-openmote
 CONTIKI_TARGET_SOURCEFILES+=contiki-mist-openmote-main.c
 ifdef IAR
 else
-CONTIKI_TARGET_SOURCEFILES+=flash.c
-#CONTIKI_TARGET_SOURCEFILES+=startup-gcc-mist-openmote.c flash.c
+#CONTIKI_TARGET_SOURCEFILES+=flash.c
+CONTIKI_TARGET_SOURCEFILES+=startup-gcc-mist-openmote.c flash.c
 #TARGET_START_SOURCEFILES = startup-gcc-mist-openmote.c
 endif
 

@@ -50,6 +50,14 @@
 
 #include <stdint.h>
 /*---------------------------------------------------------------------------*/
+#ifdef USB_PULLUP_PORT
+#define USB_PULLUP_PORT_BASE     GPIO_PORT_TO_BASE(USB_PULLUP_PORT)
+#endif
+#ifdef USB_PULLUP_PIN
+#define USB_PULLUP_PIN_MASK      GPIO_PIN_MASK(USB_PULLUP_PIN)
+#endif
+ 
+/*---------------------------------------------------------------------------*/
 /* EP max FIFO sizes without double buffering */
 #if CTRL_EP_SIZE > 32
 #error Control endpoint size too big

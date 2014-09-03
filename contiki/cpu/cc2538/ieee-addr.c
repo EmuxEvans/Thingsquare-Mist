@@ -47,8 +47,6 @@ ieee_addr_cpy_to(uint8_t *dst, uint8_t len)
   if(IEEE_ADDR_CONF_HARDCODED) {
     uint8_t ieee_addr_hc[8] = IEEE_ADDR_CONF_ADDRESS;
     memcpy(dst, &ieee_addr_hc[8 - len], len);
-  } else if(IEEE_ADDR_CONF_IN_FLASH) {
-    memcpy(dst, (char *)IEEE_ADDR_LOCATION_FLASH, len);
   } else {
     /* Reading from Info Page, we need to invert byte order */
     int i;

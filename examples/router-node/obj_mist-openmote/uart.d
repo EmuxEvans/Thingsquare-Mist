@@ -19,7 +19,8 @@ obj_mist-openmote/uart.o: ../../contiki/cpu/cc2538/dev/uart.c \
  ../../contiki/core/./sys/rtimer.h ../../contiki/core/./sys/energest.h \
  ../../contiki/cpu/cc2538/./dev/sys-ctrl.h \
  ../../contiki/cpu/cc2538/./dev/ioc.h \
- ../../contiki/cpu/cc2538/./dev/uart.h
+ ../../contiki/cpu/cc2538/./dev/uart.h ../../contiki/cpu/cc2538/./lpm.h \
+ ../../contiki/core/sys/rtimer.h
 ../../contiki/cpu/cc2538/dev/uart.c :
  ../../contiki/core/./contiki.h ../../contiki/core/./contiki-version.h :
  ../../contiki/platform/openmote/contiki-conf.h :
@@ -41,4 +42,5 @@ obj_mist-openmote/uart.o: ../../contiki/cpu/cc2538/dev/uart.c \
  ../../contiki/core/./sys/rtimer.h ../../contiki/core/./sys/energest.h :
  ../../contiki/cpu/cc2538/./dev/sys-ctrl.h :
  ../../contiki/cpu/cc2538/./dev/ioc.h :
- ../../contiki/cpu/cc2538/./dev/uart.h :
+ ../../contiki/cpu/cc2538/./dev/uart.h ../../contiki/cpu/cc2538/./lpm.h :
+ ../../contiki/core/sys/rtimer.h :

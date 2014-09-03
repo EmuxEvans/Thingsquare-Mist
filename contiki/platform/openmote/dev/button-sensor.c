@@ -94,7 +94,7 @@ btn_callback(uint8_t port, uint8_t pin)
   }
 
   timer_set(&debouncetimer, CLOCK_SECOND / 8);
-  if(port == GPIO_A_NUM) {
+  if(port == GPIO_C_NUM) {
     sensors_changed(&button_user_sensor);
   }
 }
@@ -113,13 +113,13 @@ btn_callback(uint8_t port, uint8_t pin)
 static int
 config_user(int type, int value)
 {
-  config(BUTTON_USER_PORT, BUTTON_USER_PIN_MASK);
+  config(BUTTON_USER_PORT_BASE, BUTTON_USER_PIN_MASK);
 
-  ioc_set_over(BUTTON_USER_PORT_NO, BUTTON_USER_PIN, IOC_OVERRIDE_PUE);
+  ioc_set_over(BUTTON_USER_PORT, BUTTON_USER_PIN, IOC_OVERRIDE_PUE);
 
   nvic_interrupt_enable(BUTTON_USER_VECTOR);
 
-  gpio_register_callback(btn_callback, BUTTON_USER_PORT_NO, BUTTON_USER_PIN);
+  gpio_register_callback(btn_callback, BUTTON_USER_PORT, BUTTON_USER_PIN);
   return 1;
 }
 /*---------------------------------------------------------------------------*/

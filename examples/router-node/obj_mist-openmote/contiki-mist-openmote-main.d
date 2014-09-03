@@ -42,8 +42,8 @@ obj_mist-openmote/contiki-mist-openmote-main.o: \
  ../../contiki/core/./net/uipopt.h \
  ../../contiki/core/./net/mac/frame802154.h \
  ../../contiki/cpu/cc2538/./cpu.h ../../contiki/cpu/cc2538/./ieee-addr.h \
- ../../contiki/cpu/cc2538/./lpm.h ../../contiki/cpu/cc2538/./lpm-conf.h \
- ../../contiki/core/sys/rtimer.h ../../apps/aes/netstack-aes.h
+ ../../contiki/cpu/cc2538/./lpm.h ../../contiki/core/sys/rtimer.h \
+ ../../apps/aes/netstack-aes.h
  ../../platform/mist-openmote/./contiki-mist-openmote-main.c :
  ../../contiki/core/./contiki.h ../../contiki/core/./contiki-version.h :
  ../../contiki/platform/openmote/contiki-conf.h :
@@ -87,5 +87,5 @@ obj_mist-openmote/contiki-mist-openmote-main.o: \
  ../../contiki/core/./net/uipopt.h :
  ../../contiki/core/./net/mac/frame802154.h :
  ../../contiki/cpu/cc2538/./cpu.h ../../contiki/cpu/cc2538/./ieee-addr.h :
- ../../contiki/cpu/cc2538/./lpm.h ../../contiki/cpu/cc2538/./lpm-conf.h :
- ../../contiki/core/sys/rtimer.h ../../apps/aes/netstack-aes.h :
+ ../../contiki/cpu/cc2538/./lpm.h ../../contiki/core/sys/rtimer.h :
+ ../../apps/aes/netstack-aes.h :

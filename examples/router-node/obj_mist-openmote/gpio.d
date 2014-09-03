@@ -18,7 +18,7 @@ obj_mist-openmote/gpio.o: ../../contiki/cpu/cc2538/dev/gpio.c \
  ../../contiki/core/./sys/clock.h ../../contiki/core/./sys/energest.h \
  ../../contiki/core/./sys/rtimer.h ../../contiki/core/./sys/energest.h \
  ../../contiki/core/./dev/leds.h ../../contiki/cpu/cc2538/./lpm.h \
- ../../contiki/cpu/cc2538/./lpm-conf.h ../../contiki/core/sys/rtimer.h
+ ../../contiki/core/sys/rtimer.h
 ../../contiki/cpu/cc2538/dev/gpio.c :
  ../../contiki/core/./contiki.h ../../contiki/core/./contiki-version.h :
  ../../contiki/platform/openmote/contiki-conf.h :
@@ -39,4 +39,4 @@ obj_mist-openmote/gpio.o: ../../contiki/cpu/cc2538/dev/gpio.c \
  ../../contiki/core/./sys/clock.h ../../contiki/core/./sys/energest.h :
  ../../contiki/core/./sys/rtimer.h ../../contiki/core/./sys/energest.h :
  ../../contiki/core/./dev/leds.h ../../contiki/cpu/cc2538/./lpm.h :
- ../../contiki/cpu/cc2538/./lpm-conf.h ../../contiki/core/sys/rtimer.h :
+ ../../contiki/core/sys/rtimer.h :

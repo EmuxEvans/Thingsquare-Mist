@@ -42,8 +42,8 @@ obj_mist-openmote/contiki-main.o: \
  ../../contiki/core/./net/uipopt.h \
  ../../contiki/core/./net/mac/frame802154.h \
  ../../contiki/cpu/cc2538/./cpu.h ../../contiki/cpu/cc2538/./ieee-addr.h \
- ../../contiki/cpu/cc2538/./lpm.h ../../contiki/cpu/cc2538/./lpm-conf.h \
- ../../contiki/core/sys/rtimer.h
+ ../../contiki/cpu/cc2538/./lpm.h ../../contiki/core/sys/rtimer.h \
+ ../../contiki/platform/openmote/antenna.h
  ../../contiki/platform/openmote/contiki-main.c :
  ../../contiki/core/./contiki.h ../../contiki/core/./contiki-version.h :
  ../../contiki/platform/openmote/contiki-conf.h :
@@ -87,5 +87,5 @@ obj_mist-openmote/contiki-main.o: \
  ../../contiki/core/./net/uipopt.h :
  ../../contiki/core/./net/mac/frame802154.h :
  ../../contiki/cpu/cc2538/./cpu.h ../../contiki/cpu/cc2538/./ieee-addr.h :
- ../../contiki/cpu/cc2538/./lpm.h ../../contiki/cpu/cc2538/./lpm-conf.h :
- ../../contiki/core/sys/rtimer.h :
+ ../../contiki/cpu/cc2538/./lpm.h ../../contiki/core/sys/rtimer.h :
+ ../../contiki/platform/openmote/antenna.h :

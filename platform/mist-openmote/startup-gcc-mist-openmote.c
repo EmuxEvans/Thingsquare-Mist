@@ -36,15 +36,20 @@
  * \file
  * Startup code for the cc2538dk platform, to be used when building with gcc
  */
-#include <stdint.h>
 #include "contiki.h"
 #include "reg.h"
+#include "flash-cca.h"
+#include "sys-ctrl.h"
+#include "uart.h"
 
-#define FLASH_START_ADDR                0x00200000
-#define BOOTLOADER_BACKDOOR_DISABLE     0xEFFFFFFF
-#define SYS_CTRL_EMUOVR                 0x400D20B4
+#include <stdint.h>
 /*---------------------------------------------------------------------------*/
 extern int main(void);
+/*---------------------------------------------------------------------------*/
+/* System handlers provided here */
+void reset_handler(void);
+void nmi_handler(void);
+void default_handler(void);
 void reset_handler(void);
 /*---------------------------------------------------------------------------*/
 /* System Handler and ISR prototypes implemented elsewhere */
@@ -59,6 +64,7 @@ void cc2538_rf_rx_tx_isr(void);
 void cc2538_rf_err_isr(void);
 void udma_isr(void);
 void udma_err_isr(void);
+
 /*---------------------------------------------------------------------------*/
 /* Weak interrupt handlers. Those containing a "mov r2" will load a value to
   CPU register r2, where the value is a constant indicating what fault was
@@ -149,15 +155,49 @@ i2c_handler(void)
   while(1);
 }
 /*---------------------------------------------------------------------------*/
+/* Boot Loader Backdoor selection */
+#if FLASH_CCA_CONF_BOOTLDR_BACKDOOR
+/* Backdoor enabled */
+
+#if FLASH_CCA_CONF_BOOTLDR_BACKDOOR_ACTIVE_HIGH
+#define FLASH_CCA_BOOTLDR_CFG_ACTIVE_LEVEL FLASH_CCA_BOOTLDR_CFG_ACTIVE_HIGH
+#else
+#define FLASH_CCA_BOOTLDR_CFG_ACTIVE_LEVEL 0
+#endif
+
+#if ( (FLASH_CCA_CONF_BOOTLDR_BACKDOOR_PORT_A_PIN < 0) || (FLASH_CCA_CONF_BOOTLDR_BACKDOOR_PORT_A_PIN > 7) )
+#error Invalid boot loader backdoor pin. Please set FLASH_CCA_CONF_BOOTLDR_BACKDOOR_PORT_A_PIN between 0 and 7 (indicating PA0 - PA7).
+#endif
+
+#define FLASH_CCA_BOOTLDR_CFG ( FLASH_CCA_BOOTLDR_CFG_ENABLE \
+  | FLASH_CCA_BOOTLDR_CFG_ACTIVE_LEVEL \
+  | (FLASH_CCA_CONF_BOOTLDR_BACKDOOR_PORT_A_PIN << FLASH_CCA_BOOTLDR_CFG_PORT_A_PIN_S) )
+#else
+#define FLASH_CCA_BOOTLDR_CFG FLASH_CCA_BOOTLDR_CFG_DISABLE
+#endif
+
+/*---------------------------------------------------------------------------*/
 /* Link in the USB ISR only if USB is enabled */
 #if USB_SERIAL_CONF_ENABLE
 void usb_isr(void);
 #else
 #define usb_isr default_handler
 #endif
+
+/* Likewise for the UART[01] ISRs */
+#if UART_CONF_ENABLE
+void uart0_isr(void);
+void uart1_isr(void);
+#else /* UART_CONF_ENABLE */
+#define uart0_isr default_handler
+#define uart1_isr default_handler
+#endif /* UART_CONF_ENABLE */
 /*---------------------------------------------------------------------------*/
 /* Allocate stack space */
 static unsigned long stack[512];
+/*---------------------------------------------------------------------------*/
+/* Linker construct indicating .text section location */
+extern uint8_t _text[0];
 /*---------------------------------------------------------------------------*/
 /*
  * Customer Configuration Area in the Lock Page
@@ -171,10 +211,15 @@ typedef struct {
 } lock_page_cca_t;
 /*---------------------------------------------------------------------------*/
 __attribute__ ((section(".flashcca"), used))
-const lock_page_cca_t __cca = {
-  BOOTLOADER_BACKDOOR_DISABLE, /* Bootloader backdoor disabled */
-  0,                           /* Image valid bytes */
-  FLASH_START_ADDR             /* Vector table located at the start of flash */
+const flash_cca_lock_page_t __cca = {
+  FLASH_CCA_BOOTLDR_CFG,          /* Boot loader backdoor configuration */
+  FLASH_CCA_IMAGE_VALID,         /* Image valid */
+  &_text,                        /* Vector table located at the start of .text */
+  /* Unlock all pages and debug */
+  { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
+    0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
+    0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
+    0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF }
 };
 /*---------------------------------------------------------------------------*/
 __attribute__ ((section(".vectors"), used))

@@ -35,19 +35,48 @@
  */
 #include "lpm-conf.h"
 
-#if LPM_CONF_MAX_PM==2
-#define SRAM_START  0x20004000
-#define SRAM_LEN    0x00004000
+#if (LPM_CONF_MAX_PM==2) && (LPM_CONF_ENABLE != 0)
+#define NRSRAM_START    0x20000000
+#define NRSRAM_LEN      0x00004000
+#define SRAM_START      0x20004000
+#define SRAM_LEN        0x00004000
 #else
-#define SRAM_START  0x20000000
-#define SRAM_LEN    0x00008000
+#define SRAM_START      0x20000000
+#define SRAM_LEN        0x00008000
 #endif
+
+#ifndef FLASH_CONF_ORIGIN
+#define FLASH_CONF_ORIGIN  0x00200000
+#endif
+
+#ifndef FLASH_CONF_SIZE
+#define FLASH_CONF_SIZE    0x00080000 /* 512 KiB */
+#endif
+
+#ifdef FLASH_CONF_ORIGIN
+#define FLASH_ORIGIN    FLASH_CONF_ORIGIN
+#else
+#error FLASH_CONF_ORIGIN is not specified cun. Please define FLASH_CONF_ORIGIN in contiki-conf.h.
+#endif
+
+#ifdef FLASH_CONF_SIZE
+#define FLASH_SIZE      FLASH_CONF_SIZE
+#else
+#error FLASH_CONF_SIZE is not specified cun. Please define FLASH_CONF_SIZE in contiki-conf.h.
+#endif
+
+#define FLASH_CCA_LENGTH 44
+#define FLASH_LENGTH     (FLASH_SIZE - FLASH_CCA_LENGTH)
+#define FLASH_CCA_ORIGIN (FLASH_ORIGIN + FLASH_LENGTH)
 
 MEMORY
 {
-    FLASH (rx) : ORIGIN = 0x200000, LENGTH = 0x0007FFD4
-    FLASH_CCA (RX) : ORIGIN = 0x0027FFD4, LENGTH = 12
-    SRAM (RWX) : ORIGIN = SRAM_START, LENGTH = SRAM_LEN 
+    FLASH (rx) : ORIGIN = FLASH_ORIGIN, LENGTH = FLASH_LENGTH
+    FLASH_CCA (RX) : ORIGIN = FLASH_CCA_ORIGIN, LENGTH = FLASH_CCA_LENGTH
+#if (LPM_CONF_MAX_PM==2) && (LPM_CONF_ENABLE != 0)
+    NRSRAM (RWX) : ORIGIN = NRSRAM_START, LENGTH = NRSRAM_LEN
+#endif
+    SRAM (RWX) : ORIGIN = SRAM_START, LENGTH = SRAM_LEN
 }
 
 SECTIONS
@@ -61,10 +90,14 @@ SECTIONS
         _etext = .;
     } > FLASH= 0
 
+    .socdata (NOLOAD) :
+    {
+        *(.udma_channel_control_table)
+    } > SRAM
+
     .data :
     {
         _data = .;
-        *(vtable)
         *(.data*)
         _edata = .;
     } > SRAM AT > FLASH
@@ -81,6 +114,15 @@ SECTIONS
         *(COMMON)
         _ebss = .;
     } > SRAM
+
+#if (LPM_CONF_MAX_PM==2) && (LPM_CONF_ENABLE != 0)
+    .nrdata (NOLOAD) :
+    {
+        _nrdata = .;
+        *(.nrdata*)
+        _enrdata = .;
+    } > NRSRAM
+#endif
 
     .flashcca :
     {

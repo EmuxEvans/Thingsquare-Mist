@@ -6,8 +6,9 @@ AUTOSTART_PROCESSES(&router_node_process);
 /*---------------------------------------------------------------------------*/
 PROCESS_THREAD(router_node_process, ev, data)
 {
+  printf("RNode RPL init\n");
   PROCESS_BEGIN();
-  printf("Starting RPL init\n");
+  printf("RNode RPL init\n");
 
   /* Set us up as a RPL root node. */
   simple_rpl_init_dag();

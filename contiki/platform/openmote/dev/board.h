@@ -148,7 +148,7 @@
  * \name Device string used on startup
  * @{
  */
-#define BOARD_STRING "OpenMote-CC2538"
+#define BOARD_STRING "OpenMote-CC2538-Bonti"
 /** @} */
 
 #endif /* BOARD_H_ */

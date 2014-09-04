@@ -53,10 +53,12 @@ autostart_start(struct process * const processes[])
 {
   int i;
   
+  PRINTF("entering autostart for\r\n");
   for(i = 0; processes[i] != NULL; ++i) {
+    PRINTF("autostart_start: starting process '%s'\r\n", processes[i]->name);
     process_start(processes[i], NULL);
-    PRINTF("autostart_start: starting process '%s'\n", processes[i]->name);
   }
+  PRINTF("exiting autostart for and autostart start\r\n");  
 }
 /*---------------------------------------------------------------------------*/
 void
@@ -66,7 +68,7 @@ autostart_exit(struct process * const processes[])
   
   for(i = 0; processes[i] != NULL; ++i) {
     process_exit(processes[i]);
-    PRINTF("autostart_exit: stopping process '%s'\n", processes[i]->name);
+    PRINTF("autostart_exit: stopping process '%s'\r\n", processes[i]->name);
   }
 }
 /*---------------------------------------------------------------------------*/

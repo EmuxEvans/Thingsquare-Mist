@@ -115,7 +115,7 @@ set_rime_addr()
     for(i = 0; i < RIMEADDR_SIZE - 1; i++) {
       printf("%02x:", rimeaddr_node_addr.u8[i]);
     }
-    printf("%02x\n", rimeaddr_node_addr.u8[i]);
+    printf("%02x\r\n", rimeaddr_node_addr.u8[i]);
   }
 #endif
 
@@ -173,21 +173,24 @@ main(void)
   PUTS(BOARD_STRING);
 
   PRINTF(" Net: ");
-  PRINTF("%s\n", NETSTACK_NETWORK.name);
+  PRINTF("%s\r\n", NETSTACK_NETWORK.name);
   PRINTF(" MAC: ");
-  PRINTF("%s\n", NETSTACK_MAC.name);
+  PRINTF("%s\r\n", NETSTACK_MAC.name);
   PRINTF(" RDC: ");
-  PRINTF("%s\n", NETSTACK_RDC.name);
+  PRINTF("%s\r\n", NETSTACK_RDC.name);
 
   /* Initialise the H/W RNG engine. */
+//  PRINTF(" random init \r\n");
   random_init(0);
-
+//  PRINTF(" udma init \r\n");
   udma_init();
-
+//  PRINTF(" starting etimer \r\n");
   process_start(&etimer_process, NULL);
   ctimer_init();
 
+//  PRINTF(" set rime addr \r\n");
   set_rime_addr();
+//  PRINTF(" init net stack \r\n");  
   netstack_init();
   cc2538_rf_set_addr(IEEE802154_PANID);
 
@@ -198,7 +201,7 @@ main(void)
 #endif /* UIP_CONF_IPV6 */
 
   process_start(&sensors_process, NULL);
-
+//  printf("energest init\r\n");
   energest_init();
   ENERGEST_ON(ENERGEST_TYPE_CPU);
 
@@ -214,12 +217,12 @@ main(void)
 #endif /* NETSTACK_AES_KEY */
 
     const uint8_t key[] = NETSTACK_AES_KEY;
-    printf("Setting AES key\n");
+//    printf("Setting AES key\r\n");
     netstack_aes_set_key(key);
   }
-
+//  printf("autostarting process bray\r\n");
   autostart_start(autostart_processes);
-
+//  printf("watchdog start\r\n");
   watchdog_start();
   fade(LEDS_ORANGE);
 
@@ -227,6 +230,7 @@ main(void)
     uint8_t r;
     do {
       /* Reset watchdog and handle polls and events */
+      // printf("reset watchdog\r\n");
       watchdog_periodic();
 
       r = process_run();

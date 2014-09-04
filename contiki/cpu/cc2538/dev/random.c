@@ -88,6 +88,7 @@ random_init(unsigned short seed)
   unsigned short s = 0;
 
   /* Make sure the RNG is on */
+//  printf("Making sure RNG is on\r\n");
   REG(SOC_ADC_ADCCON1) &= ~(SOC_ADC_ADCCON1_RCTRL1 | SOC_ADC_ADCCON1_RCTRL0);
 
   /* Enable clock for the RF Core */
@@ -96,8 +97,9 @@ random_init(unsigned short seed)
   /* Infinite RX - FRMCTRL0[3:2] = 10
    * This will mess with radio operation - see note above */
   REG(RFCORE_XREG_FRMCTRL0) = 0x00000008;
-
+ 
   /* Turn RF on */
+  printf("  turn RF on\r\n");  
   CC2538_RF_CSP_ISRXON();
 
   /*
@@ -105,6 +107,7 @@ random_init(unsigned short seed)
    * have died out. A convenient way to do this is to wait for the RSSI-valid
    * signal to go high."
    */
+//  printf("Wait RX long enough\r\n");   
   while(!(REG(RFCORE_XREG_RSSISTAT) & RFCORE_XREG_RSSISTAT_RSSI_VALID));
 
   /*
@@ -113,6 +116,7 @@ random_init(unsigned short seed)
    *
    * Invalid seeds are 0x0000 and 0x8003 and should not be used.
    */
+//  printf("Sampling seed\r\n");       
   while(s == 0x0000 || s == 0x8003) {
     for(i = 0; i < 16; i++) {
       s |= (REG(RFCORE_XREG_RFRND) & RFCORE_XREG_RFRND_IRND);
@@ -125,6 +129,7 @@ random_init(unsigned short seed)
   REG(SOC_ADC_RNDL) = s & 0xFF;
 
   /* RF Off. NETSTACK_RADIO.init() will sort out normal RF operation */
+//  printf("Wait RX long enough\r\n");
   CC2538_RF_CSP_ISRFOFF();
 }
 

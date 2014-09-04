@@ -22,7 +22,6 @@ obj_eth-openmote/enc28j60-ip64-driver.o: \
  ../../apps/ip64/ip64.h ../../contiki/core/./net/uip.h \
  ../../contiki/core/./net/uipopt.h ../../contiki/core/./net/tcpip.h \
  ../../contiki/platform/openmote/ip64-conf.h \
- ../../apps/ip64/ip64-null-driver.h ../../apps/ip64/ip64-driver.h \
  ../../apps/ip64/ip64-eth-interface.h \
  ../../dev/enc28j60/enc28j60-ip64-driver.h ../../apps/ip64/ip64-eth.h \
  ../../contiki/core/./net/rime.h \
@@ -79,7 +78,6 @@ obj_eth-openmote/enc28j60-ip64-driver.o: \
  ../../apps/ip64/ip64.h ../../contiki/core/./net/uip.h :
  ../../contiki/core/./net/uipopt.h ../../contiki/core/./net/tcpip.h :
  ../../contiki/platform/openmote/ip64-conf.h :
- ../../apps/ip64/ip64-null-driver.h ../../apps/ip64/ip64-driver.h :
  ../../apps/ip64/ip64-eth-interface.h :
  ../../dev/enc28j60/enc28j60-ip64-driver.h ../../apps/ip64/ip64-eth.h :
  ../../contiki/core/./net/rime.h :

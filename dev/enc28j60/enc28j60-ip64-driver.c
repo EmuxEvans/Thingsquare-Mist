@@ -62,7 +62,7 @@ init(void)
 
   memcpy(ip64_eth_addr.addr, macaddr, sizeof(macaddr));
 
-  printf("MAC addr %02x:%02x:%02x:%02x:%02x:%02x\n",
+  printf("MAC addr %02x:%02x:%02x:%02x:%02x:%02x\r\n",
          macaddr[0], macaddr[1], macaddr[2],
          macaddr[3], macaddr[4], macaddr[5]);
   enc28j60_init(macaddr);

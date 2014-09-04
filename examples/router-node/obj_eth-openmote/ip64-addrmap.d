@@ -21,7 +21,6 @@ obj_eth-openmote/ip64-addrmap.o: ../../apps/ip64/ip64-addrmap.c \
  ../../contiki/core/./sys/rtimer.h ../../contiki/core/./lib/memb.h \
  ../../contiki/core/./lib/list.h \
  ../../contiki/platform/openmote/ip64-conf.h \
- ../../apps/ip64/ip64-null-driver.h ../../apps/ip64/ip64-driver.h \
  ../../apps/ip64/ip64-eth-interface.h \
  ../../dev/enc28j60/enc28j60-ip64-driver.h ../../apps/ip64/ip64-driver.h
 ../../apps/ip64/ip64-addrmap.c :
@@ -47,6 +46,5 @@ obj_eth-openmote/ip64-addrmap.o: ../../apps/ip64/ip64-addrmap.c \
  ../../contiki/core/./sys/rtimer.h ../../contiki/core/./lib/memb.h :
  ../../contiki/core/./lib/list.h :
  ../../contiki/platform/openmote/ip64-conf.h :
- ../../apps/ip64/ip64-null-driver.h ../../apps/ip64/ip64-driver.h :
  ../../apps/ip64/ip64-eth-interface.h :
  ../../dev/enc28j60/enc28j60-ip64-driver.h ../../apps/ip64/ip64-driver.h :

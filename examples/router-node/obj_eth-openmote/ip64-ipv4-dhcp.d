@@ -69,7 +69,6 @@ obj_eth-openmote/ip64-ipv4-dhcp.o: ../../apps/ip64/ip64-ipv4-dhcp.c \
  ../../contiki/core/./net/rime/trickle.h \
  ../../contiki/core/./net/netstack.h ../../apps/ip64/ip64-dhcpc.h \
  ../../apps/ip64/ip64.h ../../contiki/platform/openmote/ip64-conf.h \
- ../../apps/ip64/ip64-null-driver.h ../../apps/ip64/ip64-driver.h \
  ../../apps/ip64/ip64-eth-interface.h \
  ../../dev/enc28j60/enc28j60-ip64-driver.h ../../apps/ip64/ip64-driver.h \
  ../../apps/ip64/ip64-eth.h
@@ -144,7 +143,6 @@ obj_eth-openmote/ip64-ipv4-dhcp.o: ../../apps/ip64/ip64-ipv4-dhcp.c \
  ../../contiki/core/./net/rime/trickle.h :
  ../../contiki/core/./net/netstack.h ../../apps/ip64/ip64-dhcpc.h :
  ../../apps/ip64/ip64.h ../../contiki/platform/openmote/ip64-conf.h :
- ../../apps/ip64/ip64-null-driver.h ../../apps/ip64/ip64-driver.h :
  ../../apps/ip64/ip64-eth-interface.h :
  ../../dev/enc28j60/enc28j60-ip64-driver.h ../../apps/ip64/ip64-driver.h :
  ../../apps/ip64/ip64-eth.h :

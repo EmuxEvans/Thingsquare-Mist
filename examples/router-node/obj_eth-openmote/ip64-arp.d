@@ -20,7 +20,6 @@ obj_eth-openmote/ip64-arp.o: ../../apps/ip64/ip64-arp.c \
  ../../contiki/core/./sys/clock.h ../../contiki/core/./sys/energest.h \
  ../../contiki/core/./sys/rtimer.h \
  ../../contiki/platform/openmote/ip64-conf.h \
- ../../apps/ip64/ip64-null-driver.h ../../apps/ip64/ip64-driver.h \
  ../../apps/ip64/ip64-eth-interface.h \
  ../../dev/enc28j60/enc28j60-ip64-driver.h ../../apps/ip64/ip64-driver.h \
  ../../apps/ip64/ip64-eth.h ../../apps/ip64/ip64-arp.h
@@ -46,7 +45,6 @@ obj_eth-openmote/ip64-arp.o: ../../apps/ip64/ip64-arp.c \
  ../../contiki/core/./sys/clock.h ../../contiki/core/./sys/energest.h :
  ../../contiki/core/./sys/rtimer.h :
  ../../contiki/platform/openmote/ip64-conf.h :
- ../../apps/ip64/ip64-null-driver.h ../../apps/ip64/ip64-driver.h :
  ../../apps/ip64/ip64-eth-interface.h :
  ../../dev/enc28j60/enc28j60-ip64-driver.h ../../apps/ip64/ip64-driver.h :
  ../../apps/ip64/ip64-eth.h ../../apps/ip64/ip64-arp.h :

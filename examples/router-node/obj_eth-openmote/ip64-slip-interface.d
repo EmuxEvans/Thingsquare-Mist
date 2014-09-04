@@ -28,7 +28,6 @@ obj_eth-openmote/ip64-slip-interface.o: \
  ../../contiki/core/./dev/radio.h ../../contiki/core/./net/mac/rdc.h \
  ../../contiki/core/./net/mac/framer.h ../../contiki/core/./dev/slip.h \
  ../../apps/ip64/ip64.h ../../contiki/platform/openmote/ip64-conf.h \
- ../../apps/ip64/ip64-null-driver.h ../../apps/ip64/ip64-driver.h \
  ../../apps/ip64/ip64-eth-interface.h \
  ../../dev/enc28j60/enc28j60-ip64-driver.h ../../apps/ip64/ip64-driver.h \
  ../../contiki/core/./net/uip-debug.h
@@ -61,7 +60,6 @@ obj_eth-openmote/ip64-slip-interface.o: \
  ../../contiki/core/./dev/radio.h ../../contiki/core/./net/mac/rdc.h :
  ../../contiki/core/./net/mac/framer.h ../../contiki/core/./dev/slip.h :
  ../../apps/ip64/ip64.h ../../contiki/platform/openmote/ip64-conf.h :
- ../../apps/ip64/ip64-null-driver.h ../../apps/ip64/ip64-driver.h :
  ../../apps/ip64/ip64-eth-interface.h :
  ../../dev/enc28j60/enc28j60-ip64-driver.h ../../apps/ip64/ip64-driver.h :
  ../../contiki/core/./net/uip-debug.h :

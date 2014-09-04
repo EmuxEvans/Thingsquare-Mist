@@ -72,7 +72,6 @@ obj_eth-openmote/http-socket.o: ../../apps/http-socket/http-socket.c \
  ../../contiki/core/./dev/leds.h ../../apps/aes/aes.h \
  ../../apps/ip64-addr/ip64-addr.h ../../apps/ip64/ip64.h \
  ../../contiki/platform/openmote/ip64-conf.h \
- ../../apps/ip64/ip64-null-driver.h ../../apps/ip64/ip64-driver.h \
  ../../apps/ip64/ip64-eth-interface.h \
  ../../dev/enc28j60/enc28j60-ip64-driver.h ../../apps/ip64/ip64-driver.h \
  ../../apps/mdns/mdns.h ../../apps/simple-rpl/simple-rpl.h \
@@ -155,7 +154,6 @@ obj_eth-openmote/http-socket.o: ../../apps/http-socket/http-socket.c \
  ../../contiki/core/./dev/leds.h ../../apps/aes/aes.h :
  ../../apps/ip64-addr/ip64-addr.h ../../apps/ip64/ip64.h :
  ../../contiki/platform/openmote/ip64-conf.h :
- ../../apps/ip64/ip64-null-driver.h ../../apps/ip64/ip64-driver.h :
  ../../apps/ip64/ip64-eth-interface.h :
  ../../dev/enc28j60/enc28j60-ip64-driver.h ../../apps/ip64/ip64-driver.h :
  ../../apps/mdns/mdns.h ../../apps/simple-rpl/simple-rpl.h :

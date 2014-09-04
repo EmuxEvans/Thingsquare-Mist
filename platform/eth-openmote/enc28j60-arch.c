@@ -45,17 +45,17 @@
 
 /* MOSI = Master Output, Slave Input */
 #define SPI_MOSI_PORT GPIO_A_BASE
-#define SPI_MOSI_BIT  (1 << 4)
+#define SPI_MOSI_BIT  (1 << 5)
 #define SPI_MOSI      SPI_MOSI_PORT, SPI_MOSI_BIT
 
 /* MISO = Master Input, Slave Output */
 #define SPI_MISO_PORT GPIO_A_BASE
-#define SPI_MISO_BIT  (1 << 5)
+#define SPI_MISO_BIT  (1 << 4)
 #define SPI_MISO      SPI_MISO_PORT, SPI_MISO_BIT
 
 /* CS = Chip Select */
-#define SPI_CS_PORT   GPIO_D_BASE
-#define SPI_CS_BIT    (1 << 5)
+#define SPI_CS_PORT   GPIO_A_BASE
+#define SPI_CS_BIT    (1 << 3)
 #define SPI_CS        SPI_CS_PORT, SPI_CS_BIT
 
 

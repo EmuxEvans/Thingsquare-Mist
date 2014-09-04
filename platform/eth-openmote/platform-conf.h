@@ -23,7 +23,6 @@
 #define UIP_SPLIT_CONF_SIZE 8
 
 #include "mist-conf-const.h"
-#include "ip64-conf.h"
 
 #ifndef MIST_CONF_NETSTACK
 //#define MIST_CONF_NETSTACK      MIST_CONF_NULLRDC

@@ -201,6 +201,11 @@ main(void)
   energest_init();
   ENERGEST_ON(ENERGEST_TYPE_CPU);
 
+/*  simple_rpl_init();
+  ip64_init();
+
+  NETSTACK_RDC.off(1);*/
+
   {
 #ifndef NETSTACK_AES_KEY
 #define NETSTACK_AES_KEY "thingsquare mist"

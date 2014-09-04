@@ -168,10 +168,12 @@ main(void)
 
   INTERRUPTS_ENABLE();
   fade(LEDS_GREEN);
-
+  PRINTF("=================================\r\n");
   PUTS(CONTIKI_VERSION_STRING);
+  PRINTF("======================\r\n");  
+  PRINTF("\r\n");  
   PUTS(BOARD_STRING);
-
+  PRINTF("\r\n");  
   PRINTF(" Net: ");
   PRINTF("%s\r\n", NETSTACK_NETWORK.name);
   PRINTF(" MAC: ");

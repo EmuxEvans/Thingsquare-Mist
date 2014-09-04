@@ -44,14 +44,16 @@ PROCESS_THREAD(blinker_process, ev, data)
 PROCESS_THREAD(router_node_process, ev, data)
 {
   PROCESS_BEGIN();
-
-  /* Set us up as a RPL root node. */
+  /* Set us up as a RPL root node. */  
+  printf("simple_rpl_init_dag\r\n");
   simple_rpl_init_dag();
 
   /* Initialize the IP64 module so we'll start translating packets */
+  printf("ip64_init\r\n");
   ip64_init();
 
   /* Initialize the IP64 webserver */
+  printf("ip64_webserver_init\r\n");
   ip64_webserver_init();
 
   /* ... and do nothing more. */

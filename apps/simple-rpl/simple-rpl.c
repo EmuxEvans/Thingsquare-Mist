@@ -85,8 +85,8 @@ create_dag_callback(void *ptr)
 
     dag = rpl_get_any_dag();
 #if DEBUG
-    printf("Found a network we did not create\n");
-    printf("version %d grounded %d preference %d used %d joined %d rank %d\n",
+    printf("Found a network we did not create\r\n");
+    printf("version %d grounded %d preference %d used %d joined %d rank %d\r\n",
            dag->version, dag->grounded,
            dag->preference, dag->used,
            dag->joined, dag->rank);
@@ -143,10 +143,9 @@ set_global_address(void)
     if(uip_ds6_if.addr_list[i].isused &&
        (state == ADDR_TENTATIVE || state == ADDR_PREFERRED)) {
       uip_debug_ipaddr_print(&uip_ds6_if.addr_list[i].ipaddr);
-      printf("\n");
     }
   }
-
+  printf("\r\n");
   return &ipaddr;
 }
 /*---------------------------------------------------------------------------*/
@@ -195,14 +194,14 @@ simple_rpl_init_dag_immediately(void)
 
       uip_ip6addr(&prefix, 0xfc00, 0, 0, 0, 0, 0, 0, 0);
       rpl_set_prefix(dag, &prefix, 64);
-      PRINTF("simple_rpl_init_dag: created a new RPL dag\n");
+      PRINTF("simple_rpl_init_dag: created a new RPL dag\r\n");
       return 0;
     } else {
-      PRINTF("simple_rpl_init_dag: failed to create a new RPL DAG\n");
+      PRINTF("simple_rpl_init_dag: failed to create a new RPL DAG\r\n");
       return -1;
     }
   } else {
-    PRINTF("simple_rpl_init_dag: failed to create a new RPL DAG, no preferred IP address found\n");
+    PRINTF("simple_rpl_init_dag: failed to create a new RPL DAG, no preferred IP address found\r\n");
     return -2;
   }
 }
@@ -223,9 +222,9 @@ void
 simple_rpl_global_repair(void)
 {
   if(rpl_repair_root(RPL_DEFAULT_INSTANCE)) {
-    PRINTF("simple_rpl_global_repair: started global repair\n");
+    PRINTF("simple_rpl_global_repair: started global repair\r\n");
   } else {
-    PRINTF("simple_rpl_global_repair: failed to start global repair\n");
+    PRINTF("simple_rpl_global_repair: failed to start global repair\r\n");
   }
 }
 /*---------------------------------------------------------------------------*/

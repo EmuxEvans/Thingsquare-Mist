@@ -3,6 +3,9 @@ obj_eth-openmote/nullrdc-noframer.o: \
  ../../contiki/core/./net/mac/nullrdc-noframer.h \
  ../../contiki/core/./net/mac/rdc.h \
  ../../contiki/platform/openmote/contiki-conf.h \
+ ../../platform/eth-openmote/./platform-conf.h \
+ ../../apps/mist-conf/mist-conf-const.h \
+ ../../apps/mist-conf/mist-default-conf.h \
  ../../contiki/platform/openmote/dev/board.h \
  ../../contiki/cpu/cc2538/./dev/gpio.h ../../contiki/cpu/cc2538/./reg.h \
  ../../contiki/cpu/cc2538/./dev/nvic.h ../../contiki/core/./net/mac/mac.h \
@@ -14,6 +17,9 @@ obj_eth-openmote/nullrdc-noframer.o: \
  ../../contiki/core/./net/mac/nullrdc-noframer.h :
  ../../contiki/core/./net/mac/rdc.h :
  ../../contiki/platform/openmote/contiki-conf.h :
+ ../../platform/eth-openmote/./platform-conf.h :
+ ../../apps/mist-conf/mist-conf-const.h :
+ ../../apps/mist-conf/mist-default-conf.h :
  ../../contiki/platform/openmote/dev/board.h :
  ../../contiki/cpu/cc2538/./dev/gpio.h ../../contiki/cpu/cc2538/./reg.h :
  ../../contiki/cpu/cc2538/./dev/nvic.h ../../contiki/core/./net/mac/mac.h :

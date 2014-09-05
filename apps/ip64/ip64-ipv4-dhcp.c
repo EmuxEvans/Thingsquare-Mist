@@ -64,11 +64,11 @@ PROCESS_THREAD(ip64_ipv4_dhcp_process, ev, data)
   
   while(1) {
     PROCESS_WAIT_EVENT();
-    printf("DHCP wait\r\n");    
+    // printf("DHCP wait\r\n");    
     if(ev == tcpip_event ||
        ev == PROCESS_EVENT_TIMER) {
       ip64_dhcpc_appcall(ev, data);
-      printf("DHCP event\r\n");
+      // printf("DHCP event\r\n");
     }
   }
 
@@ -79,7 +79,7 @@ void
 ip64_dhcpc_configured(const struct ip64_dhcpc_state *s)
 {
   uip_ip6addr_t ip6dnsaddr;
-  printf("DHCP Configured with %d.%d.%d.%d\n",
+  printf("DHCP Configured with %d.%d.%d.%d\r\n",
 	 s->ipaddr.u8[0], s->ipaddr.u8[1],
 	 s->ipaddr.u8[2], s->ipaddr.u8[3]);
 

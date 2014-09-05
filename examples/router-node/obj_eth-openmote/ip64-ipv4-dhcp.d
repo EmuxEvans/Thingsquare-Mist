@@ -1,6 +1,9 @@
 obj_eth-openmote/ip64-ipv4-dhcp.o: ../../apps/ip64/ip64-ipv4-dhcp.c \
  ../../contiki/core/./contiki.h ../../contiki/core/./contiki-version.h \
  ../../contiki/platform/openmote/contiki-conf.h \
+ ../../platform/eth-openmote/./platform-conf.h \
+ ../../apps/mist-conf/mist-conf-const.h \
+ ../../apps/mist-conf/mist-default-conf.h \
  ../../contiki/platform/openmote/dev/board.h \
  ../../contiki/cpu/cc2538/./dev/gpio.h ../../contiki/cpu/cc2538/./reg.h \
  ../../contiki/cpu/cc2538/./dev/nvic.h \
@@ -75,6 +78,9 @@ obj_eth-openmote/ip64-ipv4-dhcp.o: ../../apps/ip64/ip64-ipv4-dhcp.c \
 ../../apps/ip64/ip64-ipv4-dhcp.c :
  ../../contiki/core/./contiki.h ../../contiki/core/./contiki-version.h :
  ../../contiki/platform/openmote/contiki-conf.h :
+ ../../platform/eth-openmote/./platform-conf.h :
+ ../../apps/mist-conf/mist-conf-const.h :
+ ../../apps/mist-conf/mist-default-conf.h :
  ../../contiki/platform/openmote/dev/board.h :
  ../../contiki/cpu/cc2538/./dev/gpio.h ../../contiki/cpu/cc2538/./reg.h :
  ../../contiki/cpu/cc2538/./dev/nvic.h :

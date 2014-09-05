@@ -51,6 +51,10 @@
 
 #include "dev/gpio.h"
 #include "dev/nvic.h"
+
+#define dint() INTERRUPTS_ENABLE()
+#define eint() INTERRUPTS_DISABLE()
+
 /*---------------------------------------------------------------------------*/
 /** \name OpenMote-CC2538 LED configuration
  *

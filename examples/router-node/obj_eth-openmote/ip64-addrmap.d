@@ -2,6 +2,9 @@ obj_eth-openmote/ip64-addrmap.o: ../../apps/ip64/ip64-addrmap.c \
  ../../apps/ip64/ip64-addrmap.h ../../contiki/core/./sys/timer.h \
  ../../contiki/core/./sys/clock.h \
  ../../contiki/platform/openmote/contiki-conf.h \
+ ../../platform/eth-openmote/./platform-conf.h \
+ ../../apps/mist-conf/mist-conf-const.h \
+ ../../apps/mist-conf/mist-default-conf.h \
  ../../contiki/platform/openmote/dev/board.h \
  ../../contiki/cpu/cc2538/./dev/gpio.h ../../contiki/cpu/cc2538/./reg.h \
  ../../contiki/cpu/cc2538/./dev/nvic.h ../../contiki/core/./net/uip.h \
@@ -27,6 +30,9 @@ obj_eth-openmote/ip64-addrmap.o: ../../apps/ip64/ip64-addrmap.c \
  ../../apps/ip64/ip64-addrmap.h ../../contiki/core/./sys/timer.h :
  ../../contiki/core/./sys/clock.h :
  ../../contiki/platform/openmote/contiki-conf.h :
+ ../../platform/eth-openmote/./platform-conf.h :
+ ../../apps/mist-conf/mist-conf-const.h :
+ ../../apps/mist-conf/mist-default-conf.h :
  ../../contiki/platform/openmote/dev/board.h :
  ../../contiki/cpu/cc2538/./dev/gpio.h ../../contiki/cpu/cc2538/./reg.h :
  ../../contiki/cpu/cc2538/./dev/nvic.h ../../contiki/core/./net/uip.h :

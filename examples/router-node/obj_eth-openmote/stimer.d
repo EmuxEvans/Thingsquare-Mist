@@ -1,11 +1,17 @@
 obj_eth-openmote/stimer.o: ../../contiki/core/sys/stimer.c \
  ../../contiki/platform/openmote/contiki-conf.h \
+ ../../platform/eth-openmote/./platform-conf.h \
+ ../../apps/mist-conf/mist-conf-const.h \
+ ../../apps/mist-conf/mist-default-conf.h \
  ../../contiki/platform/openmote/dev/board.h \
  ../../contiki/cpu/cc2538/./dev/gpio.h ../../contiki/cpu/cc2538/./reg.h \
  ../../contiki/cpu/cc2538/./dev/nvic.h ../../contiki/core/./sys/clock.h \
  ../../contiki/core/./sys/stimer.h
 ../../contiki/core/sys/stimer.c :
  ../../contiki/platform/openmote/contiki-conf.h :
+ ../../platform/eth-openmote/./platform-conf.h :
+ ../../apps/mist-conf/mist-conf-const.h :
+ ../../apps/mist-conf/mist-default-conf.h :
  ../../contiki/platform/openmote/dev/board.h :
  ../../contiki/cpu/cc2538/./dev/gpio.h ../../contiki/cpu/cc2538/./reg.h :
  ../../contiki/cpu/cc2538/./dev/nvic.h ../../contiki/core/./sys/clock.h :

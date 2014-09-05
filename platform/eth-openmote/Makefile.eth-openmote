@@ -1,8 +1,9 @@
+# eth-openmote platform makefile
 
 OPENMOTEDIR=$(MIST)/contiki/platform/openmote
 MISTOPENMOTEDIR=$(MIST)/platform/mist-openmote
 
-CONTIKI_TARGET_SOURCEFILES+=contiki-mist-openmote-main.c
+CONTIKI_TARGET_SOURCEFILES+=contiki-mist-openmote-main.c node-id.c
 ifdef IAR
 else
 CONTIKI_TARGET_SOURCEFILES+=flash.c
@@ -25,6 +26,18 @@ cc2538-mist-id.ld: $(MISTOPENMOTEDIR)/cc2538-mist-id.lds
 
 
 CLEAN += *.bin *.mist-openmote *.eth-openmote
+
+ifdef NODEID
+CFLAGS+=-DNODEID=$(NODEID)
+
+ifdef BURN_NODEID
+CFLAGS+=-DBURN_NODEID
+endif # BURN_NODEID
+endif # NODEID
+
+ifdef UIP_CONF_IPV6
+CFLAGS += -DWITH_UIP6=1
+endif
 
 PLATFORMAPPS += simple-rpl aes drowsie enc28j60
 

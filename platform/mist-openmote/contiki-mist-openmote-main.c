@@ -51,6 +51,7 @@
 #include "dev/watchdog.h"
 #include "dev/ioc.h"
 #include "dev/button-sensor.h"
+#include "dev/board.h" 
 #include "dev/serial-line.h"
 #include "dev/slip.h"
 #include "dev/cc2538-rf.h"
@@ -67,10 +68,28 @@
 #include "ieee-addr.h"
 #include "lpm.h"
 #include "netstack-aes.h"
+#include "net/rime.h"
+#include "sys/autostart.h"
+#include "sys/profile.h"
+
+#include "node-id.h"
+#include "mist.h"
+
+#include "cpu.h"
+
+#if WITH_UIP6
+#include "net/uip-ds6.h"
+#endif /* WITH_UIP6 */
 
 #include <stdint.h>
 #include <string.h>
 #include <stdio.h>
+
+#if NETSTACK_AES_KEY_DEFAULT
+#warning Using default AES key "thingsquare mist", change it in project-conf.h like this:
+#warning #define NETSTACK_AES_KEY {0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15}
+#endif /* NETSTACK_AES_KEY */
+
 /*---------------------------------------------------------------------------*/
 #if STARTUP_CONF_VERBOSE
 #define PRINTF(...) printf(__VA_ARGS__)
@@ -84,6 +103,13 @@
 #define PUTS(s)
 #endif
 /*---------------------------------------------------------------------------*/
+
+/*---------------------------------------------------------------------------*/
+uint32_t sys_clock = 0;
+uint32_t state = 0;
+
+static struct etimer et;
+
 static void
 fade(unsigned char l)
 {
@@ -102,24 +128,34 @@ fade(unsigned char l)
     }
   }
 }
+
 /*---------------------------------------------------------------------------*/
 static void
-set_rime_addr()
+set_rime_addr(void)
 {
-  ieee_addr_cpy_to(&rimeaddr_node_addr.u8[0], RIMEADDR_SIZE);
-
-#if STARTUP_CONF_VERBOSE
-  {
-    int i;
-    printf("Rime configured with address ");
-    for(i = 0; i < RIMEADDR_SIZE - 1; i++) {
-      printf("%02x:", rimeaddr_node_addr.u8[i]);
+  rimeaddr_t addr;
+  uint8_t i;
+  memset(&addr, 0, sizeof(rimeaddr_t));
+#if UIP_CONF_IPV6
+  memcpy(addr.u8, node_mac, sizeof(addr.u8));
+#else
+  if(node_id == 0) {
+    for(i = 0; i < sizeof(rimeaddr_t); ++i) {
+      addr.u8[i] = node_mac[7 - i];
     }
-    printf("%02x\r\n", rimeaddr_node_addr.u8[i]);
+  } else {
+    addr.u8[0] = node_id & 0xff;
+    addr.u8[1] = node_id >> 8;
   }
 #endif
-
+  rimeaddr_set_node_addr(&addr);
+  printf("Rime addr ");
+  for(i = 0; i < sizeof(addr.u8) - 1; i++) {
+    printf("%u.", addr.u8[i]);
+  }
+  printf("%u\r\n", addr.u8[i]);
 }
+
 /*---------------------------------------------------------------------------*/
 /**
  * \brief Main routine for the cc2538dk platform
@@ -130,17 +166,17 @@ main(void)
   nvic_init();
   sys_ctrl_init();
   clock_init();
-  lpm_init();
+  dint();
+  /*Init Watchdog*/
+  watchdog_init();//Need to check the watchdog on 123gxl
+
   rtimer_init();
+  lpm_init();  
   gpio_init();
   ioc_init();
 
   leds_init();
   fade(LEDS_YELLOW);
-
-  process_init();
-
-  watchdog_init();
   button_sensor_init();
 
   /*
@@ -166,68 +202,173 @@ main(void)
 
   serial_line_init();
 
+  /*Enable EA*/
+  eint();
   INTERRUPTS_ENABLE();
   fade(LEDS_GREEN);
   PRINTF("=================================\r\n");
   PUTS(CONTIKI_VERSION_STRING);
   PRINTF("======================\r\n");  
-  PRINTF("\r\n");  
+  PRINTF("\r\n");
   PUTS(BOARD_STRING);
-  PRINTF("\r\n");  
-  PRINTF(" Net: ");
-  PRINTF("%s\r\n", NETSTACK_NETWORK.name);
-  PRINTF(" MAC: ");
-  PRINTF("%s\r\n", NETSTACK_MAC.name);
-  PRINTF(" RDC: ");
-  PRINTF("%s\r\n", NETSTACK_RDC.name);
+  PRINTF("\r\n");
 
-  /* Initialise the H/W RNG engine. */
-//  PRINTF(" random init \r\n");
-  random_init(0);
-//  PRINTF(" udma init \r\n");
-  udma_init();
-//  PRINTF(" starting etimer \r\n");
+#ifdef NODEID
+  node_id = NODEID;
+#ifdef BURN_NODEID
+  node_id_burn(node_id);
+  node_id_restore(); /* also configures node_mac[] */
+#endif /* BURN_NODEID */
+#else
+  node_id_restore(); /* also configures node_mac[] */
+#endif /* NODE_ID */
+
+  /* for setting "hardcoded" IEEE 802.15.4 MAC addresses */
+#ifdef MAC_1
+  {
+    uint8_t ieee[] = { MAC_1, MAC_2, MAC_3, MAC_4, MAC_5, MAC_6, MAC_7, MAC_8 };
+    memcpy(node_mac, ieee, sizeof(uip_lladdr.addr));
+  }
+#endif
+
+  /*
+   * Initialize Contiki and our processes.
+   */
+  process_init();
+  process_start(&sensors_process, NULL);
+  button_sensor_init();
+
   process_start(&etimer_process, NULL);
+
   ctimer_init();
 
-//  PRINTF(" set rime addr \r\n");
   set_rime_addr();
+  printf("finish addr seting\r\n");
+
+  /* Initialise the H/W RNG engine. */
+  random_init(0);
+
+  udma_init();
+
+  if(node_id > 0) {
+    printf("Node id %u.\r\n", node_id);
+  } else {
+    printf("Node id not set.\r\n");
+  }
+
 //  PRINTF(" init net stack \r\n");  
   netstack_init();
   cc2538_rf_set_addr(IEEE802154_PANID);
 
-#if UIP_CONF_IPV6
-  memcpy(&uip_lladdr.addr, &rimeaddr_node_addr, sizeof(uip_lladdr.addr));
-  queuebuf_init();
-  process_start(&tcpip_process, NULL);
-#endif /* UIP_CONF_IPV6 */
+#if WITH_UIP6
+  memcpy(&uip_lladdr.addr, node_mac, sizeof(uip_lladdr.addr));
+  /* Setup nullmac-like MAC for 802.15.4 */
 
-  process_start(&sensors_process, NULL);
-//  printf("energest init\r\n");
+  queuebuf_init();
+
+  netstack_init();
+
+  printf("%s/%s %lu %u\r\n",
+         NETSTACK_RDC.name,
+         NETSTACK_MAC.name,
+         CLOCK_SECOND / (NETSTACK_RDC.channel_check_interval() == 0 ? 1:
+                         NETSTACK_RDC.channel_check_interval()),
+         RF_CHANNEL);
+
+  process_start(&tcpip_process, NULL);
+
+  printf("IPv6 ");
+  {
+    uip_ds6_addr_t *lladdr;
+    int i;
+    lladdr = uip_ds6_get_link_local(-1);
+    for(i = 0; i < 7; ++i) {
+      printf("%02x%02x:", lladdr->ipaddr.u8[i * 2],
+             lladdr->ipaddr.u8[i * 2 + 1]);
+    }
+    printf("%02x%02x\r\n", lladdr->ipaddr.u8[14], lladdr->ipaddr.u8[15]);
+  }
+
+  if(1) {
+    uip_ipaddr_t ipaddr;
+    int i;
+    uip_ip6addr(&ipaddr, 0xfc00, 0, 0, 0, 0, 0, 0, 0);
+    uip_ds6_set_addr_iid(&ipaddr, &uip_lladdr);
+    uip_ds6_addr_add(&ipaddr, 0, ADDR_TENTATIVE);
+    printf("Tentative global IPv6 address ");
+    for(i = 0; i < 7; ++i) {
+      printf("%02x%02x:",
+             ipaddr.u8[i * 2], ipaddr.u8[i * 2 + 1]);
+    }
+    printf("%02x%02x\r\n",
+           ipaddr.u8[7 * 2], ipaddr.u8[7 * 2 + 1]);
+  }
+
+#else /* WITH_UIP6 */
+
+  netstack_init();
+
+  printf("%s %lu %u\r\n",
+         NETSTACK_RDC.name,
+         CLOCK_SECOND / (NETSTACK_RDC.channel_check_interval() == 0? 1:
+                         NETSTACK_RDC.channel_check_interval()),
+         RF_CHANNEL);
+#endif /* WITH_UIP6 */
+
+#if !WITH_UIP6
+  uart1_set_input(serial_line_input_byte);
+  serial_line_init();
+#endif
+
+#ifdef NETSTACK_AES_H
+#ifndef NETSTACK_AES_KEY
+#error Please define NETSTACK_AES_KEY!
+#endif /* NETSTACK_AES_KEY */
+  {
+    const uint8_t key[] = NETSTACK_AES_KEY;
+    netstack_aes_set_key(key);
+  }
+  /*printf("AES encryption is enabled: '%s'\n", NETSTACK_AES_KEY);*/
+  printf("AES encryption is enabled\r\n");
+#else /* NETSTACK_AES_H */
+  printf("Warning: AES encryption is disabled\r\n");
+#endif /* NETSTACK_AES_H */
+
+#if TIMESYNCH_CONF_ENABLED
+  timesynch_init();
+  timesynch_set_authority_level(rimeaddr_node_addr.u8[0]);
+#endif /* TIMESYNCH_CONF_ENABLED */  
+
   energest_init();
   ENERGEST_ON(ENERGEST_TYPE_CPU);
 
-  {
-#ifndef NETSTACK_AES_KEY
-#define NETSTACK_AES_KEY "thingsquare mist"
-#define NETSTACK_AES_KEY_DEFAULT 1
-#endif /* NETSTACK_AES_KEY */
-
-#if NETSTACK_AES_KEY_DEFAULT
-#warning Using default AES key "thingsquare mist", change it in project-conf.h like this:
-#warning #define NETSTACK_AES_KEY {0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15}
-#endif /* NETSTACK_AES_KEY */
-
-    const uint8_t key[] = NETSTACK_AES_KEY;
-//    printf("Setting AES key\r\n");
-    netstack_aes_set_key(key);
-  }
-//  printf("autostarting process bray\r\n");
-  autostart_start(autostart_processes);
-//  printf("watchdog start\r\n");
+  simple_rpl_init();
+  /*Watch dog configuration*/
+  watchdog_periodic();
   watchdog_start();
+
+  autostart_start(autostart_processes);
+
+  //duty_cycle_scroller_start(CLOCK_SECOND * 2);
+#if IP64_CONF_UIP_FALLBACK_INTERFACE_SLIP && WITH_SLIP
+  /* Start the SLIP */
+  printf("Initiating SLIP: my IP is 172.16.0.2...\r\n");
+  slip_arch_init(0);
+  {
+    uip_ip4addr_t ipv4addr, netmask;
+
+    uip_ipaddr(&ipv4addr, 172, 16, 0, 2);
+    uip_ipaddr(&netmask, 255, 255, 255, 0);
+    ip64_set_ipv4_address(&ipv4addr, &netmask);
+  }
+  uart1_set_input(slip_input_byte);
+#endif /* IP64_CONF_UIP_FALLBACK_INTERFACE_SLIP */
+
   fade(LEDS_ORANGE);
 
+  /*
+   * This is the scheduler loop.
+   */
   while(1) {
     uint8_t r;
     do {

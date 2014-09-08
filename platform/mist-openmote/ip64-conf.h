@@ -39,4 +39,7 @@
 #define IP64_CONF_INPUT                  ip64_slip_interface_input
 #define IP64_CONF_ETH_DRIVER             ip64_null_driver
 
+#undef UIP_FALLBACK_INTERFACE
+#define UIP_FALLBACK_INTERFACE           ip64_uip_fallback_interface
+
 #endif /* IP64_CONF_H */

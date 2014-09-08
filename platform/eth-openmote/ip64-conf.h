@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, Thingsquare, http://www.thingsquare.com/.
+ * Copyright (c) 2012-2013, Thingsquare, http://www.thingsquare.com/.
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -10,7 +10,6 @@
  * 2. Redistributions in binary form must reproduce the above copyright
  *    notice, this list of conditions and the following disclaimer in the
  *    documentation and/or other materials provided with the distribution.
- *
  * 3. Neither the name of the copyright holder nor the names of its
  *    contributors may be used to endorse or promote products derived
  *    from this software without specific prior written permission.
@@ -31,6 +30,14 @@
  */
 #ifndef IP64_CONF_H
 #define IP64_CONF_H
+
+// #include "ip64-slip-interface.h"
+// #include "ip64-null-driver.h"
+
+// #define IP64_CONF_UIP_FALLBACK_INTERFACE_SLIP 1
+// #define IP64_CONF_UIP_FALLBACK_INTERFACE ip64_slip_interface
+// #define IP64_CONF_INPUT                  ip64_slip_interface_input
+// #define IP64_CONF_ETH_DRIVER             ip64_null_driver
 
 #include "ip64-eth-interface.h"
 

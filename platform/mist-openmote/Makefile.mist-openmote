@@ -4,12 +4,13 @@ SMALL=0
 OPENMOTEDIR=$(MIST)/contiki/platform/openmote
 MISTOPENMOTEDIR=$(MIST)/platform/mist-openmote
 
-CONTIKI_TARGET_SOURCEFILES+=contiki-mist-openmote-main.c
 ifdef IAR
 else
-#CONTIKI_TARGET_SOURCEFILES+=flash.c
-CONTIKI_TARGET_SOURCEFILES+=startup-gcc-mist-openmote.c flash.c
-#TARGET_START_SOURCEFILES = startup-gcc-mist-openmote.c
+
+CONTIKI_TARGET_SOURCEFILES = contiki-mist-openmote-main.c
+CONTIKI_TARGET_SOURCEFILES += node-id.c
+CONTIKI_TARGET_SOURCEFILES += startup-gcc-mist-openmote.c flash.c
+
 endif
 
 ifdef ID
@@ -24,6 +25,18 @@ cc2538-mist-id.ld: $(MISTOPENMOTEDIR)/cc2538-mist-id.lds
 	$(CPP) -DID=$(ID) -P -E $< -o $@
 
 CLEAN += *.bin *.mist-openmote
+
+ifdef NODEID
+CFLAGS+=-DNODEID=$(NODEID)
+
+ifdef BURN_NODEID
+CFLAGS+=-DBURN_NODEID
+endif # BURN_NODEID
+endif # NODEID
+
+ifdef UIP_CONF_IPV6
+CFLAGS += -DWITH_UIP6=1
+endif
 
 PLATFORMAPPS += simple-rpl aes drowsie
 

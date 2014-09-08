@@ -111,11 +111,11 @@
 #define UART0_TX_PORT            GPIO_A_NUM
 #define UART0_TX_PIN             1
 
-#define UART1_CTS_PORT           GPIO_B_NUM
-#define UART1_CTS_PIN            0
+#define UART0_CTS_PORT           GPIO_B_NUM
+#define UART0_CTS_PIN            0
 
-#define UART1_RTS_PORT           GPIO_D_NUM
-#define UART1_RTS_PIN            3
+#define UART0_RTS_PORT           GPIO_D_NUM
+#define UART0_RTS_PIN            3
 /** @} */
 /*---------------------------------------------------------------------------*/
 /** \name OpenMote-CC2538 Button configuration
@@ -128,6 +128,17 @@
 #define BUTTON_USER_PORT       GPIO_C_NUM
 #define BUTTON_USER_PIN        3
 #define BUTTON_USER_VECTOR     NVIC_INT_GPIO_PORT_C
+
+/** BUTTON_SW1 -> PD2 */
+#define BUTTON_SW1_PORT        GPIO_D_NUM
+#define BUTTON_SW1_PIN         0
+#define BUTTON_SW1_VECTOR      NVIC_INT_GPIO_PORT_D
+
+/** BUTTON_SW2 -> PD3 */
+#define BUTTON_SW2_PORT        GPIO_D_NUM
+#define BUTTON_SW2_PIN         1
+#define BUTTON_SW2_VECTOR      NVIC_INT_GPIO_PORT_D
+
 /* Notify various examples that we have Buttons */
 #define PLATFORM_HAS_BUTTON    1
 /** @} */

@@ -49,6 +49,10 @@
 
 #define BUTTON_USER_PORT_BASE  GPIO_PORT_TO_BASE(BUTTON_USER_PORT)
 #define BUTTON_USER_PIN_MASK   GPIO_PIN_MASK(BUTTON_USER_PIN)
+#define BUTTON_SW1_PORT_BASE   GPIO_PORT_TO_BASE(BUTTON_SW1_PORT)
+#define BUTTON_SW1_PIN_MASK    GPIO_PIN_MASK(BUTTON_SW1_PIN)
+#define BUTTON_SW2_PORT_BASE   GPIO_PORT_TO_BASE(BUTTON_SW2_PORT)
+#define BUTTON_SW2_PIN_MASK    GPIO_PIN_MASK(BUTTON_SW2_PIN)
 
 /*---------------------------------------------------------------------------*/
 static struct timer debouncetimer;
@@ -74,10 +78,11 @@ config(uint32_t port_base, uint32_t pin_mask)
   GPIO_TRIGGER_SINGLE_EDGE(port_base, pin_mask);
 
   /* Trigger interrupt on Falling edge */
-  GPIO_DETECT_RISING(port_base, pin_mask);
+  GPIO_DETECT_FALLING(port_base, pin_mask);
 
   GPIO_ENABLE_INTERRUPT(port_base, pin_mask);
 }
+
 /*---------------------------------------------------------------------------*/
 /**
  * \brief Callback registered with the GPIO module. Gets fired with a button
@@ -89,14 +94,76 @@ config(uint32_t port_base, uint32_t pin_mask)
 static void
 btn_callback(uint8_t port, uint8_t pin)
 {
+  printf("btn callback\r\n");    
   if(!timer_expired(&debouncetimer)) {
     return;
   }
 
+  printf("btn debouncing\r\n");  
   timer_set(&debouncetimer, CLOCK_SECOND / 8);
   if(port == GPIO_C_NUM) {
+    printf("user btn\r\n");
     sensors_changed(&button_user_sensor);
   }
+  if((port == GPIO_D_NUM) && (pin == BUTTON_SW1_PIN)) {
+    printf("sw1\r\n");
+    sensors_changed(&button_sw1_sensor);
+  }
+  if((port == GPIO_D_NUM) && (pin == BUTTON_SW2_PIN)) {
+    printf("sw2\r\n");
+    sensors_changed(&button_sw2_sensor);
+  }   
+  printf("finish btn callback\r\n");  
+}
+/*---------------------------------------------------------------------------*/
+/**
+ * \brief Init function for the select button.
+ *
+ * Parameters are ignored. They have been included because the prototype is
+ * dictated by the core sensor api. The return value is also not required by
+ * the API but otherwise ignored.
+ *
+ * \param type ignored
+ * \param value ignored
+ * \return ignored
+ */
+static int
+config_sw1(int type, int value)
+{
+  printf("config SW1\r\n");  
+  config(BUTTON_SW1_PORT_BASE, BUTTON_SW1_PIN_MASK);
+
+  ioc_set_over(BUTTON_SW1_PORT, BUTTON_SW1_PIN, IOC_OVERRIDE_PUE);
+
+  nvic_interrupt_enable(BUTTON_SW1_VECTOR);
+
+  gpio_register_callback(btn_callback, BUTTON_SW1_PORT, BUTTON_SW1_PIN);
+  return 1;
+}
+/*---------------------------------------------------------------------------*/
+/**
+ * \brief Init function for the select button.
+ *
+ * Parameters are ignored. They have been included because the prototype is
+ * dictated by the core sensor api. The return value is also not required by
+ * the API but otherwise ignored.
+ *
+ * \param type ignored
+ * \param value ignored
+ * \return ignored
+ */
+static int
+config_sw2(int type, int value)
+{
+  printf("config SW2\r\n");  
+  config(BUTTON_SW2_PORT_BASE, BUTTON_SW2_PIN_MASK);
+
+  ioc_set_over(BUTTON_SW2_PORT, BUTTON_SW2_PIN, IOC_OVERRIDE_PUE);
+
+  nvic_interrupt_enable(BUTTON_SW2_VECTOR);
+
+  gpio_register_callback(btn_callback, BUTTON_SW2_PORT, BUTTON_SW2_PIN);
+  return 1;
 }
 /*---------------------------------------------------------------------------*/
 /**
@@ -113,6 +180,7 @@ btn_callback(uint8_t port, uint8_t pin)
 static int
 config_user(int type, int value)
 {
+  printf("config user\r\n");    
   config(BUTTON_USER_PORT_BASE, BUTTON_USER_PIN_MASK);
 
   ioc_set_over(BUTTON_USER_PORT, BUTTON_USER_PIN, IOC_OVERRIDE_PUE);
@@ -130,5 +198,6 @@ button_sensor_init()
 }
 /*---------------------------------------------------------------------------*/
 SENSORS_SENSOR(button_user_sensor, BUTTON_SENSOR, NULL, config_user, NULL);
-
+SENSORS_SENSOR(button_sw1_sensor, BUTTON_SENSOR, NULL, config_sw1, NULL);
+SENSORS_SENSOR(button_sw2_sensor, BUTTON_SENSOR, NULL, config_sw2, NULL);
 /** @} */

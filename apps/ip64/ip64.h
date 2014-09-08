@@ -57,6 +57,7 @@ int ip64_hostaddr_is_configured(void);
 extern uint8_t *ip64_packet_buffer;
 extern uint16_t ip64_packet_buffer_maxlen;
 
+#include "platform-conf.h"
 #include "ip64-conf.h"
 
 #ifndef IP64_CONF_ETH_DRIVER

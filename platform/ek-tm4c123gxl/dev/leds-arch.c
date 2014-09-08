@@ -60,7 +60,7 @@
 /*---------------------------------------------------------------------------*/
 void
 leds_arch_init(void)
-{ 
+{
   /* Turn on GPIO clock for peripheral controlling RGB LED and D1 */
   SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOF);
   

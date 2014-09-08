@@ -1,6 +1,7 @@
 #include <string.h>
 #include "mist.h"
 #include "dev/button-sensor.h"
+#include "dev/board.h"
 #include "netstack-aes.h"
 
 #include "mqtt.h"
@@ -61,6 +62,24 @@ non purus sit amet diam molestie laoreet quis et quam."
 
 #define PAYLOAD SHORT_PAYLOAD
 
+static void
+fade(unsigned char l)
+{
+  volatile int i;
+  int k, j;
+  for(k = 0; k < 800; ++k) {
+    j = k > 400 ? 800 - k : k;
+
+    leds_on(l);
+    for(i = 0; i < j; ++i) {
+      asm("nop");
+    }
+    leds_off(l);
+    for(i = 0; i < 400 - j; ++i) {
+      asm("nop");
+    }
+  }
+}
 
 /*---------------------------------------------------------------------------*/
 PROCESS(mqtt_example_process, "MQTT Example");
@@ -110,10 +129,10 @@ mqtt_event(struct mqtt_connection *m, mqtt_event_t event, void* data)
         msg_ptr->payload_chunk[msg_ptr->payload_length] = 0;
 
         if(strcmp(msg_ptr->payload_chunk, "on") == 0) {
-          leds_on(LEDS_D1_RED);
+          fade(LEDS_GREEN);
         }
         if(strcmp(msg_ptr->payload_chunk, "off") == 0) {
-          leds_off(LEDS_D1_RED);
+          fade(LEDS_RED);
         }
       }
 
@@ -155,31 +174,34 @@ mqtt_event(struct mqtt_connection *m, mqtt_event_t event, void* data)
 PROCESS_THREAD(button_process, ev, data)
 {
   PROCESS_BEGIN();
+  printf("Button process\r\n");
   static uint8_t reset_flag = 1;
-  
+
+  SENSORS_ACTIVATE(button_user_sensor);  
   SENSORS_ACTIVATE(button_sw1_sensor);
   SENSORS_ACTIVATE(button_sw2_sensor);
 
   while(1) {
     PROCESS_WAIT_EVENT_UNTIL((ev == sensors_event) && (
-			     data == &button_sw1_sensor
-                             ||data == &button_sw2_sensor));
-
+			     data == &button_sw1_sensor||data == &button_sw2_sensor||data == &button_user_sensor));
+    printf("Button sensor event\r\n");    
     if(data == &button_sw1_sensor){
+      printf("Button sw1 event\r\n");
       if(reset_flag){
         reset_flag = 0;
         random_topic = get_random();
-        printf("random value %d\n",random_topic);
+        printf("random value %d\r\n",random_topic);
         sprintf(str_topic_state, "%s%d", "ti/iot/device/",random_topic);
-        printf("%s\n",str_topic_state);
+        printf("%s\r\n",str_topic_state);
         sprintf(str_topic_sensor, "%s%d%s", "ti/iot/device/",random_topic,"/sensor");
         sprintf(str_topic_led, "%s%d%s", "ti/iot/device/",random_topic,"/led");
         process_start(&mqtt_example_process, NULL);
       }else{
-        printf("%s\n",str_topic_state);
+        printf("%s\r\n",str_topic_state);
       }
     }
     else if(data == &button_sw2_sensor){
+      printf("Button sw2 event\r\n");      
       button_sensor_value++;
     }
   }

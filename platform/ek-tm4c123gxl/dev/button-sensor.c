@@ -83,6 +83,7 @@ config(uint32_t port_base, uint32_t pin_mask)
   /* Enable interrupt in GPIO peripheral */
   GPIOIntEnable(port_base, pin_mask);
 }
+
 /*---------------------------------------------------------------------------*/
 /**
  * \brief Callback registered with the GPIO module. Gets fired with a button

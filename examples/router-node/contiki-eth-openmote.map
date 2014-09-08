@@ -407,6 +407,8 @@ Discarded input sections
  .text          0x0000000000000000        0x0 contiki-eth-openmote.a(node-id.o)
  .data          0x0000000000000000        0x0 contiki-eth-openmote.a(node-id.o)
  .bss           0x0000000000000000        0x0 contiki-eth-openmote.a(node-id.o)
+ .text.node_id_burn
+                0x0000000000000000        0x4 contiki-eth-openmote.a(node-id.o)
  .text          0x0000000000000000        0x0 contiki-eth-openmote.a(leds.o)
  .data          0x0000000000000000        0x0 contiki-eth-openmote.a(leds.o)
  .bss           0x0000000000000000        0x0 contiki-eth-openmote.a(leds.o)
@@ -943,7 +945,7 @@ LOAD /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7-m/libgcc.a
 LOAD /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7-m/libc.a
 END GROUP
 
-.text           0x0000000000200000    0x10b3c
+.text           0x0000000000200000    0x10afc
                 0x0000000000200000                _text = .
  *(.vectors)
  .vectors       0x0000000000200000      0x28c obj_eth-openmote/startup-gcc.o
@@ -1172,1512 +1174,1509 @@ END GROUP
                 0x000000000020254c        0x4 contiki-eth-openmote.a(ip64-special-po)
                 0x000000000020254c                ip64_special_ports_outgoing_is_special
  .text.process_thread_ip64_ipv4_dhcp_process
-                0x0000000000202550       0x7c contiki-eth-openmote.a(ip64-ipv4-dhcp.)
+                0x0000000000202550       0x64 contiki-eth-openmote.a(ip64-ipv4-dhcp.)
  .text.ip64_ipv4_dhcp_init
-                0x00000000002025cc       0x1c contiki-eth-openmote.a(ip64-ipv4-dhcp.)
-                0x00000000002025cc                ip64_ipv4_dhcp_init
+                0x00000000002025b4       0x1c contiki-eth-openmote.a(ip64-ipv4-dhcp.)
+                0x00000000002025b4                ip64_ipv4_dhcp_init
  .text.ip64_dhcpc_configured
-                0x00000000002025e8       0x48 contiki-eth-openmote.a(ip64-ipv4-dhcp.)
-                0x00000000002025e8                ip64_dhcpc_configured
+                0x00000000002025d0       0x48 contiki-eth-openmote.a(ip64-ipv4-dhcp.)
+                0x00000000002025d0                ip64_dhcpc_configured
  .text.ip64_dhcpc_unconfigured
-                0x0000000000202630        0x4 contiki-eth-openmote.a(ip64-ipv4-dhcp.)
-                0x0000000000202630                ip64_dhcpc_unconfigured
+                0x0000000000202618        0x4 contiki-eth-openmote.a(ip64-ipv4-dhcp.)
+                0x0000000000202618                ip64_dhcpc_unconfigured
  .text.create_msg
-                0x0000000000202634       0xac contiki-eth-openmote.a(dhcpv4.o)
+                0x000000000020261c       0xac contiki-eth-openmote.a(dhcpv4.o)
  .text.unlikely.send_request
-                0x00000000002026e0       0x68 contiki-eth-openmote.a(dhcpv4.o)
+                0x00000000002026c8       0x68 contiki-eth-openmote.a(dhcpv4.o)
  .text.msg_for_me
-                0x0000000000202748       0x70 contiki-eth-openmote.a(dhcpv4.o)
+                0x0000000000202730       0x70 contiki-eth-openmote.a(dhcpv4.o)
  .text.parse_msg
-                0x00000000002027b8       0xd4 contiki-eth-openmote.a(dhcpv4.o)
+                0x00000000002027a0       0xd4 contiki-eth-openmote.a(dhcpv4.o)
  .text.handle_dhcp.isra.0
-                0x000000000020288c      0x2c8 contiki-eth-openmote.a(dhcpv4.o)
+                0x0000000000202874      0x2c8 contiki-eth-openmote.a(dhcpv4.o)
  .text.ip64_dhcpc_init
-                0x0000000000202b54       0x60 contiki-eth-openmote.a(dhcpv4.o)
-                0x0000000000202b54                ip64_dhcpc_init
+                0x0000000000202b3c       0x60 contiki-eth-openmote.a(dhcpv4.o)
+                0x0000000000202b3c                ip64_dhcpc_init
  .text.ip64_dhcpc_appcall
-                0x0000000000202bb4       0x18 contiki-eth-openmote.a(dhcpv4.o)
-                0x0000000000202bb4                ip64_dhcpc_appcall
+                0x0000000000202b9c       0x18 contiki-eth-openmote.a(dhcpv4.o)
+                0x0000000000202b9c                ip64_dhcpc_appcall
  .text.ip64_dhcpc_request
-                0x0000000000202bcc       0x20 contiki-eth-openmote.a(dhcpv4.o)
-                0x0000000000202bcc                ip64_dhcpc_request
- .text.init     0x0000000000202bec        0x4 contiki-eth-openmote.a(ip64-eth-interf)
- .text.output   0x0000000000202bf0       0x64 contiki-eth-openmote.a(ip64-eth-interf)
+                0x0000000000202bb4       0x20 contiki-eth-openmote.a(dhcpv4.o)
+                0x0000000000202bb4                ip64_dhcpc_request
+ .text.init     0x0000000000202bd4        0x4 contiki-eth-openmote.a(ip64-eth-interf)
+ .text.output   0x0000000000202bd8       0x64 contiki-eth-openmote.a(ip64-eth-interf)
  .text.ip64_eth_interface_input
-                0x0000000000202c54       0x54 contiki-eth-openmote.a(ip64-eth-interf)
-                0x0000000000202c54                ip64_eth_interface_input
+                0x0000000000202c3c       0x54 contiki-eth-openmote.a(ip64-eth-interf)
+                0x0000000000202c3c                ip64_eth_interface_input
  .text.route_callback
-                0x0000000000202ca8       0x74 contiki-eth-openmote.a(simple-rpl.o)
+                0x0000000000202c90       0x74 contiki-eth-openmote.a(simple-rpl.o)
  .text.simple_rpl_global_address
-                0x0000000000202d1c       0x38 contiki-eth-openmote.a(simple-rpl.o)
-                0x0000000000202d1c                simple_rpl_global_address
+                0x0000000000202d04       0x38 contiki-eth-openmote.a(simple-rpl.o)
+                0x0000000000202d04                simple_rpl_global_address
  .text.simple_rpl_init
-                0x0000000000202d54       0x88 contiki-eth-openmote.a(simple-rpl.o)
-                0x0000000000202d54                simple_rpl_init
+                0x0000000000202d3c       0x88 contiki-eth-openmote.a(simple-rpl.o)
+                0x0000000000202d3c                simple_rpl_init
  .text.simple_rpl_init_dag_immediately
-                0x0000000000202ddc       0xac contiki-eth-openmote.a(simple-rpl.o)
-                0x0000000000202ddc                simple_rpl_init_dag_immediately
+                0x0000000000202dc4       0xac contiki-eth-openmote.a(simple-rpl.o)
+                0x0000000000202dc4                simple_rpl_init_dag_immediately
  .text.create_dag_callback
-                0x0000000000202e88       0x6c contiki-eth-openmote.a(simple-rpl.o)
+                0x0000000000202e70       0x6c contiki-eth-openmote.a(simple-rpl.o)
  .text.simple_rpl_init_dag
-                0x0000000000202ef4       0x30 contiki-eth-openmote.a(simple-rpl.o)
-                0x0000000000202ef4                simple_rpl_init_dag
- .text.fade     0x0000000000202f24       0x64 contiki-eth-openmote.a(contiki-mist-op)
+                0x0000000000202edc       0x30 contiki-eth-openmote.a(simple-rpl.o)
+                0x0000000000202edc                simple_rpl_init_dag
+ .text.fade     0x0000000000202f0c       0x64 contiki-eth-openmote.a(contiki-mist-op)
  .text.startup.main
-                0x0000000000202f88      0x2a0 contiki-eth-openmote.a(contiki-mist-op)
-                0x0000000000202f88                main
+                0x0000000000202f70      0x294 contiki-eth-openmote.a(contiki-mist-op)
+                0x0000000000202f70                main
  .text.node_id_restore
-                0x0000000000203228       0x64 contiki-eth-openmote.a(node-id.o)
-                0x0000000000203228                node_id_restore
- .text.node_id_burn
-                0x000000000020328c        0x4 contiki-eth-openmote.a(node-id.o)
-                0x000000000020328c                node_id_burn
+                0x0000000000203204       0x64 contiki-eth-openmote.a(node-id.o)
+                0x0000000000203204                node_id_restore
  .text.leds_init
-                0x0000000000203290       0x1c contiki-eth-openmote.a(leds.o)
-                0x0000000000203290                leds_init
- .text.leds_on  0x00000000002032ac       0x1c contiki-eth-openmote.a(leds.o)
-                0x00000000002032ac                leds_on
+                0x0000000000203268       0x1c contiki-eth-openmote.a(leds.o)
+                0x0000000000203268                leds_init
+ .text.leds_on  0x0000000000203284       0x1c contiki-eth-openmote.a(leds.o)
+                0x0000000000203284                leds_on
  .text.leds_off
-                0x00000000002032c8       0x20 contiki-eth-openmote.a(leds.o)
-                0x00000000002032c8                leds_off
+                0x00000000002032a0       0x20 contiki-eth-openmote.a(leds.o)
+                0x00000000002032a0                leds_off
  .text.leds_arch_init
-                0x00000000002032e8       0x10 contiki-eth-openmote.a(leds-arch.o)
-                0x00000000002032e8                leds_arch_init
+                0x00000000002032c0       0x10 contiki-eth-openmote.a(leds-arch.o)
+                0x00000000002032c0                leds_arch_init
  .text.leds_arch_set
-                0x00000000002032f8        0xc contiki-eth-openmote.a(leds-arch.o)
-                0x00000000002032f8                leds_arch_set
+                0x00000000002032d0        0xc contiki-eth-openmote.a(leds-arch.o)
+                0x00000000002032d0                leds_arch_set
  .text.process_thread_sensors_process
-                0x0000000000203304       0xf0 contiki-eth-openmote.a(sensors.o)
+                0x00000000002032dc       0xf0 contiki-eth-openmote.a(sensors.o)
  .text.sensors_changed
-                0x00000000002033f4       0x4c contiki-eth-openmote.a(sensors.o)
-                0x00000000002033f4                sensors_changed
+                0x00000000002033cc       0x4c contiki-eth-openmote.a(sensors.o)
+                0x00000000002033cc                sensors_changed
  .text.btn_callback
-                0x0000000000203440       0x2c contiki-eth-openmote.a(button-sensor.o)
+                0x0000000000203418       0x2c contiki-eth-openmote.a(button-sensor.o)
  .text.config_user
-                0x000000000020346c       0x6c contiki-eth-openmote.a(button-sensor.o)
+                0x0000000000203444       0x6c contiki-eth-openmote.a(button-sensor.o)
  .text.button_sensor_init
-                0x00000000002034d8        0xc contiki-eth-openmote.a(button-sensor.o)
-                0x00000000002034d8                button_sensor_init
+                0x00000000002034b0        0xc contiki-eth-openmote.a(button-sensor.o)
+                0x00000000002034b0                button_sensor_init
  .text.clock_init
-                0x00000000002034e4       0x74 contiki-eth-openmote.a(clock.o)
-                0x00000000002034e4                clock_init
+                0x00000000002034bc       0x74 contiki-eth-openmote.a(clock.o)
+                0x00000000002034bc                clock_init
  .text.clock_time
-                0x0000000000203558        0xc contiki-eth-openmote.a(clock.o)
-                0x0000000000203558                clock_time
+                0x0000000000203530        0xc contiki-eth-openmote.a(clock.o)
+                0x0000000000203530                clock_time
  .text.clock_seconds
-                0x0000000000203564        0xc contiki-eth-openmote.a(clock.o)
-                0x0000000000203564                clock_seconds
+                0x000000000020353c        0xc contiki-eth-openmote.a(clock.o)
+                0x000000000020353c                clock_seconds
  .text.clock_delay_usec
-                0x0000000000203570       0x20 contiki-eth-openmote.a(clock.o)
-                0x0000000000203570                clock_delay_usec
+                0x0000000000203548       0x20 contiki-eth-openmote.a(clock.o)
+                0x0000000000203548                clock_delay_usec
  .text.clock_adjust
-                0x0000000000203590       0x60 contiki-eth-openmote.a(clock.o)
-                0x0000000000203590                clock_adjust
+                0x0000000000203568       0x60 contiki-eth-openmote.a(clock.o)
+                0x0000000000203568                clock_adjust
  .text.clock_isr
-                0x00000000002035f0       0x3c contiki-eth-openmote.a(clock.o)
-                0x00000000002035f0                clock_isr
+                0x00000000002035c8       0x3c contiki-eth-openmote.a(clock.o)
+                0x00000000002035c8                clock_isr
  .text.rtimer_arch_init
-                0x000000000020362c        0x4 contiki-eth-openmote.a(rtimer-arch.o)
-                0x000000000020362c                rtimer_arch_init
+                0x0000000000203604        0x4 contiki-eth-openmote.a(rtimer-arch.o)
+                0x0000000000203604                rtimer_arch_init
  .text.rtimer_arch_schedule
-                0x0000000000203630       0x80 contiki-eth-openmote.a(rtimer-arch.o)
-                0x0000000000203630                rtimer_arch_schedule
+                0x0000000000203608       0x80 contiki-eth-openmote.a(rtimer-arch.o)
+                0x0000000000203608                rtimer_arch_schedule
  .text.rtimer_arch_next_trigger
-                0x00000000002036b0        0xc contiki-eth-openmote.a(rtimer-arch.o)
-                0x00000000002036b0                rtimer_arch_next_trigger
+                0x0000000000203688        0xc contiki-eth-openmote.a(rtimer-arch.o)
+                0x0000000000203688                rtimer_arch_next_trigger
  .text.rtimer_arch_now
-                0x00000000002036bc       0x28 contiki-eth-openmote.a(rtimer-arch.o)
-                0x00000000002036bc                rtimer_arch_now
+                0x0000000000203694       0x28 contiki-eth-openmote.a(rtimer-arch.o)
+                0x0000000000203694                rtimer_arch_now
  .text.rtimer_isr
-                0x00000000002036e4       0x24 contiki-eth-openmote.a(rtimer-arch.o)
-                0x00000000002036e4                rtimer_isr
+                0x00000000002036bc       0x24 contiki-eth-openmote.a(rtimer-arch.o)
+                0x00000000002036bc                rtimer_isr
  .text.permit_pm1
-                0x0000000000203708       0x38 contiki-eth-openmote.a(uart.o)
+                0x00000000002036e0       0x38 contiki-eth-openmote.a(uart.o)
  .text.uart_init
-                0x0000000000203740      0x1d8 contiki-eth-openmote.a(uart.o)
-                0x0000000000203740                uart_init
+                0x0000000000203718      0x1d8 contiki-eth-openmote.a(uart.o)
+                0x0000000000203718                uart_init
  .text.uart_set_input
-                0x0000000000203918       0x10 contiki-eth-openmote.a(uart.o)
-                0x0000000000203918                uart_set_input
+                0x00000000002038f0       0x10 contiki-eth-openmote.a(uart.o)
+                0x00000000002038f0                uart_set_input
  .text.uart_write_byte
-                0x0000000000203928       0x24 contiki-eth-openmote.a(uart.o)
-                0x0000000000203928                uart_write_byte
+                0x0000000000203900       0x24 contiki-eth-openmote.a(uart.o)
+                0x0000000000203900                uart_write_byte
  .text.uart_isr
-                0x000000000020394c       0x80 contiki-eth-openmote.a(uart.o)
-                0x000000000020394c                uart_isr
+                0x0000000000203924       0x80 contiki-eth-openmote.a(uart.o)
+                0x0000000000203924                uart_isr
  .text.uart0_isr
-                0x00000000002039cc        0x8 contiki-eth-openmote.a(uart.o)
-                0x00000000002039cc                uart0_isr
+                0x00000000002039a4        0x8 contiki-eth-openmote.a(uart.o)
+                0x00000000002039a4                uart0_isr
  .text.uart1_isr
-                0x00000000002039d4        0x8 contiki-eth-openmote.a(uart.o)
-                0x00000000002039d4                uart1_isr
+                0x00000000002039ac        0x8 contiki-eth-openmote.a(uart.o)
+                0x00000000002039ac                uart1_isr
  .text.watchdog_init
-                0x00000000002039dc        0xc contiki-eth-openmote.a(watchdog.o)
-                0x00000000002039dc                watchdog_init
+                0x00000000002039b4        0xc contiki-eth-openmote.a(watchdog.o)
+                0x00000000002039b4                watchdog_init
  .text.watchdog_start
-                0x00000000002039e8        0xc contiki-eth-openmote.a(watchdog.o)
-                0x00000000002039e8                watchdog_start
+                0x00000000002039c0        0xc contiki-eth-openmote.a(watchdog.o)
+                0x00000000002039c0                watchdog_start
  .text.watchdog_periodic
-                0x00000000002039f4       0x10 contiki-eth-openmote.a(watchdog.o)
-                0x00000000002039f4                watchdog_periodic
+                0x00000000002039cc       0x10 contiki-eth-openmote.a(watchdog.o)
+                0x00000000002039cc                watchdog_periodic
  .text.nvic_init
-                0x0000000000203a04       0x40 contiki-eth-openmote.a(nvic.o)
-                0x0000000000203a04                nvic_init
+                0x00000000002039dc       0x40 contiki-eth-openmote.a(nvic.o)
+                0x00000000002039dc                nvic_init
  .text.nvic_interrupt_enable
-                0x0000000000203a44       0x18 contiki-eth-openmote.a(nvic.o)
-                0x0000000000203a44                nvic_interrupt_enable
+                0x0000000000203a1c       0x18 contiki-eth-openmote.a(nvic.o)
+                0x0000000000203a1c                nvic_interrupt_enable
  .text.nvic_interrupt_disable
-                0x0000000000203a5c       0x18 contiki-eth-openmote.a(nvic.o)
-                0x0000000000203a5c                nvic_interrupt_disable
+                0x0000000000203a34       0x18 contiki-eth-openmote.a(nvic.o)
+                0x0000000000203a34                nvic_interrupt_disable
  .text.nvic_interrupt_unpend
-                0x0000000000203a74       0x18 contiki-eth-openmote.a(nvic.o)
-                0x0000000000203a74                nvic_interrupt_unpend
+                0x0000000000203a4c       0x18 contiki-eth-openmote.a(nvic.o)
+                0x0000000000203a4c                nvic_interrupt_unpend
  .text.cpu_cpsie
-                0x0000000000203a8c        0x8 contiki-eth-openmote.a(cpu.o)
-                0x0000000000203a8c                cpu_cpsie
+                0x0000000000203a64        0x8 contiki-eth-openmote.a(cpu.o)
+                0x0000000000203a64                cpu_cpsie
  .text.cpu_cpsid
-                0x0000000000203a94        0x8 contiki-eth-openmote.a(cpu.o)
-                0x0000000000203a94                cpu_cpsid
+                0x0000000000203a6c        0x8 contiki-eth-openmote.a(cpu.o)
+                0x0000000000203a6c                cpu_cpsid
  .text.sys_ctrl_init
-                0x0000000000203a9c       0x1c contiki-eth-openmote.a(sys-ctrl.o)
-                0x0000000000203a9c                sys_ctrl_init
+                0x0000000000203a74       0x1c contiki-eth-openmote.a(sys-ctrl.o)
+                0x0000000000203a74                sys_ctrl_init
  .text.gpio_register_callback
-                0x0000000000203ab8       0x10 contiki-eth-openmote.a(gpio.o)
-                0x0000000000203ab8                gpio_register_callback
- .text.notify   0x0000000000203ac8       0x38 contiki-eth-openmote.a(gpio.o)
-                0x0000000000203ac8                notify
+                0x0000000000203a90       0x10 contiki-eth-openmote.a(gpio.o)
+                0x0000000000203a90                gpio_register_callback
+ .text.notify   0x0000000000203aa0       0x38 contiki-eth-openmote.a(gpio.o)
+                0x0000000000203aa0                notify
  .text.gpio_port_a_isr
-                0x0000000000203b00       0x24 contiki-eth-openmote.a(gpio.o)
-                0x0000000000203b00                gpio_port_a_isr
+                0x0000000000203ad8       0x24 contiki-eth-openmote.a(gpio.o)
+                0x0000000000203ad8                gpio_port_a_isr
  .text.gpio_port_b_isr
-                0x0000000000203b24       0x24 contiki-eth-openmote.a(gpio.o)
-                0x0000000000203b24                gpio_port_b_isr
+                0x0000000000203afc       0x24 contiki-eth-openmote.a(gpio.o)
+                0x0000000000203afc                gpio_port_b_isr
  .text.gpio_port_c_isr
-                0x0000000000203b48       0x24 contiki-eth-openmote.a(gpio.o)
-                0x0000000000203b48                gpio_port_c_isr
+                0x0000000000203b20       0x24 contiki-eth-openmote.a(gpio.o)
+                0x0000000000203b20                gpio_port_c_isr
  .text.gpio_port_d_isr
-                0x0000000000203b6c       0x24 contiki-eth-openmote.a(gpio.o)
-                0x0000000000203b6c                gpio_port_d_isr
+                0x0000000000203b44       0x24 contiki-eth-openmote.a(gpio.o)
+                0x0000000000203b44                gpio_port_d_isr
  .text.gpio_init
-                0x0000000000203b90       0x10 contiki-eth-openmote.a(gpio.o)
-                0x0000000000203b90                gpio_init
+                0x0000000000203b68       0x10 contiki-eth-openmote.a(gpio.o)
+                0x0000000000203b68                gpio_init
  .text.ioc_init
-                0x0000000000203ba0       0x20 contiki-eth-openmote.a(ioc.o)
-                0x0000000000203ba0                ioc_init
+                0x0000000000203b78       0x20 contiki-eth-openmote.a(ioc.o)
+                0x0000000000203b78                ioc_init
  .text.ioc_set_over
-                0x0000000000203bc0       0x14 contiki-eth-openmote.a(ioc.o)
-                0x0000000000203bc0                ioc_set_over
+                0x0000000000203b98       0x14 contiki-eth-openmote.a(ioc.o)
+                0x0000000000203b98                ioc_set_over
  .text.ioc_set_sel
-                0x0000000000203bd4       0x14 contiki-eth-openmote.a(ioc.o)
-                0x0000000000203bd4                ioc_set_sel
- .text.on       0x0000000000203be8       0x2c contiki-eth-openmote.a(cc2538-rf.o)
- .text.off      0x0000000000203c14       0x38 contiki-eth-openmote.a(cc2538-rf.o)
+                0x0000000000203bac       0x14 contiki-eth-openmote.a(ioc.o)
+                0x0000000000203bac                ioc_set_sel
+ .text.on       0x0000000000203bc0       0x2c contiki-eth-openmote.a(cc2538-rf.o)
+ .text.off      0x0000000000203bec       0x38 contiki-eth-openmote.a(cc2538-rf.o)
  .text.channel_clear
-                0x0000000000203c4c       0x64 contiki-eth-openmote.a(cc2538-rf.o)
+                0x0000000000203c24       0x64 contiki-eth-openmote.a(cc2538-rf.o)
  .text.receiving_packet
-                0x0000000000203cb0       0x18 contiki-eth-openmote.a(cc2538-rf.o)
+                0x0000000000203c88       0x18 contiki-eth-openmote.a(cc2538-rf.o)
  .text.pending_packet
-                0x0000000000203cc8       0x10 contiki-eth-openmote.a(cc2538-rf.o)
- .text.prepare  0x0000000000203cd8       0x74 contiki-eth-openmote.a(cc2538-rf.o)
+                0x0000000000203ca0       0x10 contiki-eth-openmote.a(cc2538-rf.o)
+ .text.prepare  0x0000000000203cb0       0x74 contiki-eth-openmote.a(cc2538-rf.o)
  .text.read.part.0
-                0x0000000000203d4c       0xf8 contiki-eth-openmote.a(cc2538-rf.o)
- .text.read     0x0000000000203e44       0x18 contiki-eth-openmote.a(cc2538-rf.o)
+                0x0000000000203d24       0xf8 contiki-eth-openmote.a(cc2538-rf.o)
+ .text.read     0x0000000000203e1c       0x18 contiki-eth-openmote.a(cc2538-rf.o)
  .text.process_thread_cc2538_rf_process
-                0x0000000000203e5c       0x58 contiki-eth-openmote.a(cc2538-rf.o)
+                0x0000000000203e34       0x58 contiki-eth-openmote.a(cc2538-rf.o)
  .text.transmit
-                0x0000000000203eb4       0xc8 contiki-eth-openmote.a(cc2538-rf.o)
- .text.send     0x0000000000203f7c       0x14 contiki-eth-openmote.a(cc2538-rf.o)
+                0x0000000000203e8c       0xc8 contiki-eth-openmote.a(cc2538-rf.o)
+ .text.send     0x0000000000203f54       0x14 contiki-eth-openmote.a(cc2538-rf.o)
  .text.cc2538_rf_channel_set
-                0x0000000000203f90       0x50 contiki-eth-openmote.a(cc2538-rf.o)
-                0x0000000000203f90                cc2538_rf_channel_set
+                0x0000000000203f68       0x50 contiki-eth-openmote.a(cc2538-rf.o)
+                0x0000000000203f68                cc2538_rf_channel_set
  .text.init.part.2
-                0x0000000000203fe0       0xf0 contiki-eth-openmote.a(cc2538-rf.o)
- .text.init     0x00000000002040d0       0x14 contiki-eth-openmote.a(cc2538-rf.o)
+                0x0000000000203fb8       0xf0 contiki-eth-openmote.a(cc2538-rf.o)
+ .text.init     0x00000000002040a8       0x14 contiki-eth-openmote.a(cc2538-rf.o)
  .text.cc2538_rf_set_addr
-                0x00000000002040e4       0x4c contiki-eth-openmote.a(cc2538-rf.o)
-                0x00000000002040e4                cc2538_rf_set_addr
+                0x00000000002040bc       0x4c contiki-eth-openmote.a(cc2538-rf.o)
+                0x00000000002040bc                cc2538_rf_set_addr
  .text.cc2538_rf_rx_tx_isr
-                0x0000000000204130       0x18 contiki-eth-openmote.a(cc2538-rf.o)
-                0x0000000000204130                cc2538_rf_rx_tx_isr
+                0x0000000000204108       0x18 contiki-eth-openmote.a(cc2538-rf.o)
+                0x0000000000204108                cc2538_rf_rx_tx_isr
  .text.cc2538_rf_err_isr
-                0x0000000000204148       0x28 contiki-eth-openmote.a(cc2538-rf.o)
-                0x0000000000204148                cc2538_rf_err_isr
+                0x0000000000204120       0x28 contiki-eth-openmote.a(cc2538-rf.o)
+                0x0000000000204120                cc2538_rf_err_isr
  .text.udma_init
-                0x0000000000204170       0x34 contiki-eth-openmote.a(udma.o)
-                0x0000000000204170                udma_init
+                0x0000000000204148       0x34 contiki-eth-openmote.a(udma.o)
+                0x0000000000204148                udma_init
  .text.udma_set_channel_src
-                0x00000000002041a4       0x10 contiki-eth-openmote.a(udma.o)
-                0x00000000002041a4                udma_set_channel_src
+                0x000000000020417c       0x10 contiki-eth-openmote.a(udma.o)
+                0x000000000020417c                udma_set_channel_src
  .text.udma_set_channel_dst
-                0x00000000002041b4       0x14 contiki-eth-openmote.a(udma.o)
-                0x00000000002041b4                udma_set_channel_dst
+                0x000000000020418c       0x14 contiki-eth-openmote.a(udma.o)
+                0x000000000020418c                udma_set_channel_dst
  .text.udma_set_channel_control_word
-                0x00000000002041c8       0x14 contiki-eth-openmote.a(udma.o)
-                0x00000000002041c8                udma_set_channel_control_word
+                0x00000000002041a0       0x14 contiki-eth-openmote.a(udma.o)
+                0x00000000002041a0                udma_set_channel_control_word
  .text.udma_channel_enable
-                0x00000000002041dc       0x18 contiki-eth-openmote.a(udma.o)
-                0x00000000002041dc                udma_channel_enable
+                0x00000000002041b4       0x18 contiki-eth-openmote.a(udma.o)
+                0x00000000002041b4                udma_channel_enable
  .text.udma_channel_mask_set
-                0x00000000002041f4       0x18 contiki-eth-openmote.a(udma.o)
-                0x00000000002041f4                udma_channel_mask_set
+                0x00000000002041cc       0x18 contiki-eth-openmote.a(udma.o)
+                0x00000000002041cc                udma_channel_mask_set
  .text.udma_channel_sw_request
-                0x000000000020420c       0x18 contiki-eth-openmote.a(udma.o)
-                0x000000000020420c                udma_channel_sw_request
+                0x00000000002041e4       0x18 contiki-eth-openmote.a(udma.o)
+                0x00000000002041e4                udma_channel_sw_request
  .text.udma_channel_get_mode
-                0x0000000000204224       0x1c contiki-eth-openmote.a(udma.o)
-                0x0000000000204224                udma_channel_get_mode
+                0x00000000002041fc       0x1c contiki-eth-openmote.a(udma.o)
+                0x00000000002041fc                udma_channel_get_mode
  .text.udma_isr
-                0x0000000000204240       0x10 contiki-eth-openmote.a(udma.o)
-                0x0000000000204240                udma_isr
+                0x0000000000204218       0x10 contiki-eth-openmote.a(udma.o)
+                0x0000000000204218                udma_isr
  .text.udma_err_isr
-                0x0000000000204250        0xc contiki-eth-openmote.a(udma.o)
-                0x0000000000204250                udma_err_isr
+                0x0000000000204228        0xc contiki-eth-openmote.a(udma.o)
+                0x0000000000204228                udma_err_isr
  .text.lpm_exit
-                0x000000000020425c       0x48 contiki-eth-openmote.a(lpm.o)
-                0x000000000020425c                lpm_exit
+                0x0000000000204234       0x48 contiki-eth-openmote.a(lpm.o)
+                0x0000000000204234                lpm_exit
  .text.lpm_enter
-                0x00000000002042a4       0xcc contiki-eth-openmote.a(lpm.o)
-                0x00000000002042a4                lpm_enter
+                0x000000000020427c       0xcc contiki-eth-openmote.a(lpm.o)
+                0x000000000020427c                lpm_enter
  .text.lpm_register_peripheral
-                0x0000000000204370       0x20 contiki-eth-openmote.a(lpm.o)
-                0x0000000000204370                lpm_register_peripheral
+                0x0000000000204348       0x20 contiki-eth-openmote.a(lpm.o)
+                0x0000000000204348                lpm_register_peripheral
  .text.lpm_init
-                0x0000000000204390       0x24 contiki-eth-openmote.a(lpm.o)
-                0x0000000000204390                lpm_init
- .text.putchar  0x00000000002043b4       0x10 contiki-eth-openmote.a(dbg.o)
-                0x00000000002043b4                putchar
+                0x0000000000204368       0x24 contiki-eth-openmote.a(lpm.o)
+                0x0000000000204368                lpm_init
+ .text.putchar  0x000000000020438c       0x10 contiki-eth-openmote.a(dbg.o)
+                0x000000000020438c                putchar
  .text.dbg_send_bytes
-                0x00000000002043c4       0x3c contiki-eth-openmote.a(dbg.o)
-                0x00000000002043c4                dbg_send_bytes
- .text.puts     0x0000000000204400       0x28 contiki-eth-openmote.a(dbg.o)
-                0x0000000000204400                puts
+                0x000000000020439c       0x3c contiki-eth-openmote.a(dbg.o)
+                0x000000000020439c                dbg_send_bytes
+ .text.puts     0x00000000002043d8       0x28 contiki-eth-openmote.a(dbg.o)
+                0x00000000002043d8                puts
  .text.write_str
-                0x0000000000204428       0x10 contiki-eth-openmote.a(dbg-printf.o)
- .text.printf   0x0000000000204438       0x24 contiki-eth-openmote.a(dbg-printf.o)
-                0x0000000000204438                printf
+                0x0000000000204400       0x10 contiki-eth-openmote.a(dbg-printf.o)
+ .text.printf   0x0000000000204410       0x24 contiki-eth-openmote.a(dbg-printf.o)
+                0x0000000000204410                printf
  .text.buffer_str
-                0x000000000020445c       0x28 contiki-eth-openmote.a(dbg-snprintf.o)
+                0x0000000000204434       0x28 contiki-eth-openmote.a(dbg-snprintf.o)
  .text.snprintf
-                0x0000000000204484       0x38 contiki-eth-openmote.a(dbg-snprintf.o)
-                0x0000000000204484                snprintf
+                0x000000000020445c       0x38 contiki-eth-openmote.a(dbg-snprintf.o)
+                0x000000000020445c                snprintf
  .text.buffer_str
-                0x00000000002044bc       0x18 contiki-eth-openmote.a(dbg-sprintf.o)
- .text.sprintf  0x00000000002044d4       0x34 contiki-eth-openmote.a(dbg-sprintf.o)
-                0x00000000002044d4                sprintf
+                0x0000000000204494       0x18 contiki-eth-openmote.a(dbg-sprintf.o)
+ .text.sprintf  0x00000000002044ac       0x34 contiki-eth-openmote.a(dbg-sprintf.o)
+                0x00000000002044ac                sprintf
  .text.fill_space
-                0x0000000000204508       0x30 contiki-eth-openmote.a(strformat.o)
+                0x00000000002044e0       0x30 contiki-eth-openmote.a(strformat.o)
  .text.format_str_v
-                0x0000000000204538      0x8a8 contiki-eth-openmote.a(strformat.o)
-                0x0000000000204538                format_str_v
+                0x0000000000204510      0x8a8 contiki-eth-openmote.a(strformat.o)
+                0x0000000000204510                format_str_v
  .text.process_thread_enc28j60_ip64_driver_process
-                0x0000000000204de0       0x54 contiki-eth-openmote.a(enc28j60-ip64-d)
- .text.output   0x0000000000204e34        0xc contiki-eth-openmote.a(enc28j60-ip64-d)
- .text.init     0x0000000000204e40       0x84 contiki-eth-openmote.a(enc28j60-ip64-d)
+                0x0000000000204db8       0x54 contiki-eth-openmote.a(enc28j60-ip64-d)
+ .text.output   0x0000000000204e0c        0xc contiki-eth-openmote.a(enc28j60-ip64-d)
+ .text.init     0x0000000000204e18       0x84 contiki-eth-openmote.a(enc28j60-ip64-d)
  .text.rimeaddr_copy
-                0x0000000000204ec4        0xc contiki-eth-openmote.a(rimeaddr.o)
-                0x0000000000204ec4                rimeaddr_copy
+                0x0000000000204e9c        0xc contiki-eth-openmote.a(rimeaddr.o)
+                0x0000000000204e9c                rimeaddr_copy
  .text.rimeaddr_cmp
-                0x0000000000204ed0       0x14 contiki-eth-openmote.a(rimeaddr.o)
-                0x0000000000204ed0                rimeaddr_cmp
+                0x0000000000204ea8       0x14 contiki-eth-openmote.a(rimeaddr.o)
+                0x0000000000204ea8                rimeaddr_cmp
  .text.rimeaddr_set_node_addr
-                0x0000000000204ee4       0x10 contiki-eth-openmote.a(rimeaddr.o)
-                0x0000000000204ee4                rimeaddr_set_node_addr
+                0x0000000000204ebc       0x10 contiki-eth-openmote.a(rimeaddr.o)
+                0x0000000000204ebc                rimeaddr_set_node_addr
  .text.input_packet
-                0x0000000000204ef4       0x10 contiki-eth-openmote.a(csma.o)
- .text.on       0x0000000000204f04       0x10 contiki-eth-openmote.a(csma.o)
- .text.off      0x0000000000204f14       0x10 contiki-eth-openmote.a(csma.o)
+                0x0000000000204ecc       0x10 contiki-eth-openmote.a(csma.o)
+ .text.on       0x0000000000204edc       0x10 contiki-eth-openmote.a(csma.o)
+ .text.off      0x0000000000204eec       0x10 contiki-eth-openmote.a(csma.o)
  .text.channel_check_interval
-                0x0000000000204f24       0x10 contiki-eth-openmote.a(csma.o)
+                0x0000000000204efc       0x10 contiki-eth-openmote.a(csma.o)
  .text.transmit_packet_list
-                0x0000000000204f34       0x24 contiki-eth-openmote.a(csma.o)
- .text.init     0x0000000000204f58       0x24 contiki-eth-openmote.a(csma.o)
+                0x0000000000204f0c       0x24 contiki-eth-openmote.a(csma.o)
+ .text.init     0x0000000000204f30       0x24 contiki-eth-openmote.a(csma.o)
  .text.free_packet
-                0x0000000000204f7c       0x90 contiki-eth-openmote.a(csma.o)
+                0x0000000000204f54       0x90 contiki-eth-openmote.a(csma.o)
  .text.packet_sent
-                0x000000000020500c       0xfc contiki-eth-openmote.a(csma.o)
+                0x0000000000204fe4       0xfc contiki-eth-openmote.a(csma.o)
  .text.send_packet
-                0x0000000000205108      0x138 contiki-eth-openmote.a(csma.o)
+                0x00000000002050e0      0x138 contiki-eth-openmote.a(csma.o)
  .text.rpl_get_mode
-                0x0000000000205240        0xc contiki-eth-openmote.a(rpl.o)
-                0x0000000000205240                rpl_get_mode
+                0x0000000000205218        0xc contiki-eth-openmote.a(rpl.o)
+                0x0000000000205218                rpl_get_mode
  .text.rpl_purge_routes
-                0x000000000020524c       0x7c contiki-eth-openmote.a(rpl.o)
-                0x000000000020524c                rpl_purge_routes
+                0x0000000000205224       0x7c contiki-eth-openmote.a(rpl.o)
+                0x0000000000205224                rpl_purge_routes
  .text.rpl_remove_routes
-                0x00000000002052c8       0x2c contiki-eth-openmote.a(rpl.o)
-                0x00000000002052c8                rpl_remove_routes
+                0x00000000002052a0       0x2c contiki-eth-openmote.a(rpl.o)
+                0x00000000002052a0                rpl_remove_routes
  .text.rpl_remove_routes_by_nexthop
-                0x00000000002052f4       0x40 contiki-eth-openmote.a(rpl.o)
-                0x00000000002052f4                rpl_remove_routes_by_nexthop
+                0x00000000002052cc       0x40 contiki-eth-openmote.a(rpl.o)
+                0x00000000002052cc                rpl_remove_routes_by_nexthop
  .text.rpl_add_route
-                0x0000000000205334       0x2c contiki-eth-openmote.a(rpl.o)
-                0x0000000000205334                rpl_add_route
+                0x000000000020530c       0x2c contiki-eth-openmote.a(rpl.o)
+                0x000000000020530c                rpl_add_route
  .text.rpl_link_neighbor_callback
-                0x0000000000205360       0x68 contiki-eth-openmote.a(rpl.o)
-                0x0000000000205360                rpl_link_neighbor_callback
+                0x0000000000205338       0x68 contiki-eth-openmote.a(rpl.o)
+                0x0000000000205338                rpl_link_neighbor_callback
  .text.rpl_ipv6_neighbor_callback
-                0x00000000002053c8       0x28 contiki-eth-openmote.a(rpl.o)
-                0x00000000002053c8                rpl_ipv6_neighbor_callback
+                0x00000000002053a0       0x28 contiki-eth-openmote.a(rpl.o)
+                0x00000000002053a0                rpl_ipv6_neighbor_callback
  .text.rpl_init
-                0x00000000002053f0       0x48 contiki-eth-openmote.a(rpl.o)
-                0x00000000002053f0                rpl_init
+                0x00000000002053c8       0x48 contiki-eth-openmote.a(rpl.o)
+                0x00000000002053c8                rpl_init
  .text.lollipop_greater_than
-                0x0000000000205438       0x3c contiki-eth-openmote.a(rpl-dag.o)
- .text.get_dag  0x0000000000205474       0x58 contiki-eth-openmote.a(rpl-dag.o)
+                0x0000000000205410       0x3c contiki-eth-openmote.a(rpl-dag.o)
+ .text.get_dag  0x000000000020544c       0x58 contiki-eth-openmote.a(rpl-dag.o)
  .text.rpl_set_preferred_parent
-                0x00000000002054cc       0x24 contiki-eth-openmote.a(rpl-dag.o)
+                0x00000000002054a4       0x24 contiki-eth-openmote.a(rpl-dag.o)
  .text.set_ip_from_prefix
-                0x00000000002054f0       0x2c contiki-eth-openmote.a(rpl-dag.o)
+                0x00000000002054c8       0x2c contiki-eth-openmote.a(rpl-dag.o)
  .text.check_prefix
-                0x000000000020551c       0x60 contiki-eth-openmote.a(rpl-dag.o)
+                0x00000000002054f4       0x60 contiki-eth-openmote.a(rpl-dag.o)
  .text.find_parent_any_dag_any_instance
-                0x000000000020557c       0x1c contiki-eth-openmote.a(rpl-dag.o)
+                0x0000000000205554       0x1c contiki-eth-openmote.a(rpl-dag.o)
  .text.rpl_dag_init
-                0x0000000000205598       0x10 contiki-eth-openmote.a(rpl-dag.o)
-                0x0000000000205598                rpl_dag_init
+                0x0000000000205570       0x10 contiki-eth-openmote.a(rpl-dag.o)
+                0x0000000000205570                rpl_dag_init
  .text.rpl_get_parent_ipaddr
-                0x00000000002055a8       0x18 contiki-eth-openmote.a(rpl-dag.o)
-                0x00000000002055a8                rpl_get_parent_ipaddr
+                0x0000000000205580       0x18 contiki-eth-openmote.a(rpl-dag.o)
+                0x0000000000205580                rpl_get_parent_ipaddr
  .text.rpl_repair_root
-                0x00000000002055c0       0x5c contiki-eth-openmote.a(rpl-dag.o)
-                0x00000000002055c0                rpl_repair_root
+                0x0000000000205598       0x5c contiki-eth-openmote.a(rpl-dag.o)
+                0x0000000000205598                rpl_repair_root
  .text.rpl_set_prefix
-                0x000000000020561c       0x98 contiki-eth-openmote.a(rpl-dag.o)
-                0x000000000020561c                rpl_set_prefix
+                0x00000000002055f4       0x98 contiki-eth-openmote.a(rpl-dag.o)
+                0x00000000002055f4                rpl_set_prefix
  .text.rpl_set_default_route
-                0x00000000002056b4       0x48 contiki-eth-openmote.a(rpl-dag.o)
-                0x00000000002056b4                rpl_set_default_route
+                0x000000000020568c       0x48 contiki-eth-openmote.a(rpl-dag.o)
+                0x000000000020568c                rpl_set_default_route
  .text.rpl_alloc_instance
-                0x00000000002056fc       0x2c contiki-eth-openmote.a(rpl-dag.o)
-                0x00000000002056fc                rpl_alloc_instance
+                0x00000000002056d4       0x2c contiki-eth-openmote.a(rpl-dag.o)
+                0x00000000002056d4                rpl_alloc_instance
  .text.rpl_add_parent
-                0x0000000000205728       0x2c contiki-eth-openmote.a(rpl-dag.o)
-                0x0000000000205728                rpl_add_parent
+                0x0000000000205700       0x2c contiki-eth-openmote.a(rpl-dag.o)
+                0x0000000000205700                rpl_add_parent
  .text.rpl_find_parent
-                0x0000000000205754       0x18 contiki-eth-openmote.a(rpl-dag.o)
-                0x0000000000205754                rpl_find_parent
+                0x000000000020572c       0x18 contiki-eth-openmote.a(rpl-dag.o)
+                0x000000000020572c                rpl_find_parent
  .text.rpl_find_parent_any_dag
-                0x000000000020576c       0x24 contiki-eth-openmote.a(rpl-dag.o)
-                0x000000000020576c                rpl_find_parent_any_dag
+                0x0000000000205744       0x24 contiki-eth-openmote.a(rpl-dag.o)
+                0x0000000000205744                rpl_find_parent_any_dag
  .text.rpl_select_parent
-                0x0000000000205790       0x54 contiki-eth-openmote.a(rpl-dag.o)
-                0x0000000000205790                rpl_select_parent
+                0x0000000000205768       0x54 contiki-eth-openmote.a(rpl-dag.o)
+                0x0000000000205768                rpl_select_parent
  .text.rpl_select_dag
-                0x00000000002057e4      0x17c contiki-eth-openmote.a(rpl-dag.o)
-                0x00000000002057e4                rpl_select_dag
+                0x00000000002057bc      0x17c contiki-eth-openmote.a(rpl-dag.o)
+                0x00000000002057bc                rpl_select_dag
  .text.rpl_nullify_parent
-                0x0000000000205960       0x44 contiki-eth-openmote.a(rpl-dag.o)
-                0x0000000000205960                rpl_nullify_parent
+                0x0000000000205938       0x44 contiki-eth-openmote.a(rpl-dag.o)
+                0x0000000000205938                rpl_nullify_parent
  .text.rpl_remove_parent
-                0x00000000002059a4       0x18 contiki-eth-openmote.a(rpl-dag.o)
-                0x00000000002059a4                rpl_remove_parent
+                0x000000000020597c       0x18 contiki-eth-openmote.a(rpl-dag.o)
+                0x000000000020597c                rpl_remove_parent
  .text.remove_parents.constprop.5
-                0x00000000002059bc       0x40 contiki-eth-openmote.a(rpl-dag.o)
+                0x0000000000205994       0x40 contiki-eth-openmote.a(rpl-dag.o)
  .text.rpl_free_dag
-                0x00000000002059fc       0x38 contiki-eth-openmote.a(rpl-dag.o)
-                0x00000000002059fc                rpl_free_dag
+                0x00000000002059d4       0x38 contiki-eth-openmote.a(rpl-dag.o)
+                0x00000000002059d4                rpl_free_dag
  .text.rpl_free_instance
-                0x0000000000205a34       0x64 contiki-eth-openmote.a(rpl-dag.o)
-                0x0000000000205a34                rpl_free_instance
+                0x0000000000205a0c       0x64 contiki-eth-openmote.a(rpl-dag.o)
+                0x0000000000205a0c                rpl_free_instance
  .text.rpl_alloc_dag
-                0x0000000000205a98       0x68 contiki-eth-openmote.a(rpl-dag.o)
-                0x0000000000205a98                rpl_alloc_dag
+                0x0000000000205a70       0x68 contiki-eth-openmote.a(rpl-dag.o)
+                0x0000000000205a70                rpl_alloc_dag
  .text.rpl_set_root
-                0x0000000000205b00       0xfc contiki-eth-openmote.a(rpl-dag.o)
-                0x0000000000205b00                rpl_set_root
+                0x0000000000205ad8       0xfc contiki-eth-openmote.a(rpl-dag.o)
+                0x0000000000205ad8                rpl_set_root
  .text.rpl_move_parent
-                0x0000000000205bfc       0x60 contiki-eth-openmote.a(rpl-dag.o)
-                0x0000000000205bfc                rpl_move_parent
+                0x0000000000205bd4       0x60 contiki-eth-openmote.a(rpl-dag.o)
+                0x0000000000205bd4                rpl_move_parent
  .text.rpl_get_any_dag
-                0x0000000000205c5c       0x18 contiki-eth-openmote.a(rpl-dag.o)
-                0x0000000000205c5c                rpl_get_any_dag
+                0x0000000000205c34       0x18 contiki-eth-openmote.a(rpl-dag.o)
+                0x0000000000205c34                rpl_get_any_dag
  .text.rpl_get_instance
-                0x0000000000205c74       0x20 contiki-eth-openmote.a(rpl-dag.o)
-                0x0000000000205c74                rpl_get_instance
+                0x0000000000205c4c       0x20 contiki-eth-openmote.a(rpl-dag.o)
+                0x0000000000205c4c                rpl_get_instance
  .text.rpl_join_instance
-                0x0000000000205c94      0x140 contiki-eth-openmote.a(rpl-dag.o)
-                0x0000000000205c94                rpl_join_instance
+                0x0000000000205c6c      0x140 contiki-eth-openmote.a(rpl-dag.o)
+                0x0000000000205c6c                rpl_join_instance
  .text.rpl_local_repair
-                0x0000000000205dd4       0x64 contiki-eth-openmote.a(rpl-dag.o)
-                0x0000000000205dd4                rpl_local_repair
+                0x0000000000205dac       0x64 contiki-eth-openmote.a(rpl-dag.o)
+                0x0000000000205dac                rpl_local_repair
  .text.rpl_process_parent_event
-                0x0000000000205e38       0x60 contiki-eth-openmote.a(rpl-dag.o)
-                0x0000000000205e38                rpl_process_parent_event
+                0x0000000000205e10       0x60 contiki-eth-openmote.a(rpl-dag.o)
+                0x0000000000205e10                rpl_process_parent_event
  .text.rpl_add_dag
-                0x0000000000205e98      0x13c contiki-eth-openmote.a(rpl-dag.o)
-                0x0000000000205e98                rpl_add_dag
+                0x0000000000205e70      0x13c contiki-eth-openmote.a(rpl-dag.o)
+                0x0000000000205e70                rpl_add_dag
  .text.rpl_recalculate_ranks
-                0x0000000000205fd4       0x40 contiki-eth-openmote.a(rpl-dag.o)
-                0x0000000000205fd4                rpl_recalculate_ranks
+                0x0000000000205fac       0x40 contiki-eth-openmote.a(rpl-dag.o)
+                0x0000000000205fac                rpl_recalculate_ranks
  .text.rpl_process_dio
-                0x0000000000206014      0x27c contiki-eth-openmote.a(rpl-dag.o)
-                0x0000000000206014                rpl_process_dio
- .text.get32    0x0000000000206290       0x18 contiki-eth-openmote.a(rpl-icmp6.o)
+                0x0000000000205fec      0x27c contiki-eth-openmote.a(rpl-dag.o)
+                0x0000000000205fec                rpl_process_dio
+ .text.get32    0x0000000000206268       0x18 contiki-eth-openmote.a(rpl-icmp6.o)
  .text.dis_output
-                0x00000000002062a8       0x58 contiki-eth-openmote.a(rpl-icmp6.o)
-                0x00000000002062a8                dis_output
+                0x0000000000206280       0x58 contiki-eth-openmote.a(rpl-icmp6.o)
+                0x0000000000206280                dis_output
  .text.dio_output
-                0x0000000000206300      0x2f4 contiki-eth-openmote.a(rpl-icmp6.o)
-                0x0000000000206300                dio_output
+                0x00000000002062d8      0x2f4 contiki-eth-openmote.a(rpl-icmp6.o)
+                0x00000000002062d8                dio_output
  .text.dao_output_target
-                0x00000000002065f4      0x104 contiki-eth-openmote.a(rpl-icmp6.o)
-                0x00000000002065f4                dao_output_target
+                0x00000000002065cc      0x104 contiki-eth-openmote.a(rpl-icmp6.o)
+                0x00000000002065cc                dao_output_target
  .text.dao_output
-                0x00000000002066f8       0x5c contiki-eth-openmote.a(rpl-icmp6.o)
-                0x00000000002066f8                dao_output
+                0x00000000002066d0       0x5c contiki-eth-openmote.a(rpl-icmp6.o)
+                0x00000000002066d0                dao_output
  .text.dao_ack_output
-                0x0000000000206754       0x30 contiki-eth-openmote.a(rpl-icmp6.o)
-                0x0000000000206754                dao_ack_output
+                0x000000000020672c       0x30 contiki-eth-openmote.a(rpl-icmp6.o)
+                0x000000000020672c                dao_ack_output
  .text.uip_rpl_input
-                0x0000000000206784      0x50c contiki-eth-openmote.a(rpl-icmp6.o)
-                0x0000000000206784                uip_rpl_input
+                0x000000000020675c      0x50c contiki-eth-openmote.a(rpl-icmp6.o)
+                0x000000000020675c                uip_rpl_input
  .text.new_dio_interval
-                0x0000000000206c90       0x64 contiki-eth-openmote.a(rpl-timers.o)
+                0x0000000000206c68       0x64 contiki-eth-openmote.a(rpl-timers.o)
  .text.handle_periodic_timer
-                0x0000000000206cf4       0x38 contiki-eth-openmote.a(rpl-timers.o)
+                0x0000000000206ccc       0x38 contiki-eth-openmote.a(rpl-timers.o)
  .text.handle_dio_timer
-                0x0000000000206d2c       0x88 contiki-eth-openmote.a(rpl-timers.o)
+                0x0000000000206d04       0x88 contiki-eth-openmote.a(rpl-timers.o)
  .text.handle_dao_timer
-                0x0000000000206db4       0x48 contiki-eth-openmote.a(rpl-timers.o)
+                0x0000000000206d8c       0x48 contiki-eth-openmote.a(rpl-timers.o)
  .text.rpl_reset_periodic_timer
-                0x0000000000206dfc       0x3c contiki-eth-openmote.a(rpl-timers.o)
-                0x0000000000206dfc                rpl_reset_periodic_timer
+                0x0000000000206dd4       0x3c contiki-eth-openmote.a(rpl-timers.o)
+                0x0000000000206dd4                rpl_reset_periodic_timer
  .text.rpl_reset_dio_timer
-                0x0000000000206e38       0x1c contiki-eth-openmote.a(rpl-timers.o)
-                0x0000000000206e38                rpl_reset_dio_timer
+                0x0000000000206e10       0x1c contiki-eth-openmote.a(rpl-timers.o)
+                0x0000000000206e10                rpl_reset_dio_timer
  .text.rpl_schedule_dao
-                0x0000000000206e54       0x38 contiki-eth-openmote.a(rpl-timers.o)
-                0x0000000000206e54                rpl_schedule_dao
- .text.reset    0x0000000000206e8c        0x4 contiki-eth-openmote.a(rpl-mrhof.o)
+                0x0000000000206e2c       0x38 contiki-eth-openmote.a(rpl-timers.o)
+                0x0000000000206e2c                rpl_schedule_dao
+ .text.reset    0x0000000000206e64        0x4 contiki-eth-openmote.a(rpl-mrhof.o)
  .text.calculate_rank
-                0x0000000000206e90       0x30 contiki-eth-openmote.a(rpl-mrhof.o)
+                0x0000000000206e68       0x30 contiki-eth-openmote.a(rpl-mrhof.o)
  .text.best_parent
-                0x0000000000206ec0       0x48 contiki-eth-openmote.a(rpl-mrhof.o)
+                0x0000000000206e98       0x48 contiki-eth-openmote.a(rpl-mrhof.o)
  .text.update_metric_container
-                0x0000000000206f08        0x8 contiki-eth-openmote.a(rpl-mrhof.o)
+                0x0000000000206ee0        0x8 contiki-eth-openmote.a(rpl-mrhof.o)
  .text.neighbor_link_callback
-                0x0000000000206f10       0x40 contiki-eth-openmote.a(rpl-mrhof.o)
+                0x0000000000206ee8       0x40 contiki-eth-openmote.a(rpl-mrhof.o)
  .text.best_dag
-                0x0000000000206f50       0x2c contiki-eth-openmote.a(rpl-mrhof.o)
+                0x0000000000206f28       0x2c contiki-eth-openmote.a(rpl-mrhof.o)
  .text.exit_process
-                0x0000000000206f7c       0xb0 contiki-eth-openmote.a(process.o)
+                0x0000000000206f54       0xb0 contiki-eth-openmote.a(process.o)
  .text.call_process.part.0
-                0x000000000020702c       0x38 contiki-eth-openmote.a(process.o)
- .text.do_poll  0x0000000000207064       0x3c contiki-eth-openmote.a(process.o)
+                0x0000000000207004       0x38 contiki-eth-openmote.a(process.o)
+ .text.do_poll  0x000000000020703c       0x3c contiki-eth-openmote.a(process.o)
  .text.process_alloc_event
-                0x00000000002070a0       0x10 contiki-eth-openmote.a(process.o)
-                0x00000000002070a0                process_alloc_event
+                0x0000000000207078       0x10 contiki-eth-openmote.a(process.o)
+                0x0000000000207078                process_alloc_event
  .text.process_init
-                0x00000000002070b0       0x3c contiki-eth-openmote.a(process.o)
-                0x00000000002070b0                process_init
+                0x0000000000207088       0x3c contiki-eth-openmote.a(process.o)
+                0x0000000000207088                process_init
  .text.process_run
-                0x00000000002070ec       0xe0 contiki-eth-openmote.a(process.o)
-                0x00000000002070ec                process_run
+                0x00000000002070c4       0xe0 contiki-eth-openmote.a(process.o)
+                0x00000000002070c4                process_run
  .text.process_nevents
-                0x00000000002071cc       0x14 contiki-eth-openmote.a(process.o)
-                0x00000000002071cc                process_nevents
+                0x00000000002071a4       0x14 contiki-eth-openmote.a(process.o)
+                0x00000000002071a4                process_nevents
  .text.process_post
-                0x00000000002071e0       0x78 contiki-eth-openmote.a(process.o)
-                0x00000000002071e0                process_post
+                0x00000000002071b8       0x78 contiki-eth-openmote.a(process.o)
+                0x00000000002071b8                process_post
  .text.process_post_synch
-                0x0000000000207258       0x18 contiki-eth-openmote.a(process.o)
-                0x0000000000207258                process_post_synch
+                0x0000000000207230       0x18 contiki-eth-openmote.a(process.o)
+                0x0000000000207230                process_post_synch
  .text.process_start
-                0x0000000000207270       0x40 contiki-eth-openmote.a(process.o)
-                0x0000000000207270                process_start
+                0x0000000000207248       0x40 contiki-eth-openmote.a(process.o)
+                0x0000000000207248                process_start
  .text.process_poll
-                0x00000000002072b0       0x18 contiki-eth-openmote.a(process.o)
-                0x00000000002072b0                process_poll
+                0x0000000000207288       0x18 contiki-eth-openmote.a(process.o)
+                0x0000000000207288                process_poll
  .text.autostart_start
-                0x00000000002072c8       0x18 contiki-eth-openmote.a(autostart.o)
-                0x00000000002072c8                autostart_start
+                0x00000000002072a0       0x18 contiki-eth-openmote.a(autostart.o)
+                0x00000000002072a0                autostart_start
  .text.process_thread_serial_line_process
-                0x00000000002072e0       0xac contiki-eth-openmote.a(serial-line.o)
+                0x00000000002072b8       0xac contiki-eth-openmote.a(serial-line.o)
  .text.serial_line_input_byte
-                0x000000000020738c       0x58 contiki-eth-openmote.a(serial-line.o)
-                0x000000000020738c                serial_line_input_byte
+                0x0000000000207364       0x58 contiki-eth-openmote.a(serial-line.o)
+                0x0000000000207364                serial_line_input_byte
  .text.serial_line_init
-                0x00000000002073e4       0x24 contiki-eth-openmote.a(serial-line.o)
-                0x00000000002073e4                serial_line_init
+                0x00000000002073bc       0x24 contiki-eth-openmote.a(serial-line.o)
+                0x00000000002073bc                serial_line_init
  .text.memb_init
-                0x0000000000207408       0x24 contiki-eth-openmote.a(memb.o)
-                0x0000000000207408                memb_init
+                0x00000000002073e0       0x24 contiki-eth-openmote.a(memb.o)
+                0x00000000002073e0                memb_init
  .text.memb_alloc
-                0x000000000020742c       0x3c contiki-eth-openmote.a(memb.o)
-                0x000000000020742c                memb_alloc
+                0x0000000000207404       0x3c contiki-eth-openmote.a(memb.o)
+                0x0000000000207404                memb_alloc
  .text.memb_free
-                0x0000000000207468       0x44 contiki-eth-openmote.a(memb.o)
-                0x0000000000207468                memb_free
+                0x0000000000207440       0x44 contiki-eth-openmote.a(memb.o)
+                0x0000000000207440                memb_free
  .text.memb_inmemb
-                0x00000000002074ac       0x1c contiki-eth-openmote.a(memb.o)
-                0x00000000002074ac                memb_inmemb
+                0x0000000000207484       0x1c contiki-eth-openmote.a(memb.o)
+                0x0000000000207484                memb_inmemb
  .text.timer_set
-                0x00000000002074c8       0x10 contiki-eth-openmote.a(timer.o)
-                0x00000000002074c8                timer_set
+                0x00000000002074a0       0x10 contiki-eth-openmote.a(timer.o)
+                0x00000000002074a0                timer_set
  .text.timer_reset
-                0x00000000002074d8        0xc contiki-eth-openmote.a(timer.o)
-                0x00000000002074d8                timer_reset
+                0x00000000002074b0        0xc contiki-eth-openmote.a(timer.o)
+                0x00000000002074b0                timer_reset
  .text.timer_restart
-                0x00000000002074e4        0xc contiki-eth-openmote.a(timer.o)
-                0x00000000002074e4                timer_restart
+                0x00000000002074bc        0xc contiki-eth-openmote.a(timer.o)
+                0x00000000002074bc                timer_restart
  .text.timer_expired
-                0x00000000002074f0       0x1c contiki-eth-openmote.a(timer.o)
-                0x00000000002074f0                timer_expired
+                0x00000000002074c8       0x1c contiki-eth-openmote.a(timer.o)
+                0x00000000002074c8                timer_expired
  .text.timer_remaining
-                0x000000000020750c       0x10 contiki-eth-openmote.a(timer.o)
-                0x000000000020750c                timer_remaining
+                0x00000000002074e4       0x10 contiki-eth-openmote.a(timer.o)
+                0x00000000002074e4                timer_remaining
  .text.list_init
-                0x000000000020751c        0x8 contiki-eth-openmote.a(list.o)
-                0x000000000020751c                list_init
+                0x00000000002074f4        0x8 contiki-eth-openmote.a(list.o)
+                0x00000000002074f4                list_init
  .text.list_head
-                0x0000000000207524        0x4 contiki-eth-openmote.a(list.o)
-                0x0000000000207524                list_head
+                0x00000000002074fc        0x4 contiki-eth-openmote.a(list.o)
+                0x00000000002074fc                list_head
  .text.list_add
-                0x0000000000207528       0x60 contiki-eth-openmote.a(list.o)
-                0x0000000000207528                list_add
+                0x0000000000207500       0x60 contiki-eth-openmote.a(list.o)
+                0x0000000000207500                list_add
  .text.list_push
-                0x0000000000207588       0x48 contiki-eth-openmote.a(list.o)
-                0x0000000000207588                list_push
+                0x0000000000207560       0x48 contiki-eth-openmote.a(list.o)
+                0x0000000000207560                list_push
  .text.list_remove
-                0x00000000002075d0       0x40 contiki-eth-openmote.a(list.o)
-                0x00000000002075d0                list_remove
+                0x00000000002075a8       0x40 contiki-eth-openmote.a(list.o)
+                0x00000000002075a8                list_remove
  .text.list_length
-                0x0000000000207610       0x14 contiki-eth-openmote.a(list.o)
-                0x0000000000207610                list_length
+                0x00000000002075e8       0x14 contiki-eth-openmote.a(list.o)
+                0x00000000002075e8                list_length
  .text.list_item_next
-                0x0000000000207624        0x8 contiki-eth-openmote.a(list.o)
-                0x0000000000207624                list_item_next
+                0x00000000002075fc        0x8 contiki-eth-openmote.a(list.o)
+                0x00000000002075fc                list_item_next
  .text.process_thread_ctimer_process
-                0x000000000020762c       0x94 contiki-eth-openmote.a(ctimer.o)
+                0x0000000000207604       0x94 contiki-eth-openmote.a(ctimer.o)
  .text.ctimer_init
-                0x00000000002076c0       0x28 contiki-eth-openmote.a(ctimer.o)
-                0x00000000002076c0                ctimer_init
+                0x0000000000207698       0x28 contiki-eth-openmote.a(ctimer.o)
+                0x0000000000207698                ctimer_init
  .text.ctimer_set
-                0x00000000002076e8       0x48 contiki-eth-openmote.a(ctimer.o)
-                0x00000000002076e8                ctimer_set
+                0x00000000002076c0       0x48 contiki-eth-openmote.a(ctimer.o)
+                0x00000000002076c0                ctimer_set
  .text.ctimer_reset
-                0x0000000000207730       0x40 contiki-eth-openmote.a(ctimer.o)
-                0x0000000000207730                ctimer_reset
+                0x0000000000207708       0x40 contiki-eth-openmote.a(ctimer.o)
+                0x0000000000207708                ctimer_reset
  .text.ctimer_stop
-                0x0000000000207770       0x34 contiki-eth-openmote.a(ctimer.o)
-                0x0000000000207770                ctimer_stop
+                0x0000000000207748       0x34 contiki-eth-openmote.a(ctimer.o)
+                0x0000000000207748                ctimer_stop
  .text.energest_init
-                0x00000000002077a4        0x4 contiki-eth-openmote.a(energest.o)
-                0x00000000002077a4                energest_init
+                0x000000000020777c        0x4 contiki-eth-openmote.a(energest.o)
+                0x000000000020777c                energest_init
  .text.rtimer_init
-                0x00000000002077a8        0x4 contiki-eth-openmote.a(rtimer.o)
-                0x00000000002077a8                rtimer_init
+                0x0000000000207780        0x4 contiki-eth-openmote.a(rtimer.o)
+                0x0000000000207780                rtimer_init
  .text.rtimer_run_next
-                0x00000000002077ac       0x28 contiki-eth-openmote.a(rtimer.o)
-                0x00000000002077ac                rtimer_run_next
+                0x0000000000207784       0x28 contiki-eth-openmote.a(rtimer.o)
+                0x0000000000207784                rtimer_run_next
  .text.stimer_set
-                0x00000000002077d4       0x10 contiki-eth-openmote.a(stimer.o)
-                0x00000000002077d4                stimer_set
+                0x00000000002077ac       0x10 contiki-eth-openmote.a(stimer.o)
+                0x00000000002077ac                stimer_set
  .text.stimer_expired
-                0x00000000002077e4       0x20 contiki-eth-openmote.a(stimer.o)
-                0x00000000002077e4                stimer_expired
+                0x00000000002077bc       0x20 contiki-eth-openmote.a(stimer.o)
+                0x00000000002077bc                stimer_expired
  .text.random_rand
-                0x0000000000207804       0x30 contiki-eth-openmote.a(random.o)
-                0x0000000000207804                random_rand
+                0x00000000002077dc       0x30 contiki-eth-openmote.a(random.o)
+                0x00000000002077dc                random_rand
  .text.random_init
-                0x0000000000207834       0x80 contiki-eth-openmote.a(random.o)
-                0x0000000000207834                random_init
+                0x000000000020780c       0x80 contiki-eth-openmote.a(random.o)
+                0x000000000020780c                random_init
  .text.ringbuf_init
-                0x00000000002078b4       0x10 contiki-eth-openmote.a(ringbuf.o)
-                0x00000000002078b4                ringbuf_init
+                0x000000000020788c       0x10 contiki-eth-openmote.a(ringbuf.o)
+                0x000000000020788c                ringbuf_init
  .text.ringbuf_put
-                0x00000000002078c4       0x30 contiki-eth-openmote.a(ringbuf.o)
-                0x00000000002078c4                ringbuf_put
+                0x000000000020789c       0x30 contiki-eth-openmote.a(ringbuf.o)
+                0x000000000020789c                ringbuf_put
  .text.ringbuf_get
-                0x00000000002078f4       0x28 contiki-eth-openmote.a(ringbuf.o)
-                0x00000000002078f4                ringbuf_get
+                0x00000000002078cc       0x28 contiki-eth-openmote.a(ringbuf.o)
+                0x00000000002078cc                ringbuf_get
  .text.nbr_set_bit
-                0x000000000020791c       0x44 contiki-eth-openmote.a(nbr-table.o)
+                0x00000000002078f4       0x44 contiki-eth-openmote.a(nbr-table.o)
  .text.index_from_lladdr
-                0x0000000000207960       0x50 contiki-eth-openmote.a(nbr-table.o)
+                0x0000000000207938       0x50 contiki-eth-openmote.a(nbr-table.o)
  .text.nbr_get_bit.constprop.0
-                0x00000000002079b0       0x2c contiki-eth-openmote.a(nbr-table.o)
+                0x0000000000207988       0x2c contiki-eth-openmote.a(nbr-table.o)
  .text.nbr_table_register
-                0x00000000002079dc       0x2c contiki-eth-openmote.a(nbr-table.o)
-                0x00000000002079dc                nbr_table_register
+                0x00000000002079b4       0x2c contiki-eth-openmote.a(nbr-table.o)
+                0x00000000002079b4                nbr_table_register
  .text.nbr_table_next
-                0x0000000000207a08       0x78 contiki-eth-openmote.a(nbr-table.o)
-                0x0000000000207a08                nbr_table_next
+                0x00000000002079e0       0x78 contiki-eth-openmote.a(nbr-table.o)
+                0x00000000002079e0                nbr_table_next
  .text.nbr_table_head
-                0x0000000000207a80       0x5c contiki-eth-openmote.a(nbr-table.o)
-                0x0000000000207a80                nbr_table_head
+                0x0000000000207a58       0x5c contiki-eth-openmote.a(nbr-table.o)
+                0x0000000000207a58                nbr_table_head
  .text.nbr_table_add_lladdr
-                0x0000000000207adc      0x1ac contiki-eth-openmote.a(nbr-table.o)
-                0x0000000000207adc                nbr_table_add_lladdr
+                0x0000000000207ab4      0x1ac contiki-eth-openmote.a(nbr-table.o)
+                0x0000000000207ab4                nbr_table_add_lladdr
  .text.nbr_table_get_from_lladdr
-                0x0000000000207c88       0x34 contiki-eth-openmote.a(nbr-table.o)
-                0x0000000000207c88                nbr_table_get_from_lladdr
+                0x0000000000207c60       0x34 contiki-eth-openmote.a(nbr-table.o)
+                0x0000000000207c60                nbr_table_get_from_lladdr
  .text.nbr_table_remove
-                0x0000000000207cbc       0x2c contiki-eth-openmote.a(nbr-table.o)
-                0x0000000000207cbc                nbr_table_remove
+                0x0000000000207c94       0x2c contiki-eth-openmote.a(nbr-table.o)
+                0x0000000000207c94                nbr_table_remove
  .text.nbr_table_lock
-                0x0000000000207ce8       0x10 contiki-eth-openmote.a(nbr-table.o)
-                0x0000000000207ce8                nbr_table_lock
+                0x0000000000207cc0       0x10 contiki-eth-openmote.a(nbr-table.o)
+                0x0000000000207cc0                nbr_table_lock
  .text.nbr_table_unlock
-                0x0000000000207cf8       0x10 contiki-eth-openmote.a(nbr-table.o)
-                0x0000000000207cf8                nbr_table_unlock
+                0x0000000000207cd0       0x10 contiki-eth-openmote.a(nbr-table.o)
+                0x0000000000207cd0                nbr_table_unlock
  .text.nbr_table_get_lladdr
-                0x0000000000207d08       0x30 contiki-eth-openmote.a(nbr-table.o)
-                0x0000000000207d08                nbr_table_get_lladdr
+                0x0000000000207ce0       0x30 contiki-eth-openmote.a(nbr-table.o)
+                0x0000000000207ce0                nbr_table_get_lladdr
  .text.netstack_init
-                0x0000000000207d38       0x2c contiki-eth-openmote.a(netstack.o)
-                0x0000000000207d38                netstack_init
+                0x0000000000207d10       0x2c contiki-eth-openmote.a(netstack.o)
+                0x0000000000207d10                netstack_init
  .text.packetbuf_compact
-                0x0000000000207d64       0x4c contiki-eth-openmote.a(packetbuf.o)
-                0x0000000000207d64                packetbuf_compact
+                0x0000000000207d3c       0x4c contiki-eth-openmote.a(packetbuf.o)
+                0x0000000000207d3c                packetbuf_compact
  .text.packetbuf_copyto_hdr
-                0x0000000000207db0       0x20 contiki-eth-openmote.a(packetbuf.o)
-                0x0000000000207db0                packetbuf_copyto_hdr
+                0x0000000000207d88       0x20 contiki-eth-openmote.a(packetbuf.o)
+                0x0000000000207d88                packetbuf_copyto_hdr
  .text.packetbuf_copyto
-                0x0000000000207dd0       0x50 contiki-eth-openmote.a(packetbuf.o)
-                0x0000000000207dd0                packetbuf_copyto
+                0x0000000000207da8       0x50 contiki-eth-openmote.a(packetbuf.o)
+                0x0000000000207da8                packetbuf_copyto
  .text.packetbuf_hdralloc
-                0x0000000000207e20       0x3c contiki-eth-openmote.a(packetbuf.o)
-                0x0000000000207e20                packetbuf_hdralloc
+                0x0000000000207df8       0x3c contiki-eth-openmote.a(packetbuf.o)
+                0x0000000000207df8                packetbuf_hdralloc
  .text.packetbuf_hdr_remove
-                0x0000000000207e5c       0x10 contiki-eth-openmote.a(packetbuf.o)
-                0x0000000000207e5c                packetbuf_hdr_remove
+                0x0000000000207e34       0x10 contiki-eth-openmote.a(packetbuf.o)
+                0x0000000000207e34                packetbuf_hdr_remove
  .text.packetbuf_hdrreduce
-                0x0000000000207e6c       0x30 contiki-eth-openmote.a(packetbuf.o)
-                0x0000000000207e6c                packetbuf_hdrreduce
+                0x0000000000207e44       0x30 contiki-eth-openmote.a(packetbuf.o)
+                0x0000000000207e44                packetbuf_hdrreduce
  .text.packetbuf_set_datalen
-                0x0000000000207e9c        0xc contiki-eth-openmote.a(packetbuf.o)
-                0x0000000000207e9c                packetbuf_set_datalen
+                0x0000000000207e74        0xc contiki-eth-openmote.a(packetbuf.o)
+                0x0000000000207e74                packetbuf_set_datalen
  .text.packetbuf_dataptr
-                0x0000000000207ea8       0x14 contiki-eth-openmote.a(packetbuf.o)
-                0x0000000000207ea8                packetbuf_dataptr
+                0x0000000000207e80       0x14 contiki-eth-openmote.a(packetbuf.o)
+                0x0000000000207e80                packetbuf_dataptr
  .text.packetbuf_hdrptr
-                0x0000000000207ebc       0x14 contiki-eth-openmote.a(packetbuf.o)
-                0x0000000000207ebc                packetbuf_hdrptr
+                0x0000000000207e94       0x14 contiki-eth-openmote.a(packetbuf.o)
+                0x0000000000207e94                packetbuf_hdrptr
  .text.packetbuf_is_reference
-                0x0000000000207ed0       0x18 contiki-eth-openmote.a(packetbuf.o)
-                0x0000000000207ed0                packetbuf_is_reference
+                0x0000000000207ea8       0x18 contiki-eth-openmote.a(packetbuf.o)
+                0x0000000000207ea8                packetbuf_is_reference
  .text.packetbuf_reference_ptr
-                0x0000000000207ee8        0xc contiki-eth-openmote.a(packetbuf.o)
-                0x0000000000207ee8                packetbuf_reference_ptr
+                0x0000000000207ec0        0xc contiki-eth-openmote.a(packetbuf.o)
+                0x0000000000207ec0                packetbuf_reference_ptr
  .text.packetbuf_datalen
-                0x0000000000207ef4        0xc contiki-eth-openmote.a(packetbuf.o)
-                0x0000000000207ef4                packetbuf_datalen
+                0x0000000000207ecc        0xc contiki-eth-openmote.a(packetbuf.o)
+                0x0000000000207ecc                packetbuf_datalen
  .text.packetbuf_totlen
-                0x0000000000207f00       0x1c contiki-eth-openmote.a(packetbuf.o)
-                0x0000000000207f00                packetbuf_totlen
+                0x0000000000207ed8       0x1c contiki-eth-openmote.a(packetbuf.o)
+                0x0000000000207ed8                packetbuf_totlen
  .text.packetbuf_attr_clear
-                0x0000000000207f1c       0x34 contiki-eth-openmote.a(packetbuf.o)
-                0x0000000000207f1c                packetbuf_attr_clear
+                0x0000000000207ef4       0x34 contiki-eth-openmote.a(packetbuf.o)
+                0x0000000000207ef4                packetbuf_attr_clear
  .text.packetbuf_clear
-                0x0000000000207f50       0x34 contiki-eth-openmote.a(packetbuf.o)
-                0x0000000000207f50                packetbuf_clear
+                0x0000000000207f28       0x34 contiki-eth-openmote.a(packetbuf.o)
+                0x0000000000207f28                packetbuf_clear
  .text.packetbuf_copyfrom
-                0x0000000000207f84       0x2c contiki-eth-openmote.a(packetbuf.o)
-                0x0000000000207f84                packetbuf_copyfrom
+                0x0000000000207f5c       0x2c contiki-eth-openmote.a(packetbuf.o)
+                0x0000000000207f5c                packetbuf_copyfrom
  .text.packetbuf_attr_copyto
-                0x0000000000207fb0       0x44 contiki-eth-openmote.a(packetbuf.o)
-                0x0000000000207fb0                packetbuf_attr_copyto
+                0x0000000000207f88       0x44 contiki-eth-openmote.a(packetbuf.o)
+                0x0000000000207f88                packetbuf_attr_copyto
  .text.packetbuf_attr_copyfrom
-                0x0000000000207ff4       0x44 contiki-eth-openmote.a(packetbuf.o)
-                0x0000000000207ff4                packetbuf_attr_copyfrom
+                0x0000000000207fcc       0x44 contiki-eth-openmote.a(packetbuf.o)
+                0x0000000000207fcc                packetbuf_attr_copyfrom
  .text.psock_send
-                0x0000000000208038       0xa4 contiki-eth-openmote.a(psock.o)
-                0x0000000000208038                psock_send
+                0x0000000000208010       0xa4 contiki-eth-openmote.a(psock.o)
+                0x0000000000208010                psock_send
  .text.psock_generator_send
-                0x00000000002080dc       0x6c contiki-eth-openmote.a(psock.o)
-                0x00000000002080dc                psock_generator_send
+                0x00000000002080b4       0x6c contiki-eth-openmote.a(psock.o)
+                0x00000000002080b4                psock_generator_send
  .text.psock_datalen
-                0x0000000000208148        0xc contiki-eth-openmote.a(psock.o)
-                0x0000000000208148                psock_datalen
+                0x0000000000208120        0xc contiki-eth-openmote.a(psock.o)
+                0x0000000000208120                psock_datalen
  .text.psock_readto
-                0x0000000000208154       0xc0 contiki-eth-openmote.a(psock.o)
-                0x0000000000208154                psock_readto
+                0x000000000020812c       0xc0 contiki-eth-openmote.a(psock.o)
+                0x000000000020812c                psock_readto
  .text.psock_init
-                0x0000000000208214       0x18 contiki-eth-openmote.a(psock.o)
-                0x0000000000208214                psock_init
+                0x00000000002081ec       0x18 contiki-eth-openmote.a(psock.o)
+                0x00000000002081ec                psock_init
  .text.queuebuf_init
-                0x000000000020822c       0x24 contiki-eth-openmote.a(queuebuf.o)
-                0x000000000020822c                queuebuf_init
+                0x0000000000208204       0x24 contiki-eth-openmote.a(queuebuf.o)
+                0x0000000000208204                queuebuf_init
  .text.queuebuf_new_from_packetbuf
-                0x0000000000208250       0x94 contiki-eth-openmote.a(queuebuf.o)
-                0x0000000000208250                queuebuf_new_from_packetbuf
+                0x0000000000208228       0x94 contiki-eth-openmote.a(queuebuf.o)
+                0x0000000000208228                queuebuf_new_from_packetbuf
  .text.queuebuf_update_attr_from_packetbuf
-                0x00000000002082e4        0xc contiki-eth-openmote.a(queuebuf.o)
-                0x00000000002082e4                queuebuf_update_attr_from_packetbuf
+                0x00000000002082bc        0xc contiki-eth-openmote.a(queuebuf.o)
+                0x00000000002082bc                queuebuf_update_attr_from_packetbuf
  .text.queuebuf_free
-                0x00000000002082f0       0x48 contiki-eth-openmote.a(queuebuf.o)
-                0x00000000002082f0                queuebuf_free
+                0x00000000002082c8       0x48 contiki-eth-openmote.a(queuebuf.o)
+                0x00000000002082c8                queuebuf_free
  .text.queuebuf_to_packetbuf
-                0x0000000000208338       0x68 contiki-eth-openmote.a(queuebuf.o)
-                0x0000000000208338                queuebuf_to_packetbuf
+                0x0000000000208310       0x68 contiki-eth-openmote.a(queuebuf.o)
+                0x0000000000208310                queuebuf_to_packetbuf
  .text.queuebuf_attr
-                0x00000000002083a0        0xc contiki-eth-openmote.a(queuebuf.o)
-                0x00000000002083a0                queuebuf_attr
+                0x0000000000208378        0xc contiki-eth-openmote.a(queuebuf.o)
+                0x0000000000208378                queuebuf_attr
  .text.set_packet_attrs
-                0x00000000002083ac       0x3c contiki-eth-openmote.a(sicslowpan.o)
+                0x0000000000208384       0x3c contiki-eth-openmote.a(sicslowpan.o)
  .text.sicslowpan_init
-                0x00000000002083e8       0x24 contiki-eth-openmote.a(sicslowpan.o)
-                0x00000000002083e8                sicslowpan_init
+                0x00000000002083c0       0x24 contiki-eth-openmote.a(sicslowpan.o)
+                0x00000000002083c0                sicslowpan_init
  .text.compress_addr_64
-                0x000000000020840c       0x9c contiki-eth-openmote.a(sicslowpan.o)
+                0x00000000002083e4       0x9c contiki-eth-openmote.a(sicslowpan.o)
  .text.addr_context_lookup_by_prefix
-                0x00000000002084a8       0x48 contiki-eth-openmote.a(sicslowpan.o)
+                0x0000000000208480       0x48 contiki-eth-openmote.a(sicslowpan.o)
  .text.send_packet
-                0x00000000002084f0       0x28 contiki-eth-openmote.a(sicslowpan.o)
- .text.output   0x0000000000208518      0x754 contiki-eth-openmote.a(sicslowpan.o)
+                0x00000000002084c8       0x28 contiki-eth-openmote.a(sicslowpan.o)
+ .text.output   0x00000000002084f0      0x754 contiki-eth-openmote.a(sicslowpan.o)
  .text.packet_sent
-                0x0000000000208c6c       0x28 contiki-eth-openmote.a(sicslowpan.o)
+                0x0000000000208c44       0x28 contiki-eth-openmote.a(sicslowpan.o)
  .text.uncompress_addr
-                0x0000000000208c94       0x8c contiki-eth-openmote.a(sicslowpan.o)
- .text.input    0x0000000000208d20      0x78c contiki-eth-openmote.a(sicslowpan.o)
+                0x0000000000208c6c       0x8c contiki-eth-openmote.a(sicslowpan.o)
+ .text.input    0x0000000000208cf8      0x78c contiki-eth-openmote.a(sicslowpan.o)
  .text.simple_udp_sendto
-                0x00000000002094ac       0x1c contiki-eth-openmote.a(simple-udp.o)
-                0x00000000002094ac                simple_udp_sendto
+                0x0000000000209484       0x1c contiki-eth-openmote.a(simple-udp.o)
+                0x0000000000209484                simple_udp_sendto
  .text.start_periodic_tcp_timer
-                0x00000000002094c8       0x1c contiki-eth-openmote.a(tcpip.o)
+                0x00000000002094a0       0x1c contiki-eth-openmote.a(tcpip.o)
  .text.tcpip_set_outputfunc
-                0x00000000002094e4        0xc contiki-eth-openmote.a(tcpip.o)
-                0x00000000002094e4                tcpip_set_outputfunc
+                0x00000000002094bc        0xc contiki-eth-openmote.a(tcpip.o)
+                0x00000000002094bc                tcpip_set_outputfunc
  .text.tcp_listen
-                0x00000000002094f0       0x58 contiki-eth-openmote.a(tcpip.o)
-                0x00000000002094f0                tcp_listen
+                0x00000000002094c8       0x58 contiki-eth-openmote.a(tcpip.o)
+                0x00000000002094c8                tcp_listen
  .text.tcp_attach
-                0x0000000000209548       0x10 contiki-eth-openmote.a(tcpip.o)
-                0x0000000000209548                tcp_attach
- .text.udp_new  0x0000000000209558       0x18 contiki-eth-openmote.a(tcpip.o)
-                0x0000000000209558                udp_new
+                0x0000000000209520       0x10 contiki-eth-openmote.a(tcpip.o)
+                0x0000000000209520                tcp_attach
+ .text.udp_new  0x0000000000209530       0x18 contiki-eth-openmote.a(tcpip.o)
+                0x0000000000209530                udp_new
  .text.tcpip_icmp6_call
-                0x0000000000209570       0x28 contiki-eth-openmote.a(tcpip.o)
-                0x0000000000209570                tcpip_icmp6_call
+                0x0000000000209548       0x28 contiki-eth-openmote.a(tcpip.o)
+                0x0000000000209548                tcpip_icmp6_call
  .text.tcpip_input
-                0x0000000000209598       0x24 contiki-eth-openmote.a(tcpip.o)
-                0x0000000000209598                tcpip_input
+                0x0000000000209570       0x24 contiki-eth-openmote.a(tcpip.o)
+                0x0000000000209570                tcpip_input
  .text.tcpip_ipv6_output
-                0x00000000002095bc      0x16c contiki-eth-openmote.a(tcpip.o)
-                0x00000000002095bc                tcpip_ipv6_output
+                0x0000000000209594      0x16c contiki-eth-openmote.a(tcpip.o)
+                0x0000000000209594                tcpip_ipv6_output
  .text.process_thread_tcpip_process
-                0x0000000000209728      0x214 contiki-eth-openmote.a(tcpip.o)
+                0x0000000000209700      0x214 contiki-eth-openmote.a(tcpip.o)
  .text.tcpip_poll_udp
-                0x000000000020993c       0x10 contiki-eth-openmote.a(tcpip.o)
-                0x000000000020993c                tcpip_poll_udp
+                0x0000000000209914       0x10 contiki-eth-openmote.a(tcpip.o)
+                0x0000000000209914                tcpip_poll_udp
  .text.tcpip_uipcall
-                0x000000000020994c       0x9c contiki-eth-openmote.a(tcpip.o)
-                0x000000000020994c                tcpip_uipcall
+                0x0000000000209924       0x9c contiki-eth-openmote.a(tcpip.o)
+                0x0000000000209924                tcpip_uipcall
  .text.uip_debug_ipaddr_print
-                0x00000000002099e8       0x70 contiki-eth-openmote.a(uip-debug.o)
-                0x00000000002099e8                uip_debug_ipaddr_print
+                0x00000000002099c0       0x70 contiki-eth-openmote.a(uip-debug.o)
+                0x00000000002099c0                uip_debug_ipaddr_print
  .text.call_route_callback
-                0x0000000000209a58       0x50 contiki-eth-openmote.a(uip-ds6-route.o)
+                0x0000000000209a30       0x50 contiki-eth-openmote.a(uip-ds6-route.o)
  .text.uip_ds6_notification_add
-                0x0000000000209aa8       0x14 contiki-eth-openmote.a(uip-ds6-route.o)
-                0x0000000000209aa8                uip_ds6_notification_add
+                0x0000000000209a80       0x14 contiki-eth-openmote.a(uip-ds6-route.o)
+                0x0000000000209a80                uip_ds6_notification_add
  .text.uip_ds6_route_init
-                0x0000000000209abc       0x40 contiki-eth-openmote.a(uip-ds6-route.o)
-                0x0000000000209abc                uip_ds6_route_init
+                0x0000000000209a94       0x40 contiki-eth-openmote.a(uip-ds6-route.o)
+                0x0000000000209a94                uip_ds6_route_init
  .text.uip_ds6_route_nexthop
-                0x0000000000209afc       0x1c contiki-eth-openmote.a(uip-ds6-route.o)
-                0x0000000000209afc                uip_ds6_route_nexthop
+                0x0000000000209ad4       0x1c contiki-eth-openmote.a(uip-ds6-route.o)
+                0x0000000000209ad4                uip_ds6_route_nexthop
  .text.uip_ds6_route_head
-                0x0000000000209b18       0x24 contiki-eth-openmote.a(uip-ds6-route.o)
-                0x0000000000209b18                uip_ds6_route_head
+                0x0000000000209af0       0x24 contiki-eth-openmote.a(uip-ds6-route.o)
+                0x0000000000209af0                uip_ds6_route_head
  .text.uip_ds6_route_next
-                0x0000000000209b3c       0x2c contiki-eth-openmote.a(uip-ds6-route.o)
-                0x0000000000209b3c                uip_ds6_route_next
+                0x0000000000209b14       0x2c contiki-eth-openmote.a(uip-ds6-route.o)
+                0x0000000000209b14                uip_ds6_route_next
  .text.uip_ds6_route_num_routes
-                0x0000000000209b68        0xc contiki-eth-openmote.a(uip-ds6-route.o)
-                0x0000000000209b68                uip_ds6_route_num_routes
+                0x0000000000209b40        0xc contiki-eth-openmote.a(uip-ds6-route.o)
+                0x0000000000209b40                uip_ds6_route_num_routes
  .text.uip_ds6_route_lookup
-                0x0000000000209b74       0x48 contiki-eth-openmote.a(uip-ds6-route.o)
-                0x0000000000209b74                uip_ds6_route_lookup
+                0x0000000000209b4c       0x48 contiki-eth-openmote.a(uip-ds6-route.o)
+                0x0000000000209b4c                uip_ds6_route_lookup
  .text.uip_ds6_route_add
-                0x0000000000209bbc       0xb8 contiki-eth-openmote.a(uip-ds6-route.o)
-                0x0000000000209bbc                uip_ds6_route_add
+                0x0000000000209b94       0xb8 contiki-eth-openmote.a(uip-ds6-route.o)
+                0x0000000000209b94                uip_ds6_route_add
  .text.uip_ds6_route_rm
-                0x0000000000209c74       0x5c contiki-eth-openmote.a(uip-ds6-route.o)
-                0x0000000000209c74                uip_ds6_route_rm
+                0x0000000000209c4c       0x5c contiki-eth-openmote.a(uip-ds6-route.o)
+                0x0000000000209c4c                uip_ds6_route_rm
  .text.rm_routelist
-                0x0000000000209cd0       0x2c contiki-eth-openmote.a(uip-ds6-route.o)
+                0x0000000000209ca8       0x2c contiki-eth-openmote.a(uip-ds6-route.o)
  .text.rm_routelist_callback
-                0x0000000000209cfc        0x4 contiki-eth-openmote.a(uip-ds6-route.o)
+                0x0000000000209cd4        0x4 contiki-eth-openmote.a(uip-ds6-route.o)
  .text.uip_ds6_defrt_rm
-                0x0000000000209d00       0x48 contiki-eth-openmote.a(uip-ds6-route.o)
-                0x0000000000209d00                uip_ds6_defrt_rm
+                0x0000000000209cd8       0x48 contiki-eth-openmote.a(uip-ds6-route.o)
+                0x0000000000209cd8                uip_ds6_defrt_rm
  .text.uip_ds6_defrt_lookup
-                0x0000000000209d48       0x34 contiki-eth-openmote.a(uip-ds6-route.o)
-                0x0000000000209d48                uip_ds6_defrt_lookup
+                0x0000000000209d20       0x34 contiki-eth-openmote.a(uip-ds6-route.o)
+                0x0000000000209d20                uip_ds6_defrt_lookup
  .text.uip_ds6_defrt_add
-                0x0000000000209d7c       0x74 contiki-eth-openmote.a(uip-ds6-route.o)
-                0x0000000000209d7c                uip_ds6_defrt_add
+                0x0000000000209d54       0x74 contiki-eth-openmote.a(uip-ds6-route.o)
+                0x0000000000209d54                uip_ds6_defrt_add
  .text.uip_ds6_defrt_choose
-                0x0000000000209df0       0x84 contiki-eth-openmote.a(uip-ds6-route.o)
-                0x0000000000209df0                uip_ds6_defrt_choose
+                0x0000000000209dc8       0x84 contiki-eth-openmote.a(uip-ds6-route.o)
+                0x0000000000209dc8                uip_ds6_defrt_choose
  .text.uip_ds6_defrt_periodic
-                0x0000000000209e74       0x3c contiki-eth-openmote.a(uip-ds6-route.o)
-                0x0000000000209e74                uip_ds6_defrt_periodic
+                0x0000000000209e4c       0x3c contiki-eth-openmote.a(uip-ds6-route.o)
+                0x0000000000209e4c                uip_ds6_defrt_periodic
  .text.uip_ds6_nbr_rm
-                0x0000000000209eb0       0x20 contiki-eth-openmote.a(uip-ds6-nbr.o)
-                0x0000000000209eb0                uip_ds6_nbr_rm
+                0x0000000000209e88       0x20 contiki-eth-openmote.a(uip-ds6-nbr.o)
+                0x0000000000209e88                uip_ds6_nbr_rm
  .text.uip_ds6_neighbors_init
-                0x0000000000209ed0       0x14 contiki-eth-openmote.a(uip-ds6-nbr.o)
-                0x0000000000209ed0                uip_ds6_neighbors_init
+                0x0000000000209ea8       0x14 contiki-eth-openmote.a(uip-ds6-nbr.o)
+                0x0000000000209ea8                uip_ds6_neighbors_init
  .text.uip_ds6_nbr_add
-                0x0000000000209ee4       0x50 contiki-eth-openmote.a(uip-ds6-nbr.o)
-                0x0000000000209ee4                uip_ds6_nbr_add
+                0x0000000000209ebc       0x50 contiki-eth-openmote.a(uip-ds6-nbr.o)
+                0x0000000000209ebc                uip_ds6_nbr_add
  .text.uip_ds6_nbr_get_ipaddr
-                0x0000000000209f34        0x4 contiki-eth-openmote.a(uip-ds6-nbr.o)
-                0x0000000000209f34                uip_ds6_nbr_get_ipaddr
+                0x0000000000209f0c        0x4 contiki-eth-openmote.a(uip-ds6-nbr.o)
+                0x0000000000209f0c                uip_ds6_nbr_get_ipaddr
  .text.uip_ds6_nbr_get_ll
-                0x0000000000209f38       0x10 contiki-eth-openmote.a(uip-ds6-nbr.o)
-                0x0000000000209f38                uip_ds6_nbr_get_ll
+                0x0000000000209f10       0x10 contiki-eth-openmote.a(uip-ds6-nbr.o)
+                0x0000000000209f10                uip_ds6_nbr_get_ll
  .text.uip_ds6_nbr_lookup
-                0x0000000000209f48       0x3c contiki-eth-openmote.a(uip-ds6-nbr.o)
-                0x0000000000209f48                uip_ds6_nbr_lookup
+                0x0000000000209f20       0x3c contiki-eth-openmote.a(uip-ds6-nbr.o)
+                0x0000000000209f20                uip_ds6_nbr_lookup
  .text.uip_ds6_nbr_ipaddr_from_lladdr
-                0x0000000000209f84       0x10 contiki-eth-openmote.a(uip-ds6-nbr.o)
-                0x0000000000209f84                uip_ds6_nbr_ipaddr_from_lladdr
+                0x0000000000209f5c       0x10 contiki-eth-openmote.a(uip-ds6-nbr.o)
+                0x0000000000209f5c                uip_ds6_nbr_ipaddr_from_lladdr
  .text.uip_ds6_nbr_lladdr_from_ipaddr
-                0x0000000000209f94       0x1c contiki-eth-openmote.a(uip-ds6-nbr.o)
-                0x0000000000209f94                uip_ds6_nbr_lladdr_from_ipaddr
+                0x0000000000209f6c       0x1c contiki-eth-openmote.a(uip-ds6-nbr.o)
+                0x0000000000209f6c                uip_ds6_nbr_lladdr_from_ipaddr
  .text.uip_ds6_link_neighbor_callback
-                0x0000000000209fb0       0x28 contiki-eth-openmote.a(uip-ds6-nbr.o)
-                0x0000000000209fb0                uip_ds6_link_neighbor_callback
+                0x0000000000209f88       0x28 contiki-eth-openmote.a(uip-ds6-nbr.o)
+                0x0000000000209f88                uip_ds6_link_neighbor_callback
  .text.uip_ds6_neighbor_periodic
-                0x0000000000209fd8      0x108 contiki-eth-openmote.a(uip-ds6-nbr.o)
-                0x0000000000209fd8                uip_ds6_neighbor_periodic
+                0x0000000000209fb0      0x108 contiki-eth-openmote.a(uip-ds6-nbr.o)
+                0x0000000000209fb0                uip_ds6_neighbor_periodic
  .text.uip_ds6_list_loop
-                0x000000000020a0e0       0x68 contiki-eth-openmote.a(uip-ds6.o)
-                0x000000000020a0e0                uip_ds6_list_loop
+                0x000000000020a0b8       0x68 contiki-eth-openmote.a(uip-ds6.o)
+                0x000000000020a0b8                uip_ds6_list_loop
  .text.uip_ds6_prefix_add
-                0x000000000020a148       0x70 contiki-eth-openmote.a(uip-ds6.o)
-                0x000000000020a148                uip_ds6_prefix_add
+                0x000000000020a120       0x70 contiki-eth-openmote.a(uip-ds6.o)
+                0x000000000020a120                uip_ds6_prefix_add
  .text.uip_ds6_is_addr_onlink
-                0x000000000020a1b8       0x48 contiki-eth-openmote.a(uip-ds6.o)
-                0x000000000020a1b8                uip_ds6_is_addr_onlink
+                0x000000000020a190       0x48 contiki-eth-openmote.a(uip-ds6.o)
+                0x000000000020a190                uip_ds6_is_addr_onlink
  .text.uip_ds6_addr_lookup
-                0x000000000020a200       0x30 contiki-eth-openmote.a(uip-ds6.o)
-                0x000000000020a200                uip_ds6_addr_lookup
+                0x000000000020a1d8       0x30 contiki-eth-openmote.a(uip-ds6.o)
+                0x000000000020a1d8                uip_ds6_addr_lookup
  .text.uip_ds6_get_link_local
-                0x000000000020a230       0x4c contiki-eth-openmote.a(uip-ds6.o)
-                0x000000000020a230                uip_ds6_get_link_local
+                0x000000000020a208       0x4c contiki-eth-openmote.a(uip-ds6.o)
+                0x000000000020a208                uip_ds6_get_link_local
  .text.uip_ds6_maddr_add
-                0x000000000020a27c       0x50 contiki-eth-openmote.a(uip-ds6.o)
-                0x000000000020a27c                uip_ds6_maddr_add
+                0x000000000020a254       0x50 contiki-eth-openmote.a(uip-ds6.o)
+                0x000000000020a254                uip_ds6_maddr_add
  .text.uip_ds6_addr_add
-                0x000000000020a2cc       0xac contiki-eth-openmote.a(uip-ds6.o)
-                0x000000000020a2cc                uip_ds6_addr_add
+                0x000000000020a2a4       0xac contiki-eth-openmote.a(uip-ds6.o)
+                0x000000000020a2a4                uip_ds6_addr_add
  .text.uip_ds6_maddr_lookup
-                0x000000000020a378       0x30 contiki-eth-openmote.a(uip-ds6.o)
-                0x000000000020a378                uip_ds6_maddr_lookup
+                0x000000000020a350       0x30 contiki-eth-openmote.a(uip-ds6.o)
+                0x000000000020a350                uip_ds6_maddr_lookup
  .text.uip_ds6_addr_rm
-                0x000000000020a3a8       0x48 contiki-eth-openmote.a(uip-ds6.o)
-                0x000000000020a3a8                uip_ds6_addr_rm
+                0x000000000020a380       0x48 contiki-eth-openmote.a(uip-ds6.o)
+                0x000000000020a380                uip_ds6_addr_rm
  .text.uip_ds6_periodic
-                0x000000000020a3f0       0x60 contiki-eth-openmote.a(uip-ds6.o)
-                0x000000000020a3f0                uip_ds6_periodic
+                0x000000000020a3c8       0x60 contiki-eth-openmote.a(uip-ds6.o)
+                0x000000000020a3c8                uip_ds6_periodic
  .text.uip_ds6_select_src
-                0x000000000020a450       0xfc contiki-eth-openmote.a(uip-ds6.o)
-                0x000000000020a450                uip_ds6_select_src
+                0x000000000020a428       0xfc contiki-eth-openmote.a(uip-ds6.o)
+                0x000000000020a428                uip_ds6_select_src
  .text.uip_ds6_set_addr_iid
-                0x000000000020a54c       0x14 contiki-eth-openmote.a(uip-ds6.o)
-                0x000000000020a54c                uip_ds6_set_addr_iid
+                0x000000000020a524       0x14 contiki-eth-openmote.a(uip-ds6.o)
+                0x000000000020a524                uip_ds6_set_addr_iid
  .text.uip_ds6_compute_reachable_time
-                0x000000000020a560       0x28 contiki-eth-openmote.a(uip-ds6.o)
-                0x000000000020a560                uip_ds6_compute_reachable_time
+                0x000000000020a538       0x28 contiki-eth-openmote.a(uip-ds6.o)
+                0x000000000020a538                uip_ds6_compute_reachable_time
  .text.uip_ds6_init
-                0x000000000020a588       0xf0 contiki-eth-openmote.a(uip-ds6.o)
-                0x000000000020a588                uip_ds6_init
+                0x000000000020a560       0xf0 contiki-eth-openmote.a(uip-ds6.o)
+                0x000000000020a560                uip_ds6_init
  .text.uip_icmp6_echo_request_input
-                0x000000000020a678      0x118 contiki-eth-openmote.a(uip-icmp6.o)
-                0x000000000020a678                uip_icmp6_echo_request_input
+                0x000000000020a650      0x118 contiki-eth-openmote.a(uip-icmp6.o)
+                0x000000000020a650                uip_icmp6_echo_request_input
  .text.uip_icmp6_error_output
-                0x000000000020a790      0x168 contiki-eth-openmote.a(uip-icmp6.o)
-                0x000000000020a790                uip_icmp6_error_output
+                0x000000000020a768      0x168 contiki-eth-openmote.a(uip-icmp6.o)
+                0x000000000020a768                uip_icmp6_error_output
  .text.uip_icmp6_send
-                0x000000000020a8f8       0x8c contiki-eth-openmote.a(uip-icmp6.o)
-                0x000000000020a8f8                uip_icmp6_send
+                0x000000000020a8d0       0x8c contiki-eth-openmote.a(uip-icmp6.o)
+                0x000000000020a8d0                uip_icmp6_send
  .text.uip_icmp6_echo_reply_input
-                0x000000000020a984       0xfc contiki-eth-openmote.a(uip-icmp6.o)
-                0x000000000020a984                uip_icmp6_echo_reply_input
+                0x000000000020a95c       0xfc contiki-eth-openmote.a(uip-icmp6.o)
+                0x000000000020a95c                uip_icmp6_echo_reply_input
  .text.uip_icmp6_echo_reply_callback_add
-                0x000000000020aa80       0x14 contiki-eth-openmote.a(uip-icmp6.o)
-                0x000000000020aa80                uip_icmp6_echo_reply_callback_add
+                0x000000000020aa58       0x14 contiki-eth-openmote.a(uip-icmp6.o)
+                0x000000000020aa58                uip_icmp6_echo_reply_callback_add
  .text.uip_nd6_ns_input
-                0x000000000020aa94      0x294 contiki-eth-openmote.a(uip-nd6.o)
-                0x000000000020aa94                uip_nd6_ns_input
+                0x000000000020aa6c      0x294 contiki-eth-openmote.a(uip-nd6.o)
+                0x000000000020aa6c                uip_nd6_ns_input
  .text.uip_nd6_ns_output
-                0x000000000020ad28      0x16c contiki-eth-openmote.a(uip-nd6.o)
-                0x000000000020ad28                uip_nd6_ns_output
+                0x000000000020ad00      0x16c contiki-eth-openmote.a(uip-nd6.o)
+                0x000000000020ad00                uip_nd6_ns_output
  .text.uip_nd6_na_input
-                0x000000000020ae94      0x1f0 contiki-eth-openmote.a(uip-nd6.o)
-                0x000000000020ae94                uip_nd6_na_input
+                0x000000000020ae6c      0x1f0 contiki-eth-openmote.a(uip-nd6.o)
+                0x000000000020ae6c                uip_nd6_na_input
  .text.uip_split_output
-                0x000000000020b084       0xc0 contiki-eth-openmote.a(uip-split.o)
-                0x000000000020b084                uip_split_output
+                0x000000000020b05c       0xc0 contiki-eth-openmote.a(uip-split.o)
+                0x000000000020b05c                uip_split_output
  .text.uip_udp_packet_send
-                0x000000000020b144       0x44 contiki-eth-openmote.a(uip-udp-packet.)
-                0x000000000020b144                uip_udp_packet_send
+                0x000000000020b11c       0x44 contiki-eth-openmote.a(uip-udp-packet.)
+                0x000000000020b11c                uip_udp_packet_send
  .text.uip_udp_packet_sendto
-                0x000000000020b188       0x4c contiki-eth-openmote.a(uip-udp-packet.)
-                0x000000000020b188                uip_udp_packet_sendto
- .text.chksum   0x000000000020b1d4       0x50 contiki-eth-openmote.a(uip6.o)
+                0x000000000020b160       0x4c contiki-eth-openmote.a(uip-udp-packet.)
+                0x000000000020b160                uip_udp_packet_sendto
+ .text.chksum   0x000000000020b1ac       0x50 contiki-eth-openmote.a(uip6.o)
  .text.upper_layer_chksum
-                0x000000000020b224       0x58 contiki-eth-openmote.a(uip6.o)
+                0x000000000020b1fc       0x58 contiki-eth-openmote.a(uip6.o)
  .text.ext_hdr_options_process
-                0x000000000020b27c       0xc4 contiki-eth-openmote.a(uip6.o)
+                0x000000000020b254       0xc4 contiki-eth-openmote.a(uip6.o)
  .text.uip_add32
-                0x000000000020b340       0x58 contiki-eth-openmote.a(uip6.o)
-                0x000000000020b340                uip_add32
+                0x000000000020b318       0x58 contiki-eth-openmote.a(uip6.o)
+                0x000000000020b318                uip_add32
  .text.unlikely.uip_add_rcv_nxt
-                0x000000000020b398       0x2c contiki-eth-openmote.a(uip6.o)
+                0x000000000020b370       0x2c contiki-eth-openmote.a(uip6.o)
  .text.uip_icmp6chksum
-                0x000000000020b3c4        0x8 contiki-eth-openmote.a(uip6.o)
-                0x000000000020b3c4                uip_icmp6chksum
+                0x000000000020b39c        0x8 contiki-eth-openmote.a(uip6.o)
+                0x000000000020b39c                uip_icmp6chksum
  .text.uip_tcpchksum
-                0x000000000020b3cc        0x8 contiki-eth-openmote.a(uip6.o)
-                0x000000000020b3cc                uip_tcpchksum
+                0x000000000020b3a4        0x8 contiki-eth-openmote.a(uip6.o)
+                0x000000000020b3a4                uip_tcpchksum
  .text.uip_init
-                0x000000000020b3d4       0x60 contiki-eth-openmote.a(uip6.o)
-                0x000000000020b3d4                uip_init
+                0x000000000020b3ac       0x60 contiki-eth-openmote.a(uip6.o)
+                0x000000000020b3ac                uip_init
  .text.remove_ext_hdr
-                0x000000000020b434       0x60 contiki-eth-openmote.a(uip6.o)
-                0x000000000020b434                remove_ext_hdr
+                0x000000000020b40c       0x60 contiki-eth-openmote.a(uip6.o)
+                0x000000000020b40c                remove_ext_hdr
  .text.uip_udp_new
-                0x000000000020b494       0xec contiki-eth-openmote.a(uip6.o)
-                0x000000000020b494                uip_udp_new
+                0x000000000020b46c       0xec contiki-eth-openmote.a(uip6.o)
+                0x000000000020b46c                uip_udp_new
  .text.uip_unlisten
-                0x000000000020b580       0x50 contiki-eth-openmote.a(uip6.o)
-                0x000000000020b580                uip_unlisten
+                0x000000000020b558       0x50 contiki-eth-openmote.a(uip6.o)
+                0x000000000020b558                uip_unlisten
  .text.uip_listen
-                0x000000000020b5d0       0x54 contiki-eth-openmote.a(uip6.o)
-                0x000000000020b5d0                uip_listen
+                0x000000000020b5a8       0x54 contiki-eth-openmote.a(uip6.o)
+                0x000000000020b5a8                uip_listen
  .text.uip_process
-                0x000000000020b624     0x11f8 contiki-eth-openmote.a(uip6.o)
-                0x000000000020b624                uip_process
+                0x000000000020b5fc     0x11f8 contiki-eth-openmote.a(uip6.o)
+                0x000000000020b5fc                uip_process
  .text.uip_htons
-                0x000000000020c81c        0x8 contiki-eth-openmote.a(uip6.o)
-                0x000000000020c81c                uip_htons
+                0x000000000020c7f4        0x8 contiki-eth-openmote.a(uip6.o)
+                0x000000000020c7f4                uip_htons
  .text.uip_htonl
-                0x000000000020c824       0x14 contiki-eth-openmote.a(uip6.o)
-                0x000000000020c824                uip_htonl
+                0x000000000020c7fc       0x14 contiki-eth-openmote.a(uip6.o)
+                0x000000000020c7fc                uip_htonl
  .text.uip_send
-                0x000000000020c838       0x5c contiki-eth-openmote.a(uip6.o)
-                0x000000000020c838                uip_send
+                0x000000000020c810       0x5c contiki-eth-openmote.a(uip6.o)
+                0x000000000020c810                uip_send
  .text.netstack_aes_set_key
-                0x000000000020c894       0x24 contiki-eth-openmote.a(netstack-aes.o)
-                0x000000000020c894                netstack_aes_set_key
+                0x000000000020c86c       0x24 contiki-eth-openmote.a(netstack-aes.o)
+                0x000000000020c86c                netstack_aes_set_key
  .text.duty_cycle
-                0x000000000020c8b8        0x4 contiki-eth-openmote.a(drowsie.o)
- .text.on       0x000000000020c8bc       0x28 contiki-eth-openmote.a(drowsie.o)
- .text.off      0x000000000020c8e4       0x3c contiki-eth-openmote.a(drowsie.o)
+                0x000000000020c890        0x4 contiki-eth-openmote.a(drowsie.o)
+ .text.on       0x000000000020c894       0x28 contiki-eth-openmote.a(drowsie.o)
+ .text.off      0x000000000020c8bc       0x3c contiki-eth-openmote.a(drowsie.o)
  .text.recv_burst_off
-                0x000000000020c920       0x14 contiki-eth-openmote.a(drowsie.o)
+                0x000000000020c8f8       0x14 contiki-eth-openmote.a(drowsie.o)
  .text.call_powercycle
-                0x000000000020c934       0x6c contiki-eth-openmote.a(drowsie.o)
+                0x000000000020c90c       0x6c contiki-eth-openmote.a(drowsie.o)
  .text.turn_off
-                0x000000000020c9a0       0x44 contiki-eth-openmote.a(drowsie.o)
+                0x000000000020c978       0x44 contiki-eth-openmote.a(drowsie.o)
  .text.turn_on.part.3
-                0x000000000020c9e4       0x2c contiki-eth-openmote.a(drowsie.o)
- .text.turn_on  0x000000000020ca10       0x14 contiki-eth-openmote.a(drowsie.o)
- .text.init     0x000000000020ca24       0x24 contiki-eth-openmote.a(drowsie.o)
+                0x000000000020c9bc       0x2c contiki-eth-openmote.a(drowsie.o)
+ .text.turn_on  0x000000000020c9e8       0x14 contiki-eth-openmote.a(drowsie.o)
+ .text.init     0x000000000020c9fc       0x24 contiki-eth-openmote.a(drowsie.o)
  .text.input_packet
-                0x000000000020ca48      0x114 contiki-eth-openmote.a(drowsie.o)
+                0x000000000020ca20      0x114 contiki-eth-openmote.a(drowsie.o)
  .text.send_packet.isra.5.part.6
-                0x000000000020cb5c      0x23c contiki-eth-openmote.a(drowsie.o)
+                0x000000000020cb34      0x23c contiki-eth-openmote.a(drowsie.o)
  .text.qsend_list
-                0x000000000020cd98       0x8c contiki-eth-openmote.a(drowsie.o)
+                0x000000000020cd70       0x8c contiki-eth-openmote.a(drowsie.o)
  .text.qsend_packet
-                0x000000000020ce24       0x2c contiki-eth-openmote.a(drowsie.o)
+                0x000000000020cdfc       0x2c contiki-eth-openmote.a(drowsie.o)
  .text.ip64_addr_copy4
-                0x000000000020ce50        0x8 contiki-eth-openmote.a(ip64-addr.o)
-                0x000000000020ce50                ip64_addr_copy4
+                0x000000000020ce28        0x8 contiki-eth-openmote.a(ip64-addr.o)
+                0x000000000020ce28                ip64_addr_copy4
  .text.ip64_addr_copy6
-                0x000000000020ce58       0x18 contiki-eth-openmote.a(ip64-addr.o)
-                0x000000000020ce58                ip64_addr_copy6
+                0x000000000020ce30       0x18 contiki-eth-openmote.a(ip64-addr.o)
+                0x000000000020ce30                ip64_addr_copy6
  .text.ip64_addr_4to6
-                0x000000000020ce70       0x38 contiki-eth-openmote.a(ip64-addr.o)
-                0x000000000020ce70                ip64_addr_4to6
+                0x000000000020ce48       0x38 contiki-eth-openmote.a(ip64-addr.o)
+                0x000000000020ce48                ip64_addr_4to6
  .text.ip64_addr_6to4
-                0x000000000020cea8       0x48 contiki-eth-openmote.a(ip64-addr.o)
-                0x000000000020cea8                ip64_addr_6to4
+                0x000000000020ce80       0x48 contiki-eth-openmote.a(ip64-addr.o)
+                0x000000000020ce80                ip64_addr_6to4
  .text.arp_update
-                0x000000000020cef0       0xdc contiki-eth-openmote.a(ip64-arp.o)
+                0x000000000020cec8       0xdc contiki-eth-openmote.a(ip64-arp.o)
  .text.ip64_arp_arp_input
-                0x000000000020cfcc       0xb4 contiki-eth-openmote.a(ip64-arp.o)
-                0x000000000020cfcc                ip64_arp_arp_input
+                0x000000000020cfa4       0xb4 contiki-eth-openmote.a(ip64-arp.o)
+                0x000000000020cfa4                ip64_arp_arp_input
  .text.ip64_arp_check_cache
-                0x000000000020d080       0xa8 contiki-eth-openmote.a(ip64-arp.o)
-                0x000000000020d080                ip64_arp_check_cache
+                0x000000000020d058       0xa8 contiki-eth-openmote.a(ip64-arp.o)
+                0x000000000020d058                ip64_arp_check_cache
  .text.ip64_arp_create_ethhdr
-                0x000000000020d128       0xec contiki-eth-openmote.a(ip64-arp.o)
-                0x000000000020d128                ip64_arp_create_ethhdr
+                0x000000000020d100       0xec contiki-eth-openmote.a(ip64-arp.o)
+                0x000000000020d100                ip64_arp_create_ethhdr
  .text.ip64_arp_create_arp_request
-                0x000000000020d214       0xc8 contiki-eth-openmote.a(ip64-arp.o)
-                0x000000000020d214                ip64_arp_create_arp_request
+                0x000000000020d1ec       0xc8 contiki-eth-openmote.a(ip64-arp.o)
+                0x000000000020d1ec                ip64_arp_create_arp_request
  .text.writereg
-                0x000000000020d2dc       0x24 contiki-eth-openmote.a(enc28j60.o)
+                0x000000000020d2b4       0x24 contiki-eth-openmote.a(enc28j60.o)
  .text.writedata
-                0x000000000020d300       0x2c contiki-eth-openmote.a(enc28j60.o)
- .text.readreg  0x000000000020d32c       0x20 contiki-eth-openmote.a(enc28j60.o)
+                0x000000000020d2d8       0x2c contiki-eth-openmote.a(enc28j60.o)
+ .text.readreg  0x000000000020d304       0x20 contiki-eth-openmote.a(enc28j60.o)
  .text.setregbank
-                0x000000000020d34c       0x20 contiki-eth-openmote.a(enc28j60.o)
- .text.reset    0x000000000020d36c      0x134 contiki-eth-openmote.a(enc28j60.o)
+                0x000000000020d324       0x20 contiki-eth-openmote.a(enc28j60.o)
+ .text.reset    0x000000000020d344      0x134 contiki-eth-openmote.a(enc28j60.o)
  .text.process_thread_enc_watchdog_process
-                0x000000000020d4a0       0x5c contiki-eth-openmote.a(enc28j60.o)
+                0x000000000020d478       0x5c contiki-eth-openmote.a(enc28j60.o)
  .text.readdatabyte
-                0x000000000020d4fc       0x1c contiki-eth-openmote.a(enc28j60.o)
+                0x000000000020d4d4       0x1c contiki-eth-openmote.a(enc28j60.o)
  .text.enc28j60_init
-                0x000000000020d518       0x30 contiki-eth-openmote.a(enc28j60.o)
-                0x000000000020d518                enc28j60_init
+                0x000000000020d4f0       0x30 contiki-eth-openmote.a(enc28j60.o)
+                0x000000000020d4f0                enc28j60_init
  .text.enc28j60_send
-                0x000000000020d548       0xec contiki-eth-openmote.a(enc28j60.o)
-                0x000000000020d548                enc28j60_send
+                0x000000000020d520       0xec contiki-eth-openmote.a(enc28j60.o)
+                0x000000000020d520                enc28j60_send
  .text.enc28j60_read
-                0x000000000020d634       0xd0 contiki-eth-openmote.a(enc28j60.o)
-                0x000000000020d634                enc28j60_read
+                0x000000000020d60c       0xd0 contiki-eth-openmote.a(enc28j60.o)
+                0x000000000020d60c                enc28j60_read
  .text.mac_call_sent_callback
-                0x000000000020d704       0x10 contiki-eth-openmote.a(mac.o)
-                0x000000000020d704                mac_call_sent_callback
- .text.parse    0x000000000020d714       0xa4 contiki-eth-openmote.a(framer-802154.o)
- .text.create   0x000000000020d7b8      0x110 contiki-eth-openmote.a(framer-802154.o)
+                0x000000000020d6dc       0x10 contiki-eth-openmote.a(mac.o)
+                0x000000000020d6dc                mac_call_sent_callback
+ .text.parse    0x000000000020d6ec       0xa4 contiki-eth-openmote.a(framer-802154.o)
+ .text.create   0x000000000020d790      0x110 contiki-eth-openmote.a(framer-802154.o)
  .text.rpl_verify_header
-                0x000000000020d8c8       0xa8 contiki-eth-openmote.a(rpl-ext-header.)
-                0x000000000020d8c8                rpl_verify_header
+                0x000000000020d8a0       0xa8 contiki-eth-openmote.a(rpl-ext-header.)
+                0x000000000020d8a0                rpl_verify_header
  .text.rpl_update_header_empty
-                0x000000000020d970      0x100 contiki-eth-openmote.a(rpl-ext-header.)
-                0x000000000020d970                rpl_update_header_empty
+                0x000000000020d948      0x100 contiki-eth-openmote.a(rpl-ext-header.)
+                0x000000000020d948                rpl_update_header_empty
  .text.rpl_update_header_final
-                0x000000000020da70       0x88 contiki-eth-openmote.a(rpl-ext-header.)
-                0x000000000020da70                rpl_update_header_final
+                0x000000000020da48       0x88 contiki-eth-openmote.a(rpl-ext-header.)
+                0x000000000020da48                rpl_update_header_final
  .text.rpl_invert_header
-                0x000000000020daf8       0x50 contiki-eth-openmote.a(rpl-ext-header.)
-                0x000000000020daf8                rpl_invert_header
+                0x000000000020dad0       0x50 contiki-eth-openmote.a(rpl-ext-header.)
+                0x000000000020dad0                rpl_invert_header
  .text.enc28j60_arch_spi_init
-                0x000000000020db48       0x40 contiki-eth-openmote.a(enc28j60-arch.o)
-                0x000000000020db48                enc28j60_arch_spi_init
+                0x000000000020db20       0x40 contiki-eth-openmote.a(enc28j60-arch.o)
+                0x000000000020db20                enc28j60_arch_spi_init
  .text.enc28j60_arch_spi_select
-                0x000000000020db88        0xc contiki-eth-openmote.a(enc28j60-arch.o)
-                0x000000000020db88                enc28j60_arch_spi_select
+                0x000000000020db60        0xc contiki-eth-openmote.a(enc28j60-arch.o)
+                0x000000000020db60                enc28j60_arch_spi_select
  .text.enc28j60_arch_spi_deselect
-                0x000000000020db94        0xc contiki-eth-openmote.a(enc28j60-arch.o)
-                0x000000000020db94                enc28j60_arch_spi_deselect
+                0x000000000020db6c        0xc contiki-eth-openmote.a(enc28j60-arch.o)
+                0x000000000020db6c                enc28j60_arch_spi_deselect
  .text.enc28j60_arch_spi_write
-                0x000000000020dba0       0x50 contiki-eth-openmote.a(enc28j60-arch.o)
-                0x000000000020dba0                enc28j60_arch_spi_write
+                0x000000000020db78       0x50 contiki-eth-openmote.a(enc28j60-arch.o)
+                0x000000000020db78                enc28j60_arch_spi_write
  .text.enc28j60_arch_spi_read
-                0x000000000020dbf0        0x8 contiki-eth-openmote.a(enc28j60-arch.o)
-                0x000000000020dbf0                enc28j60_arch_spi_read
+                0x000000000020dbc8        0x8 contiki-eth-openmote.a(enc28j60-arch.o)
+                0x000000000020dbc8                enc28j60_arch_spi_read
  .text.field_len
-                0x000000000020dbf8       0x80 contiki-eth-openmote.a(frame802154.o)
+                0x000000000020dbd0       0x80 contiki-eth-openmote.a(frame802154.o)
  .text.frame802154_hdrlen
-                0x000000000020dc78       0x30 contiki-eth-openmote.a(frame802154.o)
-                0x000000000020dc78                frame802154_hdrlen
+                0x000000000020dc50       0x30 contiki-eth-openmote.a(frame802154.o)
+                0x000000000020dc50                frame802154_hdrlen
  .text.frame802154_create
-                0x000000000020dca8      0x128 contiki-eth-openmote.a(frame802154.o)
-                0x000000000020dca8                frame802154_create
+                0x000000000020dc80      0x128 contiki-eth-openmote.a(frame802154.o)
+                0x000000000020dc80                frame802154_create
  .text.frame802154_parse
-                0x000000000020ddd0      0x138 contiki-eth-openmote.a(frame802154.o)
-                0x000000000020ddd0                frame802154_parse
- .text          0x000000000020df08       0x2c /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7-m/libgcc.a(_aeabi_uldivmod.o)
-                0x000000000020df08                __aeabi_uldivmod
- .text          0x000000000020df34       0x60 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7-m/libgcc.a(bpabi.o)
-                0x000000000020df34                __gnu_ldivmod_helper
-                0x000000000020df64                __gnu_uldivmod_helper
- .text          0x000000000020df94        0x4 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7-m/libgcc.a(_dvmd_tls.o)
-                0x000000000020df94                __aeabi_ldiv0
-                0x000000000020df94                __aeabi_idiv0
- .text          0x000000000020df98      0x2a0 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7-m/libgcc.a(_divdi3.o)
-                0x000000000020df98                __divdi3
- .text          0x000000000020e238      0x290 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7-m/libgcc.a(_udivdi3.o)
-                0x000000000020e238                __udivdi3
- .text.memcmp   0x000000000020e4c8       0x68 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-memcmp.o)
-                0x000000000020e4c8                memcmp
- .text          0x000000000020e530       0xec /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-memcpy.o)
-                0x000000000020e530                memcpy
- .text.memmove  0x000000000020e61c       0xcc /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-memmove.o)
-                0x000000000020e61c                memmove
- .text.memset   0x000000000020e6e8       0x94 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-memset.o)
-                0x000000000020e6e8                memset
- .text.strchr   0x000000000020e77c       0xf4 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-strchr.o)
-                0x000000000020e77c                strchr
- .text.strcpy   0x000000000020e870       0xbc /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-strcpy.o)
-                0x000000000020e870                strcpy
- .text.strlen   0x000000000020e92c       0x60 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-strlen.o)
-                0x000000000020e92c                strlen
- .text.strncmp  0x000000000020e98c       0xb4 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-strncmp.o)
-                0x000000000020e98c                strncmp
- .text.strncpy  0x000000000020ea40       0x64 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-strncpy.o)
-                0x000000000020ea40                strncpy
- .text.strrchr  0x000000000020eaa4       0x28 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-strrchr.o)
-                0x000000000020eaa4                strrchr
+                0x000000000020dda8      0x138 contiki-eth-openmote.a(frame802154.o)
+                0x000000000020dda8                frame802154_parse
+ .text          0x000000000020dee0       0x2c /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7-m/libgcc.a(_aeabi_uldivmod.o)
+                0x000000000020dee0                __aeabi_uldivmod
+ .text          0x000000000020df0c       0x60 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7-m/libgcc.a(bpabi.o)
+                0x000000000020df0c                __gnu_ldivmod_helper
+                0x000000000020df3c                __gnu_uldivmod_helper
+ .text          0x000000000020df6c        0x4 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7-m/libgcc.a(_dvmd_tls.o)
+                0x000000000020df6c                __aeabi_ldiv0
+                0x000000000020df6c                __aeabi_idiv0
+ .text          0x000000000020df70      0x2a0 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7-m/libgcc.a(_divdi3.o)
+                0x000000000020df70                __divdi3
+ .text          0x000000000020e210      0x290 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7-m/libgcc.a(_udivdi3.o)
+                0x000000000020e210                __udivdi3
+ .text.memcmp   0x000000000020e4a0       0x68 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-memcmp.o)
+                0x000000000020e4a0                memcmp
+ .text          0x000000000020e508       0xec /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-memcpy.o)
+                0x000000000020e508                memcpy
+ .text.memmove  0x000000000020e5f4       0xcc /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-memmove.o)
+                0x000000000020e5f4                memmove
+ .text.memset   0x000000000020e6c0       0x94 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-memset.o)
+                0x000000000020e6c0                memset
+ .text.strchr   0x000000000020e754       0xf4 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-strchr.o)
+                0x000000000020e754                strchr
+ .text.strcpy   0x000000000020e848       0xbc /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-strcpy.o)
+                0x000000000020e848                strcpy
+ .text.strlen   0x000000000020e904       0x60 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-strlen.o)
+                0x000000000020e904                strlen
+ .text.strncmp  0x000000000020e964       0xb4 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-strncmp.o)
+                0x000000000020e964                strncmp
+ .text.strncpy  0x000000000020ea18       0x64 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-strncpy.o)
+                0x000000000020ea18                strncpy
+ .text.strrchr  0x000000000020ea7c       0x28 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-strrchr.o)
+                0x000000000020ea7c                strrchr
  *(.rodata*)
  .rodata.autostart_processes
-                0x000000000020eacc        0xc router-webserver-node.co
-                0x000000000020eacc                autostart_processes
+                0x000000000020eaa4        0xc router-webserver-node.co
+                0x000000000020eaa4                autostart_processes
  .rodata.str1.4
-                0x000000000020ead8       0x58 router-webserver-node.co
+                0x000000000020eab0       0x58 router-webserver-node.co
  .rodata.str1.4
-                0x000000000020eb30        0xc contiki-eth-openmote.a(etimer.o)
+                0x000000000020eb08        0xc contiki-eth-openmote.a(etimer.o)
  .rodata.str1.4
-                0x000000000020eb3c        0xb contiki-eth-openmote.a(ip64-webserver.)
+                0x000000000020eb14        0xb contiki-eth-openmote.a(ip64-webserver.)
                                           0xc (size before relaxing)
- *fill*         0x000000000020eb47        0x1 00000000
+ *fill*         0x000000000020eb1f        0x1 00000000
  .rodata.str1.4
-                0x000000000020eb48       0x10 contiki-eth-openmote.a(httpd.o)
+                0x000000000020eb20       0x10 contiki-eth-openmote.a(httpd.o)
  .rodata.ip64_webserver_http_404_html
-                0x000000000020eb58        0xc contiki-eth-openmote.a(ip64-webserver-)
-                0x000000000020eb58                ip64_webserver_http_404_html
+                0x000000000020eb30        0xc contiki-eth-openmote.a(ip64-webserver-)
+                0x000000000020eb30                ip64_webserver_http_404_html
  .rodata.ip64_webserver_http_referer
-                0x000000000020eb64        0xc contiki-eth-openmote.a(ip64-webserver-)
-                0x000000000020eb64                ip64_webserver_http_referer
+                0x000000000020eb3c        0xc contiki-eth-openmote.a(ip64-webserver-)
+                0x000000000020eb3c                ip64_webserver_http_referer
  .rodata.ip64_webserver_http_index_html
-                0x000000000020eb70        0xc contiki-eth-openmote.a(ip64-webserver-)
-                0x000000000020eb70                ip64_webserver_http_index_html
+                0x000000000020eb48        0xc contiki-eth-openmote.a(ip64-webserver-)
+                0x000000000020eb48                ip64_webserver_http_index_html
  .rodata.ip64_webserver_http_jpg
-                0x000000000020eb7c        0x8 contiki-eth-openmote.a(ip64-webserver-)
-                0x000000000020eb7c                ip64_webserver_http_jpg
+                0x000000000020eb54        0x8 contiki-eth-openmote.a(ip64-webserver-)
+                0x000000000020eb54                ip64_webserver_http_jpg
  .rodata.ip64_webserver_http_content_type_jpg
-                0x000000000020eb84       0x20 contiki-eth-openmote.a(ip64-webserver-)
-                0x000000000020eb84                ip64_webserver_http_content_type_jpg
+                0x000000000020eb5c       0x20 contiki-eth-openmote.a(ip64-webserver-)
+                0x000000000020eb5c                ip64_webserver_http_content_type_jpg
  .rodata.ip64_webserver_http_content_type_png
-                0x000000000020eba4       0x1c contiki-eth-openmote.a(ip64-webserver-)
-                0x000000000020eba4                ip64_webserver_http_content_type_png
+                0x000000000020eb7c       0x1c contiki-eth-openmote.a(ip64-webserver-)
+                0x000000000020eb7c                ip64_webserver_http_content_type_png
  .rodata.ip64_webserver_http_content_type_html
-                0x000000000020ebc0       0x1c contiki-eth-openmote.a(ip64-webserver-)
-                0x000000000020ebc0                ip64_webserver_http_content_type_html
+                0x000000000020eb98       0x1c contiki-eth-openmote.a(ip64-webserver-)
+                0x000000000020eb98                ip64_webserver_http_content_type_html
  .rodata.ip64_webserver_http_content_type_binary
-                0x000000000020ebdc       0x2c contiki-eth-openmote.a(ip64-webserver-)
-                0x000000000020ebdc                ip64_webserver_http_content_type_binary
+                0x000000000020ebb4       0x2c contiki-eth-openmote.a(ip64-webserver-)
+                0x000000000020ebb4                ip64_webserver_http_content_type_binary
  .rodata.ip64_webserver_http_html
-                0x000000000020ec08        0x8 contiki-eth-openmote.a(ip64-webserver-)
-                0x000000000020ec08                ip64_webserver_http_html
+                0x000000000020ebe0        0x8 contiki-eth-openmote.a(ip64-webserver-)
+                0x000000000020ebe0                ip64_webserver_http_html
  .rodata.ip64_webserver_http_png
-                0x000000000020ec10        0x8 contiki-eth-openmote.a(ip64-webserver-)
-                0x000000000020ec10                ip64_webserver_http_png
+                0x000000000020ebe8        0x8 contiki-eth-openmote.a(ip64-webserver-)
+                0x000000000020ebe8                ip64_webserver_http_png
  .rodata.ip64_webserver_http_css
-                0x000000000020ec18        0x8 contiki-eth-openmote.a(ip64-webserver-)
-                0x000000000020ec18                ip64_webserver_http_css
+                0x000000000020ebf0        0x8 contiki-eth-openmote.a(ip64-webserver-)
+                0x000000000020ebf0                ip64_webserver_http_css
  .rodata.ip64_webserver_http_header_200
-                0x000000000020ec20       0x58 contiki-eth-openmote.a(ip64-webserver-)
-                0x000000000020ec20                ip64_webserver_http_header_200
+                0x000000000020ebf8       0x58 contiki-eth-openmote.a(ip64-webserver-)
+                0x000000000020ebf8                ip64_webserver_http_header_200
  .rodata.ip64_webserver_http_content_type_css
-                0x000000000020ec78       0x1c contiki-eth-openmote.a(ip64-webserver-)
-                0x000000000020ec78                ip64_webserver_http_content_type_css
+                0x000000000020ec50       0x1c contiki-eth-openmote.a(ip64-webserver-)
+                0x000000000020ec50                ip64_webserver_http_content_type_css
  .rodata.ip64_webserver_http_content_type_plain
-                0x000000000020ec94       0x20 contiki-eth-openmote.a(ip64-webserver-)
-                0x000000000020ec94                ip64_webserver_http_content_type_plain
+                0x000000000020ec6c       0x20 contiki-eth-openmote.a(ip64-webserver-)
+                0x000000000020ec6c                ip64_webserver_http_content_type_plain
  .rodata.ip64_webserver_http_gif
-                0x000000000020ecb4        0x8 contiki-eth-openmote.a(ip64-webserver-)
-                0x000000000020ecb4                ip64_webserver_http_gif
+                0x000000000020ec8c        0x8 contiki-eth-openmote.a(ip64-webserver-)
+                0x000000000020ec8c                ip64_webserver_http_gif
  .rodata.ip64_webserver_http_content_type_gif
-                0x000000000020ecbc       0x1c contiki-eth-openmote.a(ip64-webserver-)
-                0x000000000020ecbc                ip64_webserver_http_content_type_gif
+                0x000000000020ec94       0x1c contiki-eth-openmote.a(ip64-webserver-)
+                0x000000000020ec94                ip64_webserver_http_content_type_gif
  .rodata.ip64_webserver_http_header_404
-                0x000000000020ecd8       0x5c contiki-eth-openmote.a(ip64-webserver-)
-                0x000000000020ecd8                ip64_webserver_http_header_404
+                0x000000000020ecb0       0x5c contiki-eth-openmote.a(ip64-webserver-)
+                0x000000000020ecb0                ip64_webserver_http_header_404
  .rodata.ip64_webserver_http_shtml
-                0x000000000020ed34        0x8 contiki-eth-openmote.a(ip64-webserver-)
-                0x000000000020ed34                ip64_webserver_http_shtml
+                0x000000000020ed0c        0x8 contiki-eth-openmote.a(ip64-webserver-)
+                0x000000000020ed0c                ip64_webserver_http_shtml
  .rodata.ip64_webserver_http_get
-                0x000000000020ed3c        0x8 contiki-eth-openmote.a(ip64-webserver-)
-                0x000000000020ed3c                ip64_webserver_http_get
+                0x000000000020ed14        0x8 contiki-eth-openmote.a(ip64-webserver-)
+                0x000000000020ed14                ip64_webserver_http_get
  .rodata.data_rplreset_shtml
-                0x000000000020ed44       0x20 contiki-eth-openmote.a(httpd-fs.o)
-                0x000000000020ed44                data_rplreset_shtml
+                0x000000000020ed1c       0x20 contiki-eth-openmote.a(httpd-fs.o)
+                0x000000000020ed1c                data_rplreset_shtml
  .rodata.file_files_shtml
-                0x000000000020ed64       0x14 contiki-eth-openmote.a(httpd-fs.o)
-                0x000000000020ed64                file_files_shtml
+                0x000000000020ed3c       0x14 contiki-eth-openmote.a(httpd-fs.o)
+                0x000000000020ed3c                file_files_shtml
  .rodata.data_nbrsping_shtml
-                0x000000000020ed78       0x7c contiki-eth-openmote.a(httpd-fs.o)
-                0x000000000020ed78                data_nbrsping_shtml
+                0x000000000020ed50       0x7c contiki-eth-openmote.a(httpd-fs.o)
+                0x000000000020ed50                data_nbrsping_shtml
  .rodata.file_rplroot_shtml
-                0x000000000020edf4       0x14 contiki-eth-openmote.a(httpd-fs.o)
-                0x000000000020edf4                file_rplroot_shtml
+                0x000000000020edcc       0x14 contiki-eth-openmote.a(httpd-fs.o)
+                0x000000000020edcc                file_rplroot_shtml
  .rodata.data_index_html
-                0x000000000020ee08      0xab4 contiki-eth-openmote.a(httpd-fs.o)
-                0x000000000020ee08                data_index_html
+                0x000000000020ede0      0xab4 contiki-eth-openmote.a(httpd-fs.o)
+                0x000000000020ede0                data_index_html
  .rodata.file_nbrs_shtml
-                0x000000000020f8bc       0x14 contiki-eth-openmote.a(httpd-fs.o)
-                0x000000000020f8bc                file_nbrs_shtml
+                0x000000000020f894       0x14 contiki-eth-openmote.a(httpd-fs.o)
+                0x000000000020f894                file_nbrs_shtml
  .rodata.file_nat_shtml
-                0x000000000020f8d0       0x14 contiki-eth-openmote.a(httpd-fs.o)
-                0x000000000020f8d0                file_nat_shtml
+                0x000000000020f8a8       0x14 contiki-eth-openmote.a(httpd-fs.o)
+                0x000000000020f8a8                file_nat_shtml
  .rodata.file_processes_shtml
-                0x000000000020f8e4       0x14 contiki-eth-openmote.a(httpd-fs.o)
-                0x000000000020f8e4                file_processes_shtml
+                0x000000000020f8bc       0x14 contiki-eth-openmote.a(httpd-fs.o)
+                0x000000000020f8bc                file_processes_shtml
  .rodata.data_processes_shtml
-                0x000000000020f8f8       0xbc contiki-eth-openmote.a(httpd-fs.o)
-                0x000000000020f8f8                data_processes_shtml
+                0x000000000020f8d0       0xbc contiki-eth-openmote.a(httpd-fs.o)
+                0x000000000020f8d0                data_processes_shtml
  .rodata.data_nat_shtml
-                0x000000000020f9b4       0xe8 contiki-eth-openmote.a(httpd-fs.o)
-                0x000000000020f9b4                data_nat_shtml
+                0x000000000020f98c       0xe8 contiki-eth-openmote.a(httpd-fs.o)
+                0x000000000020f98c                data_nat_shtml
  .rodata.data_404_html
-                0x000000000020fa9c       0x10 contiki-eth-openmote.a(httpd-fs.o)
-                0x000000000020fa9c                data_404_html
+                0x000000000020fa74       0x10 contiki-eth-openmote.a(httpd-fs.o)
+                0x000000000020fa74                data_404_html
  .rodata.data_routes_shtml
-                0x000000000020faac       0x94 contiki-eth-openmote.a(httpd-fs.o)
-                0x000000000020faac                data_routes_shtml
+                0x000000000020fa84       0x94 contiki-eth-openmote.a(httpd-fs.o)
+                0x000000000020fa84                data_routes_shtml
  .rodata.data_routesping_shtml
-                0x000000000020fb40       0x9c contiki-eth-openmote.a(httpd-fs.o)
-                0x000000000020fb40                data_routesping_shtml
+                0x000000000020fb18       0x9c contiki-eth-openmote.a(httpd-fs.o)
+                0x000000000020fb18                data_routesping_shtml
  .rodata.data_tcp_shtml
-                0x000000000020fbdc       0xcc contiki-eth-openmote.a(httpd-fs.o)
-                0x000000000020fbdc                data_tcp_shtml
+                0x000000000020fbb4       0xcc contiki-eth-openmote.a(httpd-fs.o)
+                0x000000000020fbb4                data_tcp_shtml
  .rodata.data_rplroot_shtml
-                0x000000000020fca8       0x20 contiki-eth-openmote.a(httpd-fs.o)
-                0x000000000020fca8                data_rplroot_shtml
+                0x000000000020fc80       0x20 contiki-eth-openmote.a(httpd-fs.o)
+                0x000000000020fc80                data_rplroot_shtml
  .rodata.data_nbrs_shtml
-                0x000000000020fcc8       0x7c contiki-eth-openmote.a(httpd-fs.o)
-                0x000000000020fcc8                data_nbrs_shtml
+                0x000000000020fca0       0x7c contiki-eth-openmote.a(httpd-fs.o)
+                0x000000000020fca0                data_nbrs_shtml
  .rodata.file_index_html
-                0x000000000020fd44       0x14 contiki-eth-openmote.a(httpd-fs.o)
-                0x000000000020fd44                file_index_html
+                0x000000000020fd1c       0x14 contiki-eth-openmote.a(httpd-fs.o)
+                0x000000000020fd1c                file_index_html
  .rodata.data_status_shtml
-                0x000000000020fd58       0xc4 contiki-eth-openmote.a(httpd-fs.o)
-                0x000000000020fd58                data_status_shtml
+                0x000000000020fd30       0xc4 contiki-eth-openmote.a(httpd-fs.o)
+                0x000000000020fd30                data_status_shtml
  .rodata.file_routes_shtml
-                0x000000000020fe1c       0x14 contiki-eth-openmote.a(httpd-fs.o)
-                0x000000000020fe1c                file_routes_shtml
+                0x000000000020fdf4       0x14 contiki-eth-openmote.a(httpd-fs.o)
+                0x000000000020fdf4                file_routes_shtml
  .rodata.file_404_html
-                0x000000000020fe30       0x14 contiki-eth-openmote.a(httpd-fs.o)
-                0x000000000020fe30                file_404_html
+                0x000000000020fe08       0x14 contiki-eth-openmote.a(httpd-fs.o)
+                0x000000000020fe08                file_404_html
  .rodata.file_nbrsping_shtml
-                0x000000000020fe44       0x14 contiki-eth-openmote.a(httpd-fs.o)
-                0x000000000020fe44                file_nbrsping_shtml
+                0x000000000020fe1c       0x14 contiki-eth-openmote.a(httpd-fs.o)
+                0x000000000020fe1c                file_nbrsping_shtml
  .rodata.file_rplreset_shtml
-                0x000000000020fe58       0x14 contiki-eth-openmote.a(httpd-fs.o)
-                0x000000000020fe58                file_rplreset_shtml
+                0x000000000020fe30       0x14 contiki-eth-openmote.a(httpd-fs.o)
+                0x000000000020fe30                file_rplreset_shtml
  .rodata.file_status_shtml
-                0x000000000020fe6c       0x14 contiki-eth-openmote.a(httpd-fs.o)
-                0x000000000020fe6c                file_status_shtml
+                0x000000000020fe44       0x14 contiki-eth-openmote.a(httpd-fs.o)
+                0x000000000020fe44                file_status_shtml
  .rodata.file_tcp_shtml
-                0x000000000020fe80       0x14 contiki-eth-openmote.a(httpd-fs.o)
-                0x000000000020fe80                file_tcp_shtml
+                0x000000000020fe58       0x14 contiki-eth-openmote.a(httpd-fs.o)
+                0x000000000020fe58                file_tcp_shtml
  .rodata.data_files_shtml
-                0x000000000020fe94      0x2f0 contiki-eth-openmote.a(httpd-fs.o)
-                0x000000000020fe94                data_files_shtml
+                0x000000000020fe6c      0x2f0 contiki-eth-openmote.a(httpd-fs.o)
+                0x000000000020fe6c                data_files_shtml
  .rodata.file_routesping_shtml
-                0x0000000000210184       0x14 contiki-eth-openmote.a(httpd-fs.o)
-                0x0000000000210184                file_routesping_shtml
+                0x000000000021015c       0x14 contiki-eth-openmote.a(httpd-fs.o)
+                0x000000000021015c                file_routesping_shtml
  .rodata.addrmap_name
-                0x0000000000210198        0x8 contiki-eth-openmote.a(httpd-cgi.o)
+                0x0000000000210170        0x8 contiki-eth-openmote.a(httpd-cgi.o)
  .rodata.httpd_cgi_room2.7596
-                0x00000000002101a0       0x30 contiki-eth-openmote.a(httpd-cgi.o)
+                0x0000000000210178       0x30 contiki-eth-openmote.a(httpd-cgi.o)
  .rodata.httpd_cgi_rtesh.7629
-                0x00000000002101d0        0x4 contiki-eth-openmote.a(httpd-cgi.o)
+                0x00000000002101a8        0x4 contiki-eth-openmote.a(httpd-cgi.o)
  .rodata.httpd_cgi_rtesh.7643
-                0x00000000002101d4        0x4 contiki-eth-openmote.a(httpd-cgi.o)
+                0x00000000002101ac        0x4 contiki-eth-openmote.a(httpd-cgi.o)
  .rodata.reboot_name
-                0x00000000002101d8        0x8 contiki-eth-openmote.a(httpd-cgi.o)
- .rodata.none   0x00000000002101e0        0x8 contiki-eth-openmote.a(httpd-cgi.o)
+                0x00000000002101b0        0x8 contiki-eth-openmote.a(httpd-cgi.o)
+ .rodata.none   0x00000000002101b8        0x8 contiki-eth-openmote.a(httpd-cgi.o)
  .rodata.nbrsping_name
-                0x00000000002101e8        0xc contiki-eth-openmote.a(httpd-cgi.o)
+                0x00000000002101c0        0xc contiki-eth-openmote.a(httpd-cgi.o)
  .rodata.rplreset_name
-                0x00000000002101f4        0xc contiki-eth-openmote.a(httpd-cgi.o)
+                0x00000000002101cc        0xc contiki-eth-openmote.a(httpd-cgi.o)
  .rodata.rtes_name
-                0x0000000000210200        0x8 contiki-eth-openmote.a(httpd-cgi.o)
+                0x00000000002101d8        0x8 contiki-eth-openmote.a(httpd-cgi.o)
  .rodata.time_wait
-                0x0000000000210208        0xc contiki-eth-openmote.a(httpd-cgi.o)
+                0x00000000002101e0        0xc contiki-eth-openmote.a(httpd-cgi.o)
  .rodata.httpd_cgi_rtes1.7631
-                0x0000000000210214       0x18 contiki-eth-openmote.a(httpd-cgi.o)
+                0x00000000002101ec       0x18 contiki-eth-openmote.a(httpd-cgi.o)
  .rodata.closed
-                0x000000000021022c        0x8 contiki-eth-openmote.a(httpd-cgi.o)
+                0x0000000000210204        0x8 contiki-eth-openmote.a(httpd-cgi.o)
  .rodata.httpd_cgi_addrb
-                0x0000000000210234        0xc contiki-eth-openmote.a(httpd-cgi.o)
+                0x000000000021020c        0xc contiki-eth-openmote.a(httpd-cgi.o)
  .rodata.httpd_cgi_addrf
-                0x0000000000210240       0x28 contiki-eth-openmote.a(httpd-cgi.o)
+                0x0000000000210218       0x28 contiki-eth-openmote.a(httpd-cgi.o)
  .rodata.httpd_cgi_addrh
-                0x0000000000210268        0xc contiki-eth-openmote.a(httpd-cgi.o)
+                0x0000000000210240        0xc contiki-eth-openmote.a(httpd-cgi.o)
  .rodata.httpd_cgi_rtesf.7644
-                0x0000000000210274       0x30 contiki-eth-openmote.a(httpd-cgi.o)
+                0x000000000021024c       0x30 contiki-eth-openmote.a(httpd-cgi.o)
  .rodata.httpd_cgi_rtes2.7632
-                0x00000000002102a4        0x8 contiki-eth-openmote.a(httpd-cgi.o)
+                0x000000000021027c        0x8 contiki-eth-openmote.a(httpd-cgi.o)
  .rodata.syn_sent
-                0x00000000002102ac        0xc contiki-eth-openmote.a(httpd-cgi.o)
+                0x0000000000210284        0xc contiki-eth-openmote.a(httpd-cgi.o)
  .rodata.states
-                0x00000000002102b8       0x30 contiki-eth-openmote.a(httpd-cgi.o)
+                0x0000000000210290       0x30 contiki-eth-openmote.a(httpd-cgi.o)
  .rodata.proc_name
-                0x00000000002102e8        0xc contiki-eth-openmote.a(httpd-cgi.o)
+                0x00000000002102c0        0xc contiki-eth-openmote.a(httpd-cgi.o)
  .rodata.running
-                0x00000000002102f4        0x8 contiki-eth-openmote.a(httpd-cgi.o)
+                0x00000000002102cc        0x8 contiki-eth-openmote.a(httpd-cgi.o)
  .rodata.nbrs_name
-                0x00000000002102fc        0xc contiki-eth-openmote.a(httpd-cgi.o)
+                0x00000000002102d4        0xc contiki-eth-openmote.a(httpd-cgi.o)
  .rodata.syn_rcvd
-                0x0000000000210308        0xc contiki-eth-openmote.a(httpd-cgi.o)
+                0x00000000002102e0        0xc contiki-eth-openmote.a(httpd-cgi.o)
  .rodata.adrs_name
-                0x0000000000210314        0xc contiki-eth-openmote.a(httpd-cgi.o)
+                0x00000000002102ec        0xc contiki-eth-openmote.a(httpd-cgi.o)
  .rodata.fin_wait_1
-                0x0000000000210320        0xc contiki-eth-openmote.a(httpd-cgi.o)
+                0x00000000002102f8        0xc contiki-eth-openmote.a(httpd-cgi.o)
  .rodata.fin_wait_2
-                0x000000000021032c        0xc contiki-eth-openmote.a(httpd-cgi.o)
+                0x0000000000210304        0xc contiki-eth-openmote.a(httpd-cgi.o)
  .rodata.file_name
-                0x0000000000210338        0xc contiki-eth-openmote.a(httpd-cgi.o)
+                0x0000000000210310        0xc contiki-eth-openmote.a(httpd-cgi.o)
  .rodata.rtesping_name
-                0x0000000000210344        0x8 contiki-eth-openmote.a(httpd-cgi.o)
+                0x000000000021031c        0x8 contiki-eth-openmote.a(httpd-cgi.o)
  .rodata.rplroot_name
-                0x000000000021034c        0x8 contiki-eth-openmote.a(httpd-cgi.o)
+                0x0000000000210324        0x8 contiki-eth-openmote.a(httpd-cgi.o)
  .rodata.called
-                0x0000000000210354        0x8 contiki-eth-openmote.a(httpd-cgi.o)
+                0x000000000021032c        0x8 contiki-eth-openmote.a(httpd-cgi.o)
  .rodata.closing
-                0x000000000021035c        0x8 contiki-eth-openmote.a(httpd-cgi.o)
+                0x0000000000210334        0x8 contiki-eth-openmote.a(httpd-cgi.o)
  .rodata.last_ack
-                0x0000000000210364        0xc contiki-eth-openmote.a(httpd-cgi.o)
+                0x000000000021033c        0xc contiki-eth-openmote.a(httpd-cgi.o)
  .rodata.tcp_name
-                0x0000000000210370       0x10 contiki-eth-openmote.a(httpd-cgi.o)
+                0x0000000000210348       0x10 contiki-eth-openmote.a(httpd-cgi.o)
  .rodata.str1.4
-                0x0000000000210380      0x260 contiki-eth-openmote.a(httpd-cgi.o)
+                0x0000000000210358      0x260 contiki-eth-openmote.a(httpd-cgi.o)
                                         0x26c (size before relaxing)
  .rodata.established
-                0x00000000002105e0        0xc contiki-eth-openmote.a(httpd-cgi.o)
+                0x00000000002105b8        0xc contiki-eth-openmote.a(httpd-cgi.o)
  .rodata.httpd_cgi_rtes0.7630
-                0x00000000002105ec        0xc contiki-eth-openmote.a(httpd-cgi.o)
- .rodata        0x00000000002105f8        0x8 contiki-eth-openmote.a(network-reboot.)
+                0x00000000002105c4        0xc contiki-eth-openmote.a(httpd-cgi.o)
+ .rodata        0x00000000002105d0        0x8 contiki-eth-openmote.a(network-reboot.)
  .rodata.str1.4
-                0x0000000000210600       0x9d contiki-eth-openmote.a(simple-udp-ping)
+                0x00000000002105d8       0x9d contiki-eth-openmote.a(simple-udp-ping)
                                          0xa0 (size before relaxing)
- *fill*         0x000000000021069d        0x3 00000000
+ *fill*         0x0000000000210675        0x3 00000000
  .rodata.ip64_uip_fallback_interface
-                0x00000000002106a0        0x8 contiki-eth-openmote.a(ip64.o)
-                0x00000000002106a0                ip64_uip_fallback_interface
+                0x0000000000210678        0x8 contiki-eth-openmote.a(ip64.o)
+                0x0000000000210678                ip64_uip_fallback_interface
  .rodata.str1.4
-                0x00000000002106a8       0x6e contiki-eth-openmote.a(ip64-ipv4-dhcp.)
-                                         0x70 (size before relaxing)
- *fill*         0x0000000000210716        0x2 00000000
+                0x0000000000210680       0x56 contiki-eth-openmote.a(ip64-ipv4-dhcp.)
+                                         0x58 (size before relaxing)
+ *fill*         0x00000000002106d6        0x2 00000000
  .rodata.magic_cookie
-                0x0000000000210718        0x4 contiki-eth-openmote.a(dhcpv4.o)
+                0x00000000002106d8        0x4 contiki-eth-openmote.a(dhcpv4.o)
  .rodata.str1.4
-                0x000000000021071c       0x11 contiki-eth-openmote.a(dhcpv4.o)
+                0x00000000002106dc       0x11 contiki-eth-openmote.a(dhcpv4.o)
                                          0x14 (size before relaxing)
- *fill*         0x000000000021072d        0x3 00000000
+ *fill*         0x00000000002106ed        0x3 00000000
  .rodata.ip64_eth_interface
-                0x0000000000210730        0x8 contiki-eth-openmote.a(ip64-eth-interf)
-                0x0000000000210730                ip64_eth_interface
+                0x00000000002106f0        0x8 contiki-eth-openmote.a(ip64-eth-interf)
+                0x00000000002106f0                ip64_eth_interface
  .rodata.str1.4
-                0x0000000000210738       0x11 contiki-eth-openmote.a(simple-rpl.o)
+                0x00000000002106f8       0x11 contiki-eth-openmote.a(simple-rpl.o)
                                          0x18 (size before relaxing)
- *fill*         0x0000000000210749        0x3 00000000
+ *fill*         0x0000000000210709        0x3 00000000
  .rodata.str1.4
-                0x000000000021074c      0x13d contiki-eth-openmote.a(contiki-mist-op)
+                0x000000000021070c      0x13d contiki-eth-openmote.a(contiki-mist-op)
                                         0x144 (size before relaxing)
- *fill*         0x0000000000210889        0x3 00000000
+ *fill*         0x0000000000210849        0x3 00000000
  .rodata.str1.4
-                0x000000000021088c        0x8 contiki-eth-openmote.a(sensors.o)
+                0x000000000021084c        0x8 contiki-eth-openmote.a(sensors.o)
  .rodata.button_user_sensor
-                0x0000000000210894       0x10 contiki-eth-openmote.a(button-sensor.o)
-                0x0000000000210894                button_user_sensor
+                0x0000000000210854       0x10 contiki-eth-openmote.a(button-sensor.o)
+                0x0000000000210854                button_user_sensor
  .rodata.str1.4
-                0x00000000002108a4        0x7 contiki-eth-openmote.a(button-sensor.o)
+                0x0000000000210864        0x7 contiki-eth-openmote.a(button-sensor.o)
                                           0x8 (size before relaxing)
- *fill*         0x00000000002108ab        0x1 00000000
+ *fill*         0x000000000021086b        0x1 00000000
  .rodata.uart_regs
-                0x00000000002108ac       0x58 contiki-eth-openmote.a(uart.o)
+                0x000000000021086c       0x58 contiki-eth-openmote.a(uart.o)
  .rodata.cc2538_rf_driver
-                0x0000000000210904       0x2c contiki-eth-openmote.a(cc2538-rf.o)
-                0x0000000000210904                cc2538_rf_driver
+                0x00000000002108c4       0x2c contiki-eth-openmote.a(cc2538-rf.o)
+                0x00000000002108c4                cc2538_rf_driver
  .rodata.str1.4
-                0x0000000000210930       0x11 contiki-eth-openmote.a(cc2538-rf.o)
+                0x00000000002108f0       0x11 contiki-eth-openmote.a(cc2538-rf.o)
                                          0x14 (size before relaxing)
- *fill*         0x0000000000210941        0x3 00000000
+ *fill*         0x0000000000210901        0x3 00000000
  .rodata.str1.4
-                0x0000000000210944       0x42 contiki-eth-openmote.a(strformat.o)
+                0x0000000000210904       0x42 contiki-eth-openmote.a(strformat.o)
                                          0x48 (size before relaxing)
- *fill*         0x0000000000210986        0x2 00000000
+ *fill*         0x0000000000210946        0x2 00000000
  .rodata.buffer.4135
-                0x0000000000210988       0x10 contiki-eth-openmote.a(strformat.o)
+                0x0000000000210948       0x10 contiki-eth-openmote.a(strformat.o)
  .rodata.buffer.4144
-                0x0000000000210998       0x10 contiki-eth-openmote.a(strformat.o)
+                0x0000000000210958       0x10 contiki-eth-openmote.a(strformat.o)
  .rodata.enc28j60_ip64_driver
-                0x00000000002109a8        0x8 contiki-eth-openmote.a(enc28j60-ip64-d)
-                0x00000000002109a8                enc28j60_ip64_driver
+                0x0000000000210968        0x8 contiki-eth-openmote.a(enc28j60-ip64-d)
+                0x0000000000210968                enc28j60_ip64_driver
  .rodata.str1.4
-                0x00000000002109b0       0x41 contiki-eth-openmote.a(enc28j60-ip64-d)
+                0x0000000000210970       0x41 contiki-eth-openmote.a(enc28j60-ip64-d)
                                          0x44 (size before relaxing)
- *fill*         0x00000000002109f1        0x3 00000000
+ *fill*         0x00000000002109b1        0x3 00000000
  .rodata.rimeaddr_null
-                0x00000000002109f4        0x8 contiki-eth-openmote.a(rimeaddr.o)
-                0x00000000002109f4                rimeaddr_null
+                0x00000000002109b4        0x8 contiki-eth-openmote.a(rimeaddr.o)
+                0x00000000002109b4                rimeaddr_null
  .rodata.str1.4
-                0x00000000002109fc        0x5 contiki-eth-openmote.a(csma.o)
+                0x00000000002109bc        0x5 contiki-eth-openmote.a(csma.o)
                                           0x8 (size before relaxing)
- *fill*         0x0000000000210a01        0x3 00000000
+ *fill*         0x00000000002109c1        0x3 00000000
  .rodata.csma_driver
-                0x0000000000210a04       0x1c contiki-eth-openmote.a(csma.o)
-                0x0000000000210a04                csma_driver
+                0x00000000002109c4       0x1c contiki-eth-openmote.a(csma.o)
+                0x00000000002109c4                csma_driver
  .rodata.str1.4
-                0x0000000000210a20        0xe contiki-eth-openmote.a(serial-line.o)
+                0x00000000002109e0        0xe contiki-eth-openmote.a(serial-line.o)
                                          0x10 (size before relaxing)
- *fill*         0x0000000000210a2e        0x2 00000000
+ *fill*         0x00000000002109ee        0x2 00000000
  .rodata.str1.4
-                0x0000000000210a30        0xf contiki-eth-openmote.a(ctimer.o)
+                0x00000000002109f0        0xf contiki-eth-openmote.a(ctimer.o)
                                          0x10 (size before relaxing)
- *fill*         0x0000000000210a3f        0x1 00000000
+ *fill*         0x00000000002109ff        0x1 00000000
  .rodata.str1.4
-                0x0000000000210a40        0xe contiki-eth-openmote.a(random.o)
+                0x0000000000210a00        0xe contiki-eth-openmote.a(random.o)
                                          0x10 (size before relaxing)
- *fill*         0x0000000000210a4e        0x2 00000000
- .rodata        0x0000000000210a50        0x4 contiki-eth-openmote.a(sicslowpan.o)
+ *fill*         0x0000000000210a0e        0x2 00000000
+ .rodata        0x0000000000210a10        0x4 contiki-eth-openmote.a(sicslowpan.o)
  .rodata.ttl_values
-                0x0000000000210a54        0x4 contiki-eth-openmote.a(sicslowpan.o)
+                0x0000000000210a14        0x4 contiki-eth-openmote.a(sicslowpan.o)
  .rodata.unc_mxconf
-                0x0000000000210a58        0x4 contiki-eth-openmote.a(sicslowpan.o)
-                0x0000000000210a58                unc_mxconf
+                0x0000000000210a18        0x4 contiki-eth-openmote.a(sicslowpan.o)
+                0x0000000000210a18                unc_mxconf
  .rodata.unc_ctxconf
-                0x0000000000210a5c        0x4 contiki-eth-openmote.a(sicslowpan.o)
-                0x0000000000210a5c                unc_ctxconf
+                0x0000000000210a1c        0x4 contiki-eth-openmote.a(sicslowpan.o)
+                0x0000000000210a1c                unc_ctxconf
  .rodata.llprefix
-                0x0000000000210a60        0x4 contiki-eth-openmote.a(sicslowpan.o)
-                0x0000000000210a60                llprefix
+                0x0000000000210a20        0x4 contiki-eth-openmote.a(sicslowpan.o)
+                0x0000000000210a20                llprefix
  .rodata.str1.4
-                0x0000000000210a64       0x2b contiki-eth-openmote.a(sicslowpan.o)
+                0x0000000000210a24       0x2b contiki-eth-openmote.a(sicslowpan.o)
                                          0x2c (size before relaxing)
- *fill*         0x0000000000210a8f        0x1 00000000
+ *fill*         0x0000000000210a4f        0x1 00000000
  .rodata.sicslowpan_driver
-                0x0000000000210a90        0xc contiki-eth-openmote.a(sicslowpan.o)
-                0x0000000000210a90                sicslowpan_driver
+                0x0000000000210a50        0xc contiki-eth-openmote.a(sicslowpan.o)
+                0x0000000000210a50                sicslowpan_driver
  .rodata.unc_llconf
-                0x0000000000210a9c        0x4 contiki-eth-openmote.a(sicslowpan.o)
-                0x0000000000210a9c                unc_llconf
+                0x0000000000210a5c        0x4 contiki-eth-openmote.a(sicslowpan.o)
+                0x0000000000210a5c                unc_llconf
  .rodata.str1.4
-                0x0000000000210aa0        0xd contiki-eth-openmote.a(tcpip.o)
+                0x0000000000210a60        0xd contiki-eth-openmote.a(tcpip.o)
                                          0x10 (size before relaxing)
- *fill*         0x0000000000210aad        0x3 00000000
+ *fill*         0x0000000000210a6d        0x3 00000000
  .rodata.str1.4
-                0x0000000000210ab0       0x19 contiki-eth-openmote.a(uip-debug.o)
+                0x0000000000210a70       0x19 contiki-eth-openmote.a(uip-debug.o)
                                          0x20 (size before relaxing)
- *fill*         0x0000000000210ac9        0x3 00000000
+ *fill*         0x0000000000210a89        0x3 00000000
  .rodata.str1.4
-                0x0000000000210acc       0x2c contiki-eth-openmote.a(drowsie.o)
+                0x0000000000210a8c       0x2c contiki-eth-openmote.a(drowsie.o)
  .rodata.drowsie_driver
-                0x0000000000210af8       0x20 contiki-eth-openmote.a(drowsie.o)
-                0x0000000000210af8                drowsie_driver
+                0x0000000000210ab8       0x20 contiki-eth-openmote.a(drowsie.o)
+                0x0000000000210ab8                drowsie_driver
  .rodata.broadcast_ethaddr
-                0x0000000000210b18        0x8 contiki-eth-openmote.a(ip64-arp.o)
+                0x0000000000210ad8        0x8 contiki-eth-openmote.a(ip64-arp.o)
  .rodata.str1.4
-                0x0000000000210b20       0x14 contiki-eth-openmote.a(enc28j60.o)
+                0x0000000000210ae0       0x14 contiki-eth-openmote.a(enc28j60.o)
  .rodata.framer_802154
-                0x0000000000210b34        0x8 contiki-eth-openmote.a(framer-802154.o)
-                0x0000000000210b34                framer_802154
-                0x0000000000210b3c                _etext = .
+                0x0000000000210af4        0x8 contiki-eth-openmote.a(framer-802154.o)
+                0x0000000000210af4                framer_802154
+                0x0000000000210afc                _etext = .
 
-.glue_7         0x0000000000210b3c        0x0
+.glue_7         0x0000000000210afc        0x0
  .glue_7        0x0000000000000000        0x0 linker stubs
 
-.glue_7t        0x0000000000210b3c        0x0
+.glue_7t        0x0000000000210afc        0x0
  .glue_7t       0x0000000000000000        0x0 linker stubs
 
-.vfp11_veneer   0x0000000000210b3c        0x0
+.vfp11_veneer   0x0000000000210afc        0x0
  .vfp11_veneer  0x0000000000000000        0x0 linker stubs
 
-.v4_bx          0x0000000000210b3c        0x0
+.v4_bx          0x0000000000210afc        0x0
  .v4_bx         0x0000000000000000        0x0 linker stubs
 
-.iplt           0x0000000000210b3c        0x0
+.iplt           0x0000000000210afc        0x0
  .iplt          0x0000000000000000        0x0 obj_eth-openmote/startup-gcc.o
 
 .socdata
  *(.udma_channel_control_table)
 
-.data           0x0000000020000000      0x260 load address 0x0000000000210b3c
+.data           0x0000000020000000      0x260 load address 0x0000000000210afc
                 0x0000000020000000                _data = .
  *(.data*)
  .data.router_node_process
@@ -2791,13 +2790,13 @@ END GROUP
                 0x0000000020000250                enc_watchdog_process
                 0x0000000020000260                _edata = .
 
-.igot.plt       0x0000000020000260        0x0 load address 0x0000000000210d9c
+.igot.plt       0x0000000020000260        0x0 load address 0x0000000000210d5c
  .igot.plt      0x0000000000000000        0x0 obj_eth-openmote/startup-gcc.o
 
-.ARM.exidx      0x0000000000210d9c        0x8
+.ARM.exidx      0x0000000000210d5c        0x8
  *(.ARM.exidx*)
- .ARM.exidx     0x0000000000210d9c        0x8 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7-m/libgcc.a(_divdi3.o)
- .ARM.exidx     0x0000000000210da4        0x0 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7-m/libgcc.a(_udivdi3.o)
+ .ARM.exidx     0x0000000000210d5c        0x8 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7-m/libgcc.a(_divdi3.o)
+ .ARM.exidx     0x0000000000210d64        0x0 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7-m/libgcc.a(_udivdi3.o)
                                           0x8 (size before relaxing)
 
 .bss            0x0000000020000400     0x643c
@@ -4159,7 +4158,6 @@ nmi_handler                                       obj_eth-openmote/startup-gcc.o
 node_id                                           contiki-eth-openmote.a(node-id.o)
                                                   contiki-eth-openmote.a(contiki-mist-op)
 node_id_burn                                      contiki-eth-openmote.a(node-id.o)
-                                                  contiki-eth-openmote.a(contiki-mist-op)
 node_id_restore                                   contiki-eth-openmote.a(node-id.o)
                                                   contiki-eth-openmote.a(contiki-mist-op)
 node_mac                                          contiki-eth-openmote.a(node-id.o)

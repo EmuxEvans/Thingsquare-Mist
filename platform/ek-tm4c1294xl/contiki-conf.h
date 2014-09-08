@@ -3,6 +3,7 @@
 
 #include <stdint.h>
 #include <string.h>
+/*---------------------------------------------------------------------------*/
 /*************************************/
 #include "platform-conf.h"
 
@@ -30,6 +31,7 @@
 #if WITH_UIP6
 /* Network setup for IPv6 */
 #define NETSTACK_CONF_NETWORK sicslowpan_driver
+
 /* Specify a minimum packet size for 6lowpan compression to be
    enabled. This is needed for ContikiMAC, which needs packets to be
    larger than a specified size, if no ContikiMAC header should be
@@ -204,9 +206,7 @@
 #define UIP_CONF_UDP_CONNS       12
 #define UIP_CONF_FWCACHE_SIZE    30
 #define UIP_CONF_BROADCAST       1
-
 #define UIP_ARCH_IPCHKSUM        0
-
 #define UIP_CONF_UDP             1
 #define UIP_CONF_UDP_CHECKSUMS   1
 #define UIP_CONF_PINGADDRCONF    0

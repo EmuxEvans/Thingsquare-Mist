@@ -40,8 +40,7 @@ static uip_ipaddr_t google_ipv4_dns_server = {
     }
 };
 
-
-#define HOST "85.119.83.194"
+#define HOST "198.41.30.241"
 
 #define SHORT_PAYLOAD "Hello, world!\n"
 #define LONG_PAYLOAD \
@@ -102,8 +101,7 @@ route_callback(int event, uip_ipaddr_t *route,
 {
   if (event == UIP_DS6_NOTIFICATION_DEFRT_ADD) {
     //leds_off(LEDS_ALL);
-    printf("APP - Got a RPL route\n");
-
+    printf("APP - Got a RPL route\r\n");
   }
 }
 
@@ -115,11 +113,11 @@ mqtt_event(struct mqtt_connection *m, mqtt_event_t event, void* data)
 
   switch(event) {
     case MQTT_EVENT_CONNECTED: {
-      printf("APP - Application has a MQTT connection\n");
+      printf("APP - Application has a MQTT connection\r\n");
       break;
     }
     case MQTT_EVENT_DISCONNECTED: {
-      printf("APP - Disconnected from MQTT broker\n");
+      printf("APP - Disconnected from MQTT broker\r\n");
       break;
       }
     case MQTT_EVENT_PUBLISH: {
@@ -140,33 +138,33 @@ mqtt_event(struct mqtt_connection *m, mqtt_event_t event, void* data)
       if(msg_ptr->first_chunk) {
         msg_ptr->first_chunk = 0;
         printf("APP - Application received a publish on topic '%s'. Payload "
-               "size is %i bytes. Content:\n\n", msg_ptr->topic, msg_ptr->payload_length);
+               "size is %i bytes. Content:\r\n", msg_ptr->topic, msg_ptr->payload_length);
       }
 
       for(i = 0; i < msg_ptr->payload_chunk_length; i++) {
         printf("%c", msg_ptr->payload_chunk[i]);
       }
       if(msg_ptr->payload_left == 0) {
-        printf("\n");
-        printf("\n");
-        printf("APP - Application received publish content succefully.\n");
+        printf("\r\n");
+        printf("\r\n");
+        printf("APP - Application received publish content succefully.\r\n");
       }
       break;
     }
     case MQTT_EVENT_SUBACK: {
-      printf("APP - Application is subscribed to topic successfully\n");
+      printf("APP - Application is subscribed to topic successfully\r\n");
       break;
     }
     case MQTT_EVENT_UNSUBACK: {
-      printf("APP - Application is unsubscribed to topic successfully\n");
+      printf("APP - Application is unsubscribed to topic successfully\r\n");
       break;
     }
     case MQTT_EVENT_PUBACK: {
-      printf("APP - Publishing complete.\n");
+      printf("APP - Publishing complete\r\n");
       break;
     }
     default:
-      printf("APP - Application got a unhandled MQTT event: %i\n", event);
+      printf("APP - Application got a unhandled MQTT event: %s\r\n", event);
       break;
   }
 }
@@ -177,27 +175,27 @@ PROCESS_THREAD(button_process, ev, data)
   printf("Button process\r\n");
   static uint8_t reset_flag = 1;
 
-  SENSORS_ACTIVATE(button_user_sensor);  
+  SENSORS_ACTIVATE(button_user_sensor);
   SENSORS_ACTIVATE(button_sw1_sensor);
   SENSORS_ACTIVATE(button_sw2_sensor);
 
   while(1) {
     PROCESS_WAIT_EVENT_UNTIL((ev == sensors_event) && (
-			     data == &button_sw1_sensor||data == &button_sw2_sensor||data == &button_user_sensor));
-    printf("Button sensor event\r\n");    
+			     data == &button_sw1_sensor||data == &button_sw2_sensor));
     if(data == &button_sw1_sensor){
       printf("Button sw1 event\r\n");
       if(reset_flag){
         reset_flag = 0;
         random_topic = get_random();
-        printf("random value %d\r\n",random_topic);
-        sprintf(str_topic_state, "%s%d", "ti/iot/device/",random_topic);
+        printf("random value %d\r\n", random_topic);
+        sprintf(str_topic_state, "%s%d", "bontorgate/node1/pwr/",random_topic);
         printf("%s\r\n",str_topic_state);
-        sprintf(str_topic_sensor, "%s%d%s", "ti/iot/device/",random_topic,"/sensor");
-        sprintf(str_topic_led, "%s%d%s", "ti/iot/device/",random_topic,"/led");
+        sprintf(str_topic_sensor, "%s%d%s", "bontorgate/node1/pwr/",random_topic,"/sensor");
+        sprintf(str_topic_led, "%s%d%s", "bontorgate/node1/pwr/",random_topic,"/led");
         process_start(&mqtt_example_process, NULL);
       }else{
-        printf("%s\r\n",str_topic_state);
+        printf("!Reset Flag\r\n");
+        printf("%s\r\n", str_topic_state);
       }
     }
     else if(data == &button_sw2_sensor){
@@ -236,8 +234,6 @@ PROCESS_THREAD(mqtt_example_process, ev, data)
   mqtt_register(&conn, &mqtt_example_process, "tiot_client", mqtt_event);
 
   mqtt_set_last_will(&conn, str_topic_state, "0", MQTT_QOS_LEVEL_0);
-
-
 
   //etimer_set(&periodic_timer, CLOCK_SECOND*20);
   /* Reconnect from here */
@@ -282,7 +278,6 @@ PROCESS_THREAD(mqtt_example_process, ev, data)
         break;
       }
 
-
       if(etimer_expired(&light_sense_timer) && mqtt_ready(&conn)) {
         /* Send light sensor data and toggle led */
         led_status ^= 1;
@@ -292,8 +287,8 @@ PROCESS_THREAD(mqtt_example_process, ev, data)
           //leds_off(LEDS_D1_GREEN);
         }
 
-        DBG("APP - Sending button senosr value %d--\n",button_sensor_value);
-        sprintf(app_buffer,"%s%d","Sending button senosr value--",button_sensor_value);
+        DBG("APP - Sending button sensor value %d--\r\n",button_sensor_value);
+        sprintf(app_buffer,"%s%d","Sending button sensor value--",button_sensor_value);
         mqtt_publish(&conn,
                NULL,
                str_topic_sensor,

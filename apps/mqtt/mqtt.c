@@ -182,7 +182,7 @@ send_out_buffer(struct mqtt_connection* conn)
   }
   conn->out_buffer_sent = 0;
 
-  DBG("MQTT - (send_out_buffer) Space used in buffer: %i\n",
+  DBG("MQTT - (send_out_buffer) Space used in buffer: %i\r\n",
       conn->out_buffer_ptr - conn->out_buffer);
 
   tcp_socket_send(&conn->socket,
@@ -208,7 +208,7 @@ string_to_mqtt_string(struct mqtt_string* mqtt_string, char* string)
 static int
 write_byte(struct mqtt_connection* conn, uint8_t data)
 {
-  DBG("MQTT - (write_byte) buff_size: %i write: '%02X'\n",
+  DBG("MQTT - (write_byte) buff_size: %i write: '%02X'\r\n",
       &conn->out_buffer[MQTT_TCP_OUTPUT_BUFF_SIZE] - conn->out_buffer_ptr,
       data);
 
@@ -234,7 +234,7 @@ write_bytes(struct mqtt_connection* conn, uint8_t* data, uint16_t len)
   conn->out_write_pos += write_bytes;
   conn->out_buffer_ptr += write_bytes;
 
-  DBG("MQTT - (write_bytes) len: %i write_pos: %i\n", len, conn->out_write_pos);
+  DBG("MQTT - (write_bytes) len: %i write_pos: %i\r\n", len, conn->out_write_pos);
 
   if(len - conn->out_write_pos == 0) {
     conn->out_write_pos = 0;
@@ -252,7 +252,7 @@ encode_remaining_length(uint8_t* remaining_length,
 {
   uint8_t digit;
 
-  DBG("MQTT - Encoding length %i\n", length);
+  DBG("MQTT - Encoding length %i\r\n", length);
 
   *remaining_length_bytes = 0;
   do {
@@ -266,7 +266,7 @@ encode_remaining_length(uint8_t* remaining_length,
     (*remaining_length_bytes)++;
     DBG("MQTT - Encode len digit '%i' length '%i'\n", digit, length);
   } while(length > 0 && *remaining_length_bytes < 5);
-  DBG("MQTT - remaining_length_bytes %i\n", *remaining_length_bytes);
+  DBG("MQTT - remaining_length_bytes %i\r\n", *remaining_length_bytes);
 }
 /*---------------------------------------------------------------------------*/
 static void
@@ -278,7 +278,7 @@ keep_alive_callback(void *ptr)
 
   /* The flag is set when the PINGREQ has been sent */
   if(conn->waiting_for_pingresp) {
-    printf("MQTT - Disconnect due to no PINGRESP from broker.\n");
+    printf("MQTT - Disconnect due to no PINGRESP from broker.\r\n");
     disconnect_tcp(conn);
     return;
   }
@@ -298,7 +298,7 @@ PT_THREAD(connect_pt(struct pt* pt, struct mqtt_connection* conn))
 {
   PT_BEGIN(pt);
 
-  DBG("MQTT - Sending CONNECT message...\n");
+  DBG("MQTT - Sending CONNECT message...\r\n");
 
   /* Set up FHDR */
   conn->out_packet.fhdr = MQTT_FHDR_MSG_TYPE_CONNECT;
@@ -314,7 +314,7 @@ PT_THREAD(connect_pt(struct pt* pt, struct mqtt_connection* conn))
                           conn->out_packet.remaining_length);
   if(conn->out_packet.remaining_length_enc_bytes > 4) {
     call_event(conn, MQTT_EVENT_PROTOCOL_ERROR, NULL);
-    printf("MQTT - Error, remaining length > 4 bytes\n");
+    printf("MQTT - Error, remaining length > 4 bytes\r\n");
     PT_EXIT(pt);
   }
 
@@ -340,7 +340,7 @@ PT_THREAD(connect_pt(struct pt* pt, struct mqtt_connection* conn))
     PT_MQTT_WRITE_BYTE(conn, conn->will.message.length << 8);
     PT_MQTT_WRITE_BYTE(conn, conn->will.message.length & 0x00FF);
     PT_MQTT_WRITE_BYTES(conn, conn->will.message.string, conn->will.message.length);
-    DBG("MQTT - Setting will topic to '%s' %i bytes and message to '%s' %i bytes\n",
+    DBG("MQTT - Setting will topic to '%s' %i bytes and message to '%s' %i bytes\r\n",
         conn->will.topic.string,
         conn->will.topic.length,
         conn->will.message.string,
@@ -372,15 +372,15 @@ PT_THREAD(connect_pt(struct pt* pt, struct mqtt_connection* conn))
   } while(conn->out_packet.qos_state != MQTT_QOS_STATE_GOT_ACK);
   reset_packet(&conn->in_packet);
 
-  DBG("MQTT - Done sending CONNECT since we got CONNACK!\n");
+  DBG("MQTT - Done sending CONNECT since we got CONNACK!\r\n");
 
 #if DEBUG_MQTT == 1
-  DBG("MQTT - Sending CONNECT message: \n");
+  DBG("MQTT - Sending CONNECT message: \r\n");
   uint16_t i;
   for( i = 0; i < (conn->out_buffer_ptr - conn->out_buffer); i++ ) {
     DBG( "%02X ", conn->out_buffer[i] );
   }
-  DBG("\n");
+  DBG("\r\n");
 #endif
 
   PT_END(pt);
@@ -408,10 +408,10 @@ PT_THREAD(subscribe_pt(struct pt* pt, struct mqtt_connection* conn))
 {
   PT_BEGIN(pt);
 
-  DBG("MQTT - Sending subscribe message! topic %s topic_length %i\n",
+  DBG("MQTT - Sending subscribe message! topic %s topic_length %i\r\n",
       conn->out_packet.topic,
       conn->out_packet.topic_length);
-  DBG("MQTT - Buffer space is %i \n",
+  DBG("MQTT - Buffer space is %i \r\n",
       &conn->out_buffer[MQTT_TCP_OUTPUT_BUFF_SIZE] - conn->out_buffer_ptr);
 
   /* Set up FHDR */
@@ -425,7 +425,7 @@ PT_THREAD(subscribe_pt(struct pt* pt, struct mqtt_connection* conn))
                           conn->out_packet.remaining_length);
   if(conn->out_packet.remaining_length_enc_bytes > 4) {
     call_event(conn, MQTT_EVENT_PROTOCOL_ERROR, NULL);
-    printf("MQTT - Error, remaining length > 4 bytes\n");
+    printf("MQTT - Error, remaining length > 4 bytes\r\n");
     PT_EXIT(pt);
   }
 
@@ -458,7 +458,7 @@ PT_THREAD(subscribe_pt(struct pt* pt, struct mqtt_connection* conn))
   /* This is clear after the entire transaction is complete */
   conn->out_queue_full = 0;
 
-  DBG("MQTT - Done in send_subscribe!\n");
+  DBG("MQTT - Done in send_subscribe!\r\n");
 
   PT_END(pt);
 }
@@ -468,10 +468,10 @@ PT_THREAD(unsubscribe_pt(struct pt* pt, struct mqtt_connection* conn))
 {
   PT_BEGIN(pt);
 
-  DBG("MQTT - Sending unsubscribe message on topic %s topic_length %i\n",
+  DBG("MQTT - Sending unsubscribe message on topic %s topic_length %i\r\n",
       conn->out_packet.topic,
       conn->out_packet.topic_length);
-  DBG("MQTT - Buffer space is %i \n",
+  DBG("MQTT - Buffer space is %i \r\n",
       &conn->out_buffer[MQTT_TCP_OUTPUT_BUFF_SIZE] - conn->out_buffer_ptr);
 
   /* Set up FHDR */
@@ -484,7 +484,7 @@ PT_THREAD(unsubscribe_pt(struct pt* pt, struct mqtt_connection* conn))
                           conn->out_packet.remaining_length);
   if(conn->out_packet.remaining_length_enc_bytes > 4) {
     call_event(conn, MQTT_EVENT_PROTOCOL_ERROR, NULL);
-    printf("MQTT - Error, remaining length > 4 bytes\n");
+    printf("MQTT - Error, remaining length > 4 bytes\r\n");
     PT_EXIT(pt);
   }
 
@@ -516,7 +516,7 @@ PT_THREAD(unsubscribe_pt(struct pt* pt, struct mqtt_connection* conn))
   /* This is clear after the entire transaction is complete */
   conn->out_queue_full = 0;
 
-  DBG("MQTT - Done writing subscribe message to out buffer!\n");
+  DBG("MQTT - Done writing subscribe message to out buffer!\r\n");
 
   PT_END(pt);
 }
@@ -526,10 +526,10 @@ PT_THREAD(publish_pt(struct pt* pt, struct mqtt_connection* conn))
 {
   PT_BEGIN(pt);
 
-  DBG("MQTT - Sending publish message! topic %s topic_length %i\n",
+  DBG("MQTT - Sending publish message! topic %s topic_length %i\r\n",
       conn->out_packet.topic,
       conn->out_packet.topic_length);
-  DBG("MQTT - Buffer space is %i \n",
+  DBG("MQTT - Buffer space is %i \r\n",
       &conn->out_buffer[MQTT_TCP_OUTPUT_BUFF_SIZE] - conn->out_buffer_ptr);
 
 
@@ -551,7 +551,7 @@ PT_THREAD(publish_pt(struct pt* pt, struct mqtt_connection* conn))
                           conn->out_packet.remaining_length);
   if(conn->out_packet.remaining_length_enc_bytes > 4) {
     call_event(conn, MQTT_EVENT_PROTOCOL_ERROR, NULL);
-    printf("MQTT - Error, remaining length > 4 bytes\n");
+    printf("MQTT - Error, remaining length > 4 bytes\r\n");
     PT_EXIT(pt);
   }
 
@@ -594,11 +594,11 @@ PT_THREAD(publish_pt(struct pt* pt, struct mqtt_connection* conn))
     } while(conn->out_packet.qos_state != MQTT_QOS_STATE_GOT_ACK);
     if(conn->in_packet.mid != conn->out_packet.mid) {
       DBG("MQTT - Warning, got PUBACK with none matching MID. Currently there is"
-          "no support for several concurrent PUBLISH messages.\n");
+          "no support for several concurrent PUBLISH messages.\r\n");
     }
   }
   if(conn->out_packet.qos == 2) {
-    DBG("MQTT - QoS not implemented yet.\n");
+    DBG("MQTT - QoS not implemented yet.\r\n");
     /* Should wait for PUBREC, send PUBREL and then wait for PUBCOMP */
 
   }
@@ -609,7 +609,7 @@ PT_THREAD(publish_pt(struct pt* pt, struct mqtt_connection* conn))
 
 
 
-  DBG("MQTT - Done writing publish message to out buffer!\n");
+  DBG("MQTT - Done writing publish message to out buffer!\r\n");
   PT_END(pt);
 }
 /*---------------------------------------------------------------------------*/
@@ -618,7 +618,7 @@ PT_THREAD(pingreq_pt(struct pt* pt, struct mqtt_connection* conn))
 {
   PT_BEGIN(pt);
 
-  DBG("MQTT - Sending PINGREQ\n");
+  DBG("MQTT - Sending PINGREQ\r\n");
 
   /* Write Fixed Header */
   PT_MQTT_WRITE_BYTE(conn, MQTT_FHDR_MSG_TYPE_PINGREQ);
@@ -648,7 +648,7 @@ PT_THREAD(pingreq_pt(struct pt* pt, struct mqtt_connection* conn))
 static void
 handle_connack(struct mqtt_connection* conn)
 {
-  DBG("MQTT - Got CONNACK\n");
+  DBG("MQTT - Got CONNACK\r\n");
 
   if(conn->in_packet.payload[1] != 0) {
     printf("MQTT - Connection refused with Return Code %i",
@@ -673,7 +673,7 @@ handle_connack(struct mqtt_connection* conn)
 static void
 handle_pingresp(struct mqtt_connection* conn)
 {
-  DBG("MQTT - Got RINGRESP\n");
+  DBG("MQTT - Got RINGRESP\r\n");
 }
 /*---------------------------------------------------------------------------*/
 static void
@@ -681,12 +681,12 @@ handle_suback(struct mqtt_connection* conn)
 {
   struct mqtt_suback_event suback_event;
 
-  DBG("MQTT - Got SUBACK\n");
+  DBG("MQTT - Got SUBACK\r\n");
 
   /* Only accept SUBACKS with X topic QoS response, assume 1 */
   if(conn->in_packet.remaining_length > MQTT_MID_SIZE +
      MQTT_MAX_TOPICS_PER_SUBSCRIBE * MQTT_QOS_SIZE) {
-    DBG("MQTT - Error, SUBACK with > 1 topic, not supported.\n");
+    DBG("MQTT - Error, SUBACK with > 1 topic, not supported.\r\n");
   }
 
   conn->out_packet.qos_state = MQTT_QOS_STATE_GOT_ACK;
@@ -698,7 +698,7 @@ handle_suback(struct mqtt_connection* conn)
 
   if(conn->in_packet.mid != conn->out_packet.mid) {
     DBG("MQTT - Warning, got SUBACK with none matching MID. Currently there is"
-        "no support for several concurrent SUBSCRIBE messages.\n");
+        "no support for several concurrent SUBSCRIBE messages.\r\n");
   }
 
   /* Always reset packet before callback since it might be used directly */
@@ -708,7 +708,7 @@ handle_suback(struct mqtt_connection* conn)
 static void
 handle_unsuback(struct mqtt_connection* conn)
 {
-  DBG("MQTT - Got UNSUBACK\n");
+  DBG("MQTT - Got UNSUBACK\r\n");
 
   conn->out_packet.qos_state = MQTT_QOS_STATE_GOT_ACK;
   conn->in_packet.mid = (conn->in_packet.payload[0] << 8) |
@@ -716,7 +716,7 @@ handle_unsuback(struct mqtt_connection* conn)
 
   if(conn->in_packet.mid != conn->out_packet.mid) {
     DBG("MQTT - Warning, got UNSUBACK with none matching MID. Currently there is"
-        "no support for several concurrent UNSUBSCRIBE messages.\n");
+        "no support for several concurrent UNSUBSCRIBE messages.\r\n");
   }
 
   call_event(conn, MQTT_EVENT_UNSUBACK, &conn->in_packet.mid);
@@ -725,7 +725,7 @@ handle_unsuback(struct mqtt_connection* conn)
 static void
 handle_puback(struct mqtt_connection* conn)
 {
-  DBG("MQTT - Got PUBACK\n");
+  DBG("MQTT - Got PUBACK\r\n");
 
   conn->out_packet.qos_state = MQTT_QOS_STATE_GOT_ACK;
   conn->in_packet.mid = (conn->in_packet.payload[0] << 8) |
@@ -737,13 +737,13 @@ handle_puback(struct mqtt_connection* conn)
 static void
 handle_publish(struct mqtt_connection* conn)
 {
-  DBG("MQTT - Got PUBLISH, called once per manageable chunk of message.\n");
-  DBG("MQTT - Handling publish on topic '%s'\n", conn->in_publish_msg.topic);
+  DBG("MQTT - Got PUBLISH, called once per manageable chunk of message.\r\n");
+  DBG("MQTT - Handling publish on topic '%s'\r\n", conn->in_publish_msg.topic);
 
-  DBG("MQTT - This chunk is %i bytes\n", conn->in_packet.payload_pos);
+  DBG("MQTT - This chunk is %i bytes\r\n", conn->in_packet.payload_pos);
 
   if(((conn->in_packet.fhdr & 0x09) >> 1) > 0) {
-    printf("MQTT - Error, got incoming PUBLISH with QoS > 0, not supported atm!\n");
+    printf("MQTT - Error, got incoming PUBLISH with QoS > 0, not supported atm!\r\n");
   }
 
   call_event(conn, MQTT_EVENT_PUBLISH, &conn->in_publish_msg);
@@ -758,7 +758,7 @@ handle_publish(struct mqtt_connection* conn)
     /* Check for QoS and initiate the reply, do not rely on the data in the
      * in_packet being untouched. */
 
-    DBG("MQTT - (handle_publish) resetting packet.\n");
+    DBG("MQTT - (handle_publish) resetting packet.\r\n");
     reset_packet(&conn->in_packet);
   }
 }
@@ -782,7 +782,7 @@ parse_publish_vhdr(struct mqtt_connection* conn,
     conn->in_packet.byte_counter++;
     conn->in_packet.topic_len_received = 1;
 
-    DBG("MQTT - Read PUBLISH topic len %i\n", conn->in_packet.topic_len);
+    DBG("MQTT - Read PUBLISH topic len %i\r\n", conn->in_packet.topic_len);
     /* WARNING: Check here if TOPIC fits in payload area, otherwise error */
   }
 
@@ -832,14 +832,14 @@ tcp_input(struct tcp_socket *s,
     reset_packet(&conn->in_packet);
   }
 
-  DBG("tcp_input with %i bytes of data:\n", input_data_len);
+  DBG("tcp_input with %i bytes of data:\r\n", input_data_len);
 
   /* Read the fixed header field, if we do not have it */
   if(!conn->in_packet.fhdr) {
     conn->in_packet.fhdr = input_data_ptr[pos++];
     conn->in_packet.byte_counter++;
 
-    DBG("MQTT - Read VHDR '%02X'\n", conn->in_packet.fhdr);
+    DBG("MQTT - Read VHDR '%02X'\r\n", conn->in_packet.fhdr);
 
     if(pos >= input_data_len) {
       return 0;
@@ -856,7 +856,7 @@ tcp_input(struct tcp_socket *s,
       byte = input_data_ptr[pos++];
       conn->in_packet.byte_counter++;
       conn->in_packet.remaining_length_bytes++;
-      DBG("MQTT - Read Remaining Length byte\n");
+      DBG("MQTT - Read Remaining Length byte\r\n");
 
       if( conn->in_packet.byte_counter > 5 ) {
         call_event( conn, MQTT_EVENT_ERROR, NULL );
@@ -870,7 +870,7 @@ tcp_input(struct tcp_socket *s,
 
     } while((byte & 128) != 0);
 
-    DBG("MQTT - Finished reading remaining length byte\n");
+    DBG("MQTT - Finished reading remaining length byte\r\n");
     conn->in_packet.has_remaining_length = 1;
   }
 
@@ -882,7 +882,7 @@ tcp_input(struct tcp_socket *s,
   if((conn->in_packet.remaining_length > MQTT_INPUT_BUFF_SIZE) &&
      (conn->in_packet.fhdr & 0xF0) != MQTT_FHDR_MSG_TYPE_PUBLISH) {
 
-    printf("MQTT - Error, unsupported payload size for non-PUBLISH message\n");
+    printf("MQTT - Error, unsupported payload size for non-PUBLISH message\r\n");
 
     conn->in_packet.byte_counter += input_data_len;
     if(conn->in_packet.byte_counter >=
@@ -908,7 +908,7 @@ tcp_input(struct tcp_socket *s,
     /* Read in as much as we can into the packet payload */
     copy_bytes = MIN(input_data_len - pos,
                      MQTT_INPUT_BUFF_SIZE - conn->in_packet.payload_pos);
-    DBG("- Copied %i payload bytes\n", copy_bytes);
+    DBG("- Copied %i payload bytes\r\n", copy_bytes);
     memcpy(&conn->in_packet.payload[conn->in_packet.payload_pos],
            &input_data_ptr[pos],
            copy_bytes);
@@ -918,11 +918,11 @@ tcp_input(struct tcp_socket *s,
 
     /* TEMPORARY DEBUG */
     uint8_t i;
-    DBG("MQTT - Copied bytes: \n");
+    DBG("MQTT - Copied bytes: \r\n");
     for(i = 0; i < copy_bytes; i++ ) {
       DBG("%02X ", conn->in_packet.payload[i]);
     }
-    DBG("\n");
+    DBG("\r\n");
 
     /* Full buffer, shall only happen to PUBLISH messages. */
     if(MQTT_INPUT_BUFF_SIZE - conn->in_packet.payload_pos == 0) {
@@ -944,11 +944,11 @@ tcp_input(struct tcp_socket *s,
   }
 
   /* Debug information */
-  DBG("\n");
+  DBG("\r\n");
   /* Take care of input */
-  DBG("MQTT - Finished reading packet!\n");
+  DBG("MQTT - Finished reading packet!\r\n");
   /* What to return? */
-  DBG("MQTT - total data was %i bytes of data. \n",
+  DBG("MQTT - total data was %i bytes of data. \r\n",
          (MQTT_FHDR_SIZE + conn->in_packet.remaining_length));
 
   /* Handle packet here. */
@@ -1034,7 +1034,7 @@ tcp_event(struct tcp_socket *s, void *ptr, tcp_socket_event_t event)
       break;
     }
     case TCP_SOCKET_DATA_SENT: {
-      DBG("MQTT - Got TCP_DATA_SENT\n");
+      DBG("MQTT - Got TCP_DATA_SENT\r\n");
       conn->out_buffer_sent = 1;
       conn->out_buffer_ptr = conn->out_buffer;
 
@@ -1043,7 +1043,7 @@ tcp_event(struct tcp_socket *s, void *ptr, tcp_socket_event_t event)
     }
 
     default: {
-      DBG("MQTT - TCP Event %d is currently not manged by the tcp event callback\n",
+      DBG("MQTT - TCP Event %d is currently not manged by the tcp event callback\r\n",
           event);
     }
 
@@ -1062,12 +1062,12 @@ PROCESS_THREAD(mqtt_process, ev, data)
 
     if(ev == mqtt_do_connect_tcp_event) {
       conn = data;
-      DBG("MQTT - Got mqtt_do_connect_tcp_event!\n");
+      DBG("MQTT - Got mqtt_do_connect_tcp_event!\r\n");
       connect_tcp(conn);
     }
     if(ev == mqtt_do_connect_mqtt_event) {
       conn = data;
-      DBG("MQTT - Got mqtt_do_connect_mqtt_event!\n");
+      DBG("MQTT - Got mqtt_do_connect_mqtt_event!\r\n");
 
       PT_INIT(&conn->out_proto_thread);
       while(connect_pt(&conn->out_proto_thread, conn) != PT_ENDED) {
@@ -1076,7 +1076,7 @@ PROCESS_THREAD(mqtt_process, ev, data)
     }
     if(ev == mqtt_do_disconnect_mqtt_event) {
       conn = data;
-      DBG("MQTT - Got mqtt_do_disconnect_mqtt_event!\n");
+      DBG("MQTT - Got mqtt_do_disconnect_mqtt_event!\r\n");
 
       PT_INIT(&conn->out_proto_thread);
       while(disconnect_pt(&conn->out_proto_thread, conn) != PT_ENDED) {
@@ -1085,7 +1085,7 @@ PROCESS_THREAD(mqtt_process, ev, data)
     }
     if(ev == mqtt_do_pingreq_event) {
       conn = data;
-      DBG("MQTT - Got mqtt_do_pingreq_event!\n");
+      DBG("MQTT - Got mqtt_do_pingreq_event!\r\n");
 
       PT_INIT(&conn->out_proto_thread);
       while(pingreq_pt(&conn->out_proto_thread, conn) != PT_ENDED) {
@@ -1094,7 +1094,7 @@ PROCESS_THREAD(mqtt_process, ev, data)
     }
     if(ev == mqtt_do_subscribe_event) {
       conn = data;
-      DBG("MQTT - Got mqtt_do_subscribe_mqtt_event!\n");
+      DBG("MQTT - Got mqtt_do_subscribe_mqtt_event!\r\n");
 
       PT_INIT(&conn->out_proto_thread);
       while(subscribe_pt(&conn->out_proto_thread, conn) != PT_ENDED) {
@@ -1103,7 +1103,7 @@ PROCESS_THREAD(mqtt_process, ev, data)
     }
     if(ev == mqtt_do_unsubscribe_event) {
         conn = data;
-        DBG("MQTT - Got mqtt_do_unsubscribe_mqtt_event!\n");
+        DBG("MQTT - Got mqtt_do_unsubscribe_mqtt_event!\r\n");
 
         PT_INIT(&conn->out_proto_thread);
         while(unsubscribe_pt(&conn->out_proto_thread, conn) != PT_ENDED) {
@@ -1112,7 +1112,7 @@ PROCESS_THREAD(mqtt_process, ev, data)
       }
     if(ev == mqtt_do_publish_event) {
       conn = data;
-      DBG("MQTT - Got mqtt_do_publish_mqtt_event!\n");
+      DBG("MQTT - Got mqtt_do_publish_mqtt_event!\r\n");
 
       PT_INIT(&conn->out_proto_thread);
       while(publish_pt(&conn->out_proto_thread, conn) != PT_ENDED) {
@@ -1130,13 +1130,13 @@ PROCESS_THREAD(mqtt_process, ev, data)
       if((char *)data != NULL && mdns_lookup((char *)data) != NULL) {
         ipaddr = mdns_lookup((char *)data);
 
-        DBG("MQTT - Host found with ip %i %i %i %i TCP connecting...\n",
+        DBG("MQTT - Host found with ip %i.%i.%i.%i TCP connecting...\r\n",
                ipaddr->u8[12],
                ipaddr->u8[13],
                ipaddr->u8[14],
                ipaddr->u8[15]);
       } else {
-        printf("MQTT - Host not found, cannot continue.\n");
+        printf("MQTT - Host not found, cannot continue.\r\n");
       }
 
       /* Find the connection(s) that are waiting for this lookup. Note that it
@@ -1210,7 +1210,7 @@ mqtt_register(struct mqtt_connection* conn,
   mqtt_init();
   list_add(mqtt_conn_list, conn);
 
-  DBG("MQTT - Registered successfully\n");
+  DBG("MQTT - Registered successfully\r\n");
 
   return MQTT_STATUS_OK;
 }
@@ -1255,7 +1255,7 @@ mqtt_connect(struct mqtt_connection* conn,
       ipaddr = mdns_lookup(host);
 
       if(ipaddr == NULL) {
-        printf("MQTT - Resolving host...\n");
+        printf("MQTT - Resolving host...\r\n");
         mdns_query(host);
         conn->state = MQTT_CONN_STATE_DNS_LOOKUP;
         return MQTT_STATUS_OK;
@@ -1300,15 +1300,15 @@ mqtt_status_t mqtt_subscribe(struct mqtt_connection* conn,
     return MQTT_STATUS_NOT_CONNECTED_ERROR;
   }
 
-  DBG("MQTT - Call to mqtt_subscribe...\n");
+  DBG("MQTT - Call to mqtt_subscribe...\r\n");
 
   /* Currently don't have a queue, so only one item at a time */
   if(conn->out_queue_full) {
-    DBG("MQTT - Not accepted!\n");
+    DBG("MQTT - Not accepted!\r\n");
     return MQTT_STATUS_OUT_QUEUE_FULL;
   }
   conn->out_queue_full = 1;
-  DBG("MQTT - Accepted!\n");
+  DBG("MQTT - Accepted!\r\n");
 
   conn->out_packet.mid = INCREMENT_MID(conn);
   conn->out_packet.topic = topic;
@@ -1328,14 +1328,14 @@ mqtt_status_t mqtt_unsubscribe(struct mqtt_connection* conn,
     return MQTT_STATUS_NOT_CONNECTED_ERROR;
   }
 
-  DBG("MQTT - Call to mqtt_unsubscribe...\n");
+  DBG("MQTT - Call to mqtt_unsubscribe...\r\n");
   /* Currently don't have a queue, so only one item at a time */
   if(conn->out_queue_full) {
-    DBG("MQTT - Not accepted!\n");
+    DBG("MQTT - Not accepted!\r\n");
     return MQTT_STATUS_OUT_QUEUE_FULL;
   }
   conn->out_queue_full = 1;
-  DBG("MQTT - Accepted!\n");
+  DBG("MQTT - Accepted!\r\n");
 
   conn->out_packet.mid = INCREMENT_MID(conn);
   conn->out_packet.topic = topic;
@@ -1359,15 +1359,15 @@ mqtt_publish(struct mqtt_connection* conn,
     return MQTT_STATUS_NOT_CONNECTED_ERROR;
   }
 
-  DBG("MQTT - Call to mqtt_publish...\n");
+  DBG("MQTT - Call to mqtt_publish...\r\n");
 
   /* Currently don't have a queue, so only one item at a time */
   if(conn->out_queue_full) {
-    DBG("MQTT - Not accepted!\n");
+    DBG("MQTT - Not accepted!\r\n");
     return MQTT_STATUS_OUT_QUEUE_FULL;
   }
   conn->out_queue_full = 1;
-  DBG("MQTT - Accepted!\n");
+  DBG("MQTT - Accepted!\r\n");
 
   conn->out_packet.mid = INCREMENT_MID(conn);
   conn->out_packet.retain = retain;

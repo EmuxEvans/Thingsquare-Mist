@@ -1,3 +1,10 @@
+/**
+ * \addtogroup openmote
+ * @{
+ *
+ * \file
+ *  Configuration for the this platform
+ */
 #ifndef CONTIKI_CONF_H_
 #define CONTIKI_CONF_H_
 
@@ -12,8 +19,6 @@
 #ifndef MIST_CONF_NETSTACK
 #define MIST_CONF_NETSTACK (MIST_CONF_DROWSIE)
 #endif /* MIST_CONF_NETSTACK */
-
-
 
 #define NETSTACK_CONF_RDC_CHANNEL_CHECK_RATE 8
 #define NULLRDC_CONF_802154_AUTOACK 1
@@ -31,7 +36,6 @@
 #if WITH_UIP6
 /* Network setup for IPv6 */
 #define NETSTACK_CONF_NETWORK sicslowpan_driver
-
 /* Specify a minimum packet size for 6lowpan compression to be
    enabled. This is needed for ContikiMAC, which needs packets to be
    larger than a specified size, if no ContikiMAC header should be

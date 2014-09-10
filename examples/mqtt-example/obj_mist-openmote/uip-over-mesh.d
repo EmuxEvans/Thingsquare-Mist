@@ -3,12 +3,13 @@ obj_mist-openmote/uip-over-mesh.o: ../../contiki/core/net/uip-over-mesh.c \
  ../../contiki/core/./net/uipopt.h \
  ../../contiki/platform/openmote/contiki-conf.h \
  ../../platform/mist-openmote/./platform-conf.h \
- ../../apps/mist-conf/mist-conf-const.h \
- ../../apps/mist-conf/mist-default-conf.h \
  ../../contiki/platform/openmote/dev/board.h \
  ../../contiki/cpu/cc2538/./dev/gpio.h ../../contiki/cpu/cc2538/./reg.h \
- ../../contiki/cpu/cc2538/./dev/nvic.h ../../contiki/core/./net/tcpip.h \
- ../../contiki/core/./contiki.h ../../contiki/core/./contiki-version.h \
+ ../../contiki/cpu/cc2538/./dev/nvic.h \
+ ../../apps/mist-conf/mist-conf-const.h \
+ ../../apps/mist-conf/mist-default-conf.h ../../apps/aes/netstack-aes.h \
+ ../../contiki/core/./net/tcpip.h ../../contiki/core/./contiki.h \
+ ../../contiki/core/./contiki-version.h \
  ../../contiki/core/./contiki-default-conf.h \
  ../../contiki/core/./sys/process.h ../../contiki/core/./sys/pt.h \
  ../../contiki/core/./sys/lc.h ../../contiki/core/./sys/lc-switch.h \
@@ -58,12 +59,13 @@ obj_mist-openmote/uip-over-mesh.o: ../../contiki/core/net/uip-over-mesh.c \
  ../../contiki/core/./net/uipopt.h :
  ../../contiki/platform/openmote/contiki-conf.h :
  ../../platform/mist-openmote/./platform-conf.h :
- ../../apps/mist-conf/mist-conf-const.h :
- ../../apps/mist-conf/mist-default-conf.h :
  ../../contiki/platform/openmote/dev/board.h :
  ../../contiki/cpu/cc2538/./dev/gpio.h ../../contiki/cpu/cc2538/./reg.h :
- ../../contiki/cpu/cc2538/./dev/nvic.h ../../contiki/core/./net/tcpip.h :
- ../../contiki/core/./contiki.h ../../contiki/core/./contiki-version.h :
+ ../../contiki/cpu/cc2538/./dev/nvic.h :
+ ../../apps/mist-conf/mist-conf-const.h :
+ ../../apps/mist-conf/mist-default-conf.h ../../apps/aes/netstack-aes.h :
+ ../../contiki/core/./net/tcpip.h ../../contiki/core/./contiki.h :
+ ../../contiki/core/./contiki-version.h :
  ../../contiki/core/./contiki-default-conf.h :
  ../../contiki/core/./sys/process.h ../../contiki/core/./sys/pt.h :
  ../../contiki/core/./sys/lc.h ../../contiki/core/./sys/lc-switch.h :

@@ -4,7 +4,7 @@ ifndef CONTIKI
   $(error CONTIKI not defined! You must specify where CONTIKI resides!)
 endif
 
-CONTIKI_TARGET_DIRS = . dev
+CONTIKI_TARGET_DIRS = . dev apps net
 
 CONTIKI_TARGET_SOURCEFILES += leds.c leds-arch.c
 CONTIKI_TARGET_SOURCEFILES += contiki-main.c

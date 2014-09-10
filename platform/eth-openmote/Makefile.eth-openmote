@@ -39,7 +39,7 @@ ifdef UIP_CONF_IPV6
 CFLAGS += -DWITH_UIP6=1
 endif
 
-PLATFORMAPPS += simple-rpl aes drowsie enc28j60
+PLATFORMAPPS += simple-rpl aes enc28j60
 
 vpath %.c $(OPENMOTEDIR)
 vpath %.c $(OPENMOTEDIR)/dev

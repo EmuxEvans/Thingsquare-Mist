@@ -61,9 +61,9 @@ typedef enum {
  */
 
 typedef int (* tcp_socket_input_callback_t)(struct tcp_socket *s,
-					    void *ptr,
-					    const uint8_t *input_data_ptr,
-					    int input_data_len);
+              void *ptr,
+              const uint8_t *input_data_ptr,
+              int input_data_len);
 
 
 /**

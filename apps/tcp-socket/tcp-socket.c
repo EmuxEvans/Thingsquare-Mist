@@ -76,13 +76,13 @@ acked(struct tcp_socket *s)
 
     if(s->output_data_send_nxt > 0) {
       memcpy(&s->output_data_ptr[0],
-	     &s->output_data_ptr[s->output_data_send_nxt],
-	     s->output_data_maxlen - s->output_data_send_nxt);
+       &s->output_data_ptr[s->output_data_send_nxt],
+       s->output_data_maxlen - s->output_data_send_nxt);
     }
     if(s->output_data_len < s->output_data_send_nxt) {
       printf("tcp: acked assertion failed s->output_data_len (%d) < s->output_data_send_nxt (%d)\n",
-	     s->output_data_len,
-	     s->output_data_send_nxt);
+       s->output_data_len,
+       s->output_data_send_nxt);
     }
     s->output_data_len -= s->output_data_send_nxt;
     s->output_data_send_nxt = 0;
@@ -110,7 +110,7 @@ newdata(struct tcp_socket *s)
     memcpy(s->input_data_ptr, dataptr, copylen);
     if(s->input_callback) {
       bytesleft = s->input_callback(s, s->ptr,
-				    s->input_data_ptr, copylen);
+            s->input_data_ptr, copylen);
     } else {
       bytesleft = 0;
     }
@@ -144,16 +144,16 @@ appcall(void *state)
        function. */
     if(s == NULL) {
       for(s = list_head(socketlist);
-	  s != NULL;
-	  s = list_item_next(s)) {
-	if((s->flags & TCP_SOCKET_FLAGS_LISTENING) != 0 &&
-	   s->listen_port != 0 &&
-	   s->listen_port == uip_htons(uip_conn->lport)) {
-	  s->flags &= ~TCP_SOCKET_FLAGS_LISTENING;
-	  tcp_markconn(uip_conn, s);
-	  call_event(s, TCP_SOCKET_CONNECTED);
-	  break;
-	}
+    s != NULL;
+    s = list_item_next(s)) {
+  if((s->flags & TCP_SOCKET_FLAGS_LISTENING) != 0 &&
+     s->listen_port != 0 &&
+     s->listen_port == uip_htons(uip_conn->lport)) {
+    s->flags &= ~TCP_SOCKET_FLAGS_LISTENING;
+    tcp_markconn(uip_conn, s);
+    call_event(s, TCP_SOCKET_CONNECTED);
+    break;
+  }
       }
     } else {
       call_event(s, TCP_SOCKET_CONNECTED);
@@ -241,10 +241,10 @@ tcp_socket_init(void)
 /*---------------------------------------------------------------------------*/
 void
 tcp_socket_register(struct tcp_socket *s, void *ptr,
-		    uint8_t *input_databuf, int input_databuf_len,
-		    uint8_t *output_databuf, int output_databuf_len,
-		    tcp_socket_input_callback_t input_callback,
-		    tcp_socket_event_callback_t event_callback)
+        uint8_t *input_databuf, int input_databuf_len,
+        uint8_t *output_databuf, int output_databuf_len,
+        tcp_socket_input_callback_t input_callback,
+        tcp_socket_event_callback_t event_callback)
 {
 
   tcp_socket_init();

@@ -41,7 +41,11 @@
  * \file
  *   Main module for the cc2538dk platform
  */
-/*---------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------*/ 
+#include <stdint.h>
+#include <string.h>
+#include <stdio.h>
+
 #include "contiki.h"
 #include "dev/leds.h"
 #include "dev/sys-ctrl.h"
@@ -58,15 +62,10 @@
 #include "usb/usb-serial.h"
 #include "lib/random.h"
 #include "net/netstack.h"
-#include "net/queuebuf.h"
-#include "net/tcpip.h"
-#include "net/uip.h"
 #include "net/mac/frame802154.h"
 #include "cpu.h"
-#include "reg.h"
 #include "ieee-addr.h"
 #include "lpm.h"
-#include "netstack-aes.h"
 #include "net/rime.h"
 #include "sys/autostart.h"
 #include "sys/profile.h"
@@ -79,14 +78,7 @@
 #if WITH_UIP6
 #include "net/uip-ds6.h"
 #endif /* WITH_UIP6 */
- 
-#include <stdint.h>
-#include <string.h>
-#include <stdio.h>
 /*---------------------------------------------------------------------------*/
-#if WITH_UIP6
-#include "net/uip-ds6.h"
-#endif /* WITH_UIP6 */
 
 #if NETSTACK_AES_KEY_DEFAULT
 #warning Using default AES key "thingsquare mist", change it in project-conf.h like this:

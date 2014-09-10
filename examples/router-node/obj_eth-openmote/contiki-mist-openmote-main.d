@@ -3,11 +3,11 @@ obj_eth-openmote/contiki-mist-openmote-main.o: \
  ../../contiki/core/./contiki.h ../../contiki/core/./contiki-version.h \
  ../../contiki/platform/openmote/contiki-conf.h \
  ../../platform/eth-openmote/./platform-conf.h \
- ../../apps/mist-conf/mist-conf-const.h \
- ../../apps/mist-conf/mist-default-conf.h \
  ../../contiki/platform/openmote/dev/board.h \
  ../../contiki/cpu/cc2538/./dev/gpio.h ../../contiki/cpu/cc2538/./reg.h \
  ../../contiki/cpu/cc2538/./dev/nvic.h \
+ ../../apps/mist-conf/mist-conf-const.h \
+ ../../apps/mist-conf/mist-default-conf.h ../../apps/aes/netstack-aes.h \
  ../../contiki/core/./contiki-default-conf.h \
  ../../contiki/core/./sys/process.h ../../contiki/core/./sys/pt.h \
  ../../contiki/core/./sys/lc.h ../../contiki/core/./sys/lc-switch.h \
@@ -39,14 +39,11 @@ obj_eth-openmote/contiki-mist-openmote-main.o: \
  ../../contiki/core/./lib/random.h ../../contiki/core/./net/netstack.h \
  ../../contiki/core/./net/mac/mac.h ../../contiki/core/./net/mac/rdc.h \
  ../../contiki/core/./net/mac/framer.h \
- ../../contiki/core/./net/queuebuf.h ../../contiki/core/./net/packetbuf.h \
- ../../contiki/core/./net/rime/rimeaddr.h \
- ../../contiki/core/./net/tcpip.h ../../contiki/core/./net/uip.h \
- ../../contiki/core/./net/uipopt.h \
  ../../contiki/core/./net/mac/frame802154.h \
+ ../../contiki/core/./net/rime/rimeaddr.h \
  ../../contiki/cpu/cc2538/./cpu.h ../../contiki/cpu/cc2538/./ieee-addr.h \
  ../../contiki/cpu/cc2538/./lpm.h ../../contiki/core/sys/rtimer.h \
- ../../apps/aes/netstack-aes.h ../../contiki/core/./net/rime.h \
+ ../../contiki/core/./net/rime.h \
  ../../contiki/core/./net/rime/announcement.h \
  ../../contiki/core/./net/rime/collect.h \
  ../../contiki/core/./net/rime/runicast.h \
@@ -54,9 +51,10 @@ obj_eth-openmote/contiki-mist-openmote-main.o: \
  ../../contiki/core/./sys/ctimer.h \
  ../../contiki/core/./net/rime/unicast.h \
  ../../contiki/core/./net/rime/broadcast.h \
- ../../contiki/core/./net/rime/abc.h \
+ ../../contiki/core/./net/rime/abc.h ../../contiki/core/./net/packetbuf.h \
  ../../contiki/core/./net/rime/channel.h \
  ../../contiki/core/./net/rime/chameleon.h \
+ ../../contiki/core/./net/queuebuf.h \
  ../../contiki/core/./net/rime/neighbor-discovery.h \
  ../../contiki/core/./net/rime/collect-neighbor.h \
  ../../contiki/core/./net/rime/collect-link-estimate.h \
@@ -80,9 +78,10 @@ obj_eth-openmote/contiki-mist-openmote-main.o: \
  ../../platform/eth-openmote/./node-id.h ../../apps/mist-conf/mist.h \
  ../../contiki/core/./contiki-net.h ../../contiki/core/./contiki.h \
  ../../contiki/core/./net/tcpip.h ../../contiki/core/./net/uip.h \
- ../../contiki/core/./net/uip-fw.h ../../contiki/core/./net/uip-fw-drv.h \
- ../../contiki/core/./net/uip-fw.h ../../contiki/core/./net/uip_arp.h \
- ../../contiki/core/./net/uiplib.h \
+ ../../contiki/core/./net/uipopt.h ../../contiki/core/./net/tcpip.h \
+ ../../contiki/core/./net/uip.h ../../contiki/core/./net/uip-fw.h \
+ ../../contiki/core/./net/uip-fw-drv.h ../../contiki/core/./net/uip-fw.h \
+ ../../contiki/core/./net/uip_arp.h ../../contiki/core/./net/uiplib.h \
  ../../contiki/core/./net/uip-udp-packet.h \
  ../../contiki/core/./net/simple-udp.h \
  ../../contiki/core/./net/uip-icmp6.h ../../contiki/core/./net/uip-ds6.h \
@@ -97,7 +96,8 @@ obj_eth-openmote/contiki-mist-openmote-main.o: \
  ../../contiki/core/./net/rime.h ../../contiki/core/./net/netstack.h \
  ../../apps/aes/aes.h ../../apps/ip64-addr/ip64-addr.h \
  ../../apps/ip64/ip64.h ../../contiki/platform/openmote/ip64-conf.h \
- ../../apps/ip64/ip64-eth-interface.h \
+ ../../apps/ip64/ip64-slip-interface.h ../../apps/ip64/ip64-null-driver.h \
+ ../../apps/ip64/ip64-driver.h ../../apps/ip64/ip64-eth-interface.h \
  ../../dev/enc28j60/enc28j60-ip64-driver.h ../../apps/ip64/ip64-driver.h \
  ../../apps/mdns/mdns.h ../../apps/simple-rpl/simple-rpl.h \
  ../../apps/tcp-socket/tcp-socket.h ../../apps/udp-socket/udp-socket.h \
@@ -108,11 +108,11 @@ obj_eth-openmote/contiki-mist-openmote-main.o: \
  ../../contiki/core/./contiki.h ../../contiki/core/./contiki-version.h :
  ../../contiki/platform/openmote/contiki-conf.h :
  ../../platform/eth-openmote/./platform-conf.h :
- ../../apps/mist-conf/mist-conf-const.h :
- ../../apps/mist-conf/mist-default-conf.h :
  ../../contiki/platform/openmote/dev/board.h :
  ../../contiki/cpu/cc2538/./dev/gpio.h ../../contiki/cpu/cc2538/./reg.h :
  ../../contiki/cpu/cc2538/./dev/nvic.h :
+ ../../apps/mist-conf/mist-conf-const.h :
+ ../../apps/mist-conf/mist-default-conf.h ../../apps/aes/netstack-aes.h :
  ../../contiki/core/./contiki-default-conf.h :
  ../../contiki/core/./sys/process.h ../../contiki/core/./sys/pt.h :
  ../../contiki/core/./sys/lc.h ../../contiki/core/./sys/lc-switch.h :
@@ -144,14 +144,11 @@ obj_eth-openmote/contiki-mist-openmote-main.o: \
  ../../contiki/core/./lib/random.h ../../contiki/core/./net/netstack.h :
  ../../contiki/core/./net/mac/mac.h ../../contiki/core/./net/mac/rdc.h :
  ../../contiki/core/./net/mac/framer.h :
- ../../contiki/core/./net/queuebuf.h ../../contiki/core/./net/packetbuf.h :
- ../../contiki/core/./net/rime/rimeaddr.h :
- ../../contiki/core/./net/tcpip.h ../../contiki/core/./net/uip.h :
- ../../contiki/core/./net/uipopt.h :
  ../../contiki/core/./net/mac/frame802154.h :
+ ../../contiki/core/./net/rime/rimeaddr.h :
  ../../contiki/cpu/cc2538/./cpu.h ../../contiki/cpu/cc2538/./ieee-addr.h :
  ../../contiki/cpu/cc2538/./lpm.h ../../contiki/core/sys/rtimer.h :
- ../../apps/aes/netstack-aes.h ../../contiki/core/./net/rime.h :
+ ../../contiki/core/./net/rime.h :
  ../../contiki/core/./net/rime/announcement.h :
  ../../contiki/core/./net/rime/collect.h :
  ../../contiki/core/./net/rime/runicast.h :
@@ -159,9 +156,10 @@ obj_eth-openmote/contiki-mist-openmote-main.o: \
  ../../contiki/core/./sys/ctimer.h :
  ../../contiki/core/./net/rime/unicast.h :
  ../../contiki/core/./net/rime/broadcast.h :
- ../../contiki/core/./net/rime/abc.h :
+ ../../contiki/core/./net/rime/abc.h ../../contiki/core/./net/packetbuf.h :
  ../../contiki/core/./net/rime/channel.h :
  ../../contiki/core/./net/rime/chameleon.h :
+ ../../contiki/core/./net/queuebuf.h :
  ../../contiki/core/./net/rime/neighbor-discovery.h :
  ../../contiki/core/./net/rime/collect-neighbor.h :
  ../../contiki/core/./net/rime/collect-link-estimate.h :
@@ -185,9 +183,10 @@ obj_eth-openmote/contiki-mist-openmote-main.o: \
  ../../platform/eth-openmote/./node-id.h ../../apps/mist-conf/mist.h :
  ../../contiki/core/./contiki-net.h ../../contiki/core/./contiki.h :
  ../../contiki/core/./net/tcpip.h ../../contiki/core/./net/uip.h :
- ../../contiki/core/./net/uip-fw.h ../../contiki/core/./net/uip-fw-drv.h :
- ../../contiki/core/./net/uip-fw.h ../../contiki/core/./net/uip_arp.h :
- ../../contiki/core/./net/uiplib.h :
+ ../../contiki/core/./net/uipopt.h ../../contiki/core/./net/tcpip.h :
+ ../../contiki/core/./net/uip.h ../../contiki/core/./net/uip-fw.h :
+ ../../contiki/core/./net/uip-fw-drv.h ../../contiki/core/./net/uip-fw.h :
+ ../../contiki/core/./net/uip_arp.h ../../contiki/core/./net/uiplib.h :
  ../../contiki/core/./net/uip-udp-packet.h :
  ../../contiki/core/./net/simple-udp.h :
  ../../contiki/core/./net/uip-icmp6.h ../../contiki/core/./net/uip-ds6.h :
@@ -202,7 +201,8 @@ obj_eth-openmote/contiki-mist-openmote-main.o: \
  ../../contiki/core/./net/rime.h ../../contiki/core/./net/netstack.h :
  ../../apps/aes/aes.h ../../apps/ip64-addr/ip64-addr.h :
  ../../apps/ip64/ip64.h ../../contiki/platform/openmote/ip64-conf.h :
- ../../apps/ip64/ip64-eth-interface.h :
+ ../../apps/ip64/ip64-slip-interface.h ../../apps/ip64/ip64-null-driver.h :
+ ../../apps/ip64/ip64-driver.h ../../apps/ip64/ip64-eth-interface.h :
  ../../dev/enc28j60/enc28j60-ip64-driver.h ../../apps/ip64/ip64-driver.h :
  ../../apps/mdns/mdns.h ../../apps/simple-rpl/simple-rpl.h :
  ../../apps/tcp-socket/tcp-socket.h ../../apps/udp-socket/udp-socket.h :

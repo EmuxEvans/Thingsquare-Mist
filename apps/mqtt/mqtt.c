@@ -264,7 +264,7 @@ encode_remaining_length(uint8_t* remaining_length,
 
     remaining_length[*remaining_length_bytes] = digit;
     (*remaining_length_bytes)++;
-    DBG("MQTT - Encode len digit '%i' length '%i'\n", digit, length);
+    DBG("MQTT - Encode len digit '%i' length '%i'\r\n", digit, length);
   } while(length > 0 && *remaining_length_bytes < 5);
   DBG("MQTT - remaining_length_bytes %i\r\n", *remaining_length_bytes);
 }
@@ -274,7 +274,7 @@ keep_alive_callback(void *ptr)
 {
   struct mqtt_connection* conn = ptr;
 
-  DBG("MQTT - (keep_alive_callback) Called!\n");
+  DBG("MQTT - (keep_alive_callback) Called!\r\n");
 
   /* The flag is set when the PINGREQ has been sent */
   if(conn->waiting_for_pingresp) {
@@ -1130,7 +1130,7 @@ PROCESS_THREAD(mqtt_process, ev, data)
       if((char *)data != NULL && mdns_lookup((char *)data) != NULL) {
         ipaddr = mdns_lookup((char *)data);
 
-        DBG("MQTT - Host found with ip %i.%i.%i.%i TCP connecting...\r\n",
+        DBG("MQTT - Host found with ip %i %i %i %i TCP connecting...\r\n",
                ipaddr->u8[12],
                ipaddr->u8[13],
                ipaddr->u8[14],

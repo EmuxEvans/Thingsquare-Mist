@@ -1,13 +1,13 @@
 obj_mist-openmote/contikimac.o: ../../contiki/core/net/mac/contikimac.c \
  ../../contiki/platform/openmote/contiki-conf.h \
  ../../platform/mist-openmote/./platform-conf.h \
- ../../apps/mist-conf/mist-conf-const.h \
- ../../apps/mist-conf/mist-default-conf.h \
  ../../contiki/platform/openmote/dev/board.h \
  ../../contiki/cpu/cc2538/./dev/gpio.h ../../contiki/cpu/cc2538/./reg.h \
- ../../contiki/cpu/cc2538/./dev/nvic.h ../../contiki/core/./dev/leds.h \
- ../../contiki/core/./dev/radio.h ../../contiki/core/./dev/watchdog.h \
- ../../contiki/core/./lib/random.h \
+ ../../contiki/cpu/cc2538/./dev/nvic.h \
+ ../../apps/mist-conf/mist-conf-const.h \
+ ../../apps/mist-conf/mist-default-conf.h ../../apps/aes/netstack-aes.h \
+ ../../contiki/core/./dev/leds.h ../../contiki/core/./dev/radio.h \
+ ../../contiki/core/./dev/watchdog.h ../../contiki/core/./lib/random.h \
  ../../contiki/core/./net/mac/contikimac.h \
  ../../contiki/core/./sys/rtimer.h \
  ../../contiki/cpu/cc2538/./rtimer-arch.h ../../contiki/core/./contiki.h \
@@ -60,13 +60,13 @@ obj_mist-openmote/contikimac.o: ../../contiki/core/net/mac/contikimac.c \
 ../../contiki/core/net/mac/contikimac.c :
  ../../contiki/platform/openmote/contiki-conf.h :
  ../../platform/mist-openmote/./platform-conf.h :
- ../../apps/mist-conf/mist-conf-const.h :
- ../../apps/mist-conf/mist-default-conf.h :
  ../../contiki/platform/openmote/dev/board.h :
  ../../contiki/cpu/cc2538/./dev/gpio.h ../../contiki/cpu/cc2538/./reg.h :
- ../../contiki/cpu/cc2538/./dev/nvic.h ../../contiki/core/./dev/leds.h :
- ../../contiki/core/./dev/radio.h ../../contiki/core/./dev/watchdog.h :
- ../../contiki/core/./lib/random.h :
+ ../../contiki/cpu/cc2538/./dev/nvic.h :
+ ../../apps/mist-conf/mist-conf-const.h :
+ ../../apps/mist-conf/mist-default-conf.h ../../apps/aes/netstack-aes.h :
+ ../../contiki/core/./dev/leds.h ../../contiki/core/./dev/radio.h :
+ ../../contiki/core/./dev/watchdog.h ../../contiki/core/./lib/random.h :
  ../../contiki/core/./net/mac/contikimac.h :
  ../../contiki/core/./sys/rtimer.h :
  ../../contiki/cpu/cc2538/./rtimer-arch.h ../../contiki/core/./contiki.h :

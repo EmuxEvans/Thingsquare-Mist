@@ -86,7 +86,6 @@
 #include "net/uip-ds6.h"
 #endif /* WITH_UIP6 */
 
-
 #if NETSTACK_AES_KEY_DEFAULT
 #warning Using default AES key "thingsquare mist", change it in project-conf.h like this:
 #warning #define NETSTACK_AES_KEY {0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15}

@@ -2,8 +2,8 @@
 #include "mist.h"
 #include "dev/button-sensor.h"
 #include "dev/board.h"
-#include "netstack-aes.h"
 
+#include "netstack-aes.h"
 #include "mqtt.h"
 
 #define SEND_INTERVAL		(60 * CLOCK_SECOND)
@@ -181,26 +181,22 @@ PROCESS_THREAD(button_process, ev, data)
 
   while(1) {
     PROCESS_WAIT_EVENT_UNTIL((ev == sensors_event) && (
-			     data == &button_sw1_sensor||data == &button_sw2_sensor));
-    if(data == &button_sw1_sensor){
-      printf("Button sw1 event\r\n");
+			     data == &button_sw1_sensor||data == &button_sw2_sensor||data == &button_user_sensor));
+    if(data == &button_user_sensor){
       if(reset_flag){
         reset_flag = 0;
-        random_topic = get_random();
-        printf("random value %d\r\n", random_topic);
-        sprintf(str_topic_state, "%s%d", "bontorgate/node1/pwr/",random_topic);
+        sprintf(str_topic_state, "%s", "bontorgate/node2");
         printf("%s\r\n",str_topic_state);
-        sprintf(str_topic_sensor, "%s%d%s", "bontorgate/node1/pwr/",random_topic,"/sensor");
-        sprintf(str_topic_led, "%s%d%s", "bontorgate/node1/pwr/",random_topic,"/led");
+        sprintf(str_topic_sensor, "%s", "bontorgate/node2/sensor");
+        sprintf(str_topic_led, "%s", "bontorgate/node2/led");
         process_start(&mqtt_example_process, NULL);
       }else{
-        printf("!Reset Flag\r\n");
         printf("%s\r\n", str_topic_state);
       }
     }
     else if(data == &button_sw2_sensor){
-      printf("Button sw2 event\r\n");      
       button_sensor_value++;
+      printf("Button sensor value: %d\r\n", button_sensor_value);      
     }
   }
   PROCESS_END();
@@ -231,7 +227,7 @@ PROCESS_THREAD(mqtt_example_process, ev, data)
   //etimer_set(&network_timer, CLOCK_SECOND*20);
   etimer_set(&light_sense_timer, CLOCK_SECOND*30);
 
-  mqtt_register(&conn, &mqtt_example_process, "tiot_client", mqtt_event);
+  mqtt_register(&conn, &mqtt_example_process, "node2_client", mqtt_event);
 
   mqtt_set_last_will(&conn, str_topic_state, "0", MQTT_QOS_LEVEL_0);
 
@@ -287,22 +283,21 @@ PROCESS_THREAD(mqtt_example_process, ev, data)
           //leds_off(LEDS_D1_GREEN);
         }
 
-        DBG("APP - Sending button sensor value %d--\r\n",button_sensor_value);
-        sprintf(app_buffer,"%s%d","Sending button sensor value--",button_sensor_value);
+        DBG("APP - Sending button sensor value %d--\r\n", button_sensor_value);
+        sprintf(app_buffer,"%s%d","Sending button sensor value--", button_sensor_value);
+        DBG("%s\r\n", app_buffer);
         mqtt_publish(&conn,
                NULL,
                str_topic_sensor,
                app_buffer,
                strlen(app_buffer),
                MQTT_QOS_LEVEL_0,
-               MQTT_RETAIN_OFF);
+               MQTT_RETAIN_ON);
         etimer_restart(&light_sense_timer);
       }
     }
   }
   PROCESS_END();
 }
-
-
 
 /*---------------------------------------------------------------------------*/

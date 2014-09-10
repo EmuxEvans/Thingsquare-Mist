@@ -3,11 +3,11 @@ obj_eth-openmote/enc28j60-ip64-driver.o: \
  ../../contiki/core/./contiki-version.h \
  ../../contiki/platform/openmote/contiki-conf.h \
  ../../platform/eth-openmote/./platform-conf.h \
- ../../apps/mist-conf/mist-conf-const.h \
- ../../apps/mist-conf/mist-default-conf.h \
  ../../contiki/platform/openmote/dev/board.h \
  ../../contiki/cpu/cc2538/./dev/gpio.h ../../contiki/cpu/cc2538/./reg.h \
  ../../contiki/cpu/cc2538/./dev/nvic.h \
+ ../../apps/mist-conf/mist-conf-const.h \
+ ../../apps/mist-conf/mist-default-conf.h ../../apps/aes/netstack-aes.h \
  ../../contiki/core/./contiki-default-conf.h \
  ../../contiki/core/./sys/process.h ../../contiki/core/./sys/pt.h \
  ../../contiki/core/./sys/lc.h ../../contiki/core/./sys/lc-switch.h \
@@ -25,7 +25,8 @@ obj_eth-openmote/enc28j60-ip64-driver.o: \
  ../../apps/ip64/ip64.h ../../contiki/core/./net/uip.h \
  ../../contiki/core/./net/uipopt.h ../../contiki/core/./net/tcpip.h \
  ../../contiki/platform/openmote/ip64-conf.h \
- ../../apps/ip64/ip64-eth-interface.h \
+ ../../apps/ip64/ip64-slip-interface.h ../../apps/ip64/ip64-null-driver.h \
+ ../../apps/ip64/ip64-driver.h ../../apps/ip64/ip64-eth-interface.h \
  ../../dev/enc28j60/enc28j60-ip64-driver.h ../../apps/ip64/ip64-eth.h \
  ../../contiki/core/./net/rime.h \
  ../../contiki/core/./net/rime/announcement.h \
@@ -62,11 +63,11 @@ obj_eth-openmote/enc28j60-ip64-driver.o: \
  ../../contiki/core/./contiki-version.h :
  ../../contiki/platform/openmote/contiki-conf.h :
  ../../platform/eth-openmote/./platform-conf.h :
- ../../apps/mist-conf/mist-conf-const.h :
- ../../apps/mist-conf/mist-default-conf.h :
  ../../contiki/platform/openmote/dev/board.h :
  ../../contiki/cpu/cc2538/./dev/gpio.h ../../contiki/cpu/cc2538/./reg.h :
  ../../contiki/cpu/cc2538/./dev/nvic.h :
+ ../../apps/mist-conf/mist-conf-const.h :
+ ../../apps/mist-conf/mist-default-conf.h ../../apps/aes/netstack-aes.h :
  ../../contiki/core/./contiki-default-conf.h :
  ../../contiki/core/./sys/process.h ../../contiki/core/./sys/pt.h :
  ../../contiki/core/./sys/lc.h ../../contiki/core/./sys/lc-switch.h :
@@ -84,7 +85,8 @@ obj_eth-openmote/enc28j60-ip64-driver.o: \
  ../../apps/ip64/ip64.h ../../contiki/core/./net/uip.h :
  ../../contiki/core/./net/uipopt.h ../../contiki/core/./net/tcpip.h :
  ../../contiki/platform/openmote/ip64-conf.h :
- ../../apps/ip64/ip64-eth-interface.h :
+ ../../apps/ip64/ip64-slip-interface.h ../../apps/ip64/ip64-null-driver.h :
+ ../../apps/ip64/ip64-driver.h ../../apps/ip64/ip64-eth-interface.h :
  ../../dev/enc28j60/enc28j60-ip64-driver.h ../../apps/ip64/ip64-eth.h :
  ../../contiki/core/./net/rime.h :
  ../../contiki/core/./net/rime/announcement.h :

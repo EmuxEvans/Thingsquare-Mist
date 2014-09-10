@@ -3,12 +3,13 @@ obj_eth-openmote/ip64-slip-interface.o: \
  ../../contiki/core/./net/uipopt.h \
  ../../contiki/platform/openmote/contiki-conf.h \
  ../../platform/eth-openmote/./platform-conf.h \
- ../../apps/mist-conf/mist-conf-const.h \
- ../../apps/mist-conf/mist-default-conf.h \
  ../../contiki/platform/openmote/dev/board.h \
  ../../contiki/cpu/cc2538/./dev/gpio.h ../../contiki/cpu/cc2538/./reg.h \
- ../../contiki/cpu/cc2538/./dev/nvic.h ../../contiki/core/./net/tcpip.h \
- ../../contiki/core/./contiki.h ../../contiki/core/./contiki-version.h \
+ ../../contiki/cpu/cc2538/./dev/nvic.h \
+ ../../apps/mist-conf/mist-conf-const.h \
+ ../../apps/mist-conf/mist-default-conf.h ../../apps/aes/netstack-aes.h \
+ ../../contiki/core/./net/tcpip.h ../../contiki/core/./contiki.h \
+ ../../contiki/core/./contiki-version.h \
  ../../contiki/core/./contiki-default-conf.h \
  ../../contiki/core/./sys/process.h ../../contiki/core/./sys/pt.h \
  ../../contiki/core/./sys/lc.h ../../contiki/core/./sys/lc-switch.h \
@@ -31,19 +32,21 @@ obj_eth-openmote/ip64-slip-interface.o: \
  ../../contiki/core/./dev/radio.h ../../contiki/core/./net/mac/rdc.h \
  ../../contiki/core/./net/mac/framer.h ../../contiki/core/./dev/slip.h \
  ../../apps/ip64/ip64.h ../../contiki/platform/openmote/ip64-conf.h \
- ../../apps/ip64/ip64-eth-interface.h \
+ ../../apps/ip64/ip64-slip-interface.h ../../apps/ip64/ip64-null-driver.h \
+ ../../apps/ip64/ip64-driver.h ../../apps/ip64/ip64-eth-interface.h \
  ../../dev/enc28j60/enc28j60-ip64-driver.h ../../apps/ip64/ip64-driver.h \
  ../../contiki/core/./net/uip-debug.h
  ../../apps/ip64/ip64-slip-interface.c ../../contiki/core/./net/uip.h :
  ../../contiki/core/./net/uipopt.h :
  ../../contiki/platform/openmote/contiki-conf.h :
  ../../platform/eth-openmote/./platform-conf.h :
- ../../apps/mist-conf/mist-conf-const.h :
- ../../apps/mist-conf/mist-default-conf.h :
  ../../contiki/platform/openmote/dev/board.h :
  ../../contiki/cpu/cc2538/./dev/gpio.h ../../contiki/cpu/cc2538/./reg.h :
- ../../contiki/cpu/cc2538/./dev/nvic.h ../../contiki/core/./net/tcpip.h :
- ../../contiki/core/./contiki.h ../../contiki/core/./contiki-version.h :
+ ../../contiki/cpu/cc2538/./dev/nvic.h :
+ ../../apps/mist-conf/mist-conf-const.h :
+ ../../apps/mist-conf/mist-default-conf.h ../../apps/aes/netstack-aes.h :
+ ../../contiki/core/./net/tcpip.h ../../contiki/core/./contiki.h :
+ ../../contiki/core/./contiki-version.h :
  ../../contiki/core/./contiki-default-conf.h :
  ../../contiki/core/./sys/process.h ../../contiki/core/./sys/pt.h :
  ../../contiki/core/./sys/lc.h ../../contiki/core/./sys/lc-switch.h :
@@ -66,6 +69,7 @@ obj_eth-openmote/ip64-slip-interface.o: \
  ../../contiki/core/./dev/radio.h ../../contiki/core/./net/mac/rdc.h :
  ../../contiki/core/./net/mac/framer.h ../../contiki/core/./dev/slip.h :
  ../../apps/ip64/ip64.h ../../contiki/platform/openmote/ip64-conf.h :
- ../../apps/ip64/ip64-eth-interface.h :
+ ../../apps/ip64/ip64-slip-interface.h ../../apps/ip64/ip64-null-driver.h :
+ ../../apps/ip64/ip64-driver.h ../../apps/ip64/ip64-eth-interface.h :
  ../../dev/enc28j60/enc28j60-ip64-driver.h ../../apps/ip64/ip64-driver.h :
  ../../contiki/core/./net/uip-debug.h :

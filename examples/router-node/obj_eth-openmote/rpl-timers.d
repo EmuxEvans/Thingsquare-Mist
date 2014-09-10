@@ -1,11 +1,11 @@
 obj_eth-openmote/rpl-timers.o: ../../contiki/core/net/rpl/rpl-timers.c \
  ../../contiki/platform/openmote/contiki-conf.h \
  ../../platform/eth-openmote/./platform-conf.h \
- ../../apps/mist-conf/mist-conf-const.h \
- ../../apps/mist-conf/mist-default-conf.h \
  ../../contiki/platform/openmote/dev/board.h \
  ../../contiki/cpu/cc2538/./dev/gpio.h ../../contiki/cpu/cc2538/./reg.h \
  ../../contiki/cpu/cc2538/./dev/nvic.h \
+ ../../apps/mist-conf/mist-conf-const.h \
+ ../../apps/mist-conf/mist-default-conf.h ../../apps/aes/netstack-aes.h \
  ../../contiki/core/./net/rpl/rpl-private.h \
  ../../contiki/core/./net/rpl/rpl.h \
  ../../contiki/core/./net/rpl/rpl-conf.h ../../contiki/core/./lib/list.h \
@@ -37,11 +37,11 @@ obj_eth-openmote/rpl-timers.o: ../../contiki/core/net/rpl/rpl-timers.c \
 ../../contiki/core/net/rpl/rpl-timers.c :
  ../../contiki/platform/openmote/contiki-conf.h :
  ../../platform/eth-openmote/./platform-conf.h :
- ../../apps/mist-conf/mist-conf-const.h :
- ../../apps/mist-conf/mist-default-conf.h :
  ../../contiki/platform/openmote/dev/board.h :
  ../../contiki/cpu/cc2538/./dev/gpio.h ../../contiki/cpu/cc2538/./reg.h :
  ../../contiki/cpu/cc2538/./dev/nvic.h :
+ ../../apps/mist-conf/mist-conf-const.h :
+ ../../apps/mist-conf/mist-default-conf.h ../../apps/aes/netstack-aes.h :
  ../../contiki/core/./net/rpl/rpl-private.h :
  ../../contiki/core/./net/rpl/rpl.h :
  ../../contiki/core/./net/rpl/rpl-conf.h ../../contiki/core/./lib/list.h :

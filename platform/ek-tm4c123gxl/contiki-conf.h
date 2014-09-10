@@ -230,9 +230,7 @@
 #define RIMESTATS_CONF_ON 1
 #define RIMESTATS_CONF_ENABLED 1
 /*************************************/
-
-
-
+/*---------------------------------------------------------------------------*/
 /* Compiler configuration and platform-specific type definitions */
 //Define in platform.h
 //#define CLOCK_CONF_SECOND 128

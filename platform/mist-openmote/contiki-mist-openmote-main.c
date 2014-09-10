@@ -42,6 +42,10 @@
  *   Main module for the cc2538dk platform
  */
 /*---------------------------------------------------------------------------*/
+#include <stdint.h>
+#include <string.h>
+#include <stdio.h>
+
 #include "contiki.h"
 #include "dev/leds.h"
 #include "dev/sys-ctrl.h"
@@ -58,17 +62,17 @@
 #include "dev/udma.h"
 #include "usb/usb-serial.h"
 #include "lib/random.h"
-#include "net/netstack.h"
-#include "net/queuebuf.h"
+
 #include "net/tcpip.h"
-#include "net/uip.h"
+
 #include "net/mac/frame802154.h"
+#include "net/netstack.h"
+#include "net/rime.h"
+
 #include "cpu.h"
 #include "reg.h"
 #include "ieee-addr.h"
 #include "lpm.h"
-#include "netstack-aes.h"
-#include "net/rime.h"
 #include "sys/autostart.h"
 #include "sys/profile.h"
 
@@ -80,10 +84,6 @@
 #if WITH_UIP6
 #include "net/uip-ds6.h"
 #endif /* WITH_UIP6 */
-
-#include <stdint.h>
-#include <string.h>
-#include <stdio.h>
 
 #if NETSTACK_AES_KEY_DEFAULT
 #warning Using default AES key "thingsquare mist", change it in project-conf.h like this:
@@ -256,10 +256,6 @@ main(void)
     printf("Node id not set.\r\n");
   }
 
-//  PRINTF(" init net stack \r\n");  
-  netstack_init();
-  cc2538_rf_set_addr(IEEE802154_PANID);
-
 #if WITH_UIP6
   memcpy(&uip_lladdr.addr, node_mac, sizeof(uip_lladdr.addr));
   /* Setup nullmac-like MAC for 802.15.4 */
@@ -267,6 +263,8 @@ main(void)
   queuebuf_init();
 
   netstack_init();
+  PRINTF("CC2538 IEEE802154 PANID %d\r\n", IEEE802154_PANID);  
+  cc2538_rf_set_addr(IEEE802154_PANID);
 
   printf("%s/%s %lu %u\r\n",
          NETSTACK_RDC.name,
@@ -307,7 +305,9 @@ main(void)
 #else /* WITH_UIP6 */
 
   netstack_init();
-
+  PRINTF("CC2538 IEEE802154 PANID %d\r\n", IEEE802154_PANID);  
+  cc2538_rf_set_addr(IEEE802154_PANID);
+  
   printf("%s %lu %u\r\n",
          NETSTACK_RDC.name,
          CLOCK_SECOND / (NETSTACK_RDC.channel_check_interval() == 0? 1:

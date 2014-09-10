@@ -2,11 +2,11 @@ obj_eth-openmote/ip64-ipv4-dhcp.o: ../../apps/ip64/ip64-ipv4-dhcp.c \
  ../../contiki/core/./contiki.h ../../contiki/core/./contiki-version.h \
  ../../contiki/platform/openmote/contiki-conf.h \
  ../../platform/eth-openmote/./platform-conf.h \
- ../../apps/mist-conf/mist-conf-const.h \
- ../../apps/mist-conf/mist-default-conf.h \
  ../../contiki/platform/openmote/dev/board.h \
  ../../contiki/cpu/cc2538/./dev/gpio.h ../../contiki/cpu/cc2538/./reg.h \
  ../../contiki/cpu/cc2538/./dev/nvic.h \
+ ../../apps/mist-conf/mist-conf-const.h \
+ ../../apps/mist-conf/mist-default-conf.h ../../apps/aes/netstack-aes.h \
  ../../contiki/core/./contiki-default-conf.h \
  ../../contiki/core/./sys/process.h ../../contiki/core/./sys/pt.h \
  ../../contiki/core/./sys/lc.h ../../contiki/core/./sys/lc-switch.h \
@@ -72,18 +72,19 @@ obj_eth-openmote/ip64-ipv4-dhcp.o: ../../apps/ip64/ip64-ipv4-dhcp.c \
  ../../contiki/core/./net/rime/trickle.h \
  ../../contiki/core/./net/netstack.h ../../apps/ip64/ip64-dhcpc.h \
  ../../apps/ip64/ip64.h ../../contiki/platform/openmote/ip64-conf.h \
- ../../apps/ip64/ip64-eth-interface.h \
+ ../../apps/ip64/ip64-slip-interface.h ../../apps/ip64/ip64-null-driver.h \
+ ../../apps/ip64/ip64-driver.h ../../apps/ip64/ip64-eth-interface.h \
  ../../dev/enc28j60/enc28j60-ip64-driver.h ../../apps/ip64/ip64-driver.h \
  ../../apps/ip64/ip64-eth.h
 ../../apps/ip64/ip64-ipv4-dhcp.c :
  ../../contiki/core/./contiki.h ../../contiki/core/./contiki-version.h :
  ../../contiki/platform/openmote/contiki-conf.h :
  ../../platform/eth-openmote/./platform-conf.h :
- ../../apps/mist-conf/mist-conf-const.h :
- ../../apps/mist-conf/mist-default-conf.h :
  ../../contiki/platform/openmote/dev/board.h :
  ../../contiki/cpu/cc2538/./dev/gpio.h ../../contiki/cpu/cc2538/./reg.h :
  ../../contiki/cpu/cc2538/./dev/nvic.h :
+ ../../apps/mist-conf/mist-conf-const.h :
+ ../../apps/mist-conf/mist-default-conf.h ../../apps/aes/netstack-aes.h :
  ../../contiki/core/./contiki-default-conf.h :
  ../../contiki/core/./sys/process.h ../../contiki/core/./sys/pt.h :
  ../../contiki/core/./sys/lc.h ../../contiki/core/./sys/lc-switch.h :
@@ -149,6 +150,7 @@ obj_eth-openmote/ip64-ipv4-dhcp.o: ../../apps/ip64/ip64-ipv4-dhcp.c \
  ../../contiki/core/./net/rime/trickle.h :
  ../../contiki/core/./net/netstack.h ../../apps/ip64/ip64-dhcpc.h :
  ../../apps/ip64/ip64.h ../../contiki/platform/openmote/ip64-conf.h :
- ../../apps/ip64/ip64-eth-interface.h :
+ ../../apps/ip64/ip64-slip-interface.h ../../apps/ip64/ip64-null-driver.h :
+ ../../apps/ip64/ip64-driver.h ../../apps/ip64/ip64-eth-interface.h :
  ../../dev/enc28j60/enc28j60-ip64-driver.h ../../apps/ip64/ip64-driver.h :
  ../../apps/ip64/ip64-eth.h :

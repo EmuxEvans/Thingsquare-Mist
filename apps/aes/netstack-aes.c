@@ -255,7 +255,7 @@ netstack_aes_verify(void)
 void
 netstack_aes_init(void)
 {
-  printf("Netstack AES link layer encryption enabled\n");
+  printf("Netstack AES link layer encryption enabled\r\n");
   key_set = 0;
   active = 1;
 }

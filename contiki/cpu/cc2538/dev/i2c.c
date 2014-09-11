@@ -12,6 +12,9 @@
 
 #include "i2c.h"
 
+// #define DBG(...) printf(...)
+#define DBG(...)
+
 /*---------------------------------------------------------------------------*/
 void
 i2c_init(uint8_t port_sda, uint8_t pin_sda, uint8_t port_scl, uint8_t pin_scl, uint32_t bus_speed)
@@ -59,13 +62,13 @@ i2c_init(uint8_t port_sda, uint8_t pin_sda, uint8_t port_scl, uint8_t pin_scl, u
 void
 i2c_master_enable(void)
 {
-	REG(I2CM_CR) |= 0x10;	//Set MFE bit
+	REG(I2CM_CR) |= 0x10; //Set MFE bit
 }
 /*---------------------------------------------------------------------------*/
 void
 i2c_master_disable(void)
 {
-	REG(I2CM_CR) &= ~0x10;	//Reset MFE bit
+	REG(I2CM_CR) &= ~0x10; //Reset MFE bit
 }
 /*---------------------------------------------------------------------------*/
 void
@@ -118,6 +121,7 @@ i2c_master_error(void)
 	if(temp & I2CM_STAT_BUSY) {		//No valid if BUSY bit is set
 		return I2C_MASTER_ERR_NONE;
 	} else if(temp & (I2CM_STAT_ERROR | I2CM_STAT_ARBLST)) {
+    DBG("i2c_master_error: %d\r\n", temp);
 		return temp;	//Compare later
 	}
 	return I2C_MASTER_ERR_NONE;

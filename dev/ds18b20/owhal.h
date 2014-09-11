@@ -41,7 +41,4 @@
 
 #define OW_READ() GPIO_READ_PIN(DS_PORT_BASE, DS_PIN)
 
-/* 4 MHz, 3 cycles per loop iteration. Overhead will compensate for rounding error */
-#define __delay_us( a ) clock_delay_usec( a )
-
 #endif

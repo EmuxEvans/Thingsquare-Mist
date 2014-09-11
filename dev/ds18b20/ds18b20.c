@@ -30,7 +30,8 @@
 #include "owlink.h"
 #include "ds18b20.h"
 #include <string.h> /*for memset*/
-
+#include <stdio.h>
+ 
 typedef struct
 {
     unsigned char serial[ 8 ];
@@ -141,8 +142,8 @@ static void ds18b20_fetchTemp( unsigned char device )
         /*read the first two bytes of scratchpad*/
         owWriteByte(0xBE);
 
-        for ( int i = 0; i < 9; i++) {
-          data[i]owReadByte();
+        for ( i = 0; i < 9; i++) {
+          data[i] = owReadByte();
         }
         devices[ device ].lastTemp = ( (data[1] << 8) + data[0] )*0.0625;
     }

@@ -19,7 +19,6 @@ static struct mqtt_message* msg_ptr = 0;
 static struct etimer light_sense_timer;
 static struct etimer reconnect_timer;
 static uint8_t led_status = 0;
-static uint16_t random_topic;
 static char str_topic_state[20];
 static char str_topic_sensor[30];
 static char str_topic_led[30];
@@ -41,25 +40,6 @@ static uip_ipaddr_t google_ipv4_dns_server = {
 };
 
 #define HOST "198.41.30.241"
-
-#define SHORT_PAYLOAD "Hello, world!\n"
-#define LONG_PAYLOAD \
-"Lorem ipsum dolor sit amet, consectetur adipiscing elit. \
-Etiam in auctor risus. Praesent at lorem rutrum, sagittis \
-metus gravida, vulputate dolor. Nunc convallis id augue nec \
-varius. Maecenas eget aliquet nunc. Aliquam convallis quis \
-tortor et congue. Sed feugiat, enim at condimentum mollis, \
-nibh magna varius felis, vel luctus leo odio at diam. \
-Vivamus vitae lorem nec odio varius semper. Suspendisse \
-lacus nisl, vehicula a lectus non, condimentum ullamcorper \
-leo. Ut augue tellus, condimentum sed metus id, rutrum \
-lacinia nisl. Mauris faucibus tortor vel erat consectetur, \
-vitae vulputate est hendrerit. Aenean dapibus metus odio, \
-eu molestie orci egestas ac. Praesent semper mi neque, a \
-aliquam ipsum dictum non. Proin varius metus diam. Aenean \
-non purus sit amet diam molestie laoreet quis et quam."
-
-#define PAYLOAD SHORT_PAYLOAD
 
 static void
 fade(unsigned char l)
@@ -84,16 +64,6 @@ fade(unsigned char l)
 PROCESS(mqtt_example_process, "MQTT Example");
 PROCESS(button_process, "Button");
 AUTOSTART_PROCESSES(&button_process);
-/*---------------------------------------------------------------------------*/
-uint16_t get_random(void)
-{
-  uint32_t g_ui32RandomSeed;
-  uint16_t g_ui16Random;
-  g_ui32RandomSeed = clock_time();
-  g_ui32RandomSeed = (g_ui32RandomSeed * 1664525) + 1013904223;
-  g_ui16Random = g_ui32RandomSeed;
-  return g_ui16Random;
-}
 /*---------------------------------------------------------------------------*/
 static void
 route_callback(int event, uip_ipaddr_t *route,
@@ -123,13 +93,13 @@ mqtt_event(struct mqtt_connection *m, mqtt_event_t event, void* data)
     case MQTT_EVENT_PUBLISH: {
       msg_ptr = data;
       /* New led value */
-      if(strcmp(msg_ptr->topic, str_topic_led) == 0) {
+      if(strcmp((const char *)msg_ptr->topic, str_topic_led) == 0) {
         msg_ptr->payload_chunk[msg_ptr->payload_length] = 0;
 
-        if(strcmp(msg_ptr->payload_chunk, "on") == 0) {
+        if(strcmp((const char *)msg_ptr->payload_chunk, "on") == 0) {
           fade(LEDS_GREEN);
         }
-        if(strcmp(msg_ptr->payload_chunk, "off") == 0) {
+        if(strcmp((const char *)msg_ptr->payload_chunk, "off") == 0) {
           fade(LEDS_RED);
         }
       }
@@ -164,7 +134,7 @@ mqtt_event(struct mqtt_connection *m, mqtt_event_t event, void* data)
       break;
     }
     default:
-      printf("APP - Application got a unhandled MQTT event: %s\r\n", event);
+      printf("APP - Application got a unhandled MQTT event: %d\r\n", event);
       break;
   }
 }
@@ -205,8 +175,6 @@ PROCESS_THREAD(button_process, ev, data)
 PROCESS_THREAD(mqtt_example_process, ev, data)
 {
   static struct uip_ds6_notification n;
-  static uint8_t i = 0;
-  static mqtt_status_t status;
   PROCESS_BEGIN();
 
   /* Set up DS6 callback and DNS */
@@ -249,7 +217,7 @@ PROCESS_THREAD(mqtt_example_process, ev, data)
     mqtt_publish(&conn,
                NULL,
                str_topic_state,
-               "online",
+               (uint8_t*)"online",
                strlen("online"),
                MQTT_QOS_LEVEL_0,
                MQTT_RETAIN_ON);
@@ -289,7 +257,7 @@ PROCESS_THREAD(mqtt_example_process, ev, data)
         mqtt_publish(&conn,
                NULL,
                str_topic_sensor,
-               app_buffer,
+               (uint8_t*)app_buffer,
                strlen(app_buffer),
                MQTT_QOS_LEVEL_0,
                MQTT_RETAIN_ON);

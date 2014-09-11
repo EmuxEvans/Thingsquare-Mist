@@ -24,6 +24,8 @@ include $(OPENMOTEDIR)/Makefile.openmote
 cc2538-mist-id.ld: $(MISTOPENMOTEDIR)/cc2538-mist-id.lds
 	$(CPP) -DID=$(ID) -P -E $< -o $@
 
+CONTIKI_TARGET_SOURCEFILES+=sht21.c ds18b20.c
+
 CLEAN += *.bin *.mist-openmote
 
 ifdef NODEID
@@ -38,7 +40,7 @@ ifdef UIP_CONF_IPV6
 CFLAGS += -DWITH_UIP6=1
 endif
 
-PLATFORMAPPS += simple-rpl aes
+PLATFORMAPPS += simple-rpl aes sht21 ds18b20
 
 vpath %.c $(OPENMOTEDIR)
 vpath %.c $(OPENMOTEDIR)/dev

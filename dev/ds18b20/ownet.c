@@ -34,6 +34,8 @@
 #include "owlink.h"
 #include "crcutil.h"
 #include "defs.h"
+#include <string.h> /*for memset*/
+#include <stdio.h>
 
 #define MAX_PORTNUM 1
 // global variables for this module to hold search state information
@@ -41,6 +43,9 @@ static SMALLINT LastDiscrepancy[MAX_PORTNUM];
 static SMALLINT LastFamilyDiscrepancy[MAX_PORTNUM];
 static SMALLINT LastDevice[MAX_PORTNUM];
 uchar SerialNum[MAX_PORTNUM][8];
+
+#define DBG(...) printf(__VA_ARGS__)
+// #define DBG(...)
 
 //--------------------------------------------------------------------------
 // The 'owNext' function does a general search.  This function
@@ -99,10 +104,12 @@ SMALLINT owNext(int portnum, SMALLINT do_reset, SMALLINT alarm_only)
       }
 
       // If finding alarming devices issue a different command
-      if (alarm_only)
-         owWriteByte(0xEC);  // issue the alarming search command
-      else
-         owWriteByte(0xF0);  // issue the search command
+      if (alarm_only) {
+        owWriteByte(0xEC);  // issue the alarming search command
+      }
+      else {
+        owWriteByte(0xF0);  // issue the search command
+      }
 
       //pause before beginning the search
       //usDelay(100);
@@ -112,18 +119,25 @@ SMALLINT owNext(int portnum, SMALLINT do_reset, SMALLINT alarm_only)
       {
          // read a bit and its compliment
          bit_test = owReadBit(/*portnum,1*/) << 1;
+         DBG("bit_test %d\r\n", bit_test);
          bit_test |= owReadBit(/*portnum,1*/);
+         DBG("bit_test %d\r\n", bit_test);
 
          // check for no devices on 1-wire
-         if (bit_test == 3)
+         if (bit_test == 3) {
+            DBG("bit_test == 3\r\n");
             break;
+         }
          else
          {
             // all devices coupled have 0 or 1
-            if (bit_test > 0)
+            if (bit_test > 0) {
+              DBG("bit_test > 0\r\n");              
               search_direction = !(bit_test & 0x01);  // bit write value for search
+            }
             else
             {
+               DBG("bit_test <= 0\r\n");
                // if this discrepancy if before the Last Discrepancy
                // on a previous next then pick the same as last time
                if (bit_number < LastDiscrepancy[portnum])

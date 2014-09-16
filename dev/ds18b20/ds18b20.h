@@ -33,5 +33,4 @@
 
 void ds18b20_init(void);
 void read_temperatures(char ** ctemps);
-
 #endif

@@ -12,7 +12,8 @@
 
 char ctemp[20];
 char chum[20];
-char ctemps[20];
+char ctemps[NUM_DEVICES][20];
+int num_dev;
 
 #define SEND_INTERVAL   (60 * CLOCK_SECOND)
 #define MIN(a, b) ((a) < (b) ? (a) : (b))
@@ -146,6 +147,7 @@ mqtt_event(struct mqtt_connection *m, mqtt_event_t event, void* data)
       break;
   }
 }
+
 /*---------------------------------------------------------------------------*/
 PROCESS_THREAD(environode_process, ev, data)
 {
@@ -156,6 +158,8 @@ PROCESS_THREAD(environode_process, ev, data)
   SENSORS_ACTIVATE(button_user_sensor);
   SENSORS_ACTIVATE(button_sw1_sensor);
   SENSORS_ACTIVATE(button_sw2_sensor);
+
+  ds18b20_init();
 
   while(1) {
     PROCESS_WAIT_EVENT_UNTIL((ev == sensors_event) && (
@@ -180,6 +184,11 @@ PROCESS_THREAD(environode_process, ev, data)
 
       read_humidity(chum); // humidity SHT21
       printf("SHT21 humidity value: %s\r\n", chum);
+
+      read_temperatures(ctemps); // temperatures DS18b20
+      for(num_dev = 0; num_dev<NUM_DEVICES; num_dev++) {
+        printf("DS18b20 %d temperature value: %s\r\n", num_dev, ctemps[num_dev]);        
+      }
     }
     else if(data == &button_sw2_sensor){
       button_sensor_value++;

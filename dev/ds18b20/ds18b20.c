@@ -26,12 +26,16 @@
  */
 
 #include "contiki.h"
+#include "owhal.h" 
 #include "ownet.h"
 #include "owlink.h"
 #include "ds18b20.h"
 #include <string.h> /*for memset*/
 #include <stdio.h>
  
+#define DBG(...) printf(__VA_ARGS__)
+// #define DBG(...)
+
 typedef struct
 {
     unsigned char serial[ 8 ];
@@ -49,103 +53,123 @@ typedef enum state_e
 }state_t;
 
 static state_t state;
-
-
 static void ds18b20_scan(void);
 static void ds18b20_startConvert(void);
 static void ds18b20_fetchTemp( unsigned char device );
 
 void ds18b20_init()
 {
-    clock_init();
-    memset( devices, 0, sizeof(devices) );
-    state = STATE_SCAN;
+  DBG("ds18b20_init\r\n");
+  memset( devices, 0, sizeof(devices) );
+  state = STATE_SCAN;  
 }
 
 void read_temperatures(char ** ctemps)
-{
-    static unsigned char fetchDevice = 0;
+{  
+  state = STATE_SCAN;  
+  unsigned char fetchDevice = 0;
+  DBG("fetchDevice: %d, state: %d\r\n", fetchDevice, state);
+  while(fetchDevice < NUM_DEVICES ) {
     switch ( state )
     {
-        case STATE_SCAN:
-            ds18b20_scan();
-            state = STATE_CONVERT;
-            break;
+      case STATE_SCAN: 
+        DBG("STATE_SCAN\r\n");
+        ds18b20_scan();
+        state = STATE_CONVERT;
+      break;
 
-        case STATE_CONVERT:
-            ds18b20_startConvert();
-            state = STATE_WAIT_CONVERT;
-            break;
+      case STATE_CONVERT:
+        DBG("STATE_CONVERT\r\n");
+        ds18b20_startConvert();
+        state = STATE_WAIT_CONVERT;
+      break;
 
-        case STATE_WAIT_CONVERT:
-            if ( owReadBit() != 0 )
-            {
-                state = STATE_FETCH_TEMPS;
-                fetchDevice = 0;
-            }
-            break;
+      case STATE_WAIT_CONVERT:
+        DBG("STATE_WAIT_CONVERT\r\n");
+        if ( owReadBit() != 0 )
+        {
+          DBG("GOING STATE_FETCH_TEMPS\r\n");
+          state = STATE_FETCH_TEMPS;      
+          DBG("TO STATE_FETCH_TEMPS\r\n");    
+        }
+      break;
 
-        case STATE_FETCH_TEMPS:
-            ds18b20_fetchTemp( fetchDevice );
-            fetchDevice++;            
-            sprintf(ctemps[fetchDevice], "%.2f",  devices[fetchDevice].lastTemp);
-            if ( fetchDevice >= NUM_DEVICES )
-                state = STATE_CONVERT;
-            break;
+      case STATE_FETCH_TEMPS:
+        DBG("STATE_FETCH_TEMPS\r\n");
+        ds18b20_fetchTemp( fetchDevice );
+        DBG("Device %d temp value: %.2f\r\n", fetchDevice, devices[fetchDevice].lastTemp);
+        sprintf(ctemps[fetchDevice], "%.2f",  devices[fetchDevice].lastTemp);        
+        fetchDevice++;
+        if ( fetchDevice >= NUM_DEVICES )
+          state = STATE_CONVERT;
+      break;
     }
+  }
 }
 
 static void ds18b20_scan()
 {
-    unsigned char found;
-    unsigned char i;
+  unsigned char found;
+  unsigned char i;
 
-    found = owFirst( 0, 1, 0 );
+  found = owFirst( 0, 1, 0 );
+  if ( found )
+  {
+    DBG("ds18b20_scan found\r\n");
+    owSerialNum( 0, devices[ 0 ].serial, 1 );
+  }
+
+  for ( i = 1; found && i < NUM_DEVICES; i++ )
+  {
+    found = owNext( 0, 1, 0 );
     if ( found )
     {
-        owSerialNum( 0, devices[ 0 ].serial, 1 );
+      DBG("ds18b20_scan found in for\r\n");
+      owSerialNum( 0, devices[ i ].serial, 1 );
     }
-
-    for ( i = 1; found && i < NUM_DEVICES; i++ )
-    {
-        found = owNext( 0, 1, 0 );
-        if ( found )
-        {
-            owSerialNum( 0, devices[ i ].serial, 1 );
-        }
-    }
+  }
 }
 
 static void ds18b20_startConvert()
 {
     /*issue convert temp to all devices*/
-    owTouchReset();
-    owWriteByte(0xCC);
-    owWriteByte(0x44);
+  T_OUTPUT();
+  T_LOW();
+  owTouchReset();  
+  owWriteByte(0xCC);
+  owWriteByte(0x44);
+  T_HIGH();
 }
 
 static void ds18b20_fetchTemp( unsigned char device )
 {
-    if ( device < NUM_DEVICES && devices[ device ].serial[ 0 ] != 0 )
+  if ( device < NUM_DEVICES && devices[ device ].serial[ 0 ] != 0 )
+  {
+    unsigned char i;
+    unsigned char data[10];
+
+    /*address specified device*/
+    owTouchReset();
+    owWriteByte(0x55);
+    for (i = 0; i < 8; i++)
     {
-        unsigned char i;
-        unsigned char data[10];
-
-        /*address specified device*/
-        owTouchReset();
-        owWriteByte(0x55);
-        for (i = 0; i < 8; i++)
-        {
-            owWriteByte(devices[ device ].serial[ i ]);
-        }
-
-        /*read the first two bytes of scratchpad*/
-        owWriteByte(0xBE);
-
-        for ( i = 0; i < 9; i++) {
-          data[i] = owReadByte();
-        }
-        devices[ device ].lastTemp = ( (data[1] << 8) + data[0] )*0.0625;
+      owWriteByte(devices[ device ].serial[ i ]);
     }
+
+    /*read the first two bytes of scratchpad*/
+    owWriteByte(0xBE);
+
+    for ( i = 0; i < 9; i++) {
+      data[i] = owReadByte();
+    }
+
+    DBG("ds18b20_fetchTemp data: %s\r\n", data);
+    DBG("ds18b20_fetchTemp lastTemp: %.2f\r\n", ( (data[1] << 8) + data[0] )*0.0625);
+    devices[ device ].lastTemp = ( (data[1] << 8) + data[0] )*0.0625;
+  }
+  else {
+    DBG("device: %d, devices[ device ].serial[ 0 ]: %d\r\n", device, devices[ device ].serial[ 0 ] );
+    DBG("ds18b20_fetchTemp failed\r\n");
+  }
 }
 

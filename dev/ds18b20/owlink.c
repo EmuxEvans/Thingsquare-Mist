@@ -28,7 +28,8 @@
 #include <contiki.h>
 #include "defs.h"
 #include "owhal.h"
-
+#include <string.h> /*for memset*/
+#include <stdio.h>
 
 #define OW_SLOT_LENGTH 78
 
@@ -42,134 +43,136 @@
 
 #define OW_RESET_PULSE_TIME 520
 
+#define DBG(...) printf(__VA_ARGS__)
+// #define DBG(...)
+
 char owReadBit()
 {
-    char bit_in;
+  char bit_in;
 
     /*pull low to initiate read*/
-    OW_OUTPUT();
-    OW_LOW();
+  OW_OUTPUT();
+  OW_LOW();
 
-    clock_delay_usec( OW_LOW_PULSE_TIME );
+  clock_delay_usec( OW_LOW_PULSE_TIME );
 
     /*float high*/
-    OW_INPUT();
-    clock_delay_usec( OW_READ_SAMPLE_WAIT );
+  OW_INPUT();
+  clock_delay_usec( OW_READ_SAMPLE_WAIT );
 
     /*sample bus*/
-    bit_in = OW_READ();
+  bit_in = OW_READ();
 
     /*wait until end of time slot*/
-    clock_delay_usec( OW_END_READ_SLOT_WAIT );
-
-    return bit_in;
+  clock_delay_usec( OW_END_READ_SLOT_WAIT );
+  DBG("bit_in %d\r\n", bit_in);
+  return bit_in;
 }
 
 void owWriteBit( char bit_out )
 {
+    /*pull low to initiate write*/
+  OW_OUTPUT();
+  OW_LOW();
+  clock_delay_usec( OW_LOW_PULSE_TIME );
+
+    /*write next bit*/
+  if (bit_out & 0x01)
+    OW_HIGH();
+  else
+    OW_LOW();
+
+    /*wait until end of slot*/
+  clock_delay_usec( OW_WRITE_SLOT_WAIT );
+
+    /*float high and let device recover*/
+  OW_INPUT();
+  clock_delay_usec( OW_RECOVERY_TIME );
+}
+
+char owTouchReset()
+{
+  char presence = FALSE;
+  char sample_count = ( OW_RESET_PULSE_TIME / 8 );
+  char i = 0;
+
+  /*low reset pulse*/
+  OW_OUTPUT();
+  OW_LOW();
+
+  /* delay during reset pulse time, split it in 10 chunks in case clock_delay_usec
+   * can't handle big numbers */
+  for ( i = 0; i < 10; i++ )
+    clock_delay_usec( OW_RESET_PULSE_TIME / 10 );
+
+  /*float high*/
+  OW_INPUT();
+
+  while ( sample_count-- != 0 )
+  {
+    clock_delay_usec(8);
+
+    /*sample bus to check for connected devices*/
+    if ( OW_READ() == 0 )
+      presence = TRUE;
+  }
+
+  return presence;
+}
+
+void owWriteByte(unsigned char data)
+{
+  unsigned char bit_count;
+
+  for (bit_count = 0; bit_count < 8; bit_count++)
+  {
     /*pull low to initiate write*/
     OW_OUTPUT();
     OW_LOW();
     clock_delay_usec( OW_LOW_PULSE_TIME );
 
     /*write next bit*/
-    if (bit_out & 0x01)
-        OW_HIGH();
+    if (data & 0x01)
+      OW_HIGH();
     else
-        OW_LOW();
-    
+      OW_LOW();
+
+    data = data >> 1;
+
     /*wait until end of slot*/
     clock_delay_usec( OW_WRITE_SLOT_WAIT );
 
     /*float high and let device recover*/
     OW_INPUT();
     clock_delay_usec( OW_RECOVERY_TIME );
-
-}
-
-char owTouchReset()
-{
-    char presence = FALSE;
-    char sample_count = ( OW_RESET_PULSE_TIME / 8 );
-    char i = 0;
-
-    /*low reset pulse*/
-    OW_OUTPUT();
-    OW_LOW();
-
-    /* delay during reset pulse time, split it in 10 chunks in case clock_delay_usec
-     * can't handle big numbers */
-    for ( i = 0; i < 10; i++ )
-        clock_delay_usec( OW_RESET_PULSE_TIME / 10 );
-
-    /*float high*/
-    OW_INPUT();
-
-    while ( sample_count-- != 0 )
-    {
-        clock_delay_usec(8);
-
-        /*sample bus to check for connected devices*/
-        if ( OW_READ() == 0 )
-            presence = TRUE;
-    }
-
-    return presence;
-}
-
-void owWriteByte(unsigned char data)
-{
-    unsigned char bit_count;
-
-    for (bit_count = 0; bit_count < 8; bit_count++)
-    {
-        /*pull low to initiate write*/
-        OW_OUTPUT();
-        OW_LOW();
-        clock_delay_usec( OW_LOW_PULSE_TIME );
-
-        /*write next bit*/
-        if (data & 0x01)
-            OW_HIGH();
-        else
-            OW_LOW();
-
-        data = data >> 1;
-
-        /*wait until end of slot*/
-        clock_delay_usec( OW_WRITE_SLOT_WAIT );
-
-        /*float high and let device recover*/
-        OW_INPUT();
-        clock_delay_usec( OW_RECOVERY_TIME );
-    }
+  }
 }
 
 unsigned char owReadByte()
 {
-    unsigned char bit_count;
-    unsigned char data;
+  unsigned char bit_count;
+  unsigned char data;
 
-    data = 0;
+  data = 0;
 
-    for ( bit_count = 0; bit_count < 8; bit_count++ )
-    {
-        /*pull low to initiate read*/
-        OW_OUTPUT();
-        OW_LOW();
-        clock_delay_usec(OW_LOW_PULSE_TIME);
+  for ( bit_count = 0; bit_count < 8; bit_count++ )
+  {
+    /*pull low to initiate read*/
+    OW_OUTPUT();
+    OW_LOW();
+    clock_delay_usec(OW_LOW_PULSE_TIME);
 
-        /*float high*/
-        OW_INPUT();
-        clock_delay_usec(OW_READ_SAMPLE_WAIT);
+    /*float high*/
+    OW_INPUT();
+    clock_delay_usec(OW_READ_SAMPLE_WAIT);
 
-        /*sample bus and shift into msb*/
-        data = data >> 1;
-        if (OW_READ() != 0)
-            data |= 0x80;
+    /*sample bus and shift into msb*/
+    data = data >> 1;
+    if (OW_READ() != 0)
+      data |= 0x80;
 
-        /*wait until end of time slot*/
-        clock_delay_usec(OW_END_READ_SLOT_WAIT);
-    }
-    return data;
+    /*wait until end of time slot*/
+    clock_delay_usec(OW_END_READ_SLOT_WAIT);
+  }
+  return data;
 }

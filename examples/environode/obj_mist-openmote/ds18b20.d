@@ -19,8 +19,9 @@ obj_mist-openmote/ds18b20.o: ../../dev/ds18b20/ds18b20.c \
  ../../contiki/cpu/cc2538/./dev/gptimer.h ../../contiki/core/./sys/pt.h \
  ../../contiki/core/./sys/procinit.h ../../contiki/core/./sys/loader.h \
  ../../contiki/core/./sys/clock.h ../../contiki/core/./sys/energest.h \
- ../../contiki/core/./sys/rtimer.h ../../dev/ds18b20/ownet.h \
- ../../dev/ds18b20/owlink.h ../../dev/ds18b20/ds18b20.h
+ ../../contiki/core/./sys/rtimer.h ../../dev/ds18b20/owhal.h \
+ ../../dev/ds18b20/ownet.h ../../dev/ds18b20/owlink.h \
+ ../../dev/ds18b20/ds18b20.h
 ../../dev/ds18b20/ds18b20.c :
  ../../contiki/core/./contiki.h ../../contiki/core/./contiki-version.h :
  ../../contiki/platform/openmote/contiki-conf.h :
@@ -42,5 +43,6 @@ obj_mist-openmote/ds18b20.o: ../../dev/ds18b20/ds18b20.c \
  ../../contiki/cpu/cc2538/./dev/gptimer.h ../../contiki/core/./sys/pt.h :
  ../../contiki/core/./sys/procinit.h ../../contiki/core/./sys/loader.h :
  ../../contiki/core/./sys/clock.h ../../contiki/core/./sys/energest.h :
- ../../contiki/core/./sys/rtimer.h ../../dev/ds18b20/ownet.h :
- ../../dev/ds18b20/owlink.h ../../dev/ds18b20/ds18b20.h :
+ ../../contiki/core/./sys/rtimer.h ../../dev/ds18b20/owhal.h :
+ ../../dev/ds18b20/ownet.h ../../dev/ds18b20/owlink.h :
+ ../../dev/ds18b20/ds18b20.h :

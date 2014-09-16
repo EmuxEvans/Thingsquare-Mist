@@ -12,7 +12,7 @@
 #include "sht21.h"
 #include <stdio.h>
 
-// #define DBG(...) printf(...)
+// #define DBG(...) printf(__VA_ARGS__)
 #define DBG(...)
 
 static uint16_t temp;

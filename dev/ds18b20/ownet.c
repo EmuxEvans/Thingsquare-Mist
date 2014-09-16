@@ -119,25 +119,20 @@ SMALLINT owNext(int portnum, SMALLINT do_reset, SMALLINT alarm_only)
       {
          // read a bit and its compliment
          bit_test = owReadBit(/*portnum,1*/) << 1;
-         DBG("bit_test %d\r\n", bit_test);
          bit_test |= owReadBit(/*portnum,1*/);
-         DBG("bit_test %d\r\n", bit_test);
 
          // check for no devices on 1-wire
          if (bit_test == 3) {
-            DBG("bit_test == 3\r\n");
             break;
          }
          else
          {
             // all devices coupled have 0 or 1
             if (bit_test > 0) {
-              DBG("bit_test > 0\r\n");              
               search_direction = !(bit_test & 0x01);  // bit write value for search
             }
             else
             {
-               DBG("bit_test <= 0\r\n");
                // if this discrepancy if before the Last Discrepancy
                // on a previous next then pick the same as last time
                if (bit_number < LastDiscrepancy[portnum])
@@ -189,7 +184,6 @@ SMALLINT owNext(int portnum, SMALLINT do_reset, SMALLINT alarm_only)
          }
       }
       while(serial_byte_number < 8);  // loop until through all SerialNum[portnum] bytes 0-7
-
       // if the search was successful then
       if (!((bit_number < 65) || lastcrc8))
       {

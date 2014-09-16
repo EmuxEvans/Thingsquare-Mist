@@ -29,7 +29,7 @@
 #ifndef DS18B20_H
 #define DS18B20_H
 
-#define NUM_DEVICES 4
+#define NUM_DEVICES 1
 
 void ds18b20_init(void);
 void read_temperatures(char ** ctemps);

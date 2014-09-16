@@ -77,9 +77,9 @@ contiki-mist-openmote.a(dbg-sprintf.o)
 contiki-mist-openmote.a(strformat.o)
                               contiki-mist-openmote.a(dbg-printf.o) (format_str_v)
 contiki-mist-openmote.a(owlink.o)
-                              contiki-mist-openmote.a(ds18b20.o) (owReadBit)
+                              contiki-mist-openmote.a(ds18b20.o) (owTouchReset)
 contiki-mist-openmote.a(ownet.o)
-                              contiki-mist-openmote.a(ds18b20.o) (owNext)
+                              contiki-mist-openmote.a(ds18b20.o) (owFirst)
 contiki-mist-openmote.a(crcutil.o)
                               contiki-mist-openmote.a(ownet.o) (crc_check)
 contiki-mist-openmote.a(rimeaddr.o)
@@ -226,7 +226,7 @@ uip_ds6_prefix_list
 rimeaddr_node_addr  0x8               contiki-mist-openmote.a(rimeaddr.o)
 process_maxevents   0x1               contiki-mist-openmote.a(process.o)
 frag_sender         0x8               contiki-mist-openmote.a(sicslowpan.o)
-ctemps              0x50              environode.co
+ctemps              0x14              environode.co
 uip_lladdr          0x8               contiki-mist-openmote.a(uip6.o)
 uip_aligned_buf     0xc8              contiki-mist-openmote.a(uip6.o)
 uip_flags           0x1               contiki-mist-openmote.a(uip6.o)
@@ -273,7 +273,7 @@ LOAD /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7-m/libgcc.a
 LOAD /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7-m/libc.a
 END GROUP
 
-.text           0x0000000000200000    0x12e04
+.text           0x0000000000200000    0x12ccc
                 0x0000000000200000                _text = .
  *(.vectors)
  .vectors       0x0000000000200000      0x28c obj_mist-openmote/startup-gcc.o
@@ -455,596 +455,590 @@ END GROUP
                 0x0000000000206cdc                read_SHT21
                 0x0000000000206cec                read_temperature
                 0x0000000000206d5c                read_humidity
- .text          0x0000000000206db8      0x288 contiki-mist-openmote.a(ds18b20.o)
+ .text          0x0000000000206db8      0x1f4 contiki-mist-openmote.a(ds18b20.o)
                 0x0000000000206db8                ds18b20_init
-                0x0000000000206e04                read_temperatures
- .text          0x0000000000207040      0x1b0 contiki-mist-openmote.a(clock.o)
-                0x0000000000207040                clock_init
-                0x00000000002070b4                clock_time
-                0x00000000002070c0                clock_set_seconds
-                0x00000000002070cc                clock_seconds
-                0x00000000002070d8                clock_wait
-                0x00000000002070ec                clock_delay_usec
-                0x000000000020710c                clock_delay
-                0x0000000000207130                clock_adjust
-                0x0000000000207184                clock_isr
- .text          0x00000000002071f0      0x15c contiki-mist-openmote.a(rtimer-arch.o)
-                0x00000000002071f0                rtimer_arch_init
-                0x00000000002071f4                rtimer_arch_schedule
-                0x0000000000207274                rtimer_arch_next_trigger
-                0x0000000000207280                rtimer_arch_now
-                0x00000000002072a8                rtimer_isr
- .text          0x000000000020734c      0x318 contiki-mist-openmote.a(uart.o)
-                0x0000000000207384                uart_init
-                0x000000000020755c                uart_set_input
-                0x000000000020756c                uart_write_byte
-                0x0000000000207590                uart_isr
-                0x0000000000207654                uart0_isr
-                0x000000000020765c                uart1_isr
- .text          0x0000000000207664       0x34 contiki-mist-openmote.a(watchdog.o)
-                0x0000000000207664                watchdog_init
-                0x0000000000207670                watchdog_start
-                0x000000000020767c                watchdog_periodic
-                0x000000000020768c                watchdog_stop
-                0x0000000000207690                watchdog_reboot
- .text          0x0000000000207698       0xc8 contiki-mist-openmote.a(nvic.o)
-                0x0000000000207698                nvic_init
-                0x00000000002076c4                nvic_interrupt_enable
-                0x00000000002076dc                nvic_interrupt_disable
-                0x00000000002076f4                nvic_interrupt_en_restore
-                0x0000000000207710                nvic_interrupt_en_save
-                0x0000000000207730                nvic_interrupt_pend
-                0x0000000000207748                nvic_interrupt_unpend
- .text          0x0000000000207760       0x10 contiki-mist-openmote.a(cpu.o)
-                0x0000000000207760                cpu_cpsie
-                0x0000000000207768                cpu_cpsid
- .text          0x0000000000207770       0x28 contiki-mist-openmote.a(sys-ctrl.o)
-                0x0000000000207770                sys_ctrl_init
-                0x000000000020778c                sys_ctrl_reset
- .text          0x0000000000207798      0x1a8 contiki-mist-openmote.a(gpio.o)
-                0x0000000000207798                gpio_register_callback
-                0x00000000002077a8                notify
-                0x00000000002077e0                gpio_port_a_isr
-                0x0000000000207834                gpio_port_b_isr
-                0x0000000000207888                gpio_port_c_isr
-                0x00000000002078dc                gpio_port_d_isr
-                0x0000000000207930                gpio_init
- .text          0x0000000000207940       0x40 contiki-mist-openmote.a(ioc.o)
-                0x0000000000207940                ioc_init
-                0x0000000000207958                ioc_set_over
-                0x000000000020796c                ioc_set_sel
- .text          0x0000000000207980      0x6ac contiki-mist-openmote.a(cc2538-rf.o)
-                0x0000000000207db8                cc2538_rf_channel_get
-                0x0000000000207ddc                cc2538_rf_channel_set
-                0x0000000000207f24                cc2538_rf_power_set
-                0x0000000000207f34                cc2538_rf_set_addr
-                0x0000000000207f80                cc2538_rf_rx_tx_isr
-                0x0000000000207fd0                cc2538_rf_err_isr
- .text          0x000000000020802c      0x1bc contiki-mist-openmote.a(udma.o)
-                0x000000000020802c                udma_init
-                0x0000000000208060                udma_set_channel_src
-                0x0000000000208070                udma_set_channel_dst
-                0x0000000000208084                udma_set_channel_control_word
-                0x0000000000208098                udma_set_channel_assignment
-                0x00000000002080bc                udma_channel_enable
-                0x00000000002080d4                udma_channel_disable
-                0x00000000002080e8                udma_channel_use_alternate
-                0x0000000000208100                udma_channel_use_primary
-                0x0000000000208114                udma_channel_prio_set_high
-                0x000000000020812c                udma_channel_prio_set_default
-                0x0000000000208140                udma_channel_use_burst
-                0x0000000000208158                udma_channel_use_single
-                0x000000000020816c                udma_channel_mask_set
-                0x0000000000208184                udma_channel_mask_clr
-                0x0000000000208198                udma_channel_sw_request
-                0x00000000002081b0                udma_channel_get_mode
-                0x00000000002081cc                udma_isr
-                0x00000000002081dc                udma_err_isr
- .text          0x00000000002081e8      0x274 contiki-mist-openmote.a(lpm.o)
-                0x0000000000208264                lpm_exit
-                0x00000000002082f0                lpm_enter
-                0x0000000000208404                lpm_set_max_pm
-                0x0000000000208414                lpm_register_peripheral
-                0x0000000000208438                lpm_init
- .text          0x000000000020845c       0x74 contiki-mist-openmote.a(dbg.o)
-                0x000000000020845c                putchar
-                0x000000000020846c                dbg_send_bytes
-                0x00000000002084a8                puts
- .text          0x00000000002084d0      0x298 contiki-mist-openmote.a(i2c.o)
-                0x00000000002084d0                i2c_init
-                0x00000000002085f4                i2c_master_enable
-                0x0000000000208604                i2c_master_disable
-                0x0000000000208614                i2c_set_frequency
-                0x0000000000208648                i2c_master_set_slave_address
-                0x0000000000208664                i2c_master_data_put
-                0x0000000000208670                i2c_master_data_get
-                0x000000000020867c                i2c_master_command
-                0x000000000020868c                i2c_master_busy
-                0x000000000020869c                i2c_master_error
-                0x00000000002086b8                i2c_single_send
-                0x00000000002086fc                i2c_single_receive
-                0x000000000020874c                get_sys_clock
- .text          0x0000000000208768       0x34 contiki-mist-openmote.a(dbg-printf.o)
-                0x0000000000208778                printf
- .text          0x000000000020879c       0x4c contiki-mist-openmote.a(dbg-sprintf.o)
-                0x00000000002087b4                sprintf
- .text          0x00000000002087e8      0x8f8 contiki-mist-openmote.a(strformat.o)
-                0x0000000000208818                format_str_v
-                0x00000000002090c0                format_str
- .text          0x00000000002090e0      0x19c contiki-mist-openmote.a(owlink.o)
-                0x00000000002090e0                owReadBit
-                0x000000000020912c                owWriteBit
-                0x0000000000209174                owTouchReset
-                0x00000000002091c8                owWriteByte
-                0x0000000000209220                owReadByte
- .text          0x000000000020927c      0x1ec contiki-mist-openmote.a(ownet.o)
-                0x000000000020927c                owNext
-                0x0000000000209424                owFirst
-                0x000000000020943c                owSerialNum
- .text          0x0000000000209468       0x2c contiki-mist-openmote.a(crcutil.o)
-                0x0000000000209468                crc_check
- .text          0x0000000000209494       0x30 contiki-mist-openmote.a(rimeaddr.o)
-                0x0000000000209494                rimeaddr_copy
-                0x00000000002094a0                rimeaddr_cmp
-                0x00000000002094b4                rimeaddr_set_node_addr
- .text          0x00000000002094c4        0x0 contiki-mist-openmote.a(rimestats.o)
- .text          0x00000000002094c4      0x288 contiki-mist-openmote.a(nullrdc.o)
- .text          0x000000000020974c       0x10 contiki-mist-openmote.a(mac.o)
-                0x000000000020974c                mac_call_sent_callback
- .text          0x000000000020975c      0x1ac contiki-mist-openmote.a(framer-802154.o)
- .text          0x0000000000209908      0x348 contiki-mist-openmote.a(csma.o)
- .text          0x0000000000209c50      0x208 contiki-mist-openmote.a(rpl.o)
-                0x0000000000209c50                rpl_get_mode
-                0x0000000000209c5c                rpl_set_mode
-                0x0000000000209c6c                rpl_purge_routes
-                0x0000000000209ce8                rpl_remove_routes
-                0x0000000000209d14                rpl_remove_routes_by_nexthop
-                0x0000000000209d54                rpl_add_route
-                0x0000000000209d80                rpl_link_neighbor_callback
-                0x0000000000209de8                rpl_ipv6_neighbor_callback
-                0x0000000000209e10                rpl_init
- .text          0x0000000000209e58      0xea0 contiki-mist-openmote.a(rpl-dag.o)
-                0x0000000000209fb8                rpl_dag_init
-                0x0000000000209fc8                rpl_get_parent_rank
-                0x0000000000209fdc                rpl_get_parent_link_metric
-                0x0000000000209ff0                rpl_get_parent_ipaddr
-                0x000000000020a008                rpl_repair_root
-                0x000000000020a064                rpl_set_prefix
-                0x000000000020a0fc                rpl_set_default_route
-                0x000000000020a144                rpl_alloc_instance
-                0x000000000020a170                rpl_set_default_instance
-                0x000000000020a17c                rpl_add_parent
-                0x000000000020a1a8                rpl_find_parent
-                0x000000000020a1c0                rpl_find_parent_any_dag
-                0x000000000020a1e4                rpl_select_parent
-                0x000000000020a238                rpl_select_dag
-                0x000000000020a3b4                rpl_nullify_parent
-                0x000000000020a3f8                rpl_remove_parent
-                0x000000000020a450                rpl_free_dag
-                0x000000000020a488                rpl_free_instance
-                0x000000000020a4ec                rpl_alloc_dag
-                0x000000000020a554                rpl_set_root
-                0x000000000020a650                rpl_move_parent
-                0x000000000020a6b0                rpl_get_any_dag
-                0x000000000020a6c8                rpl_get_instance
-                0x000000000020a6e8                rpl_find_of
-                0x000000000020a6fc                rpl_join_instance
-                0x000000000020a83c                rpl_local_repair
-                0x000000000020a8a0                rpl_process_parent_event
-                0x000000000020a900                rpl_add_dag
-                0x000000000020aa3c                rpl_recalculate_ranks
-                0x000000000020aa7c                rpl_process_dio
- .text          0x000000000020acf8      0xa00 contiki-mist-openmote.a(rpl-icmp6.o)
-                0x000000000020ad10                dis_output
-                0x000000000020ad68                dio_output
-                0x000000000020b05c                dao_output_target
-                0x000000000020b160                dao_output
-                0x000000000020b1bc                dao_ack_output
-                0x000000000020b1ec                uip_rpl_input
- .text          0x000000000020b6f8      0x200 contiki-mist-openmote.a(rpl-timers.o)
-                0x000000000020b86c                rpl_reset_periodic_timer
-                0x000000000020b8a4                rpl_reset_dio_timer
-                0x000000000020b8c0                rpl_schedule_dao
- .text          0x000000000020b8f8       0xf0 contiki-mist-openmote.a(rpl-mrhof.o)
- .text          0x000000000020b9e8      0x2d8 contiki-mist-openmote.a(rpl-ext-header.)
-                0x000000000020b9e8                rpl_verify_header
-                0x000000000020ba90                rpl_update_header_empty
-                0x000000000020bb8c                rpl_update_header_final
-                0x000000000020bc14                rpl_remove_header
-                0x000000000020bc70                rpl_invert_header
- .text          0x000000000020bcc0       0x30 contiki-mist-openmote.a(autostart.o)
-                0x000000000020bcc0                autostart_start
-                0x000000000020bcd8                autostart_exit
- .text          0x000000000020bcf0      0x130 contiki-mist-openmote.a(serial-line.o)
-                0x000000000020bda4                serial_line_input_byte
-                0x000000000020bdfc                serial_line_init
- .text          0x000000000020be20       0xc0 contiki-mist-openmote.a(memb.o)
-                0x000000000020be20                memb_init
-                0x000000000020be44                memb_alloc
-                0x000000000020be80                memb_free
-                0x000000000020bec4                memb_inmemb
- .text          0x000000000020bee0       0x54 contiki-mist-openmote.a(timer.o)
-                0x000000000020bee0                timer_set
-                0x000000000020bef0                timer_reset
-                0x000000000020befc                timer_restart
-                0x000000000020bf08                timer_expired
-                0x000000000020bf24                timer_remaining
- .text          0x000000000020bf34      0x168 contiki-mist-openmote.a(list.o)
-                0x000000000020bf34                list_init
-                0x000000000020bf3c                list_head
-                0x000000000020bf40                list_copy
-                0x000000000020bf48                list_tail
-                0x000000000020bf58                list_add
-                0x000000000020bfb8                list_push
-                0x000000000020c000                list_chop
-                0x000000000020c024                list_pop
-                0x000000000020c030                list_remove
-                0x000000000020c070                list_length
-                0x000000000020c084                list_insert
-                0x000000000020c094                list_item_next
- .text          0x000000000020c09c      0x1d4 contiki-mist-openmote.a(ctimer.o)
-                0x000000000020c12c                ctimer_init
-                0x000000000020c150                ctimer_set
-                0x000000000020c194                ctimer_reset
-                0x000000000020c1d0                ctimer_restart
-                0x000000000020c20c                ctimer_stop
-                0x000000000020c23c                ctimer_expired
- .text          0x000000000020c270       0xcc contiki-mist-openmote.a(energest.o)
-                0x000000000020c270                energest_init
-                0x000000000020c29c                energest_type_time
-                0x000000000020c2d8                energest_leveldevice_leveltime
-                0x000000000020c2dc                energest_type_set
-                0x000000000020c2e8                energest_flush
- .text          0x000000000020c33c       0x54 contiki-mist-openmote.a(rtimer.o)
-                0x000000000020c33c                rtimer_init
-                0x000000000020c340                rtimer_set
-                0x000000000020c368                rtimer_run_next
- .text          0x000000000020c390       0x68 contiki-mist-openmote.a(stimer.o)
-                0x000000000020c390                stimer_set
-                0x000000000020c3a0                stimer_reset
-                0x000000000020c3ac                stimer_restart
-                0x000000000020c3b8                stimer_expired
-                0x000000000020c3d8                stimer_remaining
-                0x000000000020c3e8                stimer_elapsed
- .text          0x000000000020c3f8       0xb0 contiki-mist-openmote.a(random.o)
-                0x000000000020c3f8                random_rand
-                0x000000000020c428                random_init
- .text          0x000000000020c4a8       0x7c contiki-mist-openmote.a(ringbuf.o)
-                0x000000000020c4a8                ringbuf_init
-                0x000000000020c4b8                ringbuf_put
-                0x000000000020c4e8                ringbuf_get
-                0x000000000020c510                ringbuf_size
-                0x000000000020c518                ringbuf_elements
- .text          0x000000000020c524      0x3f0 contiki-mist-openmote.a(nbr-table.o)
-                0x000000000020c5e8                nbr_table_register
-                0x000000000020c610                nbr_table_next
-                0x000000000020c688                nbr_table_head
-                0x000000000020c6e4                nbr_table_add_lladdr
-                0x000000000020c864                nbr_table_get_from_lladdr
-                0x000000000020c898                nbr_table_remove
-                0x000000000020c8c4                nbr_table_lock
-                0x000000000020c8d4                nbr_table_unlock
-                0x000000000020c8e4                nbr_table_get_lladdr
- .text          0x000000000020c914       0x34 contiki-mist-openmote.a(netstack.o)
-                0x000000000020c914                netstack_init
- .text          0x000000000020c948      0x2c0 contiki-mist-openmote.a(packetbuf.o)
-                0x000000000020c948                packetbuf_clear_hdr
-                0x000000000020c954                packetbuf_compact
-                0x000000000020c998                packetbuf_copyto_hdr
-                0x000000000020c9b4                packetbuf_copyto
-                0x000000000020c9fc                packetbuf_hdralloc
-                0x000000000020ca34                packetbuf_hdr_remove
-                0x000000000020ca44                packetbuf_hdrreduce
-                0x000000000020ca6c                packetbuf_set_datalen
-                0x000000000020ca78                packetbuf_dataptr
-                0x000000000020ca88                packetbuf_hdrptr
-                0x000000000020ca98                packetbuf_is_reference
-                0x000000000020caac                packetbuf_reference_ptr
-                0x000000000020cab8                packetbuf_datalen
-                0x000000000020cac4                packetbuf_hdrlen
-                0x000000000020cad4                packetbuf_totlen
-                0x000000000020caec                packetbuf_attr_clear
-                0x000000000020cb20                packetbuf_clear
-                0x000000000020cb40                packetbuf_copyfrom
-                0x000000000020cb68                packetbuf_reference
-                0x000000000020cb80                packetbuf_attr_copyto
-                0x000000000020cbc4                packetbuf_attr_copyfrom
- .text          0x000000000020cc08      0x1c4 contiki-mist-openmote.a(queuebuf.o)
-                0x000000000020cc08                queuebuf_init
-                0x000000000020cc2c                queuebuf_new_from_packetbuf
-                0x000000000020ccc0                queuebuf_update_attr_from_packetbuf
-                0x000000000020cccc                queuebuf_free
-                0x000000000020cd14                queuebuf_to_packetbuf
-                0x000000000020cd7c                queuebuf_dataptr
-                0x000000000020cda8                queuebuf_datalen
-                0x000000000020cdb0                queuebuf_addr
-                0x000000000020cdbc                queuebuf_attr
-                0x000000000020cdc8                queuebuf_debug_print
- .text          0x000000000020cdcc      0xf4c contiki-mist-openmote.a(sicslowpan.o)
-                0x000000000020ce08                sicslowpan_init
-                0x000000000020dd00                rime_sniffer_add
-                0x000000000020dd0c                rime_sniffer_remove
- .text          0x000000000020dd18      0x5e0 contiki-mist-openmote.a(tcpip.o)
-                0x000000000020dd34                tcpip_output
-                0x000000000020dd48                tcpip_set_outputfunc
-                0x000000000020dd54                tcp_connect
-                0x000000000020dd80                tcp_unlisten
-                0x000000000020dde4                tcp_listen
-                0x000000000020de50                tcp_attach
-                0x000000000020de60                udp_attach
-                0x000000000020de70                udp_new
-                0x000000000020de88                udp_broadcast_new
-                0x000000000020ded8                tcpip_input
-                0x000000000020defc                tcpip_ipv6_output
-                0x000000000020e240                tcpip_poll_udp
-                0x000000000020e250                tcpip_poll_tcp
-                0x000000000020e260                tcpip_uipcall
- .text          0x000000000020e2f8      0x428 contiki-mist-openmote.a(uip-icmp6.o)
-                0x000000000020e2f8                uip_icmp6_echo_request_input
-                0x000000000020e410                uip_icmp6_error_output
-                0x000000000020e578                uip_icmp6_send
-                0x000000000020e604                uip_icmp6_echo_reply_input
-                0x000000000020e700                uip_icmp6_echo_reply_callback_add
-                0x000000000020e714                uip_icmp6_echo_reply_callback_rm
- .text          0x000000000020e720       0x8c contiki-mist-openmote.a(uip-udp-packet.)
-                0x000000000020e720                uip_udp_packet_send
-                0x000000000020e760                uip_udp_packet_sendto
- .text          0x000000000020e7ac      0x170 contiki-mist-openmote.a(uiplib.o)
-                0x000000000020e7ac                uiplib_ip6addrconv
-                0x000000000020e880                uiplib_ip4addrconv
- .text          0x000000000020e91c      0x634 contiki-mist-openmote.a(aes-ccm.o)
-                0x000000000020ec00                aes_ccm_encrypt
-                0x000000000020ec90                aes_ccm_decrypt
-                0x000000000020ed44                aes_ccm_verify
- .text          0x000000000020ef50      0x2a4 contiki-mist-openmote.a(simple-rpl.o)
-                0x000000000020efc0                simple_rpl_global_address
-                0x000000000020eff8                simple_rpl_init
-                0x000000000020f07c                simple_rpl_init_dag_immediately
-                0x000000000020f194                simple_rpl_init_dag
-                0x000000000020f1c0                simple_rpl_global_repair
-                0x000000000020f1c8                simple_rpl_local_repair
-                0x000000000020f1d8                simple_rpl_parent
-                0x000000000020f1f0                simple_rpl_root
- .text          0x000000000020f1f4      0x310 contiki-mist-openmote.a(frame802154.o)
-                0x000000000020f274                frame802154_hdrlen
-                0x000000000020f2a4                frame802154_create
-                0x000000000020f3cc                frame802154_parse
- .text          0x000000000020f504       0xa4 contiki-mist-openmote.a(uip-debug.o)
-                0x000000000020f504                uip_debug_ipaddr_print
-                0x000000000020f574                uip_debug_lladdr_print
- .text          0x000000000020f5a8      0xf58 contiki-mist-openmote.a(aes.o)
-                0x000000000020f6d0                aes_encrypt
-                0x000000000020fce0                aes_decrypt
- .text          0x0000000000210500      0x370 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7-m/libgcc.a(_arm_addsubdf3.o)
-                0x0000000000210500                __aeabi_drsub
-                0x0000000000210508                __aeabi_dsub
-                0x0000000000210508                __subdf3
-                0x000000000021050c                __adddf3
-                0x000000000021050c                __aeabi_dadd
-                0x0000000000210784                __aeabi_ui2d
-                0x0000000000210784                __floatunsidf
-                0x00000000002107a4                __floatsidf
-                0x00000000002107a4                __aeabi_i2d
-                0x00000000002107c8                __extendsfdf2
-                0x00000000002107c8                __aeabi_f2d
-                0x0000000000210804                __aeabi_ul2d
-                0x0000000000210804                __floatundidf
-                0x0000000000210814                __floatdidf
-                0x0000000000210814                __aeabi_l2d
- .text          0x0000000000210870      0x424 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7-m/libgcc.a(_arm_muldivdf3.o)
-                0x0000000000210870                __aeabi_dmul
-                0x0000000000210870                __muldf3
-                0x0000000000210ac4                __aeabi_ddiv
-                0x0000000000210ac4                __divdf3
- .text          0x0000000000210c94       0xa0 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7-m/libgcc.a(_arm_truncdfsf2.o)
-                0x0000000000210c94                __aeabi_d2f
-                0x0000000000210c94                __truncdfsf2
- .text          0x0000000000210d34      0x21c /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7-m/libgcc.a(_arm_addsubsf3.o)
-                0x0000000000210d34                __aeabi_frsub
-                0x0000000000210d3c                __subsf3
-                0x0000000000210d3c                __aeabi_fsub
-                0x0000000000210d40                __aeabi_fadd
-                0x0000000000210d40                __addsf3
-                0x0000000000210ea0                __aeabi_ui2f
-                0x0000000000210ea0                __floatunsisf
-                0x0000000000210ea8                __aeabi_i2f
-                0x0000000000210ea8                __floatsisf
-                0x0000000000210ec4                __floatundisf
-                0x0000000000210ec4                __aeabi_ul2f
-                0x0000000000210ed4                __floatdisf
-                0x0000000000210ed4                __aeabi_l2f
- .text          0x0000000000210f50      0x2a0 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7-m/libgcc.a(_arm_muldivsf3.o)
-                0x0000000000210f50                __mulsf3
-                0x0000000000210f50                __aeabi_fmul
-                0x00000000002110b8                __divsf3
-                0x00000000002110b8                __aeabi_fdiv
- .text          0x00000000002111f0       0xec /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7-m/libgcc.a(_arm_cmpsf2.o)
-                0x00000000002111f0                __gtsf2
-                0x00000000002111f0                __gesf2
-                0x00000000002111f8                __lesf2
-                0x00000000002111f8                __ltsf2
-                0x0000000000211200                __nesf2
-                0x0000000000211200                __eqsf2
-                0x0000000000211200                __cmpsf2
-                0x0000000000211260                __aeabi_cfrcmple
-                0x0000000000211268                __aeabi_cfcmple
-                0x0000000000211268                __aeabi_cfcmpeq
-                0x0000000000211278                __aeabi_fcmpeq
-                0x000000000021128c                __aeabi_fcmplt
-                0x00000000002112a0                __aeabi_fcmple
-                0x00000000002112b4                __aeabi_fcmpge
-                0x00000000002112c8                __aeabi_fcmpgt
- .text          0x00000000002112dc       0x4c /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7-m/libgcc.a(_arm_fixsfsi.o)
-                0x00000000002112dc                __fixsfsi
-                0x00000000002112dc                __aeabi_f2iz
- .text          0x0000000000211328       0x2c /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7-m/libgcc.a(_aeabi_uldivmod.o)
-                0x0000000000211328                __aeabi_uldivmod
- .text          0x0000000000211354       0x60 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7-m/libgcc.a(bpabi.o)
-                0x0000000000211354                __gnu_ldivmod_helper
-                0x0000000000211384                __gnu_uldivmod_helper
- .text          0x00000000002113b4        0x4 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7-m/libgcc.a(_dvmd_tls.o)
-                0x00000000002113b4                __aeabi_ldiv0
-                0x00000000002113b4                __aeabi_idiv0
- .text          0x00000000002113b8      0x2a0 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7-m/libgcc.a(_divdi3.o)
-                0x00000000002113b8                __divdi3
- .text          0x0000000000211658      0x290 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7-m/libgcc.a(_udivdi3.o)
-                0x0000000000211658                __udivdi3
- .text          0x00000000002118e8        0x0 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-memcmp.o)
- .text.memcmp   0x00000000002118e8       0x68 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-memcmp.o)
-                0x00000000002118e8                memcmp
- .text          0x0000000000211950       0xec /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-memcpy.o)
-                0x0000000000211950                memcpy
- .text          0x0000000000211a3c        0x0 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-memmove.o)
- .text.memmove  0x0000000000211a3c       0xcc /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-memmove.o)
-                0x0000000000211a3c                memmove
- .text          0x0000000000211b08        0x0 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-memset.o)
- .text.memset   0x0000000000211b08       0x94 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-memset.o)
-                0x0000000000211b08                memset
- .text          0x0000000000211b9c      0x23c /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-strcmp.o)
-                0x0000000000211b9c                strcmp
- .text          0x0000000000211dd8        0x0 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-strcpy.o)
- .text.strcpy   0x0000000000211dd8       0xbc /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-strcpy.o)
-                0x0000000000211dd8                strcpy
- .text          0x0000000000211e94        0x0 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-strlen.o)
- .text.strlen   0x0000000000211e94       0x60 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-strlen.o)
-                0x0000000000211e94                strlen
- .text          0x0000000000211ef4        0x0 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-strncmp.o)
- .text.strncmp  0x0000000000211ef4       0xb4 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-strncmp.o)
-                0x0000000000211ef4                strncmp
- .text          0x0000000000211fa8        0x0 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-strncpy.o)
- .text.strncpy  0x0000000000211fa8       0x64 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-strncpy.o)
-                0x0000000000211fa8                strncpy
+                0x0000000000206ddc                read_temperatures
+ .text          0x0000000000206fac      0x1b0 contiki-mist-openmote.a(clock.o)
+                0x0000000000206fac                clock_init
+                0x0000000000207020                clock_time
+                0x000000000020702c                clock_set_seconds
+                0x0000000000207038                clock_seconds
+                0x0000000000207044                clock_wait
+                0x0000000000207058                clock_delay_usec
+                0x0000000000207078                clock_delay
+                0x000000000020709c                clock_adjust
+                0x00000000002070f0                clock_isr
+ .text          0x000000000020715c      0x15c contiki-mist-openmote.a(rtimer-arch.o)
+                0x000000000020715c                rtimer_arch_init
+                0x0000000000207160                rtimer_arch_schedule
+                0x00000000002071e0                rtimer_arch_next_trigger
+                0x00000000002071ec                rtimer_arch_now
+                0x0000000000207214                rtimer_isr
+ .text          0x00000000002072b8      0x318 contiki-mist-openmote.a(uart.o)
+                0x00000000002072f0                uart_init
+                0x00000000002074c8                uart_set_input
+                0x00000000002074d8                uart_write_byte
+                0x00000000002074fc                uart_isr
+                0x00000000002075c0                uart0_isr
+                0x00000000002075c8                uart1_isr
+ .text          0x00000000002075d0       0x34 contiki-mist-openmote.a(watchdog.o)
+                0x00000000002075d0                watchdog_init
+                0x00000000002075dc                watchdog_start
+                0x00000000002075e8                watchdog_periodic
+                0x00000000002075f8                watchdog_stop
+                0x00000000002075fc                watchdog_reboot
+ .text          0x0000000000207604       0xc8 contiki-mist-openmote.a(nvic.o)
+                0x0000000000207604                nvic_init
+                0x0000000000207630                nvic_interrupt_enable
+                0x0000000000207648                nvic_interrupt_disable
+                0x0000000000207660                nvic_interrupt_en_restore
+                0x000000000020767c                nvic_interrupt_en_save
+                0x000000000020769c                nvic_interrupt_pend
+                0x00000000002076b4                nvic_interrupt_unpend
+ .text          0x00000000002076cc       0x10 contiki-mist-openmote.a(cpu.o)
+                0x00000000002076cc                cpu_cpsie
+                0x00000000002076d4                cpu_cpsid
+ .text          0x00000000002076dc       0x28 contiki-mist-openmote.a(sys-ctrl.o)
+                0x00000000002076dc                sys_ctrl_init
+                0x00000000002076f8                sys_ctrl_reset
+ .text          0x0000000000207704      0x1a8 contiki-mist-openmote.a(gpio.o)
+                0x0000000000207704                gpio_register_callback
+                0x0000000000207714                notify
+                0x000000000020774c                gpio_port_a_isr
+                0x00000000002077a0                gpio_port_b_isr
+                0x00000000002077f4                gpio_port_c_isr
+                0x0000000000207848                gpio_port_d_isr
+                0x000000000020789c                gpio_init
+ .text          0x00000000002078ac       0x40 contiki-mist-openmote.a(ioc.o)
+                0x00000000002078ac                ioc_init
+                0x00000000002078c4                ioc_set_over
+                0x00000000002078d8                ioc_set_sel
+ .text          0x00000000002078ec      0x6ac contiki-mist-openmote.a(cc2538-rf.o)
+                0x0000000000207d24                cc2538_rf_channel_get
+                0x0000000000207d48                cc2538_rf_channel_set
+                0x0000000000207e90                cc2538_rf_power_set
+                0x0000000000207ea0                cc2538_rf_set_addr
+                0x0000000000207eec                cc2538_rf_rx_tx_isr
+                0x0000000000207f3c                cc2538_rf_err_isr
+ .text          0x0000000000207f98      0x1bc contiki-mist-openmote.a(udma.o)
+                0x0000000000207f98                udma_init
+                0x0000000000207fcc                udma_set_channel_src
+                0x0000000000207fdc                udma_set_channel_dst
+                0x0000000000207ff0                udma_set_channel_control_word
+                0x0000000000208004                udma_set_channel_assignment
+                0x0000000000208028                udma_channel_enable
+                0x0000000000208040                udma_channel_disable
+                0x0000000000208054                udma_channel_use_alternate
+                0x000000000020806c                udma_channel_use_primary
+                0x0000000000208080                udma_channel_prio_set_high
+                0x0000000000208098                udma_channel_prio_set_default
+                0x00000000002080ac                udma_channel_use_burst
+                0x00000000002080c4                udma_channel_use_single
+                0x00000000002080d8                udma_channel_mask_set
+                0x00000000002080f0                udma_channel_mask_clr
+                0x0000000000208104                udma_channel_sw_request
+                0x000000000020811c                udma_channel_get_mode
+                0x0000000000208138                udma_isr
+                0x0000000000208148                udma_err_isr
+ .text          0x0000000000208154      0x274 contiki-mist-openmote.a(lpm.o)
+                0x00000000002081d0                lpm_exit
+                0x000000000020825c                lpm_enter
+                0x0000000000208370                lpm_set_max_pm
+                0x0000000000208380                lpm_register_peripheral
+                0x00000000002083a4                lpm_init
+ .text          0x00000000002083c8       0x74 contiki-mist-openmote.a(dbg.o)
+                0x00000000002083c8                putchar
+                0x00000000002083d8                dbg_send_bytes
+                0x0000000000208414                puts
+ .text          0x000000000020843c      0x298 contiki-mist-openmote.a(i2c.o)
+                0x000000000020843c                i2c_init
+                0x0000000000208560                i2c_master_enable
+                0x0000000000208570                i2c_master_disable
+                0x0000000000208580                i2c_set_frequency
+                0x00000000002085b4                i2c_master_set_slave_address
+                0x00000000002085d0                i2c_master_data_put
+                0x00000000002085dc                i2c_master_data_get
+                0x00000000002085e8                i2c_master_command
+                0x00000000002085f8                i2c_master_busy
+                0x0000000000208608                i2c_master_error
+                0x0000000000208624                i2c_single_send
+                0x0000000000208668                i2c_single_receive
+                0x00000000002086b8                get_sys_clock
+ .text          0x00000000002086d4       0x34 contiki-mist-openmote.a(dbg-printf.o)
+                0x00000000002086e4                printf
+ .text          0x0000000000208708       0x4c contiki-mist-openmote.a(dbg-sprintf.o)
+                0x0000000000208720                sprintf
+ .text          0x0000000000208754      0x8f8 contiki-mist-openmote.a(strformat.o)
+                0x0000000000208784                format_str_v
+                0x000000000020902c                format_str
+ .text          0x000000000020904c      0x18c contiki-mist-openmote.a(owlink.o)
+                0x000000000020904c                owReadBit
+                0x0000000000209088                owWriteBit
+                0x00000000002090d0                owTouchReset
+                0x0000000000209124                owWriteByte
+                0x000000000020917c                owReadByte
+ .text          0x00000000002091d8      0x1bc contiki-mist-openmote.a(ownet.o)
+                0x00000000002091d8                owNext
+                0x0000000000209350                owFirst
+                0x0000000000209368                owSerialNum
+ .text          0x0000000000209394       0x2c contiki-mist-openmote.a(crcutil.o)
+                0x0000000000209394                crc_check
+ .text          0x00000000002093c0       0x30 contiki-mist-openmote.a(rimeaddr.o)
+                0x00000000002093c0                rimeaddr_copy
+                0x00000000002093cc                rimeaddr_cmp
+                0x00000000002093e0                rimeaddr_set_node_addr
+ .text          0x00000000002093f0        0x0 contiki-mist-openmote.a(rimestats.o)
+ .text          0x00000000002093f0      0x288 contiki-mist-openmote.a(nullrdc.o)
+ .text          0x0000000000209678       0x10 contiki-mist-openmote.a(mac.o)
+                0x0000000000209678                mac_call_sent_callback
+ .text          0x0000000000209688      0x1ac contiki-mist-openmote.a(framer-802154.o)
+ .text          0x0000000000209834      0x348 contiki-mist-openmote.a(csma.o)
+ .text          0x0000000000209b7c      0x208 contiki-mist-openmote.a(rpl.o)
+                0x0000000000209b7c                rpl_get_mode
+                0x0000000000209b88                rpl_set_mode
+                0x0000000000209b98                rpl_purge_routes
+                0x0000000000209c14                rpl_remove_routes
+                0x0000000000209c40                rpl_remove_routes_by_nexthop
+                0x0000000000209c80                rpl_add_route
+                0x0000000000209cac                rpl_link_neighbor_callback
+                0x0000000000209d14                rpl_ipv6_neighbor_callback
+                0x0000000000209d3c                rpl_init
+ .text          0x0000000000209d84      0xea0 contiki-mist-openmote.a(rpl-dag.o)
+                0x0000000000209ee4                rpl_dag_init
+                0x0000000000209ef4                rpl_get_parent_rank
+                0x0000000000209f08                rpl_get_parent_link_metric
+                0x0000000000209f1c                rpl_get_parent_ipaddr
+                0x0000000000209f34                rpl_repair_root
+                0x0000000000209f90                rpl_set_prefix
+                0x000000000020a028                rpl_set_default_route
+                0x000000000020a070                rpl_alloc_instance
+                0x000000000020a09c                rpl_set_default_instance
+                0x000000000020a0a8                rpl_add_parent
+                0x000000000020a0d4                rpl_find_parent
+                0x000000000020a0ec                rpl_find_parent_any_dag
+                0x000000000020a110                rpl_select_parent
+                0x000000000020a164                rpl_select_dag
+                0x000000000020a2e0                rpl_nullify_parent
+                0x000000000020a324                rpl_remove_parent
+                0x000000000020a37c                rpl_free_dag
+                0x000000000020a3b4                rpl_free_instance
+                0x000000000020a418                rpl_alloc_dag
+                0x000000000020a480                rpl_set_root
+                0x000000000020a57c                rpl_move_parent
+                0x000000000020a5dc                rpl_get_any_dag
+                0x000000000020a5f4                rpl_get_instance
+                0x000000000020a614                rpl_find_of
+                0x000000000020a628                rpl_join_instance
+                0x000000000020a768                rpl_local_repair
+                0x000000000020a7cc                rpl_process_parent_event
+                0x000000000020a82c                rpl_add_dag
+                0x000000000020a968                rpl_recalculate_ranks
+                0x000000000020a9a8                rpl_process_dio
+ .text          0x000000000020ac24      0xa00 contiki-mist-openmote.a(rpl-icmp6.o)
+                0x000000000020ac3c                dis_output
+                0x000000000020ac94                dio_output
+                0x000000000020af88                dao_output_target
+                0x000000000020b08c                dao_output
+                0x000000000020b0e8                dao_ack_output
+                0x000000000020b118                uip_rpl_input
+ .text          0x000000000020b624      0x200 contiki-mist-openmote.a(rpl-timers.o)
+                0x000000000020b798                rpl_reset_periodic_timer
+                0x000000000020b7d0                rpl_reset_dio_timer
+                0x000000000020b7ec                rpl_schedule_dao
+ .text          0x000000000020b824       0xf0 contiki-mist-openmote.a(rpl-mrhof.o)
+ .text          0x000000000020b914      0x2d8 contiki-mist-openmote.a(rpl-ext-header.)
+                0x000000000020b914                rpl_verify_header
+                0x000000000020b9bc                rpl_update_header_empty
+                0x000000000020bab8                rpl_update_header_final
+                0x000000000020bb40                rpl_remove_header
+                0x000000000020bb9c                rpl_invert_header
+ .text          0x000000000020bbec       0x30 contiki-mist-openmote.a(autostart.o)
+                0x000000000020bbec                autostart_start
+                0x000000000020bc04                autostart_exit
+ .text          0x000000000020bc1c      0x130 contiki-mist-openmote.a(serial-line.o)
+                0x000000000020bcd0                serial_line_input_byte
+                0x000000000020bd28                serial_line_init
+ .text          0x000000000020bd4c       0xc0 contiki-mist-openmote.a(memb.o)
+                0x000000000020bd4c                memb_init
+                0x000000000020bd70                memb_alloc
+                0x000000000020bdac                memb_free
+                0x000000000020bdf0                memb_inmemb
+ .text          0x000000000020be0c       0x54 contiki-mist-openmote.a(timer.o)
+                0x000000000020be0c                timer_set
+                0x000000000020be1c                timer_reset
+                0x000000000020be28                timer_restart
+                0x000000000020be34                timer_expired
+                0x000000000020be50                timer_remaining
+ .text          0x000000000020be60      0x168 contiki-mist-openmote.a(list.o)
+                0x000000000020be60                list_init
+                0x000000000020be68                list_head
+                0x000000000020be6c                list_copy
+                0x000000000020be74                list_tail
+                0x000000000020be84                list_add
+                0x000000000020bee4                list_push
+                0x000000000020bf2c                list_chop
+                0x000000000020bf50                list_pop
+                0x000000000020bf5c                list_remove
+                0x000000000020bf9c                list_length
+                0x000000000020bfb0                list_insert
+                0x000000000020bfc0                list_item_next
+ .text          0x000000000020bfc8      0x1d4 contiki-mist-openmote.a(ctimer.o)
+                0x000000000020c058                ctimer_init
+                0x000000000020c07c                ctimer_set
+                0x000000000020c0c0                ctimer_reset
+                0x000000000020c0fc                ctimer_restart
+                0x000000000020c138                ctimer_stop
+                0x000000000020c168                ctimer_expired
+ .text          0x000000000020c19c       0xcc contiki-mist-openmote.a(energest.o)
+                0x000000000020c19c                energest_init
+                0x000000000020c1c8                energest_type_time
+                0x000000000020c204                energest_leveldevice_leveltime
+                0x000000000020c208                energest_type_set
+                0x000000000020c214                energest_flush
+ .text          0x000000000020c268       0x54 contiki-mist-openmote.a(rtimer.o)
+                0x000000000020c268                rtimer_init
+                0x000000000020c26c                rtimer_set
+                0x000000000020c294                rtimer_run_next
+ .text          0x000000000020c2bc       0x68 contiki-mist-openmote.a(stimer.o)
+                0x000000000020c2bc                stimer_set
+                0x000000000020c2cc                stimer_reset
+                0x000000000020c2d8                stimer_restart
+                0x000000000020c2e4                stimer_expired
+                0x000000000020c304                stimer_remaining
+                0x000000000020c314                stimer_elapsed
+ .text          0x000000000020c324       0xb0 contiki-mist-openmote.a(random.o)
+                0x000000000020c324                random_rand
+                0x000000000020c354                random_init
+ .text          0x000000000020c3d4       0x7c contiki-mist-openmote.a(ringbuf.o)
+                0x000000000020c3d4                ringbuf_init
+                0x000000000020c3e4                ringbuf_put
+                0x000000000020c414                ringbuf_get
+                0x000000000020c43c                ringbuf_size
+                0x000000000020c444                ringbuf_elements
+ .text          0x000000000020c450      0x3f0 contiki-mist-openmote.a(nbr-table.o)
+                0x000000000020c514                nbr_table_register
+                0x000000000020c53c                nbr_table_next
+                0x000000000020c5b4                nbr_table_head
+                0x000000000020c610                nbr_table_add_lladdr
+                0x000000000020c790                nbr_table_get_from_lladdr
+                0x000000000020c7c4                nbr_table_remove
+                0x000000000020c7f0                nbr_table_lock
+                0x000000000020c800                nbr_table_unlock
+                0x000000000020c810                nbr_table_get_lladdr
+ .text          0x000000000020c840       0x34 contiki-mist-openmote.a(netstack.o)
+                0x000000000020c840                netstack_init
+ .text          0x000000000020c874      0x2c0 contiki-mist-openmote.a(packetbuf.o)
+                0x000000000020c874                packetbuf_clear_hdr
+                0x000000000020c880                packetbuf_compact
+                0x000000000020c8c4                packetbuf_copyto_hdr
+                0x000000000020c8e0                packetbuf_copyto
+                0x000000000020c928                packetbuf_hdralloc
+                0x000000000020c960                packetbuf_hdr_remove
+                0x000000000020c970                packetbuf_hdrreduce
+                0x000000000020c998                packetbuf_set_datalen
+                0x000000000020c9a4                packetbuf_dataptr
+                0x000000000020c9b4                packetbuf_hdrptr
+                0x000000000020c9c4                packetbuf_is_reference
+                0x000000000020c9d8                packetbuf_reference_ptr
+                0x000000000020c9e4                packetbuf_datalen
+                0x000000000020c9f0                packetbuf_hdrlen
+                0x000000000020ca00                packetbuf_totlen
+                0x000000000020ca18                packetbuf_attr_clear
+                0x000000000020ca4c                packetbuf_clear
+                0x000000000020ca6c                packetbuf_copyfrom
+                0x000000000020ca94                packetbuf_reference
+                0x000000000020caac                packetbuf_attr_copyto
+                0x000000000020caf0                packetbuf_attr_copyfrom
+ .text          0x000000000020cb34      0x1c4 contiki-mist-openmote.a(queuebuf.o)
+                0x000000000020cb34                queuebuf_init
+                0x000000000020cb58                queuebuf_new_from_packetbuf
+                0x000000000020cbec                queuebuf_update_attr_from_packetbuf
+                0x000000000020cbf8                queuebuf_free
+                0x000000000020cc40                queuebuf_to_packetbuf
+                0x000000000020cca8                queuebuf_dataptr
+                0x000000000020ccd4                queuebuf_datalen
+                0x000000000020ccdc                queuebuf_addr
+                0x000000000020cce8                queuebuf_attr
+                0x000000000020ccf4                queuebuf_debug_print
+ .text          0x000000000020ccf8      0xf4c contiki-mist-openmote.a(sicslowpan.o)
+                0x000000000020cd34                sicslowpan_init
+                0x000000000020dc2c                rime_sniffer_add
+                0x000000000020dc38                rime_sniffer_remove
+ .text          0x000000000020dc44      0x5e0 contiki-mist-openmote.a(tcpip.o)
+                0x000000000020dc60                tcpip_output
+                0x000000000020dc74                tcpip_set_outputfunc
+                0x000000000020dc80                tcp_connect
+                0x000000000020dcac                tcp_unlisten
+                0x000000000020dd10                tcp_listen
+                0x000000000020dd7c                tcp_attach
+                0x000000000020dd8c                udp_attach
+                0x000000000020dd9c                udp_new
+                0x000000000020ddb4                udp_broadcast_new
+                0x000000000020de04                tcpip_input
+                0x000000000020de28                tcpip_ipv6_output
+                0x000000000020e16c                tcpip_poll_udp
+                0x000000000020e17c                tcpip_poll_tcp
+                0x000000000020e18c                tcpip_uipcall
+ .text          0x000000000020e224      0x428 contiki-mist-openmote.a(uip-icmp6.o)
+                0x000000000020e224                uip_icmp6_echo_request_input
+                0x000000000020e33c                uip_icmp6_error_output
+                0x000000000020e4a4                uip_icmp6_send
+                0x000000000020e530                uip_icmp6_echo_reply_input
+                0x000000000020e62c                uip_icmp6_echo_reply_callback_add
+                0x000000000020e640                uip_icmp6_echo_reply_callback_rm
+ .text          0x000000000020e64c       0x8c contiki-mist-openmote.a(uip-udp-packet.)
+                0x000000000020e64c                uip_udp_packet_send
+                0x000000000020e68c                uip_udp_packet_sendto
+ .text          0x000000000020e6d8      0x170 contiki-mist-openmote.a(uiplib.o)
+                0x000000000020e6d8                uiplib_ip6addrconv
+                0x000000000020e7ac                uiplib_ip4addrconv
+ .text          0x000000000020e848      0x634 contiki-mist-openmote.a(aes-ccm.o)
+                0x000000000020eb2c                aes_ccm_encrypt
+                0x000000000020ebbc                aes_ccm_decrypt
+                0x000000000020ec70                aes_ccm_verify
+ .text          0x000000000020ee7c      0x2a4 contiki-mist-openmote.a(simple-rpl.o)
+                0x000000000020eeec                simple_rpl_global_address
+                0x000000000020ef24                simple_rpl_init
+                0x000000000020efa8                simple_rpl_init_dag_immediately
+                0x000000000020f0c0                simple_rpl_init_dag
+                0x000000000020f0ec                simple_rpl_global_repair
+                0x000000000020f0f4                simple_rpl_local_repair
+                0x000000000020f104                simple_rpl_parent
+                0x000000000020f11c                simple_rpl_root
+ .text          0x000000000020f120      0x310 contiki-mist-openmote.a(frame802154.o)
+                0x000000000020f1a0                frame802154_hdrlen
+                0x000000000020f1d0                frame802154_create
+                0x000000000020f2f8                frame802154_parse
+ .text          0x000000000020f430       0xa4 contiki-mist-openmote.a(uip-debug.o)
+                0x000000000020f430                uip_debug_ipaddr_print
+                0x000000000020f4a0                uip_debug_lladdr_print
+ .text          0x000000000020f4d4      0xf58 contiki-mist-openmote.a(aes.o)
+                0x000000000020f5fc                aes_encrypt
+                0x000000000020fc0c                aes_decrypt
+ .text          0x000000000021042c      0x370 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7-m/libgcc.a(_arm_addsubdf3.o)
+                0x000000000021042c                __aeabi_drsub
+                0x0000000000210434                __aeabi_dsub
+                0x0000000000210434                __subdf3
+                0x0000000000210438                __adddf3
+                0x0000000000210438                __aeabi_dadd
+                0x00000000002106b0                __aeabi_ui2d
+                0x00000000002106b0                __floatunsidf
+                0x00000000002106d0                __floatsidf
+                0x00000000002106d0                __aeabi_i2d
+                0x00000000002106f4                __extendsfdf2
+                0x00000000002106f4                __aeabi_f2d
+                0x0000000000210730                __aeabi_ul2d
+                0x0000000000210730                __floatundidf
+                0x0000000000210740                __floatdidf
+                0x0000000000210740                __aeabi_l2d
+ .text          0x000000000021079c      0x424 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7-m/libgcc.a(_arm_muldivdf3.o)
+                0x000000000021079c                __aeabi_dmul
+                0x000000000021079c                __muldf3
+                0x00000000002109f0                __aeabi_ddiv
+                0x00000000002109f0                __divdf3
+ .text          0x0000000000210bc0       0xa0 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7-m/libgcc.a(_arm_truncdfsf2.o)
+                0x0000000000210bc0                __aeabi_d2f
+                0x0000000000210bc0                __truncdfsf2
+ .text          0x0000000000210c60      0x21c /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7-m/libgcc.a(_arm_addsubsf3.o)
+                0x0000000000210c60                __aeabi_frsub
+                0x0000000000210c68                __subsf3
+                0x0000000000210c68                __aeabi_fsub
+                0x0000000000210c6c                __aeabi_fadd
+                0x0000000000210c6c                __addsf3
+                0x0000000000210dcc                __aeabi_ui2f
+                0x0000000000210dcc                __floatunsisf
+                0x0000000000210dd4                __aeabi_i2f
+                0x0000000000210dd4                __floatsisf
+                0x0000000000210df0                __floatundisf
+                0x0000000000210df0                __aeabi_ul2f
+                0x0000000000210e00                __floatdisf
+                0x0000000000210e00                __aeabi_l2f
+ .text          0x0000000000210e7c      0x2a0 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7-m/libgcc.a(_arm_muldivsf3.o)
+                0x0000000000210e7c                __mulsf3
+                0x0000000000210e7c                __aeabi_fmul
+                0x0000000000210fe4                __divsf3
+                0x0000000000210fe4                __aeabi_fdiv
+ .text          0x000000000021111c       0xec /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7-m/libgcc.a(_arm_cmpsf2.o)
+                0x000000000021111c                __gtsf2
+                0x000000000021111c                __gesf2
+                0x0000000000211124                __lesf2
+                0x0000000000211124                __ltsf2
+                0x000000000021112c                __nesf2
+                0x000000000021112c                __eqsf2
+                0x000000000021112c                __cmpsf2
+                0x000000000021118c                __aeabi_cfrcmple
+                0x0000000000211194                __aeabi_cfcmple
+                0x0000000000211194                __aeabi_cfcmpeq
+                0x00000000002111a4                __aeabi_fcmpeq
+                0x00000000002111b8                __aeabi_fcmplt
+                0x00000000002111cc                __aeabi_fcmple
+                0x00000000002111e0                __aeabi_fcmpge
+                0x00000000002111f4                __aeabi_fcmpgt
+ .text          0x0000000000211208       0x4c /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7-m/libgcc.a(_arm_fixsfsi.o)
+                0x0000000000211208                __fixsfsi
+                0x0000000000211208                __aeabi_f2iz
+ .text          0x0000000000211254       0x2c /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7-m/libgcc.a(_aeabi_uldivmod.o)
+                0x0000000000211254                __aeabi_uldivmod
+ .text          0x0000000000211280       0x60 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7-m/libgcc.a(bpabi.o)
+                0x0000000000211280                __gnu_ldivmod_helper
+                0x00000000002112b0                __gnu_uldivmod_helper
+ .text          0x00000000002112e0        0x4 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7-m/libgcc.a(_dvmd_tls.o)
+                0x00000000002112e0                __aeabi_ldiv0
+                0x00000000002112e0                __aeabi_idiv0
+ .text          0x00000000002112e4      0x2a0 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7-m/libgcc.a(_divdi3.o)
+                0x00000000002112e4                __divdi3
+ .text          0x0000000000211584      0x290 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7-m/libgcc.a(_udivdi3.o)
+                0x0000000000211584                __udivdi3
+ .text          0x0000000000211814        0x0 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-memcmp.o)
+ .text.memcmp   0x0000000000211814       0x68 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-memcmp.o)
+                0x0000000000211814                memcmp
+ .text          0x000000000021187c       0xec /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-memcpy.o)
+                0x000000000021187c                memcpy
+ .text          0x0000000000211968        0x0 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-memmove.o)
+ .text.memmove  0x0000000000211968       0xcc /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-memmove.o)
+                0x0000000000211968                memmove
+ .text          0x0000000000211a34        0x0 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-memset.o)
+ .text.memset   0x0000000000211a34       0x94 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-memset.o)
+                0x0000000000211a34                memset
+ .text          0x0000000000211ac8      0x23c /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-strcmp.o)
+                0x0000000000211ac8                strcmp
+ .text          0x0000000000211d04        0x0 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-strcpy.o)
+ .text.strcpy   0x0000000000211d04       0xbc /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-strcpy.o)
+                0x0000000000211d04                strcpy
+ .text          0x0000000000211dc0        0x0 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-strlen.o)
+ .text.strlen   0x0000000000211dc0       0x60 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-strlen.o)
+                0x0000000000211dc0                strlen
+ .text          0x0000000000211e20        0x0 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-strncmp.o)
+ .text.strncmp  0x0000000000211e20       0xb4 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-strncmp.o)
+                0x0000000000211e20                strncmp
+ .text          0x0000000000211ed4        0x0 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-strncpy.o)
+ .text.strncpy  0x0000000000211ed4       0x64 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-strncpy.o)
+                0x0000000000211ed4                strncpy
  *(.rodata*)
- .rodata        0x000000000021200c        0x8 environode.co
-                0x000000000021200c                autostart_processes
+ .rodata        0x0000000000211f38        0x8 environode.co
+                0x0000000000211f38                autostart_processes
  .rodata.str1.4
-                0x0000000000212014      0x31d environode.co
+                0x0000000000211f40      0x325 environode.co
                                         0x330 (size before relaxing)
- *fill*         0x0000000000212331        0x3 00000000
+ *fill*         0x0000000000212265        0x3 00000000
  .rodata.str1.4
-                0x0000000000212334        0xc contiki-mist-openmote.a(etimer.o)
+                0x0000000000212268        0xc contiki-mist-openmote.a(etimer.o)
  .rodata.str1.4
-                0x0000000000212340      0x1c5 contiki-mist-openmote.a(mqtt.o)
+                0x0000000000212274      0x1c5 contiki-mist-openmote.a(mqtt.o)
                                         0x1c8 (size before relaxing)
- *fill*         0x0000000000212505        0x3 00000000
+ *fill*         0x0000000000212439        0x3 00000000
  .rodata.str1.4
-                0x0000000000212508       0xbc contiki-mist-openmote.a(netstack-aes.o)
+                0x000000000021243c       0xbc contiki-mist-openmote.a(netstack-aes.o)
  .rodata.str1.4
-                0x00000000002125c4        0xb contiki-mist-openmote.a(mdns.o)
+                0x00000000002124f8        0xb contiki-mist-openmote.a(mdns.o)
                                           0xc (size before relaxing)
- *fill*         0x00000000002125cf        0x1 00000000
+ *fill*         0x0000000000212503        0x1 00000000
  .rodata.str1.4
-                0x00000000002125d0       0x9b contiki-mist-openmote.a(tcp-socket.o)
+                0x0000000000212504       0x9b contiki-mist-openmote.a(tcp-socket.o)
                                          0x9c (size before relaxing)
- *fill*         0x000000000021266b        0x1 00000000
+ *fill*         0x000000000021259f        0x1 00000000
  .rodata.str1.4
-                0x000000000021266c      0x14d contiki-mist-openmote.a(contiki-mist-op)
+                0x00000000002125a0      0x14d contiki-mist-openmote.a(contiki-mist-op)
                                         0x154 (size before relaxing)
- *fill*         0x00000000002127b9        0x3 00000000
+ *fill*         0x00000000002126ed        0x3 00000000
  .rodata.str1.4
-                0x00000000002127bc        0x8 contiki-mist-openmote.a(sensors.o)
- .rodata        0x00000000002127c4       0x30 contiki-mist-openmote.a(button-sensor.o)
-                0x00000000002127c4                button_user_sensor
-                0x00000000002127d4                button_sw1_sensor
-                0x00000000002127e4                button_sw2_sensor
+                0x00000000002126f0        0x8 contiki-mist-openmote.a(sensors.o)
+ .rodata        0x00000000002126f8       0x30 contiki-mist-openmote.a(button-sensor.o)
+                0x00000000002126f8                button_user_sensor
+                0x0000000000212708                button_sw1_sensor
+                0x0000000000212718                button_sw2_sensor
  .rodata.str1.4
-                0x00000000002127f4        0x7 contiki-mist-openmote.a(button-sensor.o)
+                0x0000000000212728        0x7 contiki-mist-openmote.a(button-sensor.o)
                                           0x8 (size before relaxing)
- *fill*         0x00000000002127fb        0x1 00000000
+ *fill*         0x000000000021272f        0x1 00000000
  .rodata.str1.4
-                0x00000000002127fc        0x6 contiki-mist-openmote.a(sht21.o)
+                0x0000000000212730        0x6 contiki-mist-openmote.a(sht21.o)
                                           0x8 (size before relaxing)
- *fill*         0x0000000000212802        0x2 00000000
+ *fill*         0x0000000000212736        0x2 00000000
  .rodata.str1.4
-                0x0000000000212804      0x18d contiki-mist-openmote.a(ds18b20.o)
-                                        0x190 (size before relaxing)
- *fill*         0x0000000000212991        0x3 00000000
- .rodata        0x0000000000212994       0x58 contiki-mist-openmote.a(uart.o)
- .rodata        0x00000000002129ec       0x2c contiki-mist-openmote.a(cc2538-rf.o)
-                0x00000000002129ec                cc2538_rf_driver
+                0x0000000000212738      0x16d contiki-mist-openmote.a(ds18b20.o)
+                                        0x174 (size before relaxing)
+ *fill*         0x00000000002128a5        0x3 00000000
+ .rodata        0x00000000002128a8       0x58 contiki-mist-openmote.a(uart.o)
+ .rodata        0x0000000000212900       0x2c contiki-mist-openmote.a(cc2538-rf.o)
+                0x0000000000212900                cc2538_rf_driver
  .rodata.str1.4
-                0x0000000000212a18       0x11 contiki-mist-openmote.a(cc2538-rf.o)
+                0x000000000021292c       0x11 contiki-mist-openmote.a(cc2538-rf.o)
                                          0x14 (size before relaxing)
- *fill*         0x0000000000212a29        0x3 00000000
- .rodata        0x0000000000212a2c       0x20 contiki-mist-openmote.a(strformat.o)
+ *fill*         0x000000000021293d        0x3 00000000
+ .rodata        0x0000000000212940       0x20 contiki-mist-openmote.a(strformat.o)
  .rodata.str1.4
-                0x0000000000212a4c       0x3e contiki-mist-openmote.a(strformat.o)
+                0x0000000000212960       0x3e contiki-mist-openmote.a(strformat.o)
                                          0x48 (size before relaxing)
- *fill*         0x0000000000212a8a        0x2 00000000
+ *fill*         0x000000000021299e        0x2 00000000
+ .rodata        0x00000000002129a0        0x8 contiki-mist-openmote.a(rimeaddr.o)
+                0x00000000002129a0                rimeaddr_null
+ .rodata        0x00000000002129a8       0x20 contiki-mist-openmote.a(nullrdc.o)
+                0x00000000002129a8                nullrdc_driver
  .rodata.str1.4
-                0x0000000000212a8c        0xc contiki-mist-openmote.a(owlink.o)
+                0x00000000002129c8        0x8 contiki-mist-openmote.a(nullrdc.o)
+ .rodata        0x00000000002129d0        0x8 contiki-mist-openmote.a(framer-802154.o)
+                0x00000000002129d0                framer_802154
+ .rodata        0x00000000002129d8       0x1c contiki-mist-openmote.a(csma.o)
+                0x00000000002129d8                csma_driver
  .rodata.str1.4
-                0x0000000000212a98       0x3f contiki-mist-openmote.a(ownet.o)
-                                         0x40 (size before relaxing)
- *fill*         0x0000000000212ad7        0x1 00000000
- .rodata        0x0000000000212ad8        0x8 contiki-mist-openmote.a(rimeaddr.o)
-                0x0000000000212ad8                rimeaddr_null
- .rodata        0x0000000000212ae0       0x20 contiki-mist-openmote.a(nullrdc.o)
-                0x0000000000212ae0                nullrdc_driver
- .rodata.str1.4
-                0x0000000000212b00        0x8 contiki-mist-openmote.a(nullrdc.o)
- .rodata        0x0000000000212b08        0x8 contiki-mist-openmote.a(framer-802154.o)
-                0x0000000000212b08                framer_802154
- .rodata        0x0000000000212b10       0x1c contiki-mist-openmote.a(csma.o)
-                0x0000000000212b10                csma_driver
- .rodata.str1.4
-                0x0000000000212b2c        0x5 contiki-mist-openmote.a(csma.o)
+                0x00000000002129f4        0x5 contiki-mist-openmote.a(csma.o)
                                           0x8 (size before relaxing)
- *fill*         0x0000000000212b31        0x3 00000000
+ *fill*         0x00000000002129f9        0x3 00000000
  .rodata.str1.4
-                0x0000000000212b34        0xe contiki-mist-openmote.a(serial-line.o)
+                0x00000000002129fc        0xe contiki-mist-openmote.a(serial-line.o)
                                          0x10 (size before relaxing)
- *fill*         0x0000000000212b42        0x2 00000000
+ *fill*         0x0000000000212a0a        0x2 00000000
  .rodata.str1.4
-                0x0000000000212b44        0xf contiki-mist-openmote.a(ctimer.o)
+                0x0000000000212a0c        0xf contiki-mist-openmote.a(ctimer.o)
                                          0x10 (size before relaxing)
- *fill*         0x0000000000212b53        0x1 00000000
+ *fill*         0x0000000000212a1b        0x1 00000000
  .rodata.str1.4
-                0x0000000000212b54        0xe contiki-mist-openmote.a(random.o)
+                0x0000000000212a1c        0xe contiki-mist-openmote.a(random.o)
                                          0x10 (size before relaxing)
- *fill*         0x0000000000212b62        0x2 00000000
- .rodata        0x0000000000212b64       0x24 contiki-mist-openmote.a(sicslowpan.o)
-                0x0000000000212b68                unc_ctxconf
-                0x0000000000212b6c                llprefix
-                0x0000000000212b70                unc_llconf
-                0x0000000000212b78                unc_mxconf
-                0x0000000000212b7c                sicslowpan_driver
+ *fill*         0x0000000000212a2a        0x2 00000000
+ .rodata        0x0000000000212a2c       0x24 contiki-mist-openmote.a(sicslowpan.o)
+                0x0000000000212a30                unc_ctxconf
+                0x0000000000212a34                llprefix
+                0x0000000000212a38                unc_llconf
+                0x0000000000212a40                unc_mxconf
+                0x0000000000212a44                sicslowpan_driver
  .rodata.str1.4
-                0x0000000000212b88       0x2b contiki-mist-openmote.a(sicslowpan.o)
+                0x0000000000212a50       0x2b contiki-mist-openmote.a(sicslowpan.o)
                                          0x2c (size before relaxing)
- *fill*         0x0000000000212bb3        0x1 00000000
+ *fill*         0x0000000000212a7b        0x1 00000000
  .rodata.str1.4
-                0x0000000000212bb4        0xd contiki-mist-openmote.a(tcpip.o)
+                0x0000000000212a7c        0xd contiki-mist-openmote.a(tcpip.o)
                                          0x10 (size before relaxing)
- *fill*         0x0000000000212bc1        0x3 00000000
+ *fill*         0x0000000000212a89        0x3 00000000
  .rodata.str1.4
-                0x0000000000212bc4       0x11 contiki-mist-openmote.a(simple-rpl.o)
+                0x0000000000212a8c       0x11 contiki-mist-openmote.a(simple-rpl.o)
                                          0x18 (size before relaxing)
- *fill*         0x0000000000212bd5        0x3 00000000
+ *fill*         0x0000000000212a9d        0x3 00000000
  .rodata.str1.4
-                0x0000000000212bd8       0x20 contiki-mist-openmote.a(uip-debug.o)
- .rodata        0x0000000000212bf8      0x20c contiki-mist-openmote.a(aes.o)
-                0x0000000000212e04                _etext = .
+                0x0000000000212aa0       0x20 contiki-mist-openmote.a(uip-debug.o)
+ .rodata        0x0000000000212ac0      0x20c contiki-mist-openmote.a(aes.o)
+                0x0000000000212ccc                _etext = .
 
-.glue_7         0x0000000000212e04        0x0
+.glue_7         0x0000000000212ccc        0x0
  .glue_7        0x0000000000000000        0x0 linker stubs
 
-.glue_7t        0x0000000000212e04        0x0
+.glue_7t        0x0000000000212ccc        0x0
  .glue_7t       0x0000000000000000        0x0 linker stubs
 
-.vfp11_veneer   0x0000000000212e04        0x0
+.vfp11_veneer   0x0000000000212ccc        0x0
  .vfp11_veneer  0x0000000000000000        0x0 linker stubs
 
-.v4_bx          0x0000000000212e04        0x0
+.v4_bx          0x0000000000212ccc        0x0
  .v4_bx         0x0000000000000000        0x0 linker stubs
 
-.iplt           0x0000000000212e04        0x0
+.iplt           0x0000000000212ccc        0x0
  .iplt          0x0000000000000000        0x0 obj_mist-openmote/startup-gcc.o
 
 .socdata
  *(.udma_channel_control_table)
 
-.data           0x0000000020000000      0x1a8 load address 0x0000000000212e04
+.data           0x0000000020000000      0x1a8 load address 0x0000000000212ccc
                 0x0000000020000000                _data = .
  *(.data*)
  .data          0x0000000020000000        0x0 obj_mist-openmote/startup-gcc.o
@@ -1168,16 +1162,16 @@ END GROUP
  .data          0x00000000200001a8        0x0 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-strncpy.o)
                 0x00000000200001a8                _edata = .
 
-.igot.plt       0x00000000200001a8        0x0 load address 0x0000000000212fac
+.igot.plt       0x00000000200001a8        0x0 load address 0x0000000000212e74
  .igot.plt      0x0000000000000000        0x0 obj_mist-openmote/startup-gcc.o
 
-.ARM.exidx      0x0000000000212fac        0x8
+.ARM.exidx      0x0000000000212e74        0x8
  *(.ARM.exidx*)
- .ARM.exidx     0x0000000000212fac        0x8 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7-m/libgcc.a(_divdi3.o)
- .ARM.exidx     0x0000000000212fb4        0x0 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7-m/libgcc.a(_udivdi3.o)
+ .ARM.exidx     0x0000000000212e74        0x8 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7-m/libgcc.a(_divdi3.o)
+ .ARM.exidx     0x0000000000212e7c        0x0 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7-m/libgcc.a(_udivdi3.o)
                                           0x8 (size before relaxing)
 
-.bss            0x0000000020000400     0x377d
+.bss            0x0000000020000400     0x3341
                 0x0000000020000400                _bss = .
  *(.bss*)
  .bss           0x0000000020000400      0x800 obj_mist-openmote/startup-gcc.o
@@ -1211,156 +1205,156 @@ END GROUP
  .bss           0x0000000020001b24        0x8 contiki-mist-openmote.a(button-sensor.o)
  .bss           0x0000000020001b2c        0x2 contiki-mist-openmote.a(sht21.o)
  *fill*         0x0000000020001b2e        0x2 
- .bss           0x0000000020001b30       0x34 contiki-mist-openmote.a(ds18b20.o)
- .bss           0x0000000020001b64        0x8 contiki-mist-openmote.a(clock.o)
- .bss           0x0000000020001b6c        0x4 contiki-mist-openmote.a(rtimer-arch.o)
- .bss           0x0000000020001b70        0x8 contiki-mist-openmote.a(uart.o)
- .bss           0x0000000020001b78        0x0 contiki-mist-openmote.a(watchdog.o)
- .bss           0x0000000020001b78       0x10 contiki-mist-openmote.a(nvic.o)
- .bss           0x0000000020001b88        0x0 contiki-mist-openmote.a(cpu.o)
- .bss           0x0000000020001b88        0x0 contiki-mist-openmote.a(sys-ctrl.o)
- .bss           0x0000000020001b88       0x80 contiki-mist-openmote.a(gpio.o)
- .bss           0x0000000020001c08        0x8 contiki-mist-openmote.a(ioc.o)
- .bss           0x0000000020001c10        0x1 contiki-mist-openmote.a(cc2538-rf.o)
- *fill*         0x0000000020001c11      0x3ef 
- .bss           0x0000000020002000      0x400 contiki-mist-openmote.a(udma.o)
- .bss           0x0000000020002400       0x14 contiki-mist-openmote.a(lpm.o)
- .bss           0x0000000020002414        0x0 contiki-mist-openmote.a(dbg.o)
- .bss           0x0000000020002414        0x0 contiki-mist-openmote.a(i2c.o)
- .bss           0x0000000020002414        0x0 contiki-mist-openmote.a(dbg-printf.o)
- .bss           0x0000000020002414        0x0 contiki-mist-openmote.a(dbg-sprintf.o)
- .bss           0x0000000020002414        0x0 contiki-mist-openmote.a(strformat.o)
- .bss           0x0000000020002414        0x0 contiki-mist-openmote.a(owlink.o)
- .bss           0x0000000020002414        0xc contiki-mist-openmote.a(ownet.o)
- .bss           0x0000000020002420        0x0 contiki-mist-openmote.a(crcutil.o)
- .bss           0x0000000020002420        0x0 contiki-mist-openmote.a(rimeaddr.o)
- .bss           0x0000000020002420        0x0 contiki-mist-openmote.a(rimestats.o)
- .bss           0x0000000020002420       0x48 contiki-mist-openmote.a(nullrdc.o)
- .bss           0x0000000020002468        0x0 contiki-mist-openmote.a(mac.o)
- .bss           0x0000000020002468        0x2 contiki-mist-openmote.a(framer-802154.o)
- *fill*         0x000000002000246a        0x2 
- .bss           0x000000002000246c      0x14c contiki-mist-openmote.a(csma.o)
- .bss           0x00000000200025b8        0x1 contiki-mist-openmote.a(rpl.o)
- *fill*         0x00000000200025b9        0x3 
- .bss           0x00000000200025bc      0x140 contiki-mist-openmote.a(rpl-dag.o)
- .bss           0x00000000200026fc        0x0 contiki-mist-openmote.a(rpl-icmp6.o)
- .bss           0x00000000200026fc       0x28 contiki-mist-openmote.a(rpl-timers.o)
- .bss           0x0000000020002724        0x0 contiki-mist-openmote.a(rpl-mrhof.o)
- .bss           0x0000000020002724        0x0 contiki-mist-openmote.a(rpl-ext-header.)
- .bss           0x0000000020002724        0x0 contiki-mist-openmote.a(autostart.o)
- .bss           0x0000000020002724      0x110 contiki-mist-openmote.a(serial-line.o)
- .bss           0x0000000020002834        0x0 contiki-mist-openmote.a(memb.o)
- .bss           0x0000000020002834        0x0 contiki-mist-openmote.a(timer.o)
- .bss           0x0000000020002834        0x0 contiki-mist-openmote.a(list.o)
- .bss           0x0000000020002834        0x8 contiki-mist-openmote.a(ctimer.o)
- .bss           0x000000002000283c        0x0 contiki-mist-openmote.a(energest.o)
- .bss           0x000000002000283c        0x4 contiki-mist-openmote.a(rtimer.o)
- .bss           0x0000000020002840        0x0 contiki-mist-openmote.a(stimer.o)
- .bss           0x0000000020002840        0x0 contiki-mist-openmote.a(random.o)
- .bss           0x0000000020002840        0x0 contiki-mist-openmote.a(ringbuf.o)
- .bss           0x0000000020002840      0x154 contiki-mist-openmote.a(nbr-table.o)
- .bss           0x0000000020002994        0x0 contiki-mist-openmote.a(netstack.o)
- .bss           0x0000000020002994       0xc0 contiki-mist-openmote.a(packetbuf.o)
- .bss           0x0000000020002a54      0x73c contiki-mist-openmote.a(queuebuf.o)
- .bss           0x0000000020003190      0x108 contiki-mist-openmote.a(sicslowpan.o)
- .bss           0x0000000020003298       0x60 contiki-mist-openmote.a(tcpip.o)
- .bss           0x00000000200032f8       0x14 contiki-mist-openmote.a(uip-icmp6.o)
- .bss           0x000000002000330c        0x0 contiki-mist-openmote.a(uip-udp-packet.)
- .bss           0x000000002000330c        0x0 contiki-mist-openmote.a(uiplib.o)
- .bss           0x000000002000330c       0x10 contiki-mist-openmote.a(aes-ccm.o)
- .bss           0x000000002000331c       0x3c contiki-mist-openmote.a(simple-rpl.o)
- .bss           0x0000000020003358        0x0 contiki-mist-openmote.a(frame802154.o)
- .bss           0x0000000020003358        0x0 contiki-mist-openmote.a(uip-debug.o)
- .bss           0x0000000020003358       0xb0 contiki-mist-openmote.a(aes.o)
- .bss           0x0000000020003408        0x0 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7-m/libgcc.a(_arm_addsubdf3.o)
- .bss           0x0000000020003408        0x0 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7-m/libgcc.a(_arm_muldivdf3.o)
- .bss           0x0000000020003408        0x0 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7-m/libgcc.a(_arm_truncdfsf2.o)
- .bss           0x0000000020003408        0x0 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7-m/libgcc.a(_arm_addsubsf3.o)
- .bss           0x0000000020003408        0x0 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7-m/libgcc.a(_arm_muldivsf3.o)
- .bss           0x0000000020003408        0x0 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7-m/libgcc.a(_arm_cmpsf2.o)
- .bss           0x0000000020003408        0x0 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7-m/libgcc.a(_arm_fixsfsi.o)
- .bss           0x0000000020003408        0x0 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7-m/libgcc.a(_aeabi_uldivmod.o)
- .bss           0x0000000020003408        0x0 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7-m/libgcc.a(bpabi.o)
- .bss           0x0000000020003408        0x0 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7-m/libgcc.a(_dvmd_tls.o)
- .bss           0x0000000020003408        0x0 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7-m/libgcc.a(_divdi3.o)
- .bss           0x0000000020003408        0x0 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7-m/libgcc.a(_udivdi3.o)
- .bss           0x0000000020003408        0x0 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-memcmp.o)
- .bss           0x0000000020003408        0x0 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-memcpy.o)
- .bss           0x0000000020003408        0x0 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-memmove.o)
- .bss           0x0000000020003408        0x0 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-memset.o)
- .bss           0x0000000020003408        0x0 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-strcmp.o)
- .bss           0x0000000020003408        0x0 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-strcpy.o)
- .bss           0x0000000020003408        0x0 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-strlen.o)
- .bss           0x0000000020003408        0x0 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-strncmp.o)
- .bss           0x0000000020003408        0x0 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-strncpy.o)
+ .bss           0x0000000020001b30       0x18 contiki-mist-openmote.a(ds18b20.o)
+ .bss           0x0000000020001b48        0x8 contiki-mist-openmote.a(clock.o)
+ .bss           0x0000000020001b50        0x4 contiki-mist-openmote.a(rtimer-arch.o)
+ .bss           0x0000000020001b54        0x8 contiki-mist-openmote.a(uart.o)
+ .bss           0x0000000020001b5c        0x0 contiki-mist-openmote.a(watchdog.o)
+ .bss           0x0000000020001b5c       0x10 contiki-mist-openmote.a(nvic.o)
+ .bss           0x0000000020001b6c        0x0 contiki-mist-openmote.a(cpu.o)
+ .bss           0x0000000020001b6c        0x0 contiki-mist-openmote.a(sys-ctrl.o)
+ .bss           0x0000000020001b6c       0x80 contiki-mist-openmote.a(gpio.o)
+ .bss           0x0000000020001bec        0x8 contiki-mist-openmote.a(ioc.o)
+ .bss           0x0000000020001bf4        0x1 contiki-mist-openmote.a(cc2538-rf.o)
+ *fill*         0x0000000020001bf5        0xb 
+ .bss           0x0000000020001c00      0x400 contiki-mist-openmote.a(udma.o)
+ .bss           0x0000000020002000       0x14 contiki-mist-openmote.a(lpm.o)
+ .bss           0x0000000020002014        0x0 contiki-mist-openmote.a(dbg.o)
+ .bss           0x0000000020002014        0x0 contiki-mist-openmote.a(i2c.o)
+ .bss           0x0000000020002014        0x0 contiki-mist-openmote.a(dbg-printf.o)
+ .bss           0x0000000020002014        0x0 contiki-mist-openmote.a(dbg-sprintf.o)
+ .bss           0x0000000020002014        0x0 contiki-mist-openmote.a(strformat.o)
+ .bss           0x0000000020002014        0x0 contiki-mist-openmote.a(owlink.o)
+ .bss           0x0000000020002014        0xc contiki-mist-openmote.a(ownet.o)
+ .bss           0x0000000020002020        0x0 contiki-mist-openmote.a(crcutil.o)
+ .bss           0x0000000020002020        0x0 contiki-mist-openmote.a(rimeaddr.o)
+ .bss           0x0000000020002020        0x0 contiki-mist-openmote.a(rimestats.o)
+ .bss           0x0000000020002020       0x48 contiki-mist-openmote.a(nullrdc.o)
+ .bss           0x0000000020002068        0x0 contiki-mist-openmote.a(mac.o)
+ .bss           0x0000000020002068        0x2 contiki-mist-openmote.a(framer-802154.o)
+ *fill*         0x000000002000206a        0x2 
+ .bss           0x000000002000206c      0x14c contiki-mist-openmote.a(csma.o)
+ .bss           0x00000000200021b8        0x1 contiki-mist-openmote.a(rpl.o)
+ *fill*         0x00000000200021b9        0x3 
+ .bss           0x00000000200021bc      0x140 contiki-mist-openmote.a(rpl-dag.o)
+ .bss           0x00000000200022fc        0x0 contiki-mist-openmote.a(rpl-icmp6.o)
+ .bss           0x00000000200022fc       0x28 contiki-mist-openmote.a(rpl-timers.o)
+ .bss           0x0000000020002324        0x0 contiki-mist-openmote.a(rpl-mrhof.o)
+ .bss           0x0000000020002324        0x0 contiki-mist-openmote.a(rpl-ext-header.)
+ .bss           0x0000000020002324        0x0 contiki-mist-openmote.a(autostart.o)
+ .bss           0x0000000020002324      0x110 contiki-mist-openmote.a(serial-line.o)
+ .bss           0x0000000020002434        0x0 contiki-mist-openmote.a(memb.o)
+ .bss           0x0000000020002434        0x0 contiki-mist-openmote.a(timer.o)
+ .bss           0x0000000020002434        0x0 contiki-mist-openmote.a(list.o)
+ .bss           0x0000000020002434        0x8 contiki-mist-openmote.a(ctimer.o)
+ .bss           0x000000002000243c        0x0 contiki-mist-openmote.a(energest.o)
+ .bss           0x000000002000243c        0x4 contiki-mist-openmote.a(rtimer.o)
+ .bss           0x0000000020002440        0x0 contiki-mist-openmote.a(stimer.o)
+ .bss           0x0000000020002440        0x0 contiki-mist-openmote.a(random.o)
+ .bss           0x0000000020002440        0x0 contiki-mist-openmote.a(ringbuf.o)
+ .bss           0x0000000020002440      0x154 contiki-mist-openmote.a(nbr-table.o)
+ .bss           0x0000000020002594        0x0 contiki-mist-openmote.a(netstack.o)
+ .bss           0x0000000020002594       0xc0 contiki-mist-openmote.a(packetbuf.o)
+ .bss           0x0000000020002654      0x73c contiki-mist-openmote.a(queuebuf.o)
+ .bss           0x0000000020002d90      0x108 contiki-mist-openmote.a(sicslowpan.o)
+ .bss           0x0000000020002e98       0x60 contiki-mist-openmote.a(tcpip.o)
+ .bss           0x0000000020002ef8       0x14 contiki-mist-openmote.a(uip-icmp6.o)
+ .bss           0x0000000020002f0c        0x0 contiki-mist-openmote.a(uip-udp-packet.)
+ .bss           0x0000000020002f0c        0x0 contiki-mist-openmote.a(uiplib.o)
+ .bss           0x0000000020002f0c       0x10 contiki-mist-openmote.a(aes-ccm.o)
+ .bss           0x0000000020002f1c       0x3c contiki-mist-openmote.a(simple-rpl.o)
+ .bss           0x0000000020002f58        0x0 contiki-mist-openmote.a(frame802154.o)
+ .bss           0x0000000020002f58        0x0 contiki-mist-openmote.a(uip-debug.o)
+ .bss           0x0000000020002f58       0xb0 contiki-mist-openmote.a(aes.o)
+ .bss           0x0000000020003008        0x0 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7-m/libgcc.a(_arm_addsubdf3.o)
+ .bss           0x0000000020003008        0x0 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7-m/libgcc.a(_arm_muldivdf3.o)
+ .bss           0x0000000020003008        0x0 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7-m/libgcc.a(_arm_truncdfsf2.o)
+ .bss           0x0000000020003008        0x0 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7-m/libgcc.a(_arm_addsubsf3.o)
+ .bss           0x0000000020003008        0x0 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7-m/libgcc.a(_arm_muldivsf3.o)
+ .bss           0x0000000020003008        0x0 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7-m/libgcc.a(_arm_cmpsf2.o)
+ .bss           0x0000000020003008        0x0 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7-m/libgcc.a(_arm_fixsfsi.o)
+ .bss           0x0000000020003008        0x0 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7-m/libgcc.a(_aeabi_uldivmod.o)
+ .bss           0x0000000020003008        0x0 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7-m/libgcc.a(bpabi.o)
+ .bss           0x0000000020003008        0x0 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7-m/libgcc.a(_dvmd_tls.o)
+ .bss           0x0000000020003008        0x0 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7-m/libgcc.a(_divdi3.o)
+ .bss           0x0000000020003008        0x0 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7-m/libgcc.a(_udivdi3.o)
+ .bss           0x0000000020003008        0x0 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-memcmp.o)
+ .bss           0x0000000020003008        0x0 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-memcpy.o)
+ .bss           0x0000000020003008        0x0 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-memmove.o)
+ .bss           0x0000000020003008        0x0 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-memset.o)
+ .bss           0x0000000020003008        0x0 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-strcmp.o)
+ .bss           0x0000000020003008        0x0 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-strcpy.o)
+ .bss           0x0000000020003008        0x0 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-strlen.o)
+ .bss           0x0000000020003008        0x0 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-strncmp.o)
+ .bss           0x0000000020003008        0x0 /usr/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-strncpy.o)
  *(COMMON)
- COMMON         0x0000000020003408       0x7c environode.co
-                0x0000000020003408                num_dev
-                0x000000002000340c                ctemp
-                0x0000000020003420                ctemps
-                0x0000000020003470                chum
- COMMON         0x0000000020003484        0x1 contiki-mist-openmote.a(process.o)
-                0x0000000020003484                process_maxevents
- *fill*         0x0000000020003485        0x3 
- COMMON         0x0000000020003488      0x174 contiki-mist-openmote.a(uip-ds6.o)
-                0x0000000020003488                uip_ds6_timer_ra
-                0x0000000020003490                uip_ds6_if
-                0x0000000020003588                uip_ds6_netif_addr_list_offset
-                0x0000000020003589                uip_ds6_addr_size
-                0x000000002000358c                uip_ds6_prefix_list
-                0x00000000200035ec                uip_ds6_timer_periodic
- COMMON         0x00000000200035fc      0x344 contiki-mist-openmote.a(uip6.o)
-                0x00000000200035fc                uip_len
-                0x0000000020003600                uip_sappdata
-                0x0000000020003604                uip_acc32
-                0x0000000020003608                uip_lladdr
-                0x0000000020003610                uip_aligned_buf
-                0x00000000200036d8                uip_flags
-                0x00000000200036dc                uip_next_hdr
-                0x00000000200036e0                uip_udp_conn
-                0x00000000200036e4                uip_appdata
-                0x00000000200036e8                uip_conn
-                0x00000000200036ec                uip_conns
-                0x00000000200037ac                uip_listenports
-                0x00000000200037bc                uip_slen
-                0x00000000200037c0                uip_udp_conns
- COMMON         0x0000000020003940        0x1 contiki-mist-openmote.a(mqtt.o)
-                0x0000000020003940                mqtt_update_event
- COMMON         0x0000000020003941        0x1 contiki-mist-openmote.a(mdns.o)
-                0x0000000020003941                mdns_event_found
- *fill*         0x0000000020003942        0x2 
- COMMON         0x0000000020003944        0x8 contiki-mist-openmote.a(node-id.o)
-                0x0000000020003944                node_mac
- COMMON         0x000000002000394c        0x1 contiki-mist-openmote.a(sensors.o)
-                0x000000002000394c                sensors_event
- *fill*         0x000000002000394d        0x3 
- COMMON         0x0000000020003950        0x4 contiki-mist-openmote.a(smartrf-sensors)
-                0x0000000020003950                sensors_flags
- COMMON         0x0000000020003954        0x8 contiki-mist-openmote.a(ownet.o)
-                0x0000000020003954                SerialNum
- COMMON         0x000000002000395c        0x8 contiki-mist-openmote.a(rimeaddr.o)
-                0x000000002000395c                rimeaddr_node_addr
- COMMON         0x0000000020003964       0x54 contiki-mist-openmote.a(rimestats.o)
-                0x0000000020003964                rimestats
- COMMON         0x00000000200039b8       0xf8 contiki-mist-openmote.a(rpl-dag.o)
-                0x00000000200039b8                default_instance
-                0x00000000200039bc                instance_table
- COMMON         0x0000000020003ab0        0x1 contiki-mist-openmote.a(serial-line.o)
-                0x0000000020003ab0                serial_line_event_message
- *fill*         0x0000000020003ab1        0x3 
- COMMON         0x0000000020003ab4       0x70 contiki-mist-openmote.a(energest.o)
-                0x0000000020003ab4                energest_total_time
-                0x0000000020003ae4                energest_total_count
-                0x0000000020003ae8                energest_current_mode
-                0x0000000020003af4                energest_current_time
- COMMON         0x0000000020003b24       0x50 contiki-mist-openmote.a(packetbuf.o)
-                0x0000000020003b24                packetbuf_addrs
-                0x0000000020003b44                packetbuf_attrs
- COMMON         0x0000000020003b74        0x8 contiki-mist-openmote.a(sicslowpan.o)
-                0x0000000020003b74                frag_sender
- COMMON         0x0000000020003b7c        0x1 contiki-mist-openmote.a(tcpip.o)
-                0x0000000020003b7c                tcpip_event
-                0x0000000020003b7d                _ebss = .
+ COMMON         0x0000000020003008       0x40 environode.co
+                0x0000000020003008                num_dev
+                0x000000002000300c                ctemp
+                0x0000000020003020                ctemps
+                0x0000000020003034                chum
+ COMMON         0x0000000020003048        0x1 contiki-mist-openmote.a(process.o)
+                0x0000000020003048                process_maxevents
+ *fill*         0x0000000020003049        0x3 
+ COMMON         0x000000002000304c      0x174 contiki-mist-openmote.a(uip-ds6.o)
+                0x000000002000304c                uip_ds6_timer_ra
+                0x0000000020003054                uip_ds6_if
+                0x000000002000314c                uip_ds6_netif_addr_list_offset
+                0x000000002000314d                uip_ds6_addr_size
+                0x0000000020003150                uip_ds6_prefix_list
+                0x00000000200031b0                uip_ds6_timer_periodic
+ COMMON         0x00000000200031c0      0x344 contiki-mist-openmote.a(uip6.o)
+                0x00000000200031c0                uip_len
+                0x00000000200031c4                uip_sappdata
+                0x00000000200031c8                uip_acc32
+                0x00000000200031cc                uip_lladdr
+                0x00000000200031d4                uip_aligned_buf
+                0x000000002000329c                uip_flags
+                0x00000000200032a0                uip_next_hdr
+                0x00000000200032a4                uip_udp_conn
+                0x00000000200032a8                uip_appdata
+                0x00000000200032ac                uip_conn
+                0x00000000200032b0                uip_conns
+                0x0000000020003370                uip_listenports
+                0x0000000020003380                uip_slen
+                0x0000000020003384                uip_udp_conns
+ COMMON         0x0000000020003504        0x1 contiki-mist-openmote.a(mqtt.o)
+                0x0000000020003504                mqtt_update_event
+ COMMON         0x0000000020003505        0x1 contiki-mist-openmote.a(mdns.o)
+                0x0000000020003505                mdns_event_found
+ *fill*         0x0000000020003506        0x2 
+ COMMON         0x0000000020003508        0x8 contiki-mist-openmote.a(node-id.o)
+                0x0000000020003508                node_mac
+ COMMON         0x0000000020003510        0x1 contiki-mist-openmote.a(sensors.o)
+                0x0000000020003510                sensors_event
+ *fill*         0x0000000020003511        0x3 
+ COMMON         0x0000000020003514        0x4 contiki-mist-openmote.a(smartrf-sensors)
+                0x0000000020003514                sensors_flags
+ COMMON         0x0000000020003518        0x8 contiki-mist-openmote.a(ownet.o)
+                0x0000000020003518                SerialNum
+ COMMON         0x0000000020003520        0x8 contiki-mist-openmote.a(rimeaddr.o)
+                0x0000000020003520                rimeaddr_node_addr
+ COMMON         0x0000000020003528       0x54 contiki-mist-openmote.a(rimestats.o)
+                0x0000000020003528                rimestats
+ COMMON         0x000000002000357c       0xf8 contiki-mist-openmote.a(rpl-dag.o)
+                0x000000002000357c                default_instance
+                0x0000000020003580                instance_table
+ COMMON         0x0000000020003674        0x1 contiki-mist-openmote.a(serial-line.o)
+                0x0000000020003674                serial_line_event_message
+ *fill*         0x0000000020003675        0x3 
+ COMMON         0x0000000020003678       0x70 contiki-mist-openmote.a(energest.o)
+                0x0000000020003678                energest_total_time
+                0x00000000200036a8                energest_total_count
+                0x00000000200036ac                energest_current_mode
+                0x00000000200036b8                energest_current_time
+ COMMON         0x00000000200036e8       0x50 contiki-mist-openmote.a(packetbuf.o)
+                0x00000000200036e8                packetbuf_addrs
+                0x0000000020003708                packetbuf_attrs
+ COMMON         0x0000000020003738        0x8 contiki-mist-openmote.a(sicslowpan.o)
+                0x0000000020003738                frag_sender
+ COMMON         0x0000000020003740        0x1 contiki-mist-openmote.a(tcpip.o)
+                0x0000000020003740                tcpip_event
+                0x0000000020003741                _ebss = .
 
 .flashcca       0x000000000027ffd4       0x2c
  *(.flashcca)
@@ -2264,10 +2258,8 @@ nvic_interrupt_unpend                             contiki-mist-openmote.a(nvic.o
 owFirst                                           contiki-mist-openmote.a(ownet.o)
                                                   contiki-mist-openmote.a(ds18b20.o)
 owNext                                            contiki-mist-openmote.a(ownet.o)
-                                                  contiki-mist-openmote.a(ds18b20.o)
 owReadBit                                         contiki-mist-openmote.a(owlink.o)
                                                   contiki-mist-openmote.a(ownet.o)
-                                                  contiki-mist-openmote.a(ds18b20.o)
 owReadByte                                        contiki-mist-openmote.a(owlink.o)
                                                   contiki-mist-openmote.a(ds18b20.o)
 owSerialNum                                       contiki-mist-openmote.a(ownet.o)
@@ -2354,8 +2346,6 @@ printf                                            contiki-mist-openmote.a(dbg-pr
                                                   contiki-mist-openmote.a(uip-debug.o)
                                                   contiki-mist-openmote.a(simple-rpl.o)
                                                   contiki-mist-openmote.a(sicslowpan.o)
-                                                  contiki-mist-openmote.a(ownet.o)
-                                                  contiki-mist-openmote.a(owlink.o)
                                                   contiki-mist-openmote.a(ds18b20.o)
                                                   contiki-mist-openmote.a(contiki-mist-op)
                                                   contiki-mist-openmote.a(tcp-socket.o)
@@ -2418,7 +2408,6 @@ puts                                              contiki-mist-openmote.a(dbg.o)
                                                   contiki-mist-openmote.a(simple-rpl.o)
                                                   contiki-mist-openmote.a(sicslowpan.o)
                                                   contiki-mist-openmote.a(random.o)
-                                                  contiki-mist-openmote.a(ownet.o)
                                                   contiki-mist-openmote.a(ds18b20.o)
                                                   contiki-mist-openmote.a(contiki-mist-op)
                                                   contiki-mist-openmote.a(netstack-aes.o)
@@ -2654,6 +2643,7 @@ sprintf                                           contiki-mist-openmote.a(dbg-sp
 state                                             contiki-mist-openmote.a(contiki-mist-op)
 stimer_elapsed                                    contiki-mist-openmote.a(stimer.o)
 stimer_expired                                    contiki-mist-openmote.a(stimer.o)
+                                                  contiki-mist-openmote.a(ds18b20.o)
                                                   contiki-mist-openmote.a(uip-ds6.o)
                                                   contiki-mist-openmote.a(uip-ds6-nbr.o)
                                                   contiki-mist-openmote.a(uip-ds6-route.o)
@@ -2661,9 +2651,11 @@ stimer_remaining                                  contiki-mist-openmote.a(stimer
                                                   contiki-mist-openmote.a(uip-ds6-nbr.o)
 stimer_reset                                      contiki-mist-openmote.a(stimer.o)
 stimer_restart                                    contiki-mist-openmote.a(stimer.o)
+                                                  contiki-mist-openmote.a(ds18b20.o)
 stimer_set                                        contiki-mist-openmote.a(stimer.o)
                                                   contiki-mist-openmote.a(tcpip.o)
                                                   contiki-mist-openmote.a(rpl-icmp6.o)
+                                                  contiki-mist-openmote.a(ds18b20.o)
                                                   contiki-mist-openmote.a(uip-nd6.o)
                                                   contiki-mist-openmote.a(uip-ds6.o)
                                                   contiki-mist-openmote.a(uip-ds6-nbr.o)

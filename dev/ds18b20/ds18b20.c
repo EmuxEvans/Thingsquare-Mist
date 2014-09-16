@@ -26,6 +26,7 @@
  */
 
 #include "contiki.h"
+#include "mist.h"
 #include "owhal.h" 
 #include "ownet.h"
 #include "owlink.h"
@@ -53,6 +54,7 @@ typedef enum state_e
 }state_t;
 
 static state_t state;
+static struct stimer convert_timer;
 static void ds18b20_scan(void);
 static void ds18b20_startConvert(void);
 static void ds18b20_fetchTemp( unsigned char device );
@@ -72,7 +74,7 @@ void read_temperatures(char ** ctemps)
   while(fetchDevice < NUM_DEVICES ) {
     switch ( state )
     {
-      case STATE_SCAN: 
+      case STATE_SCAN:
         DBG("STATE_SCAN\r\n");
         ds18b20_scan();
         state = STATE_CONVERT;
@@ -81,16 +83,18 @@ void read_temperatures(char ** ctemps)
       case STATE_CONVERT:
         DBG("STATE_CONVERT\r\n");
         ds18b20_startConvert();
-        state = STATE_WAIT_CONVERT;
+        stimer_set( &convert_timer, CLOCK_SECOND );
+        state = STATE_WAIT_CONVERT;        
       break;
 
       case STATE_WAIT_CONVERT:
-        DBG("STATE_WAIT_CONVERT\r\n");
-        if ( owReadBit() != 0 )
-        {
-          DBG("GOING STATE_FETCH_TEMPS\r\n");
-          state = STATE_FETCH_TEMPS;      
-          DBG("TO STATE_FETCH_TEMPS\r\n");    
+        if ( stimer_expired( &convert_timer ) ) {
+          DBG("finish convert_timer\r\n");
+          state = STATE_FETCH_TEMPS;
+          stimer_restart( &convert_timer );
+        }
+        else {
+          DBG("STATE_WAIT_CONVERT\r\n");
         }
       break;
 
@@ -98,7 +102,7 @@ void read_temperatures(char ** ctemps)
         DBG("STATE_FETCH_TEMPS\r\n");
         ds18b20_fetchTemp( fetchDevice );
         DBG("Device %d temp value: %.2f\r\n", fetchDevice, devices[fetchDevice].lastTemp);
-        sprintf(ctemps[fetchDevice], "%.2f",  devices[fetchDevice].lastTemp);        
+        sprintf(ctemps[fetchDevice], "%.2f",  devices[fetchDevice].lastTemp);
         fetchDevice++;
         if ( fetchDevice >= NUM_DEVICES )
           state = STATE_CONVERT;
@@ -117,6 +121,12 @@ static void ds18b20_scan()
   {
     DBG("ds18b20_scan found\r\n");
     owSerialNum( 0, devices[ 0 ].serial, 1 );
+    // DBG("ds18b20_scan serial number: ");
+    // int iz;
+    // for (iz=0; iz<8; iz++){
+    //   DBG("%d.", devices[ 0 ].serial[iz]);
+    // }
+    // DBG("\r\n");
   }
 
   for ( i = 1; found && i < NUM_DEVICES; i++ )
@@ -124,21 +134,20 @@ static void ds18b20_scan()
     found = owNext( 0, 1, 0 );
     if ( found )
     {
-      DBG("ds18b20_scan found in for\r\n");
       owSerialNum( 0, devices[ i ].serial, 1 );
     }
   }
 }
 
-static void ds18b20_startConvert()
+static void ds18b20_startConvert( )
 {
-    /*issue convert temp to all devices*/
-  T_OUTPUT();
-  T_LOW();
-  owTouchReset();  
-  owWriteByte(0xCC);
+  int i;
+  owTouchReset();
+  // owWriteByte(0xCC);
+  owWriteByte(0x55);
+  for ( i = 0; i < 8; i++ ) owWriteByte(devices[ 0 ].serial[i]);
   owWriteByte(0x44);
-  T_HIGH();
+  DBG("finish owWriteByte 44\r\n");
 }
 
 static void ds18b20_fetchTemp( unsigned char device )
@@ -163,8 +172,14 @@ static void ds18b20_fetchTemp( unsigned char device )
       data[i] = owReadByte();
     }
 
-    DBG("ds18b20_fetchTemp data: %s\r\n", data);
-    DBG("ds18b20_fetchTemp lastTemp: %.2f\r\n", ( (data[1] << 8) + data[0] )*0.0625);
+    DBG("ds18b20_fetchTemp data: ");
+    int iz;
+    for (iz=0; iz<11; iz++){
+      DBG("%d.", data[i]);
+    }
+    DBG("\r\n");
+
+    DBG("ds18b20_fetchTemp lastTemp: %3.2f\r\n", ( (data[1] << 8) + data[0] )*0.0625);
     devices[ device ].lastTemp = ( (data[1] << 8) + data[0] )*0.0625;
   }
   else {

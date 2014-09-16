@@ -19,9 +19,70 @@ obj_mist-openmote/ds18b20.o: ../../dev/ds18b20/ds18b20.c \
  ../../contiki/cpu/cc2538/./dev/gptimer.h ../../contiki/core/./sys/pt.h \
  ../../contiki/core/./sys/procinit.h ../../contiki/core/./sys/loader.h \
  ../../contiki/core/./sys/clock.h ../../contiki/core/./sys/energest.h \
- ../../contiki/core/./sys/rtimer.h ../../dev/ds18b20/owhal.h \
- ../../dev/ds18b20/ownet.h ../../dev/ds18b20/owlink.h \
- ../../dev/ds18b20/ds18b20.h
+ ../../contiki/core/./sys/rtimer.h ../../apps/mist-conf/mist.h \
+ ../../contiki/core/./contiki-net.h ../../contiki/core/./contiki.h \
+ ../../contiki/core/./net/tcpip.h ../../contiki/core/./net/uip.h \
+ ../../contiki/core/./net/uipopt.h ../../contiki/core/./net/tcpip.h \
+ ../../contiki/core/./net/uip.h ../../contiki/core/./net/uip-fw.h \
+ ../../contiki/core/./net/uip-fw-drv.h ../../contiki/core/./net/uip-fw.h \
+ ../../contiki/core/./net/uip_arp.h ../../contiki/core/./net/uiplib.h \
+ ../../contiki/core/./net/uip-udp-packet.h \
+ ../../contiki/core/./net/simple-udp.h \
+ ../../contiki/core/./net/uip-icmp6.h ../../contiki/core/./net/uip-ds6.h \
+ ../../contiki/core/./sys/stimer.h ../../contiki/core/./net/uip-nd6.h \
+ ../../contiki/core/./net/uip-ds6-route.h ../../contiki/core/./lib/list.h \
+ ../../contiki/core/./net/uip-ds6-nbr.h \
+ ../../contiki/core/./net/nbr-table.h \
+ ../../contiki/core/./net/rime/rimeaddr.h \
+ ../../contiki/core/./net/netstack.h ../../contiki/core/./net/mac/mac.h \
+ ../../contiki/core/./dev/radio.h ../../contiki/core/./net/mac/rdc.h \
+ ../../contiki/core/./net/mac/framer.h ../../contiki/core/./net/uip-ds6.h \
+ ../../contiki/core/./net/resolv.h ../../contiki/core/./net/uip.h \
+ ../../contiki/core/./net/psock.h ../../contiki/core/./contiki-lib.h \
+ ../../contiki/core/./lib/list.h ../../contiki/core/./lib/memb.h \
+ ../../contiki/core/./lib/mmem.h ../../contiki/core/./lib/random.h \
+ ../../contiki/core/./net/rime.h \
+ ../../contiki/core/./net/rime/announcement.h \
+ ../../contiki/core/./net/rime/collect.h \
+ ../../contiki/core/./net/rime/runicast.h \
+ ../../contiki/core/./net/rime/stunicast.h \
+ ../../contiki/core/./sys/ctimer.h \
+ ../../contiki/core/./net/rime/unicast.h \
+ ../../contiki/core/./net/rime/broadcast.h \
+ ../../contiki/core/./net/rime/abc.h ../../contiki/core/./net/packetbuf.h \
+ ../../contiki/core/./net/rime/channel.h \
+ ../../contiki/core/./net/rime/chameleon.h \
+ ../../contiki/core/./net/queuebuf.h \
+ ../../contiki/core/./net/rime/neighbor-discovery.h \
+ ../../contiki/core/./net/rime/collect-neighbor.h \
+ ../../contiki/core/./net/rime/collect-link-estimate.h \
+ ../../contiki/core/./net/packetqueue.h ../../contiki/core/./lib/memb.h \
+ ../../contiki/core/./net/rime/ipolite.h \
+ ../../contiki/core/./net/rime/mesh.h \
+ ../../contiki/core/./net/rime/multihop.h \
+ ../../contiki/core/./net/rime/route-discovery.h \
+ ../../contiki/core/./net/rime/netflood.h \
+ ../../contiki/core/./net/rime/polite-announcement.h \
+ ../../contiki/core/./net/rime/polite.h \
+ ../../contiki/core/./net/rime/rimestats.h \
+ ../../contiki/core/./net/rime/rmh.h \
+ ../../contiki/core/./net/rime/route.h \
+ ../../contiki/core/./net/rime/rucb.h \
+ ../../contiki/core/./net/rime/timesynch.h \
+ ../../contiki/core/./net/rime/trickle.h \
+ ../../contiki/core/./net/netstack.h ../../contiki/core/./lib/random.h \
+ ../../contiki/core/./dev/leds.h ../../apps/aes/aes.h \
+ ../../apps/ip64-addr/ip64-addr.h ../../apps/ip64/ip64.h \
+ ../../contiki/platform/openmote/ip64-conf.h \
+ ../../apps/ip64/ip64-slip-interface.h ../../apps/ip64/ip64-null-driver.h \
+ ../../apps/ip64/ip64-driver.h ../../apps/ip64/ip64-eth-interface.h \
+ ../../apps/mdns/mdns.h ../../apps/simple-rpl/simple-rpl.h \
+ ../../apps/tcp-socket/tcp-socket.h ../../apps/udp-socket/udp-socket.h \
+ ../../apps/websocket/websocket.h \
+ ../../apps/websocket/websocket-http-client.h \
+ ../../apps/websocket/http-strings.h ../../apps/http-socket/http-socket.h \
+ ../../dev/ds18b20/owhal.h ../../dev/ds18b20/ownet.h \
+ ../../dev/ds18b20/owlink.h ../../dev/ds18b20/ds18b20.h
 ../../dev/ds18b20/ds18b20.c :
  ../../contiki/core/./contiki.h ../../contiki/core/./contiki-version.h :
  ../../contiki/platform/openmote/contiki-conf.h :
@@ -43,6 +104,67 @@ obj_mist-openmote/ds18b20.o: ../../dev/ds18b20/ds18b20.c \
  ../../contiki/cpu/cc2538/./dev/gptimer.h ../../contiki/core/./sys/pt.h :
  ../../contiki/core/./sys/procinit.h ../../contiki/core/./sys/loader.h :
  ../../contiki/core/./sys/clock.h ../../contiki/core/./sys/energest.h :
- ../../contiki/core/./sys/rtimer.h ../../dev/ds18b20/owhal.h :
- ../../dev/ds18b20/ownet.h ../../dev/ds18b20/owlink.h :
- ../../dev/ds18b20/ds18b20.h :
+ ../../contiki/core/./sys/rtimer.h ../../apps/mist-conf/mist.h :
+ ../../contiki/core/./contiki-net.h ../../contiki/core/./contiki.h :
+ ../../contiki/core/./net/tcpip.h ../../contiki/core/./net/uip.h :
+ ../../contiki/core/./net/uipopt.h ../../contiki/core/./net/tcpip.h :
+ ../../contiki/core/./net/uip.h ../../contiki/core/./net/uip-fw.h :
+ ../../contiki/core/./net/uip-fw-drv.h ../../contiki/core/./net/uip-fw.h :
+ ../../contiki/core/./net/uip_arp.h ../../contiki/core/./net/uiplib.h :
+ ../../contiki/core/./net/uip-udp-packet.h :
+ ../../contiki/core/./net/simple-udp.h :
+ ../../contiki/core/./net/uip-icmp6.h ../../contiki/core/./net/uip-ds6.h :
+ ../../contiki/core/./sys/stimer.h ../../contiki/core/./net/uip-nd6.h :
+ ../../contiki/core/./net/uip-ds6-route.h ../../contiki/core/./lib/list.h :
+ ../../contiki/core/./net/uip-ds6-nbr.h :
+ ../../contiki/core/./net/nbr-table.h :
+ ../../contiki/core/./net/rime/rimeaddr.h :
+ ../../contiki/core/./net/netstack.h ../../contiki/core/./net/mac/mac.h :
+ ../../contiki/core/./dev/radio.h ../../contiki/core/./net/mac/rdc.h :
+ ../../contiki/core/./net/mac/framer.h ../../contiki/core/./net/uip-ds6.h :
+ ../../contiki/core/./net/resolv.h ../../contiki/core/./net/uip.h :
+ ../../contiki/core/./net/psock.h ../../contiki/core/./contiki-lib.h :
+ ../../contiki/core/./lib/list.h ../../contiki/core/./lib/memb.h :
+ ../../contiki/core/./lib/mmem.h ../../contiki/core/./lib/random.h :
+ ../../contiki/core/./net/rime.h :
+ ../../contiki/core/./net/rime/announcement.h :
+ ../../contiki/core/./net/rime/collect.h :
+ ../../contiki/core/./net/rime/runicast.h :
+ ../../contiki/core/./net/rime/stunicast.h :
+ ../../contiki/core/./sys/ctimer.h :
+ ../../contiki/core/./net/rime/unicast.h :
+ ../../contiki/core/./net/rime/broadcast.h :
+ ../../contiki/core/./net/rime/abc.h ../../contiki/core/./net/packetbuf.h :
+ ../../contiki/core/./net/rime/channel.h :
+ ../../contiki/core/./net/rime/chameleon.h :
+ ../../contiki/core/./net/queuebuf.h :
+ ../../contiki/core/./net/rime/neighbor-discovery.h :
+ ../../contiki/core/./net/rime/collect-neighbor.h :
+ ../../contiki/core/./net/rime/collect-link-estimate.h :
+ ../../contiki/core/./net/packetqueue.h ../../contiki/core/./lib/memb.h :
+ ../../contiki/core/./net/rime/ipolite.h :
+ ../../contiki/core/./net/rime/mesh.h :
+ ../../contiki/core/./net/rime/multihop.h :
+ ../../contiki/core/./net/rime/route-discovery.h :
+ ../../contiki/core/./net/rime/netflood.h :
+ ../../contiki/core/./net/rime/polite-announcement.h :
+ ../../contiki/core/./net/rime/polite.h :
+ ../../contiki/core/./net/rime/rimestats.h :
+ ../../contiki/core/./net/rime/rmh.h :
+ ../../contiki/core/./net/rime/route.h :
+ ../../contiki/core/./net/rime/rucb.h :
+ ../../contiki/core/./net/rime/timesynch.h :
+ ../../contiki/core/./net/rime/trickle.h :
+ ../../contiki/core/./net/netstack.h ../../contiki/core/./lib/random.h :
+ ../../contiki/core/./dev/leds.h ../../apps/aes/aes.h :
+ ../../apps/ip64-addr/ip64-addr.h ../../apps/ip64/ip64.h :
+ ../../contiki/platform/openmote/ip64-conf.h :
+ ../../apps/ip64/ip64-slip-interface.h ../../apps/ip64/ip64-null-driver.h :
+ ../../apps/ip64/ip64-driver.h ../../apps/ip64/ip64-eth-interface.h :
+ ../../apps/mdns/mdns.h ../../apps/simple-rpl/simple-rpl.h :
+ ../../apps/tcp-socket/tcp-socket.h ../../apps/udp-socket/udp-socket.h :
+ ../../apps/websocket/websocket.h :
+ ../../apps/websocket/websocket-http-client.h :
+ ../../apps/websocket/http-strings.h ../../apps/http-socket/http-socket.h :
+ ../../dev/ds18b20/owhal.h ../../dev/ds18b20/ownet.h :
+ ../../dev/ds18b20/owlink.h ../../dev/ds18b20/ds18b20.h :

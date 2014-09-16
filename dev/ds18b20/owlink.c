@@ -34,9 +34,9 @@
 #define OW_SLOT_LENGTH 78
 
 #define OW_LOW_PULSE_TIME 3
-#define OW_READ_SAMPLE_TIME 12
+#define OW_READ_SAMPLE_TIME 13
 #define OW_READ_SAMPLE_WAIT ( OW_READ_SAMPLE_TIME - OW_LOW_PULSE_TIME )
-#define OW_END_READ_SLOT_WAIT ( OW_SLOT_LENGTH - OW_READ_SAMPLE_TIME )
+#define OW_END_READ_SLOT_WAIT ( OW_SLOT_LENGTH - OW_READ_SAMPLE_TIME - 12 )
 
 #define OW_RECOVERY_TIME 6
 #define OW_WRITE_SLOT_WAIT ( OW_SLOT_LENGTH - OW_LOW_PULSE_TIME )
@@ -55,17 +55,15 @@ char owReadBit()
   OW_LOW();
 
   clock_delay_usec( OW_LOW_PULSE_TIME );
-
     /*float high*/
   OW_INPUT();
   clock_delay_usec( OW_READ_SAMPLE_WAIT );
 
     /*sample bus*/
   bit_in = OW_READ();
-
     /*wait until end of time slot*/
   clock_delay_usec( OW_END_READ_SLOT_WAIT );
-  DBG("bit_in %d\r\n", bit_in);
+  // DBG("bit_in %d\r\n", bit_in);
   return bit_in;
 }
 

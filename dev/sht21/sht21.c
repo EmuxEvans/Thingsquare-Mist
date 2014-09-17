@@ -33,7 +33,6 @@ print_float(float num, uint8_t preci, char *buf)
 	sprintf(buf, "%d.%d", integer, decimal);
   DBG("print float int dec value: %d.%d\r\n", integer, decimal);
   DBG("print float buf value: %s\r\n", buf);
-  return buf;
 }
 
 uint8_t

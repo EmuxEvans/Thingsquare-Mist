@@ -55,6 +55,7 @@ static state_t state;
 static void ds18b20_scan(void);
 static void ds18b20_startConvert(void);
 static void ds18b20_fetchTemp( unsigned char device );
+void ds_print_float(float num, uint8_t preci, char *buf);
 
 void ds18b20_init()
 {
@@ -152,7 +153,7 @@ static void ds18b20_fetchTemp( unsigned char device )
 
     devices[ device ].lastTemp = ( (signed short) b2 << 8 ) | ( b1 & 0xFF );
     int16_t raw = devices[ device ].lastTemp;
-    unsigned char cfg = 0x00;
+    unsigned char cfg = 0x40;
     // at lower res, the low bits are undefined, so let's zero them
     if (cfg == 0x00) raw = raw & ~7;  // 9 bit resolution, 93.75 ms
     else if (cfg == 0x20) raw = raw & ~3; // 10 bit res, 187.5 ms
@@ -160,9 +161,25 @@ static void ds18b20_fetchTemp( unsigned char device )
     //// default is 12 bit resolution, 750 ms conversion time
     float celsius;
     celsius = (float)raw / 16.0;
-    printf("ds18b20_fetchTemp lastTemp: %d\r\n", devices[ device ].lastTemp);
-    printf("ds18b20_fetchTemp raw: %d\r\n", raw);
-    printf("ds18b20_fetchTemp lastTempCelcius: %.2f\r\n", celsius); 
+    DBG("ds18b20_fetchTemp lastTemp: %d\r\n", devices[ device ].lastTemp);
+    char ctemp[20];
+    ds_print_float(celsius, 2, ctemp); // 2 decimal precision
+    DBG("ds18b20_fetchTemp celsius value: %s\r\n", ctemp);
   }
 }
 
+void ds_print_float(float num, uint8_t preci, char *buf)
+{
+  int integer=(int)num, decimal=0;
+  preci = preci > 10 ? 10 : preci;
+  num -= integer;
+  while((num != 0) && (preci-- > 0)) {
+    decimal *= 10;
+    num *= 10;
+    decimal += (int)num;
+    num -= (int)num;
+  }
+  sprintf(buf, "%d.%d", integer, decimal);
+  DBG("print float int dec value: %d.%d\r\n", integer, decimal);
+  DBG("print float buf value: %s\r\n", buf);
+}

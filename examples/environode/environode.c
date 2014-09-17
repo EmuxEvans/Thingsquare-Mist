@@ -188,7 +188,7 @@ PROCESS_THREAD(environode_process, ev, data)
       scan_start(); // scan and start converting DS18b20
       scan_started = 1;
       etimer_set(&ds18b20_timer, CLOCK_SECOND);
-      printf("scan and started, ds18b20 etimer set\r\n");
+      // printf("scan and started, ds18b20 etimer set\r\n");
     }
     else if(data == &button_sw2_sensor){
       button_sensor_value++;
@@ -196,7 +196,7 @@ PROCESS_THREAD(environode_process, ev, data)
     }
 
     if( etimer_expired(&ds18b20_timer) && scan_started ) {
-      printf("etimer_expired\r\n");
+      // printf("etimer_expired\r\n");
       etimer_stop(&ds18b20_timer);
       scan_started = 0;
       read_temperatures();

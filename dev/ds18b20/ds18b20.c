@@ -33,8 +33,8 @@
 #include <string.h> /*for memset*/
 #include <stdio.h>
  
-#define DBG(...) printf(__VA_ARGS__)
-// #define DBG(...)
+// #define DBG(...) printf(__VA_ARGS__)
+#define DBG(...)
 
 typedef struct
 {
@@ -160,9 +160,9 @@ static void ds18b20_fetchTemp( unsigned char device )
     //// default is 12 bit resolution, 750 ms conversion time
     float celsius;
     celsius = (float)raw / 16.0;
-    DBG("ds18b20_fetchTemp lastTemp: %d\r\n", devices[ device ].lastTemp);
-    DBG("ds18b20_fetchTemp raw: %d\r\n", raw);
-    DBG("ds18b20_fetchTemp lastTempCelcius: %.2f\r\n", celsius); 
+    printf("ds18b20_fetchTemp lastTemp: %d\r\n", devices[ device ].lastTemp);
+    printf("ds18b20_fetchTemp raw: %d\r\n", raw);
+    printf("ds18b20_fetchTemp lastTempCelcius: %.2f\r\n", celsius); 
   }
 }
 

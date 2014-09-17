@@ -26,7 +26,6 @@
  */
 
 #include "contiki.h"
-#include "mist.h"
 #include "owhal.h" 
 #include "ownet.h"
 #include "owlink.h"
@@ -40,7 +39,7 @@
 typedef struct
 {
     unsigned char serial[ 8 ];
-    float lastTemp;
+    signed short lastTemp;
 }device_t;
 
 static device_t devices[ NUM_DEVICES ];
@@ -49,12 +48,10 @@ typedef enum state_e
 {
     STATE_SCAN,
     STATE_CONVERT,
-    STATE_WAIT_CONVERT,
-    STATE_FETCH_TEMPS,
+    STATE_FINISHED,    
 }state_t;
 
 static state_t state;
-static struct stimer convert_timer;
 static void ds18b20_scan(void);
 static void ds18b20_startConvert(void);
 static void ds18b20_fetchTemp( unsigned char device );
@@ -63,15 +60,13 @@ void ds18b20_init()
 {
   DBG("ds18b20_init\r\n");
   memset( devices, 0, sizeof(devices) );
-  state = STATE_SCAN;  
+  state = STATE_SCAN;
 }
 
-void read_temperatures(char ** ctemps)
-{  
-  state = STATE_SCAN;  
-  unsigned char fetchDevice = 0;
-  DBG("fetchDevice: %d, state: %d\r\n", fetchDevice, state);
-  while(fetchDevice < NUM_DEVICES ) {
+void scan_start()
+{
+  state = STATE_SCAN;
+  while (state != STATE_FINISHED) {
     switch ( state )
     {
       case STATE_SCAN:
@@ -79,36 +74,20 @@ void read_temperatures(char ** ctemps)
         ds18b20_scan();
         state = STATE_CONVERT;
       break;
-
       case STATE_CONVERT:
         DBG("STATE_CONVERT\r\n");
         ds18b20_startConvert();
-        stimer_set( &convert_timer, CLOCK_SECOND );
-        state = STATE_WAIT_CONVERT;        
-      break;
-
-      case STATE_WAIT_CONVERT:
-        if ( stimer_expired( &convert_timer ) ) {
-          DBG("finish convert_timer\r\n");
-          state = STATE_FETCH_TEMPS;
-          stimer_restart( &convert_timer );
-        }
-        else {
-          DBG("STATE_WAIT_CONVERT\r\n");
-        }
-      break;
-
-      case STATE_FETCH_TEMPS:
-        DBG("STATE_FETCH_TEMPS\r\n");
-        ds18b20_fetchTemp( fetchDevice );
-        DBG("Device %d temp value: %.2f\r\n", fetchDevice, devices[fetchDevice].lastTemp);
-        sprintf(ctemps[fetchDevice], "%.2f",  devices[fetchDevice].lastTemp);
-        fetchDevice++;
-        if ( fetchDevice >= NUM_DEVICES )
-          state = STATE_CONVERT;
+        state = STATE_FINISHED;
       break;
     }
   }
+  DBG("finished scan_start\r\n");
+}
+
+void read_temperatures() {
+  unsigned char fetchDevice = 0;
+  DBG("STATE_FETCH_TEMPS\r\n");
+  ds18b20_fetchTemp( fetchDevice );
 }
 
 static void ds18b20_scan()
@@ -141,11 +120,12 @@ static void ds18b20_scan()
 
 static void ds18b20_startConvert( )
 {
-  int i;
+
   owTouchReset();
-  // owWriteByte(0xCC);
-  owWriteByte(0x55);
-  for ( i = 0; i < 8; i++ ) owWriteByte(devices[ 0 ].serial[i]);
+  owWriteByte(0xCC);
+  // owWriteByte(0x55);
+  // int i;
+  // for ( i = 0; i < 8; i++ ) owWriteByte(devices[ 0 ].serial[i]);
   owWriteByte(0x44);
   DBG("finish owWriteByte 44\r\n");
 }
@@ -155,9 +135,9 @@ static void ds18b20_fetchTemp( unsigned char device )
   if ( device < NUM_DEVICES && devices[ device ].serial[ 0 ] != 0 )
   {
     unsigned char i;
-    unsigned char data[10];
+    unsigned char b1, b2;
 
-    /*address specified device*/
+        /*address specified device*/
     owTouchReset();
     owWriteByte(0x55);
     for (i = 0; i < 8; i++)
@@ -165,26 +145,24 @@ static void ds18b20_fetchTemp( unsigned char device )
       owWriteByte(devices[ device ].serial[ i ]);
     }
 
-    /*read the first two bytes of scratchpad*/
+        /*read the first two bytes of scratchpad*/
     owWriteByte(0xBE);
+    b1 = owReadByte();
+    b2 = owReadByte();
 
-    for ( i = 0; i < 9; i++) {
-      data[i] = owReadByte();
-    }
-
-    DBG("ds18b20_fetchTemp data: ");
-    int iz;
-    for (iz=0; iz<11; iz++){
-      DBG("%d.", data[i]);
-    }
-    DBG("\r\n");
-
-    DBG("ds18b20_fetchTemp lastTemp: %3.2f\r\n", ( (data[1] << 8) + data[0] )*0.0625);
-    devices[ device ].lastTemp = ( (data[1] << 8) + data[0] )*0.0625;
-  }
-  else {
-    DBG("device: %d, devices[ device ].serial[ 0 ]: %d\r\n", device, devices[ device ].serial[ 0 ] );
-    DBG("ds18b20_fetchTemp failed\r\n");
+    devices[ device ].lastTemp = ( (signed short) b2 << 8 ) | ( b1 & 0xFF );
+    int16_t raw = devices[ device ].lastTemp;
+    unsigned char cfg = 0x00;
+    // at lower res, the low bits are undefined, so let's zero them
+    if (cfg == 0x00) raw = raw & ~7;  // 9 bit resolution, 93.75 ms
+    else if (cfg == 0x20) raw = raw & ~3; // 10 bit res, 187.5 ms
+    else if (cfg == 0x40) raw = raw & ~1; // 11 bit res, 375 ms
+    //// default is 12 bit resolution, 750 ms conversion time
+    float celsius;
+    celsius = (float)raw / 16.0;
+    DBG("ds18b20_fetchTemp lastTemp: %d\r\n", devices[ device ].lastTemp);
+    DBG("ds18b20_fetchTemp raw: %d\r\n", raw);
+    DBG("ds18b20_fetchTemp lastTempCelcius: %.2f\r\n", celsius); 
   }
 }
 

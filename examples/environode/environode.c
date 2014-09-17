@@ -24,7 +24,6 @@ static struct mqtt_connection conn;
 //static uint8_t app_buffer[128];
 static struct mqtt_message* msg_ptr = 0;
 //static uint8_t first_flag = 1;
-//static struct etimer periodic_timer;
 static struct etimer light_sense_timer;
 static struct etimer reconnect_timer;
 static uint8_t led_status = 0;
@@ -38,6 +37,7 @@ static uint16_t button_sensor_value=0;
 static process_event_t led_updates_changed_event;
 static process_event_t reconnect_event;
 static uint8_t reconnecting = 0;
+static uint8_t scan_started = 0;
 static uip_ipaddr_t google_ipv4_dns_server = {
     .u8 = {
       /* Google's IPv4 DNS in mapped in an IPv6 address (::ffff:8.8.8.8) */
@@ -70,7 +70,7 @@ fade(unsigned char l)
 }
 
 /*---------------------------------------------------------------------------*/
-PROCESS(mqtt_example_process, "MQTT Example");
+PROCESS(mqtt_example_process, "MQTT example");
 PROCESS(environode_process, "Environode sensing and sending");
 AUTOSTART_PROCESSES(&environode_process);
 /*---------------------------------------------------------------------------*/
@@ -154,7 +154,7 @@ PROCESS_THREAD(environode_process, ev, data)
   PROCESS_BEGIN();
   printf("Environode process\r\n");
   static uint8_t reset_flag = 1;
-
+  static struct etimer ds18b20_timer;
   SENSORS_ACTIVATE(button_user_sensor);
   SENSORS_ACTIVATE(button_sw1_sensor);
   SENSORS_ACTIVATE(button_sw2_sensor);
@@ -162,8 +162,8 @@ PROCESS_THREAD(environode_process, ev, data)
   ds18b20_init();
 
   while(1) {
-    PROCESS_WAIT_EVENT_UNTIL((ev == sensors_event) && (
-           data == &button_sw1_sensor||data == &button_sw2_sensor||data == &button_user_sensor));
+    PROCESS_WAIT_EVENT_UNTIL((etimer_expired(&ds18b20_timer)) || ((ev == sensors_event) && (
+           data == &button_sw1_sensor||data == &button_sw2_sensor||data == &button_user_sensor)));
     if(data == &button_user_sensor){
       if(reset_flag){
         reset_flag = 0;
@@ -172,11 +172,11 @@ PROCESS_THREAD(environode_process, ev, data)
         sprintf(str_topic_sensor, "%s", "bontorgate/node2/sensor");
         sprintf(str_topic_led, "%s", "bontorgate/node2/led");
         process_start(&mqtt_example_process, NULL);
-      }else{
+      } else{
         printf("%s\r\n", str_topic_state);
       }
     }
-    else if(data == &button_sw1_sensor){
+    else if(data == &button_sw1_sensor) {
     /* We must init I2C each time, because the module lose his state when enter PM2 */
       i2c_init(I2C_SDA_PORT, I2C_SDA_PIN, I2C_SCL_PORT, I2C_SCL_PIN, I2C_SCL_FAST_BUS_SPEED);
       read_temperature(ctemp); // temperature SHT21
@@ -185,15 +185,26 @@ PROCESS_THREAD(environode_process, ev, data)
       read_humidity(chum); // humidity SHT21
       printf("SHT21 humidity value: %s\r\n", chum);
 
-      read_temperatures(ctemps); // temperatures DS18b20
-      for(num_dev = 0; num_dev<NUM_DEVICES; num_dev++) {
-        printf("DS18b20 %d temperature value: %s\r\n", num_dev, ctemps[num_dev]);        
-      }
+      scan_start(); // scan and start converting DS18b20
+      scan_started = 1;
+      etimer_set(&ds18b20_timer, CLOCK_SECOND);
+      printf("scan and started, ds18b20 etimer set\r\n");
     }
     else if(data == &button_sw2_sensor){
       button_sensor_value++;
       printf("Button sensor value: %d\r\n", button_sensor_value);
     }
+
+    if( etimer_expired(&ds18b20_timer) && scan_started ) {
+      printf("etimer_expired\r\n");
+      etimer_stop(&ds18b20_timer);
+      scan_started = 0;
+      read_temperatures();
+      // for(num_dev = 0; num_dev<NUM_DEVICES; num_dev++) {
+      //   printf("DS18b20 %d temperature value: %s\r\n", num_dev, ctemps[num_dev]);
+      // }
+      etimer_restart(&ds18b20_timer);
+    }    
   }
   PROCESS_END();
 }

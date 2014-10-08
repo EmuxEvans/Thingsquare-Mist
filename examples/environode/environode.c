@@ -14,7 +14,7 @@ char ctemp[20];
 char chum[20];
 char ctemps[NUM_DEVICES][20];
 int num_dev;
-
+int isReady = 0;
 #define SEND_INTERVAL   (60 * CLOCK_SECOND)
 #define MIN(a, b) ((a) < (b) ? (a) : (b))
 
@@ -27,7 +27,7 @@ static struct mqtt_message* msg_ptr = 0;
 static struct etimer light_sense_timer;
 static struct etimer reconnect_timer;
 static uint8_t led_status = 0;
-static char str_topic_state[20];
+static char str_topic_state[80];
 static char str_topic_sensor[30];
 static char str_topic_led[30];
 // static char app_buffer[128];
@@ -158,7 +158,7 @@ mqtt_event(struct mqtt_connection *m, mqtt_event_t event, void* data)
 PROCESS_THREAD(environode_process, ev, data)
 {
   PROCESS_BEGIN();
-  printf("Environode Process !!\r\n");
+  printf("Environode Process!!!\r\n");
   static uint8_t reset_flag = 1;
   // static struct etimer ds18b20_timer;
   static struct etimer sensing_timer;
@@ -166,8 +166,7 @@ PROCESS_THREAD(environode_process, ev, data)
   // SENSORS_ACTIVATE(button_sw1_sensor);
   // SENSORS_ACTIVATE(button_sw2_sensor);
   sprintf(str_topic_state, "%s%s", API_KEY, "/v2/feeds/854709130.json");  
-  printf(str_topic_state);printf("\r\n"); 
-  process_start(&mqtt_example_process, NULL);
+  printf(str_topic_state);printf("\r\n");
   etimer_set(&sensing_timer, 30*CLOCK_SECOND);
   // ds18b20_init();
 
@@ -180,9 +179,12 @@ PROCESS_THREAD(environode_process, ev, data)
     read_humidity(chum); // humidity SHT21
     printf("SHT21 humidity value: %s\r\n", chum);
     sprintf(sensing_payload, "%s%s%s%s%s", "{\"version\":\"1.0.0\",\"datastreams\" : [ {\"id\" : \"temperature\",\"current_value\" : \"", ctemp, "\"},{\"id\" : \"humidity\",\"current_value\" : \"", chum, "\"}]}");
+    if(isReady == 0) {
+      printf("********* isReady OK, MQTT PROCESS STARTED *********\r\n");
+      process_start(&mqtt_example_process, NULL);
+    }
+    isReady = 1;
     etimer_restart(&sensing_timer);
-    // printf("scan and started, ds18b20 etimer set\r\n");
-        
   }
   PROCESS_END();
 }
@@ -238,7 +240,7 @@ PROCESS_THREAD(mqtt_example_process, ev, data)
                (uint8_t*)"online",
                strlen("online"),
                MQTT_QOS_LEVEL_0,
-               MQTT_RETAIN_OFF);
+               MQTT_RETAIN_ON);
     //printf("comes here 2**************************\n");
     /* Subscribe to the light sensor interval topic */
     // PROCESS_WAIT_UNTIL(mqtt_ready(&conn));
@@ -263,16 +265,20 @@ PROCESS_THREAD(mqtt_example_process, ev, data)
       }
 
       if(mqtt_ready(&conn)) {
-        printf(sensing_payload);
+        printf("topic state: ");
+        printf(str_topic_state);
         printf("\r\n");
+        printf("sensing_payload: ");
+        printf(sensing_payload);
+        printf("\r\n");        
         printf("******* MQTT PUBLISH SENSING PAYLOAD ********\r\n");
         mqtt_publish(&conn,
                NULL,
-               str_topic_sensor,
+               str_topic_state,
                (uint8_t*)sensing_payload,
                strlen(sensing_payload),
                MQTT_QOS_LEVEL_0,
-               MQTT_RETAIN_OFF);
+               MQTT_RETAIN_ON);
       }
     }
   }

@@ -30,7 +30,8 @@ static uint8_t led_status = 0;
 static char str_topic_state[20];
 static char str_topic_sensor[30];
 static char str_topic_led[30];
-static char app_buffer[128];
+// static char app_buffer[128];
+static char sensing_payload[200];
 
 static uint16_t button_sensor_value=0;
 //static char rssi_str[5];
@@ -48,7 +49,12 @@ static uip_ipaddr_t google_ipv4_dns_server = {
     }
 };
 
-#define HOST "198.41.30.241" // m2m.eclipse.org
+// #define HOST "198.41.30.241" // m2m.eclipse.org
+#define HOST "64.94.18.120"
+#define PORT 1883
+#define API_KEY "sjXXgoZ1kwKyop0CPAEo4D6cCTCYARFaxEP5gEvbAafDc2Cm"
+#define FEED_ID "854709130"
+#define SERIAL "V3CXZ99ZX7K4"
 
 static void
 fade(unsigned char l)
@@ -80,7 +86,7 @@ route_callback(int event, uip_ipaddr_t *route,
 {
   if (event == UIP_DS6_NOTIFICATION_DEFRT_ADD) {
     //leds_off(LEDS_ALL);
-    printf("APP - Got a RPL route\r\n");
+    printf("APP - Got an RPL route\r\n");
   }
 }
 
@@ -92,7 +98,7 @@ mqtt_event(struct mqtt_connection *m, mqtt_event_t event, void* data)
 
   switch(event) {
     case MQTT_EVENT_CONNECTED: {
-      printf("APP - Application has a MQTT connection\r\n");
+      printf("APP - Application has an MQTT connection\r\n");
       break;
     }
     case MQTT_EVENT_DISCONNECTED: {
@@ -152,59 +158,31 @@ mqtt_event(struct mqtt_connection *m, mqtt_event_t event, void* data)
 PROCESS_THREAD(environode_process, ev, data)
 {
   PROCESS_BEGIN();
-  printf("Environode process\r\n");
+  printf("Environode Process !!\r\n");
   static uint8_t reset_flag = 1;
-  static struct etimer ds18b20_timer;
-  SENSORS_ACTIVATE(button_user_sensor);
-  SENSORS_ACTIVATE(button_sw1_sensor);
-  SENSORS_ACTIVATE(button_sw2_sensor);
-
-  ds18b20_init();
+  // static struct etimer ds18b20_timer;
+  static struct etimer sensing_timer;
+  // SENSORS_ACTIVATE(button_user_sensor);
+  // SENSORS_ACTIVATE(button_sw1_sensor);
+  // SENSORS_ACTIVATE(button_sw2_sensor);
+  sprintf(str_topic_state, "%s%s", API_KEY, "/v2/feeds/854709130.json");  
+  process_start(&mqtt_example_process, NULL);
+  etimer_set(&sensing_timer, 30*CLOCK_SECOND);
+  // ds18b20_init();
 
   while(1) {
-    PROCESS_WAIT_EVENT_UNTIL((etimer_expired(&ds18b20_timer)) || ((ev == sensors_event) && (
-           data == &button_sw1_sensor||data == &button_sw2_sensor||data == &button_user_sensor)));
-    if(data == &button_user_sensor){
-      if(reset_flag){
-        reset_flag = 0;
-        sprintf(str_topic_state, "%s", "bontorgate/node2");
-        printf("%s\r\n",str_topic_state);
-        sprintf(str_topic_sensor, "%s", "bontorgate/node2/sensor");
-        sprintf(str_topic_led, "%s", "bontorgate/node2/led");
-        process_start(&mqtt_example_process, NULL);
-      } else{
-        printf("%s\r\n", str_topic_state);
-      }
-    }
-    else if(data == &button_sw1_sensor) {
+    PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&sensing_timer));
     /* We must init I2C each time, because the module lose his state when enter PM2 */
-      i2c_init(I2C_SDA_PORT, I2C_SDA_PIN, I2C_SCL_PORT, I2C_SCL_PIN, I2C_SCL_FAST_BUS_SPEED);
-      read_temperature(ctemp); // temperature SHT21
-      printf("SHT21 temperature value: %s\r\n", ctemp);
+    i2c_init(I2C_SDA_PORT, I2C_SDA_PIN, I2C_SCL_PORT, I2C_SCL_PIN, I2C_SCL_FAST_BUS_SPEED);
+    read_temperature(ctemp); // temperature SHT21
+    printf("SHT21 temperature value: %s\r\n", ctemp);
 
-      read_humidity(chum); // humidity SHT21
-      printf("SHT21 humidity value: %s\r\n", chum);
-
-      scan_start(); // scan and start converting DS18b20
-      scan_started = 1;
-      etimer_set(&ds18b20_timer, CLOCK_SECOND);
-      // printf("scan and started, ds18b20 etimer set\r\n");
-    }
-    else if(data == &button_sw2_sensor){
-      button_sensor_value++;
-      printf("Button sensor value: %d\r\n", button_sensor_value);
-    }
-
-    if( etimer_expired(&ds18b20_timer) && scan_started ) {
-      // printf("etimer_expired\r\n");
-      etimer_stop(&ds18b20_timer);
-      scan_started = 0;
-      read_temperatures();
-      // for(num_dev = 0; num_dev<NUM_DEVICES; num_dev++) {
-      //   printf("DS18b20 %d temperature value: %s\r\n", num_dev, ctemps[num_dev]);
-      // }
-      etimer_restart(&ds18b20_timer);
-    }    
+    read_humidity(chum); // humidity SHT21
+    printf("SHT21 humidity value: %s\r\n", chum);
+    sprintf(sensing_payload, "%s%s%s%s%s", "{'version':'1.0.0','datastreams' : [ {'id' : 'temperature','current_value' : '", ctemp, "'},{'id' : 'humidity','current_value' : '", chum, "'},]}");
+    etimer_restart(&sensing_timer);    
+    // printf("scan and started, ds18b20 etimer set\r\n");
+        
   }
   PROCESS_END();
 }
@@ -224,7 +202,7 @@ PROCESS_THREAD(mqtt_example_process, ev, data)
   netstack_aes_set_active(1);
 
   /* Allocate events */
-  led_updates_changed_event = process_alloc_event();
+  // led_updates_changed_event = process_alloc_event();
   reconnect_event = process_alloc_event();
   /* At the moment it is up to the user to provide the underlying input and
    * output buffer.
@@ -232,9 +210,10 @@ PROCESS_THREAD(mqtt_example_process, ev, data)
   //etimer_set(&network_timer, CLOCK_SECOND*20);
   etimer_set(&light_sense_timer, CLOCK_SECOND*30);
 
-  mqtt_register(&conn, &mqtt_example_process, "node2_client", mqtt_event);
-
+  mqtt_register(&conn, &mqtt_example_process, SERIAL, mqtt_event);
+  // mqtt_set_username_password(&conn, API_KEY, "");
   mqtt_set_last_will(&conn, str_topic_state, "0", MQTT_QOS_LEVEL_0);
+  // mqtt_set_last_will(&conn, str_topic_state, "0", MQTT_QOS_LEVEL_0);
 
   //etimer_set(&periodic_timer, CLOCK_SECOND*20);
   /* Reconnect from here */
@@ -246,11 +225,13 @@ PROCESS_THREAD(mqtt_example_process, ev, data)
     /* Connect to MQTT server */
     conn.auto_reconnect = 1;
     mqtt_connect( &conn, HOST, 1883, 100 );
+    printf("******* MQTT WAIT UNTIL CONNECTED ********\r\n");
     PROCESS_WAIT_UNTIL(mqtt_connected(&conn));
     conn.auto_reconnect = 0;
-    //printf("comes here 1********************\n");
+    printf("******* MQTT CONNECTED ********\r\n");
     /* Publish to the online topic that we are online. */
     PROCESS_WAIT_UNTIL(mqtt_ready(&conn));
+    printf("******* MQTT ONLINE ********\r\n");
     mqtt_publish(&conn,
                NULL,
                str_topic_state,
@@ -260,49 +241,39 @@ PROCESS_THREAD(mqtt_example_process, ev, data)
                MQTT_RETAIN_ON);
     //printf("comes here 2**************************\n");
     /* Subscribe to the light sensor interval topic */
-    PROCESS_WAIT_UNTIL(mqtt_ready(&conn));
-    mqtt_subscribe(&conn,
-                   NULL,
-                   str_topic_led,
-                   MQTT_QOS_LEVEL_0);
+    // PROCESS_WAIT_UNTIL(mqtt_ready(&conn));
+    // mqtt_subscribe(&conn,
+    //                NULL,
+    //                str_topic_led,
+    //                MQTT_QOS_LEVEL_0);
     //printf("comes here 3***************************\n");
     /* Main loop */
     while(1) {
       PROCESS_WAIT_EVENT();
       if(ev == reconnect_event) {
+        printf("******* MQTT DISCONNECT ********\r\n");
         mqtt_disconnect(&conn);
         reconnecting = 1;
         etimer_set(&reconnect_timer, CLOCK_SECOND*10);
       }
       if(reconnecting &&
          etimer_expired(&reconnect_timer)) {
+        printf("******* MQTT RECONNECTING TIMER EXPIRED ********\r\n");
         break;
       }
 
-      if(etimer_expired(&light_sense_timer) && mqtt_ready(&conn)) {
-        /* Send light sensor data and toggle led */
-        led_status ^= 1;
-        if(led_status) {
-          //leds_on(LEDS_D1_GREEN);
-        } else {
-          //leds_off(LEDS_D1_GREEN);
-        }
-
-        DBG("APP - Sending button sensor value %d--\r\n", button_sensor_value);
-        sprintf(app_buffer,"%s%d","Sending button sensor value--", button_sensor_value);
-        DBG("%s\r\n", app_buffer);
+      if(mqtt_ready(&conn)) {
+        printf(sensing_payload);
+        printf("******* MQTT PUBLISH SENSING PAYLOAD ********\r\n");
         mqtt_publish(&conn,
                NULL,
                str_topic_sensor,
-               (uint8_t*)app_buffer,
-               strlen(app_buffer),
+               (uint8_t*)sensing_payload,
+               strlen(sensing_payload),
                MQTT_QOS_LEVEL_0,
                MQTT_RETAIN_ON);
-        etimer_restart(&light_sense_timer);
       }
     }
   }
   PROCESS_END();
 }
-
-/*---------------------------------------------------------------------------*/

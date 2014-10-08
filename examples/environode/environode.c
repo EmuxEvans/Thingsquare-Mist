@@ -165,7 +165,7 @@ PROCESS_THREAD(environode_process, ev, data)
   // SENSORS_ACTIVATE(button_user_sensor);
   // SENSORS_ACTIVATE(button_sw1_sensor);
   // SENSORS_ACTIVATE(button_sw2_sensor);
-  sprintf(str_topic_state, "%s%s", API_KEY, "/v2/feeds/854709130.json");  
+  sprintf(str_topic_state, "%s%s", API_KEY, "/v2/feeds/854709130.json");
   printf(str_topic_state);printf("\r\n");
   etimer_set(&sensing_timer, 30*CLOCK_SECOND);
   // ds18b20_init();
@@ -192,6 +192,7 @@ PROCESS_THREAD(environode_process, ev, data)
 PROCESS_THREAD(mqtt_example_process, ev, data)
 {
   static struct uip_ds6_notification n;
+  static struct etimer mqtt_timer;
   PROCESS_BEGIN();
 
   /* Set up DS6 callback and DNS */
@@ -241,6 +242,7 @@ PROCESS_THREAD(mqtt_example_process, ev, data)
                strlen("online"),
                MQTT_QOS_LEVEL_0,
                MQTT_RETAIN_ON);
+    etimer_set(&mqtt_timer, 30*CLOCK_SECOND);    
     //printf("comes here 2**************************\n");
     /* Subscribe to the light sensor interval topic */
     // PROCESS_WAIT_UNTIL(mqtt_ready(&conn));
@@ -251,7 +253,8 @@ PROCESS_THREAD(mqtt_example_process, ev, data)
     //printf("comes here 3***************************\n");
     /* Main loop */
     while(1) {
-      PROCESS_WAIT_EVENT();
+      PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&mqtt_timer));
+      printf("mqtt timer event\r\n");
       if(ev == reconnect_event) {
         printf("******* MQTT DISCONNECT ********\r\n");
         mqtt_disconnect(&conn);
@@ -280,6 +283,7 @@ PROCESS_THREAD(mqtt_example_process, ev, data)
                MQTT_QOS_LEVEL_0,
                MQTT_RETAIN_ON);
       }
+      etimer_restart(&mqtt_timer);
     }
   }
   PROCESS_END();

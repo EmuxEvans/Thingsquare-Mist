@@ -160,6 +160,7 @@ appcall(void *state)
     }
 
     if(s == NULL) {
+      printf("uip abort 1\r\n");          
       uip_abort();
     } else {
       if(uip_newdata()) {
@@ -171,16 +172,19 @@ appcall(void *state)
   }
 
   if(uip_timedout()) {
+    printf("uip timedout\r\n");        
     call_event(s, TCP_SOCKET_TIMEDOUT);
     relisten(s);
   }
 
   if(uip_aborted()) {
+    printf("uip aborted: %d\r\n", uip_aborted());
     call_event(s, TCP_SOCKET_ABORTED);
     relisten(s);
   }
 
   if(s == NULL) {
+    printf("uip abort 2\r\n");
     uip_abort();
     return;
   }
@@ -202,6 +206,7 @@ appcall(void *state)
 
   if(s->output_data_len == 0 && s->flags & TCP_SOCKET_FLAGS_CLOSING) {
     s->flags &= ~TCP_SOCKET_FLAGS_CLOSING;
+    printf("TCP_SOCKET_CLOSED soutput datalen\r\n");    
     uip_close();
     tcp_markconn(uip_conn, NULL);
     call_event(s, TCP_SOCKET_CLOSED);
@@ -210,6 +215,7 @@ appcall(void *state)
 
   if(uip_closed()) {
     tcp_markconn(uip_conn, NULL);
+    printf("TCP_SOCKET_CLOSED uip closed\r\n");
     call_event(s, TCP_SOCKET_CLOSED);
     relisten(s);
   }

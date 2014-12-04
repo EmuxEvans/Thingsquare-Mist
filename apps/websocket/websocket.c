@@ -73,7 +73,7 @@ struct websocket_frame_mask {
   uint8_t mask[4];
 };
 
-#define DEBUG DEBUG_NONE
+#define DEBUG DEBUG_FULL
 #include "net/uip-debug.h"
 
 /*---------------------------------------------------------------------------*/
@@ -622,7 +622,7 @@ send_data(struct websocket *s, const void *data,
 int
 websocket_send_str(struct websocket *s, const char *str)
 {
-  //  PRINTF("websocket_send_str %s\n", str);
+  PRINTF("websocket_send_str %s\n", str);
   return send_data(s, str, strlen(str), WEBSOCKET_OPCODE_TEXT);
 }
 /*---------------------------------------------------------------------------*/

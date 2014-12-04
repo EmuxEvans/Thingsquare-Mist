@@ -10,22 +10,22 @@
 /* Protocol constants */
 #define MQTT_CLIENT_ID_MAX_LEN 23
 
-
-
 /* Size of the underlying TCP buffers */
-#define MQTT_TCP_INPUT_BUFF_SIZE 256
-#define MQTT_TCP_OUTPUT_BUFF_SIZE 256
+#define MQTT_TCP_INPUT_BUFF_SIZE 512
+#define MQTT_TCP_OUTPUT_BUFF_SIZE 512
 
 /* The
  */
 #define MQTT_INPUT_BUFF_SIZE 256
-#define MQTT_MAX_TOPIC_LENGTH 64
+#define MQTT_MAX_TOPIC_LENGTH 128
 #define MQTT_MAX_TOPICS_PER_SUBSCRIBE 1
 
 #define MQTT_FHDR_SIZE 1
 #define MQTT_MAX_REMAINING_LENGTH_BYTES 4
-#define MQTT_PROTOCOL_VERSION 3
-#define MQTT_PROTOCOL_NAME "MQIsdp"
+#define MQTT_PROTOCOL_VERSION 4
+#define MQTT_PROTOCOL_NAME "MQTT"
+// #define MQTT_PROTOCOL_VERSION 3
+// #define MQTT_PROTOCOL_NAME "MQIsdp"
 #define MQTT_TOPIC_MAX_LENGTH 128
 
 /* Debug configuration, this is similar but not exactly like the Debugging

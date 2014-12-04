@@ -347,6 +347,7 @@ PT_THREAD(connect_pt(struct pt* pt, struct mqtt_connection* conn))
         conn->will.message.length);
   }
   if(conn->connect_vhdr_flags & MQTT_VHDR_USERNAME_FLAG) {
+    DBG("MQTT - Setting username\r\n");
     PT_MQTT_WRITE_BYTE(conn, conn->credentials.username.length << 8);
     PT_MQTT_WRITE_BYTE(conn, conn->credentials.username.length & 0x00FF);
     PT_MQTT_WRITE_BYTES(conn,
@@ -354,6 +355,7 @@ PT_THREAD(connect_pt(struct pt* pt, struct mqtt_connection* conn))
                         conn->credentials.username.length);
   }
   if(conn->connect_vhdr_flags & MQTT_VHDR_PASSWORD_FLAG) {
+    DBG("MQTT - Setting password\r\n");    
     PT_MQTT_WRITE_BYTE(conn, conn->credentials.password.length << 8);
     PT_MQTT_WRITE_BYTE(conn, conn->credentials.password.length & 0x00FF);
     PT_MQTT_WRITE_BYTES(conn,
@@ -1028,6 +1030,7 @@ tcp_event(struct tcp_socket *s, void *ptr, tcp_socket_event_t event)
       break;
     }
     case TCP_SOCKET_CONNECTED: {
+      DBG("MQTT - Got TCP_SOCKET_CONNECTED\r\n");
       conn->state = MQTT_CONN_STATE_TCP_CONNECTED;
 
       process_post(&mqtt_process, mqtt_do_connect_mqtt_event, conn);

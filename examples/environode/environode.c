@@ -27,14 +27,14 @@ static uip_ipaddr_t google_ipv4_dns_server = {
 
 // #define HOST "198.41.30.241" // m2m.eclipse.org
 #define HOST "64.94.18.120"
-#define API_KEY "PxGjXUFh48BAnmQYZzxqC8lDzUmeSO4vH2973F1Hu03y5393"
-#define FEED_ID "663720625"
-#define SERIAL "V3CXZ99ZX7K5"
+#define API_KEY "B2S0Un5o2VTChjpVWyzElnxxehXjr8N9KSA9YG02HC5arqmd"
+#define FEED_ID "582702676"
+#define SERIAL "V3CXZ99ZX7K6"
 
 static void callback(struct websocket *s, websocket_result r,
                      uint8_t *data, uint16_t datalen);
 
-#define RECONNECT_INTERVAL 240 * CLOCK_SECOND
+#define RECONNECT_INTERVAL 60 * CLOCK_SECOND
 static struct ctimer reconnect_timer;
 
 /*---------------------------------------------------------------------------*/
@@ -86,7 +86,7 @@ PROCESS_THREAD(websocket_example_process, ev, data)
   ctimer_set(&reconnect_timer, RECONNECT_INTERVAL, reconnect_callback, &s);
 
   while(1) {
-    etimer_set(&et, CLOCK_SECOND * 120);
+    etimer_set(&et, CLOCK_SECOND * 30);
     PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&et));
     sprintf(sensing_payload, "%s%s%s%s%s%s%s%s%s", "{\"method\":\"put\",\"resource\":\"/feeds/", FEED_ID, "\",\"params\":{},\"headers\":{\"X-ApiKey\":\"", API_KEY, "\"},\"body\":{\"version\":\"1.0.0\",\"datastreams\" : [ {\"id\" : \"temperature\",\"current_value\" : \"", ctemp, "\"},{\"id\" : \"humidity\",\"current_value\" : \"", chum, "\"}]}}");
     printf("SP ");
@@ -104,7 +104,7 @@ PROCESS_THREAD(environode_process, ev, data)
   printf("Environode Debug!!!\r\n");
   // static struct etimer ds18b20_timer;
   static struct etimer sensing_timer;
-  etimer_set(&sensing_timer, 30*CLOCK_SECOND);
+  etimer_set(&sensing_timer, 15*CLOCK_SECOND);
   // ds18b20_init();
 
   while(1) {

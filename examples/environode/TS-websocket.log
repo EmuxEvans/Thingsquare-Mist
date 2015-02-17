@@ -1,0 +1,762 @@
+=================================
+Contiki 2.6
+======================
+
+OpenMote-CC2538-Bonti
+
+Rime addr 2.18.116.0.0.1.76.6
+finish addr seting
+  turn RF on
+Node id 1612.
+Netstack AES link layer encryption enabled
+CC2538 IEEE802154 PANID 21577
+nullrdc/CSMA 128 26
+IPv6 fe80:0000:0000:0000:0012:7400:0001:4c06
+Tentative global IPv6 address fc00:0000:0000:0000:0012:7400:0001:4c06
+AES encryption is enabled
+IPv6 addresses: fc00::12:7400:1:4c06fe80::12:7400:1:4c06
+Environode Debug!!!
+SHT21 temperature value: 29.6
+SHT21 humidity value: 64.80
+********* isReady OK, Websocket PROCESS STARTED *********
+SHT21 temperature value: 29.28
+SHT21 humidity value: 64.77
+SHT21 temperature value: 29.36
+SHT21 humidity value: 64.43
+SHT21 temperature value: 29.35
+SHT21 humidity value: 64.64
+SP {"method":"put","resource":"/feeds/663720625","params":{},"headers":{"X-ApiKey":"PxGjXUFh48BAnmQYZzxqC8lDzUmeSO4vH2973F1Hu03y5393"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "29.35"},{"id" : "humidity","current_value" : "64.64"}]}}
+websocket_send_str {"method":"put","resource":"/feeds/663720625","params":{},"headers":{"X-ApiKey":"PxGjXUFh48BAnmQYZzxqC8lDzUmeSO4vH2973F1Hu03y5393"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "29.35"},{"id" : "humidity","current_value" : "64.64"}]}}
+SHT21 temperature value: 29.48
+SHT21 humidity value: 63.91
+SHT21 temperature value: 29.52
+SHT21 humidity value: 63.73
+SHT21 temperature value: 29.64
+SHT21 humidity value: 63.79
+SHT21 temperature value: 29.79
+SHT21 humidity value: 62.87
+Connecting...
+SP {"method":"put","resource":"/feeds/663720625","params":{},"headers":{"X-ApiKey":"PxGjXUFh48BAnmQYZzxqC8lDzUmeSO4vH2973F1Hu03y5393"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "29.79"},{"id" : "humidity","current_value" : "62.87"}]}}
+websocket_send_str {"method":"put","resource":"/feeds/663720625","params":{},"headers":{"X-ApiKey":"PxGjXUFh48BAnmQYZzxqC8lDzUmeSO4vH2973F1Hu03y5393"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "29.79"},{"id" : "humidity","current_value" : "62.87"}]}}
+SHT21 temperature value: 29.74
+SHT21 humidity value: 62.87
+Websocket connected
+SP {"method":"put","resource":"/feeds/663720625","params":{},"headers":{"X-ApiKey":"PxGjXUFh48BAnmQYZzxqC8lDzUmeSO4vH2973F1Hu03y5393"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "29.74"},{"id" : "humidity","current_value" : "62.87"}]}}
+websocket_send_str {"method":"put","resource":"/feeds/663720625","params":{},"headers":{"X-ApiKey":"PxGjXUFh48BAnmQYZzxqC8lDzUmeSO4vH2973F1Hu03y5393"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "29.74"},{"id" : "humidity","current_value" : "62.87"}]}}
+SHT21 temperature value: 29.52
+SHT21 humidity value: 63.48
+=================================
+Contiki 2.6
+======================
+
+OpenMote-CC2538-Bonti
+
+Rime addr 2.18.116.0.0.1.76.6
+finish addr seting
+  turn RF on
+Node id 1612.
+Netstack AES link layer encryption enabled
+CC2538 IEEE802154 PANID 21577
+nullrdc/CSMA 128 26
+IPv6 fe80:0000:0000:0000:0012:7400:0001:4c06
+Tentative global IPv6 address fc00:0000:0000:0000:0012:7400:0001:4c06
+AES encryption is enabled
+IPv6 addresses: fc00::12:7400:1:4c06fe80::12:7400:1:4c06
+Environode Debug!!!
+SHT21 temperature value: 29.31
+SHT21 humidity value: 64.9
+********* isReady OK, Websocket PROCESS STARTED *********
+SHT21 temperature value: 29.31
+SHT21 humidity value: 64.15
+SHT21 temperature value: 29.34
+SHT21 humidity value: 64.0
+SHT21 temperature value: 29.9
+SHT21 humidity value: 63.97
+SP {"method":"put","resource":"/feeds/663720625","params":{},"headers":{"X-ApiKey":"PxGjXUFh48BAnmQYZzxqC8lDzUmeSO4vH2973F1Hu03y5393"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "29.9"},{"id" : "humidity","current_value" : "63.97"}]}}
+websocket_send_str {"method":"put","resource":"/feeds/663720625","params":{},"headers":{"X-ApiKey":"PxGjXUFh48BAnmQYZzxqC8lDzUmeSO4vH2973F1Hu03y5393"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "29.9"},{"id" : "humidity","current_value" : "63.97"}]}}
+SHT21 temperature value: 28.92
+SHT21 humidity value: 64.73
+SHT21 temperature value: 28.80
+SHT21 humidity value: 65.13
+SHT21 temperature value: 28.70
+SHT21 humidity value: 65.31
+SHT21 temperature value: 28.68
+SHT21 humidity value: 65.53
+Connecting...
+SP {"method":"put","resource":"/feeds/663720625","params":{},"headers":{"X-ApiKey":"PxGjXUFh48BAnmQYZzxqC8lDzUmeSO4vH2973F1Hu03y5393"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "28.68"},{"id" : "humidity","current_value" : "65.53"}]}}
+websocket_send_str {"method":"put","resource":"/feeds/663720625","params":{},"headers":{"X-ApiKey":"PxGjXUFh48BAnmQYZzxqC8lDzUmeSO4vH2973F1Hu03y5393"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "28.68"},{"id" : "humidity","current_value" : "65.53"}]}}
+SHT21 temperature value: 28.65
+SHT21 humidity value: 65.99
+Websocket connected
+websocket_send_str Connected
+websocket-example: Received data '{"status":400,"body":"Syntax Error: lexical error: invalid char in json text.\n                                       Connecte' (len 126)
+websocket-example: Received data 'd\n                     (right here) ------^\n"}
+' (len 50)
+SHT21 temperature value: 28.65
+SHT21 humidity value: 66.60
+SHT21 temperature value: 28.67
+SHT21 humidity value: 65.96
+Websocket timed out
+SHT21 temperature value: 28.60
+SHT21 humidity value: 65.96
+SP {"method":"put","resource":"/feeds/663720625","params":{},"headers":{"X-ApiKey":"PxGjXUFh48BAnmQYZzxqC8lDzUmeSO4vH2973F1Hu03y5393"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "28.60"},{"id" : "humidity","current_value" : "65.96"}]}}
+websocket_send_str {"method":"put","resource":"/feeds/663720625","params":{},"headers":{"X-ApiKey":"PxGjXUFh48BAnmQYZzxqC8lDzUmeSO4vH2973F1Hu03y5393"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "28.60"},{"id" : "humidity","current_value" : "65.96"}]}}
+SHT21 temperature value: 28.69
+SHT21 humidity value: 65.62
+SHT21 temperature value: 28.59
+SHT21 humidity value: 66.8
+SHT21 temperature value: 28.53
+SHT21 humidity value: 66.14
+SHT21 temperature value: 28.46
+SHT21 humidity value: 66.47
+SP {"method":"put","resource":"/feeds/663720625","params":{},"headers":{"X-ApiKey":"PxGjXUFh48BAnmQYZzxqC8lDzUmeSO4vH2973F1Hu03y5393"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "28.46"},{"id" : "humidity","current_value" : "66.47"}]}}
+websocket_send_str {"method":"put","resource":"/feeds/663720625","params":{},"headers":{"X-ApiKey":"PxGjXUFh48BAnmQYZzxqC8lDzUmeSO4vH2973F1Hu03y5393"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "28.46"},{"id" : "humidity","current_value" : "66.47"}]}}
+SHT21 temperature value: 28.60
+SHT21 humidity value: 66.20
+=================================
+Contiki 2.6
+======================
+
+OpenMote-CC2538-Bonti
+
+Rime addr 2.18.116.0.0.1.76.6
+finish addr seting
+  turn RF on
+Node id 1612.
+Netstack AES link layer encryption enabled
+CC2538 IEEE802154 PANID 21577
+nullrdc/CSMA 128 26
+IPv6 fe80:0000:0000:0000:0012:7400:0001:4c06
+Tentative global IPv6 address fc00:0000:0000:0000:0012:7400:0001:4c06
+AES encryption is enabled
+IPv6 addresses: fc00::12:7400:1:4c06fe80::12:7400:1:4c06
+Environode Debug!!!
+SHT21 temperature value: 28.52
+SHT21 humidity value: 66.29
+********* isReady OK, Websocket PROCESS STARTED *********
+SHT21 temperature value: 28.53
+SHT21 humidity value: 66.57
+SHT21 temperature value: 28.53
+SHT21 humidity value: 67.15
+SHT21 temperature value: 28.54
+SHT21 humidity value: 67.36
+SP {"method":"put","resource":"/feeds/663720625","params":{},"headers":{"X-ApiKey":"PxGjXUFh48BAnmQYZzxqC8lDzUmeSO4vH2973F1Hu03y5393"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "28.54"},{"id" : "humidity","current_value" : "67.36"}]}}
+websocket_send_str {"method":"put","resource":"/feeds/663720625","params":{},"headers":{"X-ApiKey":"PxGjXUFh48BAnmQYZzxqC8lDzUmeSO4vH2973F1Hu03y5393"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "28.54"},{"id" : "humidity","current_value" : "67.36"}]}}
+SHT21 temperature value: 28.55
+SHT21 humidity value: 66.93
+SHT21 temperature value: 28.60
+SHT21 humidity value: 66.87
+SHT21 temperature value: 28.54
+SHT21 humidity value: 66.26
+SHT21 temperature value: 28.52
+SHT21 humidity value: 67.12
+Connecting...
+SP {"method":"put","resource":"/feeds/663720625","params":{},"headers":{"X-ApiKey":"PxGjXUFh48BAnmQYZzxqC8lDzUmeSO4vH2973F1Hu03y5393"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "28.52"},{"id" : "humidity","current_value" : "67.12"}]}}
+websocket_send_str {"method":"put","resource":"/feeds/663720625","params":{},"headers":{"X-ApiKey":"PxGjXUFh48BAnmQYZzxqC8lDzUmeSO4vH2973F1Hu03y5393"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "28.52"},{"id" : "humidity","current_value" : "67.12"}]}}
+SHT21 temperature value: 28.50
+SHT21 humidity value: 67.66
+Websocket connected
+SP {"method":"put","resource":"/feeds/663720625","params":{},"headers":{"X-ApiKey":"PxGjXUFh48BAnmQYZzxqC8lDzUmeSO4vH2973F1Hu03y5393"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "28.50"},{"id" : "humidity","current_value" : "67.66"}]}}
+websocket_send_str {"method":"put","resource":"/feeds/663720625","params":{},"headers":{"X-ApiKey":"PxGjXUFh48BAnmQYZzxqC8lDzUmeSO4vH2973F1Hu03y5393"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "28.50"},{"id" : "humidity","current_value" : "67.66"}]}}
+=================================
+Contiki 2.6
+======================
+
+OpenMote-CC2538-Bonti
+
+Rime addr 2.18.116.0.0.1.76.6
+finish addr seting
+  turn RF on
+Node id 1612.
+Netstack AES link layer encryption enabled
+CC2538 IEEE802154 PANID 21577
+nullrdc/CSMA 128 26
+IPv6 fe80:0000:0000:0000:0012:7400:0001:4c06
+Tentative global IPv6 address fc00:0000:0000:0000:0012:7400:0001:4c06
+AES encryption is enabled
+IPv6 addresses: fc00::12:7400:1:4c06fe80::12:7400:1:4c06
+Environode Debug!!!
+SHT21 temperature value: 28.41
+SHT21 humidity value: 67.51
+********* isReady OK, Websocket PROCESS STARTED *********
+SHT21 temperature value: 28.41
+SHT21 humidity value: 67.73
+SHT21 temperature value: 28.45
+SHT21 humidity value: 67.24
+SHT21 temperature value: 28.40
+SHT21 humidity value: 67.27
+Connecting...
+SHT21 temperature value: 28.44
+SHT21 humidity value: 66.99
+Websocket reset
+SHT21 temperature value: 28.37
+SHT21 humidity value: 68.9
+SHT21 temperature value: 28.36
+SHT21 humidity value: 67.27
+SHT21 temperature value: 28.36
+SHT21 humidity value: 67.42
+Connecting...
+SHT21 temperature value: 28.34
+SHT21 humidity value: 67.94
+Websocket connected
+SP {"method":"put","resource":"/feeds/663720625","params":{},"headers":{"X-ApiKey":"PxGjXUFh48BAnmQYZzxqC8lDzUmeSO4vH2973F1Hu03y5393"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "28.34"},{"id" : "humidity","current_value" : "67.94"}]}}
+websocket_send_str {"method":"put","resource":"/feeds/663720625","params":{},"headers":{"X-ApiKey":"PxGjXUFh48BAnmQYZzxqC8lDzUmeSO4vH2973F1Hu03y5393"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "28.34"},{"id" : "humidity","current_value" : "67.94"}]}}
+SHT21 temperature value: 28.35
+SHT21 humidity value: 68.21
+Websocket timed out
+SHT21 temperature value: 28.38
+SHT21 humidity value: 67.82
+=================================
+Contiki 2.6
+======================
+
+OpenMote-CC2538-Bonti
+
+Rime addr 2.18.116.0.0.1.76.6
+finish addr seting
+  turn RF on
+Node id 1612.
+Netstack AES link layer encryption enabled
+CC2538 IEEE802154 PANID 21577
+nullrdc/CSMA 128 26
+IPv6 fe80:0000:0000:0000:0012:7400:0001:4c06
+Tentative global IPv6 address fc00:0000:0000:0000:0012:7400:0001:4c06
+AES encryption is enabled
+IPv6 addresses: fc00::12:7400:1:4c06fe80::12:7400:1:4c06
+Environode Debug!!!
+SHT21 temperature value: 28.35
+SHT21 humidity value: 67.82
+********* isReady OK, Websocket PROCESS STARTED *********
+SHT21 temperature value: 28.33
+SHT21 humidity value: 68.6
+SHT21 temperature value: 28.33
+SHT21 humidity value: 67.97
+SHT21 temperature value: 28.35
+SHT21 humidity value: 67.88
+SP {"method":"put","resource":"/feeds/663720625","params":{},"headers":{"X-ApiKey":"PxGjXUFh48BAnmQYZzxqC8lDzUmeSO4vH2973F1Hu03y5393"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "28.35"},{"id" : "humidity","current_value" : "67.88"}]}}
+websocket_send_str {"method":"put","resource":"/feeds/663720625","params":{},"headers":{"X-ApiKey":"PxGjXUFh48BAnmQYZzxqC8lDzUmeSO4vH2973F1Hu03y5393"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "28.35"},{"id" : "humidity","current_value" : "67.88"}]}}
+SHT21 temperature value: 28.35
+SHT21 humidity value: 67.51
+SHT21 temperature value: 28.33
+SHT21 humidity value: 68.3
+SHT21 temperature value: 28.32
+SHT21 humidity value: 68.15
+SHT21 temperature value: 28.33
+SHT21 humidity value: 68.9
+Connecting...
+SP {"method":"put","resource":"/feeds/663720625","params":{},"headers":{"X-ApiKey":"PxGjXUFh48BAnmQYZzxqC8lDzUmeSO4vH2973F1Hu03y5393"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "28.33"},{"id" : "humidity","current_value" : "68.9"}]}}
+websocket_send_str {"method":"put","resource":"/feeds/663720625","params":{},"headers":{"X-ApiKey":"PxGjXUFh48BAnmQYZzxqC8lDzUmeSO4vH2973F1Hu03y5393"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "28.33"},{"id" : "humidity","current_value" : "68.9"}]}}
+SHT21 temperature value: 28.30
+SHT21 humidity value: 68.12
+Websocket connected
+websocket_send_str Connected
+websocket-example: Received data '{"status":400,"body":"Syntax Error: lexical error: invalid char in json text.\n                                       Connecte' (len 126)
+websocket-example: Received data 'd\n                     (right here) ------^\n"}
+' (len 50)
+SHT21 temperature value: 28.27
+SHT21 humidity value: 68.6
+Websocket timed out
+SHT21 temperature value: 28.30
+SHT21 humidity value: 67.88
+SHT21 temperature value: 28.29
+SHT21 humidity value: 67.88
+SP {"method":"put","resource":"/feeds/663720625","params":{},"headers":{"X-ApiKey":"PxGjXUFh48BAnmQYZzxqC8lDzUmeSO4vH2973F1Hu03y5393"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "28.29"},{"id" : "humidity","current_value" : "67.88"}]}}
+websocket_send_str {"method":"put","resource":"/feeds/663720625","params":{},"headers":{"X-ApiKey":"PxGjXUFh48BAnmQYZzxqC8lDzUmeSO4vH2973F1Hu03y5393"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "28.29"},{"id" : "humidity","current_value" : "67.88"}]}}
+SHT21 temperature value: 28.31
+SHT21 humidity value: 67.76
+SHT21 temperature value: 28.32
+SHT21 humidity value: 68.82
+SHT21 temperature value: 28.33
+SHT21 humidity value: 68.27
+SHT21 temperature value: 28.33
+SHT21 humidity value: 68.27
+SP {"method":"put","resource":"/feeds/663720625","params":{},"headers":{"X-ApiKey":"PxGjXUFh48BAnmQYZzxqC8lDzUmeSO4vH2973F1Hu03y5393"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "28.33"},{"id" : "humidity","current_value" : "68.27"}]}}
+websocket_send_str {"method":"put","resource":"/feeds/663720625","params":{},"headers":{"X-ApiKey":"PxGjXUFh48BAnmQYZzxqC8lDzUmeSO4vH2973F1Hu03y5393"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "28.33"},{"id" : "humidity","current_value" : "68.27"}]}}
+SHT21 temperature value: 28.34
+SHT21 humidity value: 68.18
+SHT21 temperature value: 28.36
+SHT21 humidity value: 68.0
+Connecting...
+SHT21 temperature value: 28.35
+SHT21 humidity value: 68.40
+Websocket connected
+websocket_send_str Connected
+websocket-example: Received data '{"status":400,"body":"Syntax Error: lexical error: invalid char in json text.\n                                       Connecte' (len 126)
+websocket-example: Received data 'd\n                     (right here) ------^\n"}
+' (len 50)
+SHT21 temperature value: 28.40
+SHT21 humidity value: 68.6
+=================================
+Contiki 2.6
+======================
+
+OpenMote-CC2538-Bonti
+
+Rime addr 2.18.116.0.0.1.76.6
+finish addr seting
+  turn RF on
+Node id 1612.
+Netstack AES link layer encryption enabled
+CC2538 IEEE802154 PANID 21577
+nullrdc/CSMA 128 26
+IPv6 fe80:0000:0000:0000:0012:7400:0001:4c06
+Tentative global IPv6 address fc00:0000:0000:0000:0012:7400:0001:4c06
+AES encryption is enabled
+IPv6 addresses: fc00::12:7400:1:4c06fe80::12:7400:1:4c06
+Environode Debug!!!
+SHT21 temperature value: 28.41
+SHT21 humidity value: 67.94
+********* isReady OK, Websocket PROCESS STARTED *********
+SHT21 temperature value: 28.37
+SHT21 humidity value: 67.94
+SP {"method":"put","resource":"/feeds/663720625","params":{},"headers":{"X-ApiKey":"PxGjXUFh48BAnmQYZzxqC8lDzUmeSO4vH2973F1Hu03y5393"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "28.37"},{"id" : "humidity","current_value" : "67.94"}]}}
+websocket_send_str {"method":"put","resource":"/feeds/663720625","params":{},"headers":{"X-ApiKey":"PxGjXUFh48BAnmQYZzxqC8lDzUmeSO4vH2973F1Hu03y5393"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "28.37"},{"id" : "humidity","current_value" : "67.94"}]}}
+SHT21 temperature value: 28.35
+SHT21 humidity value: 67.94
+SHT21 temperature value: 28.34
+SHT21 humidity value: 67.94
+Connecting...
+SP {"method":"put","resource":"/feeds/663720625","params":{},"headers":{"X-ApiKey":"PxGjXUFh48BAnmQYZzxqC8lDzUmeSO4vH2973F1Hu03y5393"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "28.34"},{"id" : "humidity","current_value" : "67.94"}]}}
+websocket_send_str {"method":"put","resource":"/feeds/663720625","params":{},"headers":{"X-ApiKey":"PxGjXUFh48BAnmQYZzxqC8lDzUmeSO4vH2973F1Hu03y5393"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "28.34"},{"id" : "humidity","current_value" : "67.94"}]}}
+SHT21 temperature value: 28.32
+SHT21 humidity value: 68.3
+Websocket connected
+websocket_send_str Connected
+SHT21 temperature value: 28.30
+SHT21 humidity value: 68.21
+SP {"method":"put","resource":"/feeds/663720625","params":{},"headers":{"X-ApiKey":"PxGjXUFh48BAnmQYZzxqC8lDzUmeSO4vH2973F1Hu03y5393"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "28.30"},{"id" : "humidity","current_value" : "68.21"}]}}
+websocket_send_str {"method":"put","resource":"/feeds/663720625","params":{},"headers":{"X-ApiKey":"PxGjXUFh48BAnmQYZzxqC8lDzUmeSO4vH2973F1Hu03y5393"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "28.30"},{"id" : "humidity","current_value" : "68.21"}]}}
+SHT21 temperature value: 28.46
+SHT21 humidity value: 67.94
+websocket-example: Received data '{"status":400,"body":"Syntax Error: lexical error: invalid char in json text.\n                                       Connecte' (len 126)
+websocket-example: Received data 'd\n                     (right here) ------^\n"}
+' (len 50)
+SHT21 temperature value: 28.65
+SHT21 humidity value: 67.57
+websocket-example: Received data '{"status":200,"headers":{"DATE":"Tue, 17 Feb 2015 08:21:00 GMT","CONTENT_TYPE":"application/json; charset=utf-8","CONTENT_LENG' (len 126)
+websocket-example: Received data 'TH":"0","CONNECTION":"close","X_REQUEST_ID":"f0cab1d90d7103e81c1866e8731a75b11a554730","CACHE_CONTROL":"max-age=0","VARY":"Accept-' (len 130)
+SP {"method":"put","resource":"/feeds/663720625","params":{},"headers":{"X-ApiKey":"PxGjXUFh48BAnmQYZzxqC8lDzUmeSO4vH2973F1Hu03y5393"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "28.65"},{"id" : "humidity","current_value" : "67.57"}]}}
+websocket_send_str {"method":"put","resource":"/feeds/663720625","params":{},"headers":{"X-ApiKey":"PxGjXUFh48BAnmQYZzxqC8lDzUmeSO4vH2973F1Hu03y5393"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "28.65"},{"id" : "humidity","current_value" : "67.57"}]}}
+SHT21 temperature value: 28.59
+SHT21 humidity value: 67.51
+websocket-example: Received data 'Encoding"},"resource":"/feeds/663720625"}
+' (len 43)
+websocket-example: Received data '{"status":200,"headers":{"DATE":"Tue, 17 Feb 2015 08:21:17 GMT","CONTENT_TYPE":"application/json; charset=utf-8","CONTENT_LENG' (len 126)
+websocket-example: Received data 'TH":"0","CONNECTION":"close","X_REQUEST_ID":"9a4bd5c41398ac534841e022886b4a28d9bdbbd3","CACHE_CONTROL":"max-age=0","VARY":"Accept-' (len 130)
+websocket-example: Received data 'Encoding"},"resource":"/feeds/663720625"}
+' (len 43)
+ÿ`=================================
+Contiki 2.6
+======================
+
+OpenMote-CC2538-Bonti
+
+Rime addr 2.18.116.0.0.1.76.6
+finish addr seting
+  turn RF on
+Node id 1612.
+Netstack AES link layer encryption enabled
+CC2538 IEEE802154 PANID 21577
+nullrdc/CSMA 128 26
+IPv6 fe80:0000:0000:0000:0012:7400:0001:4c06
+Tentative global IPv6 address fc00:0000:0000:0000:0012:7400:0001:4c06
+AES encryption is enabled
+IPv6 addresses: fc00::12:7400:1:4c06fe80::12:7400:1:4c06
+Environode Process!!!
+PxGjXUFh48BAnmQYZzxqC8lDzUmeSO4vH2973F1Hu03y5393/v2/feeds/663720625.json
+debug 1=================================
+Contiki 2.6
+======================
+
+OpenMote-CC2538-Bonti
+
+Rime addr 2.18.116.0.0.1.76.6
+finish addr seting
+  turn RF on
+Node id 1612.
+Netstack AES link layer encryption enabled
+CC2538 IEEE802154 PANID 21577
+nullrdc/CSMA 128 26
+IPv6 fe80:0000:0000:0000:0012:7400:0001:4c06
+Tentative global IPv6 address fc00:0000:0000:0000:0012:7400:0001:4c06
+AES encryption is enabled
+IPv6 addresses: fc00::12:7400:1:4c06fe80::12:7400:1:4c06
+Environode Debug!!!
+SHT21 temperature value: 27.74
+SHT21 humidity value: 69.43
+********* isReady OK, Websocket PROCESS STARTED *********
+SHT21 temperature value: 27.79
+SHT21 humidity value: 69.43
+SP {"method":"put","resource":"/feeds/854709130","params":{},"headers":{"X-ApiKey":"sjXXgoZ1kwKyop0CPAEo4D6cCTCYARFaxEP5gEvbAafDc2Cm"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.79"},{"id" : "humidity","current_value" : "69.43"}]}}
+websocket_send_str {"method":"put","resource":"/feeds/854709130","params":{},"headers":{"X-ApiKey":"sjXXgoZ1kwKyop0CPAEo4D6cCTCYARFaxEP5gEvbAafDc2Cm"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.79"},{"id" : "humidity","current_value" : "69.43"}]}}
+SHT21 temperature value: 27.83
+SHT21 humidity value: 68.73
+SHT21 temperature value: 27.81
+SHT21 humidity value: 68.76
+Connecting...
+SP {"method":"put","resource":"/feeds/854709130","params":{},"headers":{"X-ApiKey":"sjXXgoZ1kwKyop0CPAEo4D6cCTCYARFaxEP5gEvbAafDc2Cm"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.81"},{"id" : "humidity","current_value" : "68.76"}]}}
+websocket_send_str {"method":"put","resource":"/feeds/854709130","params":{},"headers":{"X-ApiKey":"sjXXgoZ1kwKyop0CPAEo4D6cCTCYARFaxEP5gEvbAafDc2Cm"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.81"},{"id" : "humidity","current_value" : "68.76"}]}}
+SHT21 temperature value: 27.85
+SHT21 humidity value: 68.82
+Websocket reset
+SHT21 temperature value: 27.88
+SHT21 humidity value: 68.82
+SP {"method":"put","resource":"/feeds/854709130","params":{},"headers":{"X-ApiKey":"sjXXgoZ1kwKyop0CPAEo4D6cCTCYARFaxEP5gEvbAafDc2Cm"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.88"},{"id" : "humidity","current_value" : "68.82"}]}}
+websocket_send_str {"method":"put","resource":"/feeds/854709130","params":{},"headers":{"X-ApiKey":"sjXXgoZ1kwKyop0CPAEo4D6cCTCYARFaxEP5gEvbAafDc2Cm"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.88"},{"id" : "humidity","current_value" : "68.82"}]}}
+SHT21 temperature value: 27.85
+SHT21 humidity value: 68.55
+SHT21 temperature value: 27.80
+SHT21 humidity value: 68.46
+SP {"method":"put","resource":"/feeds/854709130","params":{},"headers":{"X-ApiKey":"sjXXgoZ1kwKyop0CPAEo4D6cCTCYARFaxEP5gEvbAafDc2Cm"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.80"},{"id" : "humidity","current_value" : "68.46"}]}}
+websocket_send_str {"method":"put","resource":"/feeds/854709130","params":{},"headers":{"X-ApiKey":"sjXXgoZ1kwKyop0CPAEo4D6cCTCYARFaxEP5gEvbAafDc2Cm"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.80"},{"id" : "humidity","current_value" : "68.46"}]}}
+Connecting...
+SHT21 temperature value: 27.77
+SHT21 humidity value: 68.67
+Websocket connected
+websocket_send_str Connected
+websocket-example: Received data '{"status":400,"body":"Syntax Error: lexical error: invalid char in json text.\n                                       Connecte' (len 126)
+websocket-example: Received data 'd\n                     (right here) ------^\n"}
+' (len 50)
+SHT21 temperature value: 27.75
+SHT21 humidity value: 68.61
+SP {"method":"put","resource":"/feeds/854709130","params":{},"headers":{"X-ApiKey":"sjXXgoZ1kwKyop0CPAEo4D6cCTCYARFaxEP5gEvbAafDc2Cm"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.75"},{"id" : "humidity","current_value" : "68.61"}]}}
+websocket_send_str {"method":"put","resource":"/feeds/854709130","params":{},"headers":{"X-ApiKey":"sjXXgoZ1kwKyop0CPAEo4D6cCTCYARFaxEP5gEvbAafDc2Cm"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.75"},{"id" : "humidity","current_value" : "68.61"}]}}
+SHT21 temperature value: 27.72
+SHT21 humidity value: 68.89
+websocket-example: Received data '{"status":200,"headers":{"DATE":"Tue, 17 Feb 2015 08:26:24 GMT","CONTENT_TYPE":"application/json; charset=utf-8","CONTENT_LENG' (len 126)
+websocket-example: Received data 'TH":"0","CONNECTION":"close","X_REQUEST_ID":"bef30723f748f354c37fb443a21c2486cfcc47a7","CACHE_CONTROL":"max-age=0","VARY":"Accept-' (len 130)
+websocket-example: Received data 'Encoding"},"resource":"/feeds/854709130"}
+' (len 43)
+SHT21 temperature value: 27.68
+SHT21 humidity value: 68.64
+SP {"method":"put","resource":"/feeds/854709130","params":{},"headers":{"X-ApiKey":"sjXXgoZ1kwKyop0CPAEo4D6cCTCYARFaxEP5gEvbAafDc2Cm"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.68"},{"id" : "humidity","current_value" : "68.64"}]}}
+websocket_send_str {"method":"put","resource":"/feeds/854709130","params":{},"headers":{"X-ApiKey":"sjXXgoZ1kwKyop0CPAEo4D6cCTCYARFaxEP5gEvbAafDc2Cm"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.68"},{"id" : "humidity","current_value" : "68.64"}]}}
+SHT21 temperature value: 27.68
+SHT21 humidity value: 68.67
+websocket-example: Received data '{"status":200,"headers":{"DATE":"Tue, 17 Feb 2015 08:26:46 GMT","CONTENT_TYPE":"application/json; charset=utf-8","CONTENT_LENG' (len 126)
+websocket-example: Received data 'TH":"0","CONNECTION":"close","X_REQUEST_ID":"01887f4b5c3fa3e2b074cbdaa043e62637f74b58","CACHE_CONTROL":"max-age=0","VARY":"Accept-' (len 130)
+websocket-example: Received data 'Encoding"},"resource":"/feeds/854709130"}
+' (len 43)
+SHT21 temperature value: 27.72
+SHT21 humidity value: 69.16
+SP {"method":"put","resource":"/feeds/854709130","params":{},"headers":{"X-ApiKey":"sjXXgoZ1kwKyop0CPAEo4D6cCTCYARFaxEP5gEvbAafDc2Cm"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.72"},{"id" : "humidity","current_value" : "69.16"}]}}
+websocket_send_str {"method":"put","resource":"/feeds/854709130","params":{},"headers":{"X-ApiKey":"sjXXgoZ1kwKyop0CPAEo4D6cCTCYARFaxEP5gEvbAafDc2Cm"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.72"},{"id" : "humidity","current_value" : "69.16"}]}}
+SHT21 temperature value: 27.67
+SHT21 humidity value: 68.85
+websocket-example: Received data '{"status":200,"headers":{"DATE":"Tue, 17 Feb 2015 08:27:16 GMT","CONTENT_TYPE":"application/json; charset=utf-8","CONTENT_LENG' (len 126)
+websocket-example: Received data 'TH":"0","CONNECTION":"close","X_REQUEST_ID":"472c60635f83deb21a5212d9181874987805dd39","CACHE_CONTROL":"max-age=0","VARY":"Accept-' (len 130)
+websocket-example: Received data 'Encoding"},"resource":"/feeds/854709130"}
+' (len 43)
+SHT21 temperature value: 27.67
+SHT21 humidity value: 69.4
+SP {"method":"put","resource":"/feeds/854709130","params":{},"headers":{"X-ApiKey":"sjXXgoZ1kwKyop0CPAEo4D6cCTCYARFaxEP5gEvbAafDc2Cm"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.67"},{"id" : "humidity","current_value" : "69.4"}]}}
+websocket_send_str {"method":"put","resource":"/feeds/854709130","params":{},"headers":{"X-ApiKey":"sjXXgoZ1kwKyop0CPAEo4D6cCTCYARFaxEP5gEvbAafDc2Cm"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.67"},{"id" : "humidity","current_value" : "69.4"}]}}
+SHT21 temperature value: 27.68
+SHT21 humidity value: 69.34
+websocket-example: Received data '{"status":200,"headers":{"DATE":"Tue, 17 Feb 2015 08:27:46 GMT","CONTENT_TYPE":"application/json; charset=utf-8","CONTENT_LENG' (len 126)
+websocket-example: Received data 'TH":"0","CONNECTION":"close","X_REQUEST_ID":"a2f618ddae28ef8c2951d1529e071ad77ea543d5","CACHE_CONTROL":"max-age=0","VARY":"Accept-' (len 130)
+websocket-example: Received data 'Encoding"},"resource":"/feeds/854709130"}
+' (len 43)
+SHT21 temperature value: 27.68
+SHT21 humidity value: 69.10
+SP {"method":"put","resource":"/feeds/854709130","params":{},"headers":{"X-ApiKey":"sjXXgoZ1kwKyop0CPAEo4D6cCTCYARFaxEP5gEvbAafDc2Cm"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.68"},{"id" : "humidity","current_value" : "69.10"}]}}
+websocket_send_str {"method":"put","resource":"/feeds/854709130","params":{},"headers":{"X-ApiKey":"sjXXgoZ1kwKyop0CPAEo4D6cCTCYARFaxEP5gEvbAafDc2Cm"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.68"},{"id" : "humidity","current_value" : "69.10"}]}}
+SHT21 temperature value: 27.66
+SHT21 humidity value: 69.10
+websocket-example: Received data '{"status":200,"headers":{"DATE":"Tue, 17 Feb 2015 08:28:23 GMT","CONTENT_TYPE":"application/json; charset=utf-8","CONTENT_LENG' (len 126)
+websocket-example: Received data 'TH":"0","CONNECTION":"close","X_REQUEST_ID":"a6fcee1c94d4543aaeaee262b137d06ee9ef272f","CACHE_CONTROL":"max-age=0","VARY":"Accept-' (len 130)
+websocket-example: Received data 'Encoding"},"resource":"/feeds/854709130"}
+' (len 43)
+SHT21 temperature value: 27.64
+SHT21 humidity value: 69.1
+SP {"method":"put","resource":"/feeds/854709130","params":{},"headers":{"X-ApiKey":"sjXXgoZ1kwKyop0CPAEo4D6cCTCYARFaxEP5gEvbAafDc2Cm"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.64"},{"id" : "humidity","current_value" : "69.1"}]}}
+websocket_send_str {"method":"put","resource":"/feeds/854709130","params":{},"headers":{"X-ApiKey":"sjXXgoZ1kwKyop0CPAEo4D6cCTCYARFaxEP5gEvbAafDc2Cm"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.64"},{"id" : "humidity","current_value" : "69.1"}]}}
+SHT21 temperature value: 27.67
+SHT21 humidity value: 69.19
+websocket-example: Received data '{"status":200,"headers":{"DATE":"Tue, 17 Feb 2015 08:28:47 GMT","CONTENT_TYPE":"application/json; charset=utf-8","CONTENT_LENG' (len 126)
+SHT21 temperature value: 27.64
+SHT21 humidity value: 69.1
+websocket-example: Received data 'TH":"0","CONNECTION":"close","X_REQUEST_ID":"336eaea2f7cf613323b67da62b3b2eaf093004c7","CACHE_CONTROL":"max-age=0","VARY":"Accept-' (len 130)
+websocket-example: Received data 'Encoding"},"resource":"/feeds/854709130"}
+' (len 43)
+SP {"method":"put","resource":"/feeds/854709130","params":{},"headers":{"X-ApiKey":"sjXXgoZ1kwKyop0CPAEo4D6cCTCYARFaxEP5gEvbAafDc2Cm"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.64"},{"id" : "humidity","current_value" : "69.1"}]}}
+websocket_send_str {"method":"put","resource":"/feeds/854709130","params":{},"headers":{"X-ApiKey":"sjXXgoZ1kwKyop0CPAEo4D6cCTCYARFaxEP5gEvbAafDc2Cm"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.64"},{"id" : "humidity","current_value" : "69.1"}]}}
+SHT21 temperature value: 27.62
+SHT21 humidity value: 69.4
+websocket-example: Received data '{"status":200,"headers":{"DATE":"Tue, 17 Feb 2015 08:29:19 GMT","CONTENT_TYPE":"application/json; charset=utf-8","CONTENT_LENG' (len 126)
+websocket-example: Received data 'TH":"0","CONNECTION":"close","X_REQUEST_ID":"6d11e0d7a17a9f3182ed5c534fe63c665b3a9339","CACHE_CONTROL":"max-age=0","VARY":"Accept-' (len 130)
+websocket-example: Received data 'Encoding"},"resource":"/feeds/854709130"}
+' (len 43)
+SHT21 temperature value: 27.61
+SHT21 humidity value: 69.13
+SP {"method":"put","resource":"/feeds/854709130","params":{},"headers":{"X-ApiKey":"sjXXgoZ1kwKyop0CPAEo4D6cCTCYARFaxEP5gEvbAafDc2Cm"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.61"},{"id" : "humidity","current_value" : "69.13"}]}}
+websocket_send_str {"method":"put","resource":"/feeds/854709130","params":{},"headers":{"X-ApiKey":"sjXXgoZ1kwKyop0CPAEo4D6cCTCYARFaxEP5gEvbAafDc2Cm"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.61"},{"id" : "humidity","current_value" : "69.13"}]}}
+SHT21 temperature value: 27.66
+SHT21 humidity value: 69.1
+websocket-example: Received data '{"status":200,"headers":{"DATE":"Tue, 17 Feb 2015 08:29:49 GMT","CONTENT_TYPE":"application/json; charset=utf-8","CONTENT_LENG' (len 126)
+websocket-example: Received data 'TH":"0","CONNECTION":"close","X_REQUEST_ID":"5595d37840189821f5b5cf6c985e2a60a1359559","CACHE_CONTROL":"max-age=0","VARY":"Accept-' (len 130)
+websocket-example: Received data 'Encoding"},"resource":"/feeds/854709130"}
+' (len 43)
+SHT21 temperature value: 27.67
+SHT21 humidity value: 68.79
+SP {"method":"put","resource":"/feeds/854709130","params":{},"headers":{"X-ApiKey":"sjXXgoZ1kwKyop0CPAEo4D6cCTCYARFaxEP5gEvbAafDc2Cm"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.67"},{"id" : "humidity","current_value" : "68.79"}]}}
+websocket_send_str {"method":"put","resource":"/feeds/854709130","params":{},"headers":{"X-ApiKey":"sjXXgoZ1kwKyop0CPAEo4D6cCTCYARFaxEP5gEvbAafDc2Cm"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.67"},{"id" : "humidity","current_value" : "68.79"}]}}
+SHT21 temperature value: 27.67
+SHT21 humidity value: 68.76
+websocket-example: Received data '{"status":200,"headers":{"DATE":"Tue, 17 Feb 2015 08:30:17 GMT","CONTENT_TYPE":"application/json; charset=utf-8","CONTENT_LENG' (len 126)
+websocket-example: Received data 'TH":"0","CONNECTION":"close","X_REQUEST_ID":"42a03a81d82d6b2909d24590c51476677790d9b8","CACHE_CONTROL":"max-age=0","VARY":"Accept-' (len 130)
+websocket-example: Received data 'Encoding"},"resource":"/feeds/854709130"}
+' (len 43)
+SHT21 temperature value: 27.66
+SHT21 humidity value: 68.73
+SP {"method":"put","resource":"/feeds/854709130","params":{},"headers":{"X-ApiKey":"sjXXgoZ1kwKyop0CPAEo4D6cCTCYARFaxEP5gEvbAafDc2Cm"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.66"},{"id" : "humidity","current_value" : "68.73"}]}}
+websocket_send_str {"method":"put","resource":"/feeds/854709130","params":{},"headers":{"X-ApiKey":"sjXXgoZ1kwKyop0CPAEo4D6cCTCYARFaxEP5gEvbAafDc2Cm"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.66"},{"id" : "humidity","current_value" : "68.73"}]}}
+SHT21 temperature value: 27.65
+SHT21 humidity value: 69.1
+websocket-example: Received data '{"status":200,"headers":{"DATE":"Tue, 17 Feb 2015 08:30:49 GMT","CONTENT_TYPE":"application/json; charset=utf-8","CONTENT_LENG' (len 126)
+websocket-example: Received data 'TH":"0","CONNECTION":"close","X_REQUEST_ID":"1842405bdd511db8a94f83c138c195b63e56e436","CACHE_CONTROL":"max-age=0","VARY":"Accept-' (len 130)
+websocket-example: Received data 'Encoding"},"resource":"/feeds/854709130"}
+' (len 43)
+SHT21 temperature value: 27.63
+SHT21 humidity value: 69.13
+SP {"method":"put","resource":"/feeds/854709130","params":{},"headers":{"X-ApiKey":"sjXXgoZ1kwKyop0CPAEo4D6cCTCYARFaxEP5gEvbAafDc2Cm"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.63"},{"id" : "humidity","current_value" : "69.13"}]}}
+websocket_send_str {"method":"put","resource":"/feeds/854709130","params":{},"headers":{"X-ApiKey":"sjXXgoZ1kwKyop0CPAEo4D6cCTCYARFaxEP5gEvbAafDc2Cm"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.63"},{"id" : "humidity","current_value" : "69.13"}]}}
+SHT21 temperature value: 27.62
+SHT21 humidity value: 68.95
+websocket-example: Received data '{"status":200,"headers":{"DATE":"Tue, 17 Feb 2015 08:31:17 GMT","CONTENT_TYPE":"application/json; charset=utf-8","CONTENT_LENG' (len 126)
+websocket-example: Received data 'TH":"0","CONNECTION":"close","X_REQUEST_ID":"896ce654fb7105e60746dfce975e73b525e67ae4","CACHE_CONTROL":"max-age=0","VARY":"Accept-' (len 130)
+websocket-example: Received data 'Encoding"},"resource":"/feeds/854709130"}
+' (len 43)
+SHT21 temperature value: 27.60
+SHT21 humidity value: 69.1
+SP {"method":"put","resource":"/feeds/854709130","params":{},"headers":{"X-ApiKey":"sjXXgoZ1kwKyop0CPAEo4D6cCTCYARFaxEP5gEvbAafDc2Cm"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.60"},{"id" : "humidity","current_value" : "69.1"}]}}
+websocket_send_str {"method":"put","resource":"/feeds/854709130","params":{},"headers":{"X-ApiKey":"sjXXgoZ1kwKyop0CPAEo4D6cCTCYARFaxEP5gEvbAafDc2Cm"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.60"},{"id" : "humidity","current_value" : "69.1"}]}}
+SHT21 temperature value: 27.61
+SHT21 humidity value: 69.4
+websocket-example: Received data '{"status":200,"headers":{"DATE":"Tue, 17 Feb 2015 08:31:49 GMT","CONTENT_TYPE":"application/json; charset=utf-8","CONTENT_LENG' (len 126)
+websocket-example: Received data 'TH":"0","CONNECTION":"close","X_REQUEST_ID":"e0bea597b3f08389a8cd6b51cf93fedf5f588c4b","CACHE_CONTROL":"max-age=0","VARY":"Accept-' (len 130)
+websocket-example: Received data 'Encoding"},"resource":"/feeds/854709130"}
+' (len 43)
+SHT21 temperature value: 27.61
+SHT21 humidity value: 69.28
+SP {"method":"put","resource":"/feeds/854709130","params":{},"headers":{"X-ApiKey":"sjXXgoZ1kwKyop0CPAEo4D6cCTCYARFaxEP5gEvbAafDc2Cm"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.61"},{"id" : "humidity","current_value" : "69.28"}]}}
+websocket_send_str {"method":"put","resource":"/feeds/854709130","params":{},"headers":{"X-ApiKey":"sjXXgoZ1kwKyop0CPAEo4D6cCTCYARFaxEP5gEvbAafDc2Cm"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.61"},{"id" : "humidity","current_value" : "69.28"}]}}
+üx°ÿÿóÿƒß¸Ãƒsnûnã¾°·þƒ?nÏ¸üüx°ÿÿóÿƒß¸Ãƒsnûnã¾°·þƒ?nÏ¸üþÿ€„€€øæãContiki-2.6-1679-g1875b6c
+OpenMote-CC2538
+ Net: Rime
+ MAC: CSMA
+ RDC: ContikiMAC
+ random init 
+ udma init 
+ etimer start 
+ ctimer init 
+ set rf params 
+Rime configured with address 6b:4e
+ netstack init 
+ antenna init 
+Using external antenna
+autostarting process bro
+entering autostart for
+Process begin
+I am Routernode
+autostart_start: starting process 'Hello world process'
+exiting autostart for and autostart start
+watchdog start
+Contiki-2.6-1679-g1875b6c
+OpenMote-CC2538
+ Net: Rime
+ MAC: CSMA
+ RDC: ContikiMAC
+ random init 
+ udma init 
+ etimer start 
+ ctimer init 
+ set rf params 
+Rime configured with address 6b:4e
+ netstack init 
+ antenna init 
+Using external antenna
+autostarting process bro
+entering autostart for
+Process begin
+I am Routernode
+autostart_start: starting process 'Hello world process'
+exiting autostart for and autostart start
+watchdog start
+Contiki-2.6-1679-g1875b6c
+OpenMote-CC2538
+ Net: Rime
+ MAC: CSMA
+ RDC: ContikiMAC
+ random init 
+ udma init 
+ etimer start 
+ ctimer init 
+ set rf params 
+Rime configured with address 6b:4e
+ netstack init 
+ antenna init 
+Using external antenna
+autostarting process bro
+entering autostart for
+Process begin
+I am Routernode
+autostart_start: starting process 'Hello world process'
+exiting autostart for and autostart start
+watchdog start
+Contiki-2.6-1679-g1875b6c
+OpenMote-CC2538
+ Net: Rime
+ MAC: CSMA
+ RDC: ContikiMAC
+ random init 
+ udma init 
+ etimer start 
+ ctimer init 
+ set rf params 
+Rime configured with address 6b:4e
+ netstack init 
+ antenna init 
+Using external antenna
+autostarting process bro
+entering autostart for
+Process begin
+I am Routernode
+autostart_start: starting process 'Hello world process'
+exiting autostart for and autostart start
+watchdog start
+=================================
+Contiki 2.6
+======================
+
+OpenMote-CC2538-Bonti
+
+Rime addr 2.18.116.0.0.1.76.6
+finish addr seting
+  turn RF on
+Node id 1612.
+Netstack AES link layer encryption enabled
+CC2538 IEEE802154 PANID 21577
+nullrdc/CSMA 128 26
+IPv6 fe80:0000:0000:0000:0012:7400:0001:4c06
+Tentative global IPv6 address fc00:0000:0000:0000:0012:7400:0001:4c06
+AES encryption is enabled
+IPv6 addresses: fc00::12:7400:1:4c06fe80::12:7400:1:4c06
+Environode Debug!!!
+SHT21 temperature value: 28.1
+SHT21 humidity value: 70.23
+********* isReady OK, Websocket PROCESS STARTED *********
+SHT21 temperature value: 27.95
+SHT21 humidity value: 69.89
+SP {"method":"put","resource":"/feeds/582702676","params":{},"headers":{"X-ApiKey":"B2S0Un5o2VTChjpVWyzElnxxehXjr8N9KSA9YG02HC5arqmd"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.95"},{"id" : "humidity","current_value" : "69.89"}]}}
+websocket_send_str {"method":"put","resource":"/feeds/582702676","params":{},"headers":{"X-ApiKey":"B2S0Un5o2VTChjpVWyzElnxxehXjr8N9KSA9YG02HC5arqmd"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.95"},{"id" : "humidity","current_value" : "69.89"}]}}
+SHT21 temperature value: 27.92
+SHT21 humidity value: 70.20
+SHT21 temperature value: 27.89
+SHT21 humidity value: 70.23
+Connecting...
+SP {"method":"put","resource":"/feeds/582702676","params":{},"headers":{"X-ApiKey":"B2S0Un5o2VTChjpVWyzElnxxehXjr8N9KSA9YG02HC5arqmd"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.89"},{"id" : "humidity","current_value" : "70.23"}]}}
+websocket_send_str {"method":"put","resource":"/feeds/582702676","params":{},"headers":{"X-ApiKey":"B2S0Un5o2VTChjpVWyzElnxxehXjr8N9KSA9YG02HC5arqmd"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.89"},{"id" : "humidity","current_value" : "70.23"}]}}
+SHT21 temperature value: 27.86
+SHT21 humidity value: 70.17
+Websocket reset
+SHT21 temperature value: 27.82
+SHT21 humidity value: 70.47
+SP {"method":"put","resource":"/feeds/582702676","params":{},"headers":{"X-ApiKey":"B2S0Un5o2VTChjpVWyzElnxxehXjr8N9KSA9YG02HC5arqmd"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.82"},{"id" : "humidity","current_value" : "70.47"}]}}
+websocket_send_str {"method":"put","resource":"/feeds/582702676","params":{},"headers":{"X-ApiKey":"B2S0Un5o2VTChjpVWyzElnxxehXjr8N9KSA9YG02HC5arqmd"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.82"},{"id" : "humidity","current_value" : "70.47"}]}}
+SHT21 temperature value: 27.83
+SHT21 humidity value: 70.50
+SHT21 temperature value: 27.83
+SHT21 humidity value: 70.50
+SP {"method":"put","resource":"/feeds/582702676","params":{},"headers":{"X-ApiKey":"B2S0Un5o2VTChjpVWyzElnxxehXjr8N9KSA9YG02HC5arqmd"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.83"},{"id" : "humidity","current_value" : "70.50"}]}}
+websocket_send_str {"method":"put","resource":"/feeds/582702676","params":{},"headers":{"X-ApiKey":"B2S0Un5o2VTChjpVWyzElnxxehXjr8N9KSA9YG02HC5arqmd"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.83"},{"id" : "humidity","current_value" : "70.50"}]}}
+Connecting...
+SHT21 temperature value: 27.80
+SHT21 humidity value: 70.53
+Websocket connected
+websocket_send_str Connected
+websocket-example: Received data '{"status":400,"body":"Syntax Error: lexical error: invalid char in json text.\n                                       Connecte' (len 126)
+websocket-example: Received data 'd\n                     (right here) ------^\n"}
+' (len 50)
+SHT21 temperature value: 27.77
+SHT21 humidity value: 70.44
+SP {"method":"put","resource":"/feeds/582702676","params":{},"headers":{"X-ApiKey":"B2S0Un5o2VTChjpVWyzElnxxehXjr8N9KSA9YG02HC5arqmd"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.77"},{"id" : "humidity","current_value" : "70.44"}]}}
+websocket_send_str {"method":"put","resource":"/feeds/582702676","params":{},"headers":{"X-ApiKey":"B2S0Un5o2VTChjpVWyzElnxxehXjr8N9KSA9YG02HC5arqmd"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.77"},{"id" : "humidity","current_value" : "70.44"}]}}
+SHT21 temperature value: 27.77
+SHT21 humidity value: 70.56
+websocket-example: Received data '{"status":200,"headers":{"DATE":"Tue, 17 Feb 2015 09:18:42 GMT","CONTENT_TYPE":"application/json; charset=utf-8","CONTENT_LENG' (len 126)
+websocket-example: Received data 'TH":"0","CONNECTION":"close","X_REQUEST_ID":"1ded5b3ff6f440f07b90f7ea789aa0692fcecf28","CACHE_CONTROL":"max-age=0","VARY":"Accept-' (len 130)
+websocket-example: Received data 'Encoding"},"resource":"/feeds/582702676"}
+' (len 43)
+SHT21 temperature value: 27.79
+SHT21 humidity value: 71.23
+SP {"method":"put","resource":"/feeds/582702676","params":{},"headers":{"X-ApiKey":"B2S0Un5o2VTChjpVWyzElnxxehXjr8N9KSA9YG02HC5arqmd"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.79"},{"id" : "humidity","current_value" : "71.23"}]}}
+websocket_send_str {"method":"put","resource":"/feeds/582702676","params":{},"headers":{"X-ApiKey":"B2S0Un5o2VTChjpVWyzElnxxehXjr8N9KSA9YG02HC5arqmd"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.79"},{"id" : "humidity","current_value" : "71.23"}]}}
+SHT21 temperature value: 27.79
+SHT21 humidity value: 71.8
+websocket-example: Received data '{"status":200,"headers":{"DATE":"Tue, 17 Feb 2015 09:19:15 GMT","CONTENT_TYPE":"application/json; charset=utf-8","CONTENT_LENG' (len 126)
+websocket-example: Received data 'TH":"0","CONNECTION":"close","X_REQUEST_ID":"ae62cabb4a8964974a47dfd9ec88639a5cbbdfc5","CACHE_CONTROL":"max-age=0","VARY":"Accept-' (len 130)
+websocket-example: Received data 'Encoding"},"resource":"/feeds/582702676"}
+' (len 43)
+SHT21 temperature value: 27.79
+SHT21 humidity value: 70.59
+SP {"method":"put","resource":"/feeds/582702676","params":{},"headers":{"X-ApiKey":"B2S0Un5o2VTChjpVWyzElnxxehXjr8N9KSA9YG02HC5arqmd"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.79"},{"id" : "humidity","current_value" : "70.59"}]}}
+websocket_send_str {"method":"put","resource":"/feeds/582702676","params":{},"headers":{"X-ApiKey":"B2S0Un5o2VTChjpVWyzElnxxehXjr8N9KSA9YG02HC5arqmd"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.79"},{"id" : "humidity","current_value" : "70.59"}]}}
+SHT21 temperature value: 27.80
+SHT21 humidity value: 70.75
+websocket-example: Received data '{"status":200,"headers":{"DATE":"Tue, 17 Feb 2015 09:19:42 GMT","CONTENT_TYPE":"application/json; charset=utf-8","CONTENT_LENG' (len 126)
+websocket-example: Received data 'TH":"0","CONNECTION":"close","X_REQUEST_ID":"b505f64aaf9b97921301c2c41b8e74b8595fc430","CACHE_CONTROL":"max-age=0","VARY":"Accept-' (len 130)
+websocket-example: Received data 'Encoding"},"resource":"/feeds/582702676"}
+' (len 43)
+SHT21 temperature value: 27.77
+SHT21 humidity value: 70.69
+SP {"method":"put","resource":"/feeds/582702676","params":{},"headers":{"X-ApiKey":"B2S0Un5o2VTChjpVWyzElnxxehXjr8N9KSA9YG02HC5arqmd"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.77"},{"id" : "humidity","current_value" : "70.69"}]}}
+websocket_send_str {"method":"put","resource":"/feeds/582702676","params":{},"headers":{"X-ApiKey":"B2S0Un5o2VTChjpVWyzElnxxehXjr8N9KSA9YG02HC5arqmd"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.77"},{"id" : "humidity","current_value" : "70.69"}]}}
+SHT21 temperature value: 27.76
+SHT21 humidity value: 70.72
+websocket-example: Received data '{"status":200,"headers":{"DATE":"Tue, 17 Feb 2015 09:20:15 GMT","CONTENT_TYPE":"application/json; charset=utf-8","CONTENT_LENG' (len 126)
+websocket-example: Received data 'TH":"0","CONNECTION":"close","X_REQUEST_ID":"38662e2c292aa4e3d5d687ec99def6494281ea5f","CACHE_CONTROL":"max-age=0","VARY":"Accept-' (len 130)
+websocket-example: Received data 'Encoding"},"resource":"/feeds/582702676"}
+' (len 43)
+SHT21 temperature value: 27.79
+SHT21 humidity value: 70.84
+SP {"method":"put","resource":"/feeds/582702676","params":{},"headers":{"X-ApiKey":"B2S0Un5o2VTChjpVWyzElnxxehXjr8N9KSA9YG02HC5arqmd"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.79"},{"id" : "humidity","current_value" : "70.84"}]}}
+websocket_send_str {"method":"put","resource":"/feeds/582702676","params":{},"headers":{"X-ApiKey":"B2S0Un5o2VTChjpVWyzElnxxehXjr8N9KSA9YG02HC5arqmd"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.79"},{"id" : "humidity","current_value" : "70.84"}]}}
+SHT21 temperature value: 27.77
+SHT21 humidity value: 70.78
+websocket-example: Received data '{"status":200,"headers":{"DATE":"Tue, 17 Feb 2015 09:20:42 GMT","CONTENT_TYPE":"application/json; charset=utf-8","CONTENT_LENG' (len 126)
+websocket-example: Received data 'TH":"0","CONNECTION":"close","X_REQUEST_ID":"d7528747accdb638b6db9d7114b5c2969dd0a388","CACHE_CONTROL":"max-age=0","VARY":"Accept-' (len 130)
+websocket-example: Received data 'Encoding"},"resource":"/feeds/582702676"}
+' (len 43)
+SHT21 temperature value: 27.77
+SHT21 humidity value: 70.72
+SP {"method":"put","resource":"/feeds/582702676","params":{},"headers":{"X-ApiKey":"B2S0Un5o2VTChjpVWyzElnxxehXjr8N9KSA9YG02HC5arqmd"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.77"},{"id" : "humidity","current_value" : "70.72"}]}}
+websocket_send_str {"method":"put","resource":"/feeds/582702676","params":{},"headers":{"X-ApiKey":"B2S0Un5o2VTChjpVWyzElnxxehXjr8N9KSA9YG02HC5arqmd"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.77"},{"id" : "humidity","current_value" : "70.72"}]}}
+SHT21 temperature value: 27.80
+SHT21 humidity value: 70.96
+websocket-example: Received data '{"status":200,"headers":{"DATE":"Tue, 17 Feb 2015 09:21:12 GMT","CONTENT_TYPE":"application/json; charset=utf-8","CONTENT_LENG' (len 126)
+websocket-example: Received data 'TH":"0","CONNECTION":"close","X_REQUEST_ID":"6f85174ba34b1557406af41adf7a06fc77ae9ee9","CACHE_CONTROL":"max-age=0","VARY":"Accept-' (len 130)
+websocket-example: Received data 'Encoding"},"resource":"/feeds/582702676"}
+' (len 43)
+SHT21 temperature value: 27.81
+SHT21 humidity value: 71.39
+SP {"method":"put","resource":"/feeds/582702676","params":{},"headers":{"X-ApiKey":"B2S0Un5o2VTChjpVWyzElnxxehXjr8N9KSA9YG02HC5arqmd"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.81"},{"id" : "humidity","current_value" : "71.39"}]}}
+websocket_send_str {"method":"put","resource":"/feeds/582702676","params":{},"headers":{"X-ApiKey":"B2S0Un5o2VTChjpVWyzElnxxehXjr8N9KSA9YG02HC5arqmd"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.81"},{"id" : "humidity","current_value" : "71.39"}]}}
+SHT21 temperature value: 27.81
+SHT21 humidity value: 70.93
+websocket-example: Received data '{"status":200,"headers":{"DATE":"Tue, 17 Feb 2015 09:21:42 GMT","CONTENT_TYPE":"application/json; charset=utf-8","CONTENT_LENG' (len 126)
+websocket-example: Received data 'TH":"0","CONNECTION":"close","X_REQUEST_ID":"c8adecb4ccf78a593ec3fd19e7e1f797cee6caa4","CACHE_CONTROL":"max-age=0","VARY":"Accept-' (len 130)
+websocket-example: Received data 'Encoding"},"resource":"/feeds/582702676"}
+' (len 43)
+SHT21 temperature value: 27.81
+SHT21 humidity value: 71.45
+SP {"method":"put","resource":"/feeds/582702676","params":{},"headers":{"X-ApiKey":"B2S0Un5o2VTChjpVWyzElnxxehXjr8N9KSA9YG02HC5arqmd"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.81"},{"id" : "humidity","current_value" : "71.45"}]}}
+websocket_send_str {"method":"put","resource":"/feeds/582702676","params":{},"headers":{"X-ApiKey":"B2S0Un5o2VTChjpVWyzElnxxehXjr8N9KSA9YG02HC5arqmd"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.81"},{"id" : "humidity","current_value" : "71.45"}]}}
+SHT21 temperature value: 27.80
+SHT21 humidity value: 70.84
+websocket-example: Received data '{"status":200,"headers":{"DATE":"Tue, 17 Feb 2015 09:22:14 GMT","CONTENT_TYPE":"application/json; charset=utf-8","CONTENT_LENG' (len 126)
+websocket-example: Received data 'TH":"0","CONNECTION":"close","X_REQUEST_ID":"910ab5ef6ff5b0ac1e9a84f596f2206b26f3b97c","CACHE_CONTROL":"max-age=0","VARY":"Accept-' (len 130)
+websocket-example: Received data 'Encoding"},"resource":"/feeds/582702676"}
+' (len 43)
+SHT21 temperature value: 27.79
+SHT21 humidity value: 71.8

@@ -13,6 +13,7 @@ char ctemp[20];
 char chum[20];
 int isReady = 0;
 
+static int sensor_cond[7];
 static struct websocket s;
 static char sensing_payload[350];
 static uip_ipaddr_t google_ipv4_dns_server = {
@@ -41,6 +42,29 @@ static struct ctimer reconnect_timer;
 PROCESS(websocket_example_process, "Websocket Example");
 PROCESS(environode_process, "Environode sensing and sending");
 AUTOSTART_PROCESSES(&environode_process);
+/*---------------------------------------------------------------------------*/
+static void
+read_input()
+{
+  int i;
+  sensor_cond[0] = GPIO_READ_PIN(BUTTON_DIGITAL0_PORT_BASE,BUTTON_DIGITAL0_PIN_MASK)>>5;
+  sensor_cond[1] = GPIO_READ_PIN(BUTTON_DIGITAL1_PORT_BASE,BUTTON_DIGITAL1_PIN_MASK)>>4;
+  sensor_cond[2] = GPIO_READ_PIN(BUTTON_DIGITAL2_PORT_BASE,BUTTON_DIGITAL2_PIN_MASK)>>3;
+  sensor_cond[3] = GPIO_READ_PIN(BUTTON_DRY_IN_1_PORT_BASE,BUTTON_DRY_IN_1_PIN_MASK)>>3;
+  sensor_cond[4] = GPIO_READ_PIN(BUTTON_DRY_IN_2_PORT_BASE,BUTTON_DRY_IN_2_PIN_MASK)>>2;
+  sensor_cond[5] = GPIO_READ_PIN(BUTTON_DRY_IN_3_PORT_BASE,BUTTON_DRY_IN_3_PIN_MASK)>>1;
+  sensor_cond[6] = GPIO_READ_PIN(BUTTON_DRY_IN_4_PORT_BASE,BUTTON_DRY_IN_4_PIN_MASK);
+  
+  for(i = 0;i <= 2;i++)
+  {
+    printf("Digital %d = %X\r\n",(i+1),sensor_cond[i]);
+  }
+  for(i = 3;i <= 6;i++)
+  {
+    printf("Dry In %d = %X\r\n",(i-2),sensor_cond[i]);
+  }
+  printf("\r\n");
+}
 /*---------------------------------------------------------------------------*/
 static void
 reconnect_callback(void *ptr)
@@ -106,11 +130,40 @@ PROCESS_THREAD(environode_process, ev, data)
   static struct etimer sensing_timer;
   etimer_set(&sensing_timer, 15*CLOCK_SECOND);
   // ds18b20_init();
+  SENSORS_ACTIVATE(button_digital0_sensor);
+  SENSORS_ACTIVATE(button_digital1_sensor);
+  SENSORS_ACTIVATE(button_digital2_sensor);
+  SENSORS_ACTIVATE(button_dry_in_1_sensor);
+  SENSORS_ACTIVATE(button_dry_in_2_sensor);
+  SENSORS_ACTIVATE(button_dry_in_3_sensor);
+  SENSORS_ACTIVATE(button_dry_in_4_sensor);
 
   while(1) {
     PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&sensing_timer));
     /* We must init I2C each time, because the module lose his state when enter PM2 */
     i2c_init(I2C_SDA_PORT, I2C_SDA_PIN, I2C_SCL_PORT, I2C_SCL_PIN, I2C_SCL_FAST_BUS_SPEED);
+
+    // switch (jason) {
+    //   case 0: jason=1;
+    //           printf("debug 8.0\r\n");
+    //           break;
+    //   case 1: sprintf(sensing_payload, "%s%d%s%d%s%d%s", "{\"version\":\"1.0.0\",\"datastreams\" : [ {\"id\" : \"digital1\",\"current_value\" : \"", GPIO_READ_PIN(BUTTON_DIGITAL0_PORT_BASE,BUTTON_DIGITAL0_PIN_MASK)>>5, "\"}, {\"id\" : \"digital2\",\"current_value\" : \"", GPIO_READ_PIN(BUTTON_DIGITAL1_PORT_BASE,BUTTON_DIGITAL1_PIN_MASK)>>4, "\"}, {\"id\" : \"digital3\",\"current_value\" : \"", GPIO_READ_PIN(BUTTON_DIGITAL2_PORT_BASE,BUTTON_DIGITAL2_PIN_MASK)>>3, "\"}]}");
+    //           jason=2;
+    //           printf("debug 8.1\r\n");
+    //           READ_INPUT();
+    //           break;
+    //   case 2: sprintf(sensing_payload, "%s%d%s%d%s%d%s", "{\"version\":\"1.0.0\",\"datastreams\" : [ {\"id\" : \"dryin1\",\"current_value\" : \"", GPIO_READ_PIN(BUTTON_DRY_IN_1_PORT_BASE,BUTTON_DRY_IN_1_PIN_MASK)>>3, "\"}, {\"id\" : \"dryin2\",\"current_value\" : \"", GPIO_READ_PIN(BUTTON_DRY_IN_2_PORT_BASE,BUTTON_DRY_IN_2_PIN_MASK)>>2, "\"}, {\"id\" : \"dryin3\",\"current_value\" : \"", GPIO_READ_PIN(BUTTON_DRY_IN_3_PORT_BASE,BUTTON_DRY_IN_3_PIN_MASK)>>1, "\"}]}");
+    //           jason=3;
+    //           printf("debug 8.2\r\n");
+    //           READ_INPUT();
+    //           break;
+    //   case 3: sprintf(sensing_payload, "%s%d%s%s%s%s%s", "{\"version\":\"1.0.0\",\"datastreams\" : [ {\"id\" : \"dryin4\",\"current_value\" : \"", GPIO_READ_PIN(BUTTON_DRY_IN_4_PORT_BASE,BUTTON_DRY_IN_4_PIN_MASK), "\"}, {\"id\" : \"humidity\",\"current_value\" : \"", chum, "\"},{\"id\" : \"temperature\",\"current_value\" : \"", ctemp, "\"}]}");
+    //           jason=1;
+    //           printf("debug 8.3\r\n");
+    //           READ_INPUT();
+    //           break;
+    //   default: break;
+
     read_temperature(ctemp); // temperature SHT21
     printf("SHT21 temperature value: %s\r\n", ctemp);
     read_humidity(chum); // humidity SHT21

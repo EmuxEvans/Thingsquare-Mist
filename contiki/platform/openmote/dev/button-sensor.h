@@ -53,6 +53,14 @@
 extern const struct sensors_sensor button_user_sensor;
 extern const struct sensors_sensor button_sw1_sensor;
 extern const struct sensors_sensor button_sw2_sensor;
+extern const struct sensors_sensor button_digital0_sensor;
+extern const struct sensors_sensor button_digital1_sensor;
+extern const struct sensors_sensor button_digital2_sensor;
+extern const struct sensors_sensor button_dry_in_1_sensor;
+extern const struct sensors_sensor button_dry_in_2_sensor;
+extern const struct sensors_sensor button_dry_in_3_sensor;
+extern const struct sensors_sensor button_dry_in_4_sensor;
+
 /*---------------------------------------------------------------------------*/
 #endif /* BUTTON_SENSOR_H_ */
 

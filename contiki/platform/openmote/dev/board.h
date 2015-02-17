@@ -131,13 +131,48 @@
 
 /** BUTTON_SW1 -> PD2 */
 #define BUTTON_SW1_PORT        GPIO_D_NUM
-#define BUTTON_SW1_PIN         0
+#define BUTTON_SW1_PIN         4
 #define BUTTON_SW1_VECTOR      NVIC_INT_GPIO_PORT_D
 
 /** BUTTON_SW2 -> PD3 */
 #define BUTTON_SW2_PORT        GPIO_D_NUM
-#define BUTTON_SW2_PIN         1
+#define BUTTON_SW2_PIN         5
 #define BUTTON_SW2_VECTOR      NVIC_INT_GPIO_PORT_D
+
+/** BUTTON_DIGITAL0 -> PA5 */
+#define BUTTON_DIGITAL0_PORT        GPIO_A_NUM
+#define BUTTON_DIGITAL0_PIN         5
+#define BUTTON_DIGITAL0_VECTOR      NVIC_INT_GPIO_PORT_A
+
+/** BUTTON_DIGITAL1 -> PA4 */
+#define BUTTON_DIGITAL1_PORT        GPIO_A_NUM
+#define BUTTON_DIGITAL1_PIN         4
+#define BUTTON_DIGITAL1_VECTOR      NVIC_INT_GPIO_PORT_A
+
+/** BUTTON_DIGITAL2 -> PA3 */
+#define BUTTON_DIGITAL2_PORT        GPIO_A_NUM
+#define BUTTON_DIGITAL2_PIN         3
+#define BUTTON_DIGITAL2_VECTOR      NVIC_INT_GPIO_PORT_A
+
+ /** BUTTON_DRY_IN_1 -> PD3 */
+#define BUTTON_DRY_IN_1_PORT        GPIO_D_NUM
+#define BUTTON_DRY_IN_1_PIN         3
+#define BUTTON_DRY_IN_1_VECTOR      NVIC_INT_GPIO_PORT_D
+
+/** BUTTON_DRY_IN_2 -> PD2 */
+#define BUTTON_DRY_IN_2_PORT        GPIO_D_NUM
+#define BUTTON_DRY_IN_2_PIN         2
+#define BUTTON_DRY_IN_2_VECTOR      NVIC_INT_GPIO_PORT_D
+
+/** BUTTON_DRY_IN_3 -> PD1 */
+#define BUTTON_DRY_IN_3_PORT        GPIO_D_NUM
+#define BUTTON_DRY_IN_3_PIN         1
+#define BUTTON_DRY_IN_3_VECTOR      NVIC_INT_GPIO_PORT_D
+
+/** BUTTON_DRY_IN_4 -> PD0 */
+#define BUTTON_DRY_IN_4_PORT        GPIO_D_NUM
+#define BUTTON_DRY_IN_4_PIN         0
+#define BUTTON_DRY_IN_4_VECTOR      NVIC_INT_GPIO_PORT_D
 
 /* Notify various examples that we have Buttons */
 #define PLATFORM_HAS_BUTTON    1

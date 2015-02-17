@@ -53,6 +53,21 @@
 #define BUTTON_SW1_PIN_MASK    GPIO_PIN_MASK(BUTTON_SW1_PIN)
 #define BUTTON_SW2_PORT_BASE   GPIO_PORT_TO_BASE(BUTTON_SW2_PORT)
 #define BUTTON_SW2_PIN_MASK    GPIO_PIN_MASK(BUTTON_SW2_PIN)
+#define BUTTON_DIGITAL0_PORT_BASE   GPIO_PORT_TO_BASE(BUTTON_DIGITAL0_PORT)
+#define BUTTON_DIGITAL0_PIN_MASK    GPIO_PIN_MASK(BUTTON_DIGITAL0_PIN)
+#define BUTTON_DIGITAL1_PORT_BASE   GPIO_PORT_TO_BASE(BUTTON_DIGITAL1_PORT)
+#define BUTTON_DIGITAL1_PIN_MASK    GPIO_PIN_MASK(BUTTON_DIGITAL1_PIN)
+#define BUTTON_DIGITAL2_PORT_BASE   GPIO_PORT_TO_BASE(BUTTON_DIGITAL2_PORT)
+#define BUTTON_DIGITAL2_PIN_MASK    GPIO_PIN_MASK(BUTTON_DIGITAL2_PIN)
+#define BUTTON_DRY_IN_1_PORT_BASE   GPIO_PORT_TO_BASE(BUTTON_DRY_IN_1_PORT)
+#define BUTTON_DRY_IN_1_PIN_MASK    GPIO_PIN_MASK(BUTTON_DRY_IN_1_PIN)
+#define BUTTON_DRY_IN_2_PORT_BASE   GPIO_PORT_TO_BASE(BUTTON_DRY_IN_2_PORT)
+#define BUTTON_DRY_IN_2_PIN_MASK    GPIO_PIN_MASK(BUTTON_DRY_IN_2_PIN)
+#define BUTTON_DRY_IN_3_PORT_BASE   GPIO_PORT_TO_BASE(BUTTON_DRY_IN_3_PORT)
+#define BUTTON_DRY_IN_3_PIN_MASK    GPIO_PIN_MASK(BUTTON_DRY_IN_3_PIN)
+#define BUTTON_DRY_IN_4_PORT_BASE   GPIO_PORT_TO_BASE(BUTTON_DRY_IN_4_PORT)
+#define BUTTON_DRY_IN_4_PIN_MASK    GPIO_PIN_MASK(BUTTON_DRY_IN_4_PIN)
+
 
 /*---------------------------------------------------------------------------*/
 static struct timer debouncetimer;
@@ -101,11 +116,32 @@ btn_callback(uint8_t port, uint8_t pin)
   if(port == GPIO_C_NUM) {
     sensors_changed(&button_user_sensor);
   }
-  if((port == GPIO_D_NUM) && (pin == BUTTON_SW1_PIN)) {
+  if((port == BUTTON_SW1_PORT) && (pin == BUTTON_SW1_PIN)) {
     sensors_changed(&button_sw1_sensor);
   }
   if((port == GPIO_D_NUM) && (pin == BUTTON_SW2_PIN)) {
     sensors_changed(&button_sw2_sensor);
+  }
+  if((port == BUTTON_DIGITAL0_PORT) && (pin == BUTTON_DIGITAL0_PIN)) {
+    sensors_changed(&button_digital0_sensor);
+  }
+  if((port == BUTTON_DIGITAL1_PORT) && (pin == BUTTON_DIGITAL1_PIN)) {
+    sensors_changed(&button_digital1_sensor);
+  }
+  if((port == BUTTON_DIGITAL2_PORT) && (pin == BUTTON_DIGITAL2_PIN)) {
+    sensors_changed(&button_digital2_sensor);
+  }
+  if((port == BUTTON_DRY_IN_1_PORT) && (pin == BUTTON_DRY_IN_1_PIN)) {
+    sensors_changed(&button_dry_in_1_sensor);
+  }
+  if((port == BUTTON_DRY_IN_2_PORT) && (pin == BUTTON_DRY_IN_2_PIN)) {
+    sensors_changed(&button_dry_in_2_sensor);
+  }
+  if((port == BUTTON_DRY_IN_3_PORT) && (pin == BUTTON_DRY_IN_3_PIN)) {
+    sensors_changed(&button_dry_in_3_sensor);
+  }
+  if((port == BUTTON_DRY_IN_4_PORT) && (pin == BUTTON_DRY_IN_4_PIN)) {
+    sensors_changed(&button_dry_in_4_sensor);
   }
 }
 /*---------------------------------------------------------------------------*/
@@ -169,6 +205,174 @@ config_sw2(int type, int value)
  * \return ignored
  */
 static int
+config_digital0(int type, int value)
+{
+  config(BUTTON_DIGITAL0_PORT_BASE, BUTTON_DIGITAL0_PIN_MASK);
+
+  ioc_set_over(BUTTON_DIGITAL0_PORT, BUTTON_DIGITAL0_PIN, IOC_OVERRIDE_PUE);
+
+  nvic_interrupt_enable(BUTTON_DIGITAL0_VECTOR);
+
+  gpio_register_callback(btn_callback, BUTTON_DIGITAL0_PORT, BUTTON_DIGITAL0_PIN);
+  return 1;
+}
+/*---------------------------------------------------------------------------*/
+/**
+ * \brief Init function for the select button.
+ *
+ * Parameters are ignored. They have been included because the prototype is
+ * dictated by the core sensor api. The return value is also not required by
+ * the API but otherwise ignored.
+ *
+ * \param type ignored
+ * \param value ignored
+ * \return ignored
+ */
+static int
+config_digital1(int type, int value)
+{
+  config(BUTTON_DIGITAL1_PORT_BASE, BUTTON_DIGITAL1_PIN_MASK);
+
+  ioc_set_over(BUTTON_DIGITAL1_PORT, BUTTON_DIGITAL1_PIN, IOC_OVERRIDE_PUE);
+
+  nvic_interrupt_enable(BUTTON_DIGITAL1_VECTOR);
+
+  gpio_register_callback(btn_callback, BUTTON_DIGITAL1_PORT, BUTTON_DIGITAL1_PIN);
+  return 1;
+}
+/*---------------------------------------------------------------------------*/
+/**
+ * \brief Init function for the select button.
+ *
+ * Parameters are ignored. They have been included because the prototype is
+ * dictated by the core sensor api. The return value is also not required by
+ * the API but otherwise ignored.
+ *
+ * \param type ignored
+ * \param value ignored
+ * \return ignored
+ */
+static int
+config_digital2(int type, int value)
+{
+  config(BUTTON_DIGITAL2_PORT_BASE, BUTTON_DIGITAL2_PIN_MASK);
+
+  ioc_set_over(BUTTON_DIGITAL2_PORT, BUTTON_DIGITAL2_PIN, IOC_OVERRIDE_PUE);
+
+  nvic_interrupt_enable(BUTTON_DIGITAL2_VECTOR);
+
+  gpio_register_callback(btn_callback, BUTTON_DIGITAL2_PORT, BUTTON_DIGITAL2_PIN);
+  return 1;
+}
+/*---------------------------------------------------------------------------*/
+/**
+ * \brief Init function for the select button.
+ *
+ * Parameters are ignored. They have been included because the prototype is
+ * dictated by the core sensor api. The return value is also not required by
+ * the API but otherwise ignored.
+ *
+ * \param type ignored
+ * \param value ignored
+ * \return ignored
+ */
+static int
+config_dry_in_1(int type, int value)
+{
+  config(BUTTON_DRY_IN_1_PORT_BASE, BUTTON_DRY_IN_1_PIN_MASK);
+
+  ioc_set_over(BUTTON_DRY_IN_1_PORT, BUTTON_DRY_IN_1_PIN, IOC_OVERRIDE_PUE);
+
+  nvic_interrupt_enable(BUTTON_DRY_IN_1_VECTOR);
+
+  gpio_register_callback(btn_callback, BUTTON_DRY_IN_1_PORT, BUTTON_DRY_IN_1_PIN);
+  return 1;
+}
+/*---------------------------------------------------------------------------*/
+/**
+ * \brief Init function for the select button.
+ *
+ * Parameters are ignored. They have been included because the prototype is
+ * dictated by the core sensor api. The return value is also not required by
+ * the API but otherwise ignored.
+ *
+ * \param type ignored
+ * \param value ignored
+ * \return ignored
+ */
+static int
+config_dry_in_2(int type, int value)
+{
+  config(BUTTON_DRY_IN_2_PORT_BASE, BUTTON_DRY_IN_2_PIN_MASK);
+
+  ioc_set_over(BUTTON_DRY_IN_2_PORT, BUTTON_DRY_IN_2_PIN, IOC_OVERRIDE_PUE);
+
+  nvic_interrupt_enable(BUTTON_DRY_IN_2_VECTOR);
+
+  gpio_register_callback(btn_callback, BUTTON_DRY_IN_2_PORT, BUTTON_DRY_IN_2_PIN);
+  return 1;
+}
+/*---------------------------------------------------------------------------*/
+/**
+ * \brief Init function for the select button.
+ *
+ * Parameters are ignored. They have been included because the prototype is
+ * dictated by the core sensor api. The return value is also not required by
+ * the API but otherwise ignored.
+ *
+ * \param type ignored
+ * \param value ignored
+ * \return ignored
+ */
+static int
+config_dry_in_3(int type, int value)
+{
+  config(BUTTON_DRY_IN_3_PORT_BASE, BUTTON_DRY_IN_3_PIN_MASK);
+
+  ioc_set_over(BUTTON_DRY_IN_3_PORT, BUTTON_DRY_IN_3_PIN, IOC_OVERRIDE_PUE);
+
+  nvic_interrupt_enable(BUTTON_DRY_IN_3_VECTOR);
+
+  gpio_register_callback(btn_callback, BUTTON_DRY_IN_3_PORT, BUTTON_DRY_IN_3_PIN);
+  return 1;
+}
+/*---------------------------------------------------------------------------*/
+/**
+ * \brief Init function for the select button.
+ *
+ * Parameters are ignored. They have been included because the prototype is
+ * dictated by the core sensor api. The return value is also not required by
+ * the API but otherwise ignored.
+ *
+ * \param type ignored
+ * \param value ignored
+ * \return ignored
+ */
+static int
+config_dry_in_4(int type, int value)
+{
+  config(BUTTON_DRY_IN_4_PORT_BASE, BUTTON_DRY_IN_4_PIN_MASK);
+
+  ioc_set_over(BUTTON_DRY_IN_4_PORT, BUTTON_DRY_IN_4_PIN, IOC_OVERRIDE_PUE);
+
+  nvic_interrupt_enable(BUTTON_DRY_IN_4_VECTOR);
+
+  gpio_register_callback(btn_callback, BUTTON_DRY_IN_4_PORT, BUTTON_DRY_IN_4_PIN);
+  return 1;
+}
+/*---------------------------------------------------------------------------*/
+/**
+ * \brief Init function for the select button.
+ *
+ * Parameters are ignored. They have been included because the prototype is
+ * dictated by the core sensor api. The return value is also not required by
+ * the API but otherwise ignored.
+ *
+ * \param type ignored
+ * \param value ignored
+ * \return ignored
+ */
+static int
 config_user(int type, int value)
 {
   config(BUTTON_USER_PORT_BASE, BUTTON_USER_PIN_MASK);
@@ -190,4 +394,11 @@ button_sensor_init()
 SENSORS_SENSOR(button_user_sensor, BUTTON_SENSOR, NULL, config_user, NULL);
 SENSORS_SENSOR(button_sw1_sensor, BUTTON_SENSOR, NULL, config_sw1, NULL);
 SENSORS_SENSOR(button_sw2_sensor, BUTTON_SENSOR, NULL, config_sw2, NULL);
+SENSORS_SENSOR(button_digital0_sensor, BUTTON_SENSOR, NULL, config_digital0, NULL);
+SENSORS_SENSOR(button_digital1_sensor, BUTTON_SENSOR, NULL, config_digital1, NULL);
+SENSORS_SENSOR(button_digital2_sensor, BUTTON_SENSOR, NULL, config_digital2, NULL);
+SENSORS_SENSOR(button_dry_in_1_sensor, BUTTON_SENSOR, NULL, config_dry_in_1, NULL);
+SENSORS_SENSOR(button_dry_in_2_sensor, BUTTON_SENSOR, NULL, config_dry_in_2, NULL);
+SENSORS_SENSOR(button_dry_in_3_sensor, BUTTON_SENSOR, NULL, config_dry_in_3, NULL);
+SENSORS_SENSOR(button_dry_in_4_sensor, BUTTON_SENSOR, NULL, config_dry_in_4, NULL);
 /** @} */

@@ -1,7 +1,6 @@
 #include <string.h>
 #include "mist.h"
 #include "dev/button-sensor.h"
-#include "dev/button-sensor.c"
 #include "dev/board.h"
 #include "dev/i2c.h"
 #include "netstack-aes.h"
@@ -16,7 +15,7 @@ int isReady = 0;
 
 static int sensor_cond[7];
 static struct websocket s;
-static char sensing_payload[1000];
+static char sensing_payload[350];
 static uip_ipaddr_t google_ipv4_dns_server = {
     .u8 = {
       /* Google's IPv4 DNS in mapped in an IPv6 address (::ffff:8.8.8.8) */
@@ -109,13 +108,29 @@ PROCESS_THREAD(websocket_example_process, ev, data)
   PROCESS_BEGIN();
 
   ctimer_set(&reconnect_timer, RECONNECT_INTERVAL, reconnect_callback, &s);
-
+  
   while(1) {
     etimer_set(&et, CLOCK_SECOND * 30);
     PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&et));
+    switch (jason) {
+      case 0: sprintf(sensing_payload, "%s%s%s%s%d%s%d%s", "{\"method\":\"put\",\"resource\":\"/feeds/", FEED_ID, "\",\"params\":{},\"headers\":{\"X-ApiKey\":\"", API_KEY, "\"},\"body\":{\"version\":\"1.0.0\",\"datastreams\" : [ {\"id\" : \"digital1\",\"current_value\" : \"", GPIO_READ_PIN(BUTTON_DIGITAL0_PORT_BASE,BUTTON_DIGITAL0_PIN_MASK)>>5, "\"}, {\"id\" : \"digital2\",\"current_value\" : \"", GPIO_READ_PIN(BUTTON_DIGITAL1_PORT_BASE,BUTTON_DIGITAL1_PIN_MASK)>>4, "\"}]}");
+              jason=1;
+              break;
+      case 1: sprintf(sensing_payload, "%s%s%s%s%d%s%d%s", "{\"method\":\"put\",\"resource\":\"/feeds/", FEED_ID, "\",\"params\":{},\"headers\":{\"X-ApiKey\":\"", API_KEY, "\"},\"body\":{\"version\":\"1.0.0\",\"datastreams\" : [ {\"id\" : \"digital3\",\"current_value\" : \"", GPIO_READ_PIN(BUTTON_DIGITAL2_PORT_BASE,BUTTON_DIGITAL2_PIN_MASK)>>3, "\"}, {\"id\" : \"dryin1\",\"current_value\" : \"", GPIO_READ_PIN(BUTTON_DRY_IN_1_PORT_BASE,BUTTON_DRY_IN_1_PIN_MASK)>>3 "\"}]}");
+              jason=2;
+              break;
+      case 2: sprintf(sensing_payload, "%s%s%s%s%d%s%d%s", "{\"method\":\"put\",\"resource\":\"/feeds/", FEED_ID, "\",\"params\":{},\"headers\":{\"X-ApiKey\":\"", API_KEY, "\"},\"body\":{\"version\":\"1.0.0\",\"datastreams\" : [ {\"id\" : \"dryin2\",\"current_value\" : \"", GPIO_READ_PIN(BUTTON_DIGITAL0_PORT_BASE,BUTTON_DIGITAL0_PIN_MASK)>>5, "\"}, {\"id\" : \"dryin3\",\"current_value\" : \"", GPIO_READ_PIN(BUTTON_DRY_IN_3_PORT_BASE,BUTTON_DRY_IN_3_PIN_MASK)>>1, "\"}]}");
+              jason=3;
+              break;
+      case 3: sprintf(sensing_payload, "%s%s%s%s%d%s%s%s", "{\"method\":\"put\",\"resource\":\"/feeds/", FEED_ID, "\",\"params\":{},\"headers\":{\"X-ApiKey\":\"", API_KEY, "\"},\"body\":{\"version\":\"1.0.0\",\"datastreams\" : [ {\"id\" : \"dryin4\",\"current_value\" : \"", GPIO_READ_PIN(BUTTON_DRY_IN_4_PORT_BASE,BUTTON_DRY_IN_4_PIN_MASK), "\"}, {\"id\" : \"humidity\",\"current_value\" : \"", chum, "\"}]}");
+              jason=4;
+              break;
+      case 4: sprintf(sensing_payload, "%s%s%s%s%s%s", "{\"method\":\"put\",\"resource\":\"/feeds/", FEED_ID, "\",\"params\":{},\"headers\":{\"X-ApiKey\":\"", API_KEY, "\"},\"body\":{\"version\":\"1.0.0\",\"datastreams\" : [ {\"id\" : \"temperature\",\"current_value\" : \"", ctemp, "\"}]}");
+              jason=0;
+              break;
+      default: break;
+    }
     // sprintf(sensing_payload, "%s%s%s%s%s%s%s%s%s", "{\"method\":\"put\",\"resource\":\"/feeds/", FEED_ID, "\",\"params\":{},\"headers\":{\"X-ApiKey\":\"", API_KEY, "\"},\"body\":{\"version\":\"1.0.0\",\"datastreams\" : [ {\"id\" : \"temperature\",\"current_value\" : \"", ctemp, "\"},{\"id\" : \"humidity\",\"current_value\" : \"", chum, "\"}]}}");
-    sprintf(sensing_payload, "%s%s%s%s%s%s%s%s%s%d%s%d%s%d%s%d%s%d%s%d%s%d%s", "{\"method\":\"put\",\"resource\":\"/feeds/", FEED_ID, "\",\"params\":{},\"headers\":{\"X-ApiKey\":\"", API_KEY, "\"},\"body\":{\"version\":\"1.0.0\",\"datastreams\" : [ {\"id\" : \"temperature\",\"current_value\" : \"", ctemp, "\"},{\"id\" : \"humidity\",\"current_value\" : \"", chum, "\"},{\"id\" : \"digital1\",\"current_value\" : \"", GPIO_READ_PIN(BUTTON_DIGITAL0_PORT_BASE,BUTTON_DIGITAL0_PIN_MASK)>>5, "\"}, {\"id\" : \"digital2\",\"current_value\" : \"", GPIO_READ_PIN(BUTTON_DIGITAL1_PORT_BASE,BUTTON_DIGITAL1_PIN_MASK)>>4, "\"}, {\"id\" : \"digital3\",\"current_value\" : \"", GPIO_READ_PIN(BUTTON_DIGITAL2_PORT_BASE,BUTTON_DIGITAL2_PIN_MASK)>>3, "\"},{\"id\" : \"dryin1\",\"current_value\" : \"", GPIO_READ_PIN(BUTTON_DRY_IN_1_PORT_BASE,BUTTON_DRY_IN_1_PIN_MASK)>>3, "\"}, {\"id\" : \"dryin2\",\"current_value\" : \"", GPIO_READ_PIN(BUTTON_DRY_IN_2_PORT_BASE,BUTTON_DRY_IN_2_PIN_MASK)>>2, "\"}, {\"id\" : \"dryin3\",\"current_value\" : \"", GPIO_READ_PIN(BUTTON_DRY_IN_3_PORT_BASE,BUTTON_DRY_IN_3_PIN_MASK)>>1, "\"},{\"id\" : \"dryin4\",\"current_value\" : \"", GPIO_READ_PIN(BUTTON_DRY_IN_4_PORT_BASE,BUTTON_DRY_IN_4_PIN_MASK), "\"}]}}");
-    read_input();
     printf("SP ");
     printf(sensing_payload);
     printf("\r\n");
@@ -145,6 +160,28 @@ PROCESS_THREAD(environode_process, ev, data)
     PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&sensing_timer));
     /* We must init I2C each time, because the module lose his state when enter PM2 */
     i2c_init(I2C_SDA_PORT, I2C_SDA_PIN, I2C_SCL_PORT, I2C_SCL_PIN, I2C_SCL_FAST_BUS_SPEED);
+
+    // switch (jason) {
+    //   case 0: jason=1;
+    //           printf("debug 8.0\r\n");
+    //           break;
+    //   case 1: sprintf(sensing_payload, "%s%d%s%d%s%d%s", "{\"version\":\"1.0.0\",\"datastreams\" : [ {\"id\" : \"digital1\",\"current_value\" : \"", GPIO_READ_PIN(BUTTON_DIGITAL0_PORT_BASE,BUTTON_DIGITAL0_PIN_MASK)>>5, "\"}, {\"id\" : \"digital2\",\"current_value\" : \"", GPIO_READ_PIN(BUTTON_DIGITAL1_PORT_BASE,BUTTON_DIGITAL1_PIN_MASK)>>4, "\"}, {\"id\" : \"digital3\",\"current_value\" : \"", GPIO_READ_PIN(BUTTON_DIGITAL2_PORT_BASE,BUTTON_DIGITAL2_PIN_MASK)>>3, "\"}]}");
+    //           jason=2;
+    //           printf("debug 8.1\r\n");
+    //           READ_INPUT();
+    //           break;
+    //   case 2: sprintf(sensing_payload, "%s%d%s%d%s%d%s", "{\"version\":\"1.0.0\",\"datastreams\" : [ {\"id\" : \"dryin1\",\"current_value\" : \"", GPIO_READ_PIN(BUTTON_DRY_IN_1_PORT_BASE,BUTTON_DRY_IN_1_PIN_MASK)>>3, "\"}, {\"id\" : \"dryin2\",\"current_value\" : \"", GPIO_READ_PIN(BUTTON_DRY_IN_2_PORT_BASE,BUTTON_DRY_IN_2_PIN_MASK)>>2, "\"}, {\"id\" : \"dryin3\",\"current_value\" : \"", GPIO_READ_PIN(BUTTON_DRY_IN_3_PORT_BASE,BUTTON_DRY_IN_3_PIN_MASK)>>1, "\"}]}");
+    //           jason=3;
+    //           printf("debug 8.2\r\n");
+    //           READ_INPUT();
+    //           break;
+    //   case 3: sprintf(sensing_payload, "%s%d%s%s%s%s%s", "{\"version\":\"1.0.0\",\"datastreams\" : [ {\"id\" : \"dryin4\",\"current_value\" : \"", GPIO_READ_PIN(BUTTON_DRY_IN_4_PORT_BASE,BUTTON_DRY_IN_4_PIN_MASK), "\"}, {\"id\" : \"humidity\",\"current_value\" : \"", chum, "\"},{\"id\" : \"temperature\",\"current_value\" : \"", ctemp, "\"}]}");
+    //           jason=1;
+    //           printf("debug 8.3\r\n");
+    //           READ_INPUT();
+    //           break;
+    //   default: break;
+
     read_temperature(ctemp); // temperature SHT21
     printf("SHT21 temperature value: %s\r\n", ctemp);
     read_humidity(chum); // humidity SHT21

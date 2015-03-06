@@ -760,3 +760,918 @@ websocket-example: Received data 'Encoding"},"resource":"/feeds/582702676"}
 ' (len 43)
 SHT21 temperature value: 27.79
 SHT21 humidity value: 71.8
+=================================
+Contiki 2.6
+======================
+
+OpenMote-CC2538-Bonti
+
+Rime addr 2.18.116.0.0.1.80.6
+finish addr seting
+  turn RF on
+Node id 1616.
+Netstack AES link layer encryption enabled
+CC2538 IEEE802154 PANID 21577
+nullrdc/CSMA 128 26
+IPv6 fe80:0000:0000:0000:0012:7400:0001:5006
+Tentative global IPv6 address fc00:0000:0000:0000:0012:7400:0001:5006
+AES encryption is enabled
+IPv6 addresses: fc00::12:7400:1:5006fe80::12:7400:1:5006
+Environode Debug!!!
+SHT21 temperature value: 28.6
+SHT21 humidity value: 69.89
+********* isReady OK, Websocket PROCESS STARTED *********
+SHT21 temperature value: 28.4
+SHT21 humidity value: 70.1
+Digital 1 = 1
+Digital 2 = 1
+Digital 3 = 1
+Dry In 1 = 1
+Dry In 2 = 1
+Dry In 3 = 1
+Dry In 4 = 1
+
+SP {"method":"put","resource":"/feeds/582702676","params":{},"headers":{"X-ApiKey":"B2S0Un5o2VTChjpVWyzElnxxehXjr8N9KSA9YG02HC5arqmd"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "28.4"},{"id" : "humidity","current_value" : "70.1"},{"id" : "digital1","current_value" : "1"}, {"id" : "digital2","current_value" : "1"
+websocket_send_str {"method":"put","resource":"/feeds/582702676","params":{},"headers":{"X-ApiKey":"B2S0Un5o2VTChjpVWyzElnxxehXjr8N9KSA9YG02HC5arqmd"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "28.4"},{"id" : "humidity","current_value" : "70.1"},{"id" : "digital1","current_value" : "1"}, {"id" : "digital2","current_value" : "1"
+=================================
+Contiki 2.6
+======================
+
+OpenMote-CC2538-Bonti
+
+Rime addr 2.18.116.0.0.1.80.6
+finish addr seting
+  turn RF on
+Node id 1616.
+Netstack AES link layer encryption enabled
+CC2538 IEEE802154 PANID 21577
+nullrdc/CSMA 128 26
+IPv6 fe80:0000:0000:0000:0012:7400:0001:5006
+Tentative global IPv6 address fc00:0000:0000:0000:0012:7400:0001:5006
+AES encryption is enabled
+IPv6 addresses: fc00::12:7400:1:5006fe80::12:7400:1:5006
+Environode Debug!!!
+SHT21 temperature value: 28.2
+SHT21 humidity value: 69.89
+********* isReady OK, Websocket PROCESS STARTED *********
+SHT21 temperature value: 28.0
+SHT21 humidity value: 70.4
+Digital 1 = 1
+Digital 2 = 1
+Digital 3 = 1
+Dry In 1 = 1
+Dry In 2 = 1
+Dry In 3 = 1
+Dry In 4 = 1
+
+SP {"method":"put","resource":"/feeds/582702676","params":{},"headers":{"X-ApiKey":"B2S0Un5o2VTChjpVWyzElnxxehXjr8N9KSA9YG02HC5arqmd"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "28.0"},{"id" : "humidity","current_value" : "70.4"},{"id" : "digital1","current_value" : "1"}, {"id" : "digital2","current_value" : "1"
+websocket_send_str {"method":"put","resource":"/feeds/582702676","params":{},"headers":{"X-ApiKey":"B2S0Un5o2VTChjpVWyzElnxxehXjr8N9KSA9YG02HC5arqmd"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "28.0"},{"id" : "humidity","current_value" : "70.4"},{"id" : "digital1","current_value" : "1"}, {"id" : "digital2","current_value" : "1"
+=================================
+Contiki 2.6
+======================
+
+OpenMote-CC2538-Bonti
+
+Rime addr 2.18.116.0.0.1.80.6
+finish addr seting
+  turn RF on
+Node id 1616.
+Netstack AES link layer encryption enabled
+CC2538 IEEE802154 PANID 21577
+nullrdc/CSMA 128 26
+IPv6 fe80:0000:0000:0000:0012:7400:0001:5006
+Tentative global IPv6 address fc00:0000:0000:0000:0012:7400:0001:5006
+AES encryption is enabled
+IPv6 addresses: fc00::12:7400:1:5006fe80::12:7400:1:5006
+Environode Debug!!!
+SHT21 temperature value: 28.2
+SHT21 humidity value: 70.38
+********* isReady OK, Websocket PROCESS STARTED *********
+SHT21 temperature value: 28.2
+SHT21 humidity value: 70.20
+Digital 1 = 1
+Digital 2 = 1
+Digital 3 = 1
+Dry In 1 = 1
+Dry In 2 = 1
+Dry In 3 = 1
+Dry In 4 = 1
+
+SP {"method":"put","resource":"/feeds/582702676","params":{},"headers":{"X-ApiKey":"B2S0Un5o2VTChjpVWyzElnxxehXjr8N9KSA9YG02HC5arqmd"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "28.2"},{"id" : "humidity","current_value" : "70.20"},{"id" : "digital1","current_value" : "1"}, {"id" : "digital2","current_value" : "1
+websocket_send_str {"method":"put","resource":"/feeds/582702676","params":{},"headers":{"X-ApiKey":"B2S0Un5o2VTChjpVWyzElnxxehXjr8N9KSA9YG02HC5arqmd"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "28.2"},{"id" : "humidity","current_value" : "70.20"},{"id" : "digital1","current_value" : "1"}, {"id" : "digital2","current_value" : "1
+=================================
+Contiki 2.6
+======================
+
+OpenMote-CC2538-Bonti
+
+Rime addr 2.18.116.0.0.1.80.6
+finish addr seting
+  turn RF on
+Node id 1616.
+Netstack AES link layer encryption enabled
+CC2538 IEEE802154 PANID 21577
+nullrdc/CSMA 128 26
+IPv6 fe80:0000:0000:0000:0012:7400:0001:5006
+Tentative global IPv6 address fc00:0000:0000:0000:0012:7400:0001:5006
+AES encryption is enabled
+IPv6 addresses: fc00::12:7400:1:5006fe80::12:7400:1:5006
+Environode Debug!!!
+SHT21 temperature value: 28.1
+SHT21 humidity value: 70.26
+********* isReady OK, Websocket PROCESS STARTED *********
+SHT21 temperature value: 28.0
+SHT21 humidity value: 70.47
+Digital 1 = 1
+Digital 2 = 1
+Digital 3 = 1
+Dry In 1 = 1
+Dry In 2 = 1
+Dry In 3 = 1
+Dry In 4 = 1
+
+SP {"method":"put","resource":"/feeds/582702676","params":{},"headers":{"X-ApiKey":"B2S0Un5o2VTChjpVWyzElnxxehXjr8N9KSA9YG02HC5arqmd"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "28.0"},{"id" : "humidity","current_value" : "70.47"},{"id" : "digital1","current_value" : "1"}, {"id" : "digital2","current_value" : "1
+websocket_send_str {"method":"put","resource":"/feeds/582702676","params":{},"headers":{"X-ApiKey":"B2S0Un5o2VTChjpVWyzElnxxehXjr8N9KSA9YG02HC5arqmd"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "28.0"},{"id" : "humidity","current_value" : "70.47"},{"id" : "digital1","current_value" : "1"}, {"id" : "digital2","current_value" : "1
+=================================
+Contiki 2.6
+======================
+
+OpenMote-CC2538-Bonti
+
+Rime addr 2.18.116.0.0.1.80.6
+finish addr seting
+  turn RF on
+Node id 1616.
+Netstack AES link layer encryption enabled
+CC2538 IEEE802154 PANID 21577
+nullrdc/CSMA 128 26
+IPv6 fe80:0000:0000:0000:0012:7400:0001:5006
+Tentative global IPv6 address fc00:0000:0000:0000:0012:7400:0001:5006
+AES encryption is enabled
+IPv6 addresses: fc00::12:7400:1:5006fe80::12:7400:1:5006
+Environode Debug!!!
+SHT21 temperature value: 27.94
+SHT21 humidity value: 70.11
+********* isReady OK, Websocket PROCESS STARTED *********
+SHT21 temperature value: 27.91
+SHT21 humidity value: 70.35
+Digital 1 = 1
+Digital 2 = 1
+Digital 3 = 1
+Dry In 1 = 1
+Dry In 2 = 1
+Dry In 3 = 1
+Dry In 4 = 1
+
+SP {"method":"put","resource":"/feeds/582702676","params":{},"headers":{"X-ApiKey":"B2S0Un5o2VTChjpVWyzElnxxehXjr8N9KSA9YG02HC5arqmd"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.91"},{"id" : "humidity","current_value" : "70.35"},{"id" : "digital1","current_value" : "1"}, {"id" : "digital2","current_value" : "
+websocket_send_str {"method":"put","resource":"/feeds/582702676","params":{},"headers":{"X-ApiKey":"B2S0Un5o2VTChjpVWyzElnxxehXjr8N9KSA9YG02HC5arqmd"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.91"},{"id" : "humidity","current_value" : "70.35"},{"id" : "digital1","current_value" : "1"}, {"id" : "digital2","current_value" : "
+=================================
+Contiki 2.6
+======================
+
+OpenMote-CC2538-Bonti
+
+Rime addr 2.18.116.0.0.1.80.6
+finish addr seting
+  turn RF on
+Node id 1616.
+Netstack AES link layer encryption enabled
+CC2538 IEEE802154 PANID 21577
+nullrdc/CSMA 128 26
+IPv6 fe80:0000:0000:0000:0012:7400:0001:5006
+Tentative global IPv6 address fc00:0000:0000:0000:0012:7400:0001:5006
+AES encryption is enabled
+IPv6 addresses: fc00::12:7400:1:5006fe80::12:7400:1:5006
+Environode Debug!!!
+SHT21 temperature value: 27.89
+SHT21 humidity value: 70.35
+********* isReady OK, Websocket PROCESS STARTED *********
+SHT21 temperature value: 27.85
+SHT21 humidity value: 70.11
+Digital 1 = 1
+Digital 2 = 1
+Digital 3 = 1
+Dry In 1 = 1
+Dry In 2 = 1
+Dry In 3 = 1
+Dry In 4 = 1
+
+SP {"method":"put","resource":"/feeds/582702676","params":{},"headers":{"X-ApiKey":"B2S0Un5o2VTChjpVWyzElnxxehXjr8N9KSA9YG02HC5arqmd"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.85"},{"id" : "humidity","current_value" : "70.11"},{"id" : "digital1","current_value" : "1"}, {"id" : "digital2","current_value" : "
+websocket_send_str {"method":"put","resource":"/feeds/582702676","params":{},"headers":{"X-ApiKey":"B2S0Un5o2VTChjpVWyzElnxxehXjr8N9KSA9YG02HC5arqmd"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.85"},{"id" : "humidity","current_value" : "70.11"},{"id" : "digital1","current_value" : "1"}, {"id" : "digital2","current_value" : "
+=================================
+Contiki 2.6
+======================
+
+OpenMote-CC2538-Bonti
+
+Rime addr 2.18.116.0.0.1.80.6
+finish addr seting
+  turn RF on
+Node id 1616.
+Netstack AES link layer encryption enabled
+CC2538 IEEE802154 PANID 21577
+nullrdc/CSMA 128 26
+IPv6 fe80:0000:0000:0000:0012:7400:0001:5006
+Tentative global IPv6 address fc00:0000:0000:0000:0012:7400:0001:5006
+AES encryption is enabled
+IPv6 addresses: fc00::12:7400:1:5006fe80::12:7400:1:5006
+Environode Debug!!!
+SHT21 temperature value: 27.89
+SHT21 humidity value: 70.72
+********* isReady OK, Websocket PROCESS STARTED *********
+SHT21 temperature value: 27.89
+SHT21 humidity value: 70.75
+Digital 1 = 1
+Digital 2 = 1
+Digital 3 = 1
+Dry In 1 = 1
+Dry In 2 = 1
+Dry In 3 = 1
+Dry In 4 = 1
+
+SP {"method":"put","resource":"/feeds/582702676","params":{},"headers":{"X-ApiKey":"B2S0Un5o2VTChjpVWyzElnxxehXjr8N9KSA9YG02HC5arqmd"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.89"},{"id" : "humidity","current_value" : "70.75"},{"id" : "digital1","current_value" : "1"}, {"id" : "digital2","current_value" : "
+websocket_send_str {"method":"put","resource":"/feeds/582702676","params":{},"headers":{"X-ApiKey":"B2S0Un5o2VTChjpVWyzElnxxehXjr8N9KSA9YG02HC5arqmd"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.89"},{"id" : "humidity","current_value" : "70.75"},{"id" : "digital1","current_value" : "1"}, {"id" : "digital2","current_value" : "
+=================================
+Contiki 2.6
+======================
+
+OpenMote-CC2538-Bonti
+
+Rime addr 2.18.116.0.0.1.80.6
+finish addr seting
+  turn RF on
+Node id 1616.
+Netstack AES link layer encryption enabled
+CC2538 IEEE802154 PANID 21577
+nullrdc/CSMA 128 26
+IPv6 fe80:0000:0000:0000:0012:7400:0001:5006
+Tentative global IPv6 address fc00:0000:0000:0000:0012:7400:0001:5006
+AES encryption is enabled
+IPv6 addresses: fc00::12:7400:1:5006fe80::12:7400:1:5006
+Environode Debug!!!
+SHT21 temperature value: 27.87
+SHT21 humidity value: 70.87
+********* isReady OK, Websocket PROCESS STARTED *********
+SHT21 temperature value: 27.86
+SHT21 humidity value: 70.69
+Digital 1 = 1
+Digital 2 = 1
+Digital 3 = 1
+Dry In 1 = 1
+Dry In 2 = 1
+Dry In 3 = 1
+Dry In 4 = 1
+
+SP {"method":"put","resource":"/feeds/582702676","params":{},"headers":{"X-ApiKey":"B2S0Un5o2VTChjpVWyzElnxxehXjr8N9KSA9YG02HC5arqmd"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.86"},{"id" : "humidity","current_value" : "70.69"},{"id" : "digital1","current_value" : "1"}, {"id" : "digital2","current_value" : "
+websocket_send_str {"method":"put","resource":"/feeds/582702676","params":{},"headers":{"X-ApiKey":"B2S0Un5o2VTChjpVWyzElnxxehXjr8N9KSA9YG02HC5arqmd"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.86"},{"id" : "humidity","current_value" : "70.69"},{"id" : "digital1","current_value" : "1"}, {"id" : "digital2","current_value" : "
+=================================
+Contiki 2.6
+======================
+
+OpenMote-CC2538-Bonti
+
+Rime addr 2.18.116.0.0.1.80.6
+finish addr seting
+  turn RF on
+Node id 1616.
+Netstack AES link layer encryption enabled
+CC2538 IEEE802154 PANID 21577
+nullrdc/CSMA 128 26
+IPv6 fe80:0000:0000:0000:0012:7400:0001:5006
+Tentative global IPv6 address fc00:0000:0000:0000:0012:7400:0001:5006
+AES encryption is enabled
+IPv6 addresses: fc00::12:7400:1:5006fe80::12:7400:1:5006
+Environode Debug!!!
+SHT21 temperature value: 27.89
+SHT21 humidity value: 70.84
+********* isReady OK, Websocket PROCESS STARTED *********
+SHT21 temperature value: 27.90
+SHT21 humidity value: 70.81
+Digital 1 = 1
+Digital 2 = 1
+Digital 3 = 1
+Dry In 1 = 1
+Dry In 2 = 1
+Dry In 3 = 1
+Dry In 4 = 1
+
+SP {"method":"put","resource":"/feeds/582702676","params":{},"headers":{"X-ApiKey":"B2S0Un5o2VTChjpVWyzElnxxehXjr8N9KSA9YG02HC5arqmd"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.90"},{"id" : "humidity","current_value" : "70.81"},{"id" : "digital1","current_value" : "1"}, {"id" : "digital2","current_value" : "
+websocket_send_str {"method":"put","resource":"/feeds/582702676","params":{},"headers":{"X-ApiKey":"B2S0Un5o2VTChjpVWyzElnxxehXjr8N9KSA9YG02HC5arqmd"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.90"},{"id" : "humidity","current_value" : "70.81"},{"id" : "digital1","current_value" : "1"}, {"id" : "digital2","current_value" : "
+=================================
+Contiki 2.6
+======================
+
+OpenMote-CC2538-Bonti
+
+Rime addr 2.18.116.0.0.1.80.6
+finish addr seting
+  turn RF on
+Node id 1616.
+Netstack AES link layer encryption enabled
+CC2538 IEEE802154 PANID 21577
+nullrdc/CSMA 128 26
+IPv6 fe80:0000:0000:0000:0012:7400:0001:5006
+Tentative global IPv6 address fc00:0000:0000:0000:0012:7400:0001:5006
+AES encryption is enabled
+IPv6 addresses: fc00::12:7400:1:5006fe80::12:7400:1:5006
+Environode Debug!!!
+SHT21 temperature value: 27.91
+SHT21 humidity value: 70.62
+********* isReady OK, Websocket PROCESS STARTED *********
+SHT21 temperature value: 27.91
+SHT21 humidity value: 70.87
+Digital 1 = 1
+Digital 2 = 1
+Digital 3 = 1
+Dry In 1 = 1
+Dry In 2 = 1
+Dry In 3 = 1
+Dry In 4 = 1
+
+SP {"method":"put","resource":"/feeds/582702676","params":{},"headers":{"X-ApiKey":"B2S0Un5o2VTChjpVWyzElnxxehXjr8N9KSA9YG02HC5arqmd"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.91"},{"id" : "humidity","current_value" : "70.87"},{"id" : "digital1","current_value" : "1"}, {"id" : "digital2","current_value" : "
+websocket_send_str {"method":"put","resource":"/feeds/582702676","params":{},"headers":{"X-ApiKey":"B2S0Un5o2VTChjpVWyzElnxxehXjr8N9KSA9YG02HC5arqmd"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.91"},{"id" : "humidity","current_value" : "70.87"},{"id" : "digital1","current_value" : "1"}, {"id" : "digital2","current_value" : "
+=================================
+Contiki 2.6
+======================
+
+OpenMote-CC2538-Bonti
+
+Rime addr 2.18.116.0.0.1.80.6
+finish addr seting
+  turn RF on
+Node id 1616.
+Netstack AES link layer encryption enabled
+CC2538 IEEE802154 PANID 21577
+nullrdc/CSMA 128 26
+IPv6 fe80:0000:0000:0000:0012:7400:0001:5006
+Tentative global IPv6 address fc00:0000:0000:0000:0012:7400:0001:5006
+AES encryption is enabled
+IPv6 addresses: fc00::12:7400:1:5006fe80::12:7400:1:5006
+Environode Debug!!!
+SHT21 temperature value: 27.86
+SHT21 humidity value: 70.96
+********* isReady OK, Websocket PROCESS STARTED *********
+SHT21 temperature value: 27.86
+SHT21 humidity value: 71.39
+Digital 1 = 1
+Digital 2 = 1
+Digital 3 = 1
+Dry In 1 = 1
+Dry In 2 = 1
+Dry In 3 = 1
+Dry In 4 = 1
+
+SP {"method":"put","resource":"/feeds/582702676","params":{},"headers":{"X-ApiKey":"B2S0Un5o2VTChjpVWyzElnxxehXjr8N9KSA9YG02HC5arqmd"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.86"},{"id" : "humidity","current_value" : "71.39"},{"id" : "digital1","current_value" : "1"}, {"id" : "digital2","current_value" : "
+websocket_send_str {"method":"put","resource":"/feeds/582702676","params":{},"headers":{"X-ApiKey":"B2S0Un5o2VTChjpVWyzElnxxehXjr8N9KSA9YG02HC5arqmd"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.86"},{"id" : "humidity","current_value" : "71.39"},{"id" : "digital1","current_value" : "1"}, {"id" : "digital2","current_value" : "
+=================================
+Contiki 2.6
+======================
+
+OpenMote-CC2538-Bonti
+
+Rime addr 2.18.116.0.0.1.80.6
+finish addr seting
+  turn RF on
+Node id 1616.
+Netstack AES link layer encryption enabled
+CC2538 IEEE802154 PANID 21577
+nullrdc/CSMA 128 26
+IPv6 fe80:0000:0000:0000:0012:7400:0001:5006
+Tentative global IPv6 address fc00:0000:0000:0000:0012:7400:0001:5006
+AES encryption is enabled
+IPv6 addresses: fc00::12:7400:1:5006fe80::12:7400:1:5006
+Environode Debug!!!
+SHT21 temperature value: 27.82
+SHT21 humidity value: 71.48
+********* isReady OK, Websocket PROCESS STARTED *********
+SHT21 temperature value: 27.83
+SHT21 humidity value: 71.75
+Digital 1 = 1
+Digital 2 = 1
+Digital 3 = 1
+Dry In 1 = 1
+Dry In 2 = 1
+Dry In 3 = 1
+Dry In 4 = 1
+
+SP {"method":"put","resource":"/feeds/582702676","params":{},"headers":{"X-ApiKey":"B2S0Un5o2VTChjpVWyzElnxxehXjr8N9KSA9YG02HC5arqmd"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.83"},{"id" : "humidity","current_value" : "71.75"},{"id" : "digital1","current_value" : "1"}, {"id" : "digital2","current_value" : "
+websocket_send_str {"method":"put","resource":"/feeds/582702676","params":{},"headers":{"X-ApiKey":"B2S0Un5o2VTChjpVWyzElnxxehXjr8N9KSA9YG02HC5arqmd"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.83"},{"id" : "humidity","current_value" : "71.75"},{"id" : "digital1","current_value" : "1"}, {"id" : "digital2","current_value" : "
+=================================
+Contiki 2.6
+======================
+
+OpenMote-CC2538-Bonti
+
+Rime addr 2.18.116.0.0.1.80.6
+finish addr seting
+  turn RF on
+Node id 1616.
+Netstack AES link layer encryption enabled
+CC2538 IEEE802154 PANID 21577
+nullrdc/CSMA 128 26
+IPv6 fe80:0000:0000:0000:0012:7400:0001:5006
+Tentative global IPv6 address fc00:0000:0000:0000:0012:7400:0001:5006
+AES encryption is enabled
+IPv6 addresses: fc00::12:7400:1:5006fe80::12:7400:1:5006
+Environode Debug!!!
+SHT21 temperature value: 27.83
+SHT21 humidity value: 71.33
+********* isReady OK, Websocket PROCESS STARTED *********
+SHT21 temperature value: 27.80
+SHT21 humidity value: 71.39
+Digital 1 = 1
+Digital 2 = 1
+Digital 3 = 1
+Dry In 1 = 1
+Dry In 2 = 1
+Dry In 3 = 1
+Dry In 4 = 1
+
+SP {"method":"put","resource":"/feeds/582702676","params":{},"headers":{"X-ApiKey":"B2S0Un5o2VTChjpVWyzElnxxehXjr8N9KSA9YG02HC5arqmd"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.80"},{"id" : "humidity","current_value" : "71.39"},{"id" : "digital1","current_value" : "1"}, {"id" : "digital2","current_value" : "
+websocket_send_str {"method":"put","resource":"/feeds/582702676","params":{},"headers":{"X-ApiKey":"B2S0Un5o2VTChjpVWyzElnxxehXjr8N9KSA9YG02HC5arqmd"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.80"},{"id" : "humidity","current_value" : "71.39"},{"id" : "digital1","current_value" : "1"}, {"id" : "digital2","current_value" : "
+=================================
+Contiki 2.6
+======================
+
+OpenMote-CC2538-Bonti
+
+Rime addr 2.18.116.0.0.1.80.6
+finish addr seting
+  turn RF on
+Node id 1616.
+Netstack AES link layer encryption enabled
+CC2538 IEEE802154 PANID 21577
+nullrdc/CSMA 128 26
+IPv6 fe80:0000:0000:0000:0012:7400:0001:5006
+Tentative global IPv6 address fc00:0000:0000:0000:0012:7400:0001:5006
+AES encryption is enabled
+IPv6 addresses: fc00::12:7400:1:5006fe80::12:7400:1:5006
+Environode Debug!!!
+SHT21 temperature value: 27.75
+SHT21 humidity value: 70.93
+********* isReady OK, Websocket PROCESS STARTED *********
+SHT21 temperature value: 27.75
+SHT21 humidity value: 71.42
+Digital 1 = 1
+Digital 2 = 1
+Digital 3 = 1
+Dry In 1 = 1
+Dry In 2 = 1
+Dry In 3 = 1
+Dry In 4 = 1
+
+SP {"method":"put","resource":"/feeds/582702676","params":{},"headers":{"X-ApiKey":"B2S0Un5o2VTChjpVWyzElnxxehXjr8N9KSA9YG02HC5arqmd"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.75"},{"id" : "humidity","current_value" : "71.42"},{"id" : "digital1","current_value" : "1"}, {"id" : "digital2","current_value" : "
+websocket_send_str {"method":"put","resource":"/feeds/582702676","params":{},"headers":{"X-ApiKey":"B2S0Un5o2VTChjpVWyzElnxxehXjr8N9KSA9YG02HC5arqmd"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.75"},{"id" : "humidity","current_value" : "71.42"},{"id" : "digital1","current_value" : "1"}, {"id" : "digital2","current_value" : "
+=================================
+Contiki 2.6
+======================
+
+OpenMote-CC2538-Bonti
+
+Rime addr 2.18.116.0.0.1.80.6
+finish addr seting
+  turn RF on
+Node id 1616.
+Netstack AES link layer encryption enabled
+CC2538 IEEE802154 PANID 21577
+nullrdc/CSMA 128 26
+IPv6 fe80:0000:0000:0000:0012:7400:0001:5006
+Tentative global IPv6 address fc00:0000:0000:0000:0012:7400:0001:5006
+AES encryption is enabled
+IPv6 addresses: fc00::12:7400:1:5006fe80::12:7400:1:5006
+Environode Debug!!!
+SHT21 temperature value: 27.65
+SHT21 humidity value: 71.60
+********* isReady OK, Websocket PROCESS STARTED *********
+SHT21 temperature value: 27.63
+SHT21 humidity value: 72.27
+Digital 1 = 1
+Digital 2 = 1
+Digital 3 = 1
+Dry In 1 = 1
+Dry In 2 = 1
+Dry In 3 = 1
+Dry In 4 = 1
+
+SP {"method":"put","resource":"/feeds/582702676","params":{},"headers":{"X-ApiKey":"B2S0Un5o2VTChjpVWyzElnxxehXjr8N9KSA9YG02HC5arqmd"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.63"},{"id" : "humidity","current_value" : "72.27"},{"id" : "digital1","current_value" : "1"}, {"id" : "digital2","current_value" : "
+websocket_send_str {"method":"put","resource":"/feeds/582702676","params":{},"headers":{"X-ApiKey":"B2S0Un5o2VTChjpVWyzElnxxehXjr8N9KSA9YG02HC5arqmd"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.63"},{"id" : "humidity","current_value" : "72.27"},{"id" : "digital1","current_value" : "1"}, {"id" : "digital2","current_value" : "
+=================================
+Contiki 2.6
+======================
+
+OpenMote-CC2538-Bonti
+
+Rime addr 2.18.116.0.0.1.80.6
+finish addr seting
+  turn RF on
+Node id 1616.
+Netstack AES link layer encryption enabled
+CC2538 IEEE802154 PANID 21577
+nullrdc/CSMA 128 26
+IPv6 fe80:0000:0000:0000:0012:7400:0001:5006
+Tentative global IPv6 address fc00:0000:0000:0000:0012:7400:0001:5006
+AES encryption is enabled
+IPv6 addresses: fc00::12:7400:1:5006fe80::12:7400:1:5006
+Environode Debug!!!
+SHT21 temperature value: 27.67
+SHT21 humidity value: 71.30
+********* isReady OK, Websocket PROCESS STARTED *********
+SHT21 temperature value: 27.68
+SHT21 humidity value: 71.23
+Digital 1 = 1
+Digital 2 = 1
+Digital 3 = 1
+Dry In 1 = 1
+Dry In 2 = 1
+Dry In 3 = 1
+Dry In 4 = 1
+
+SP {"method":"put","resource":"/feeds/582702676","params":{},"headers":{"X-ApiKey":"B2S0Un5o2VTChjpVWyzElnxxehXjr8N9KSA9YG02HC5arqmd"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.68"},{"id" : "humidity","current_value" : "71.23"},{"id" : "digital1","current_value" : "1"}, {"id" : "digital2","current_value" : "
+websocket_send_str {"method":"put","resource":"/feeds/582702676","params":{},"headers":{"X-ApiKey":"B2S0Un5o2VTChjpVWyzElnxxehXjr8N9KSA9YG02HC5arqmd"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.68"},{"id" : "humidity","current_value" : "71.23"},{"id" : "digital1","current_value" : "1"}, {"id" : "digital2","current_value" : "
+=================================
+Contiki 2.6
+======================
+
+OpenMote-CC2538-Bonti
+
+Rime addr 2.18.116.0.0.1.80.6
+finish addr seting
+  turn RF on
+Node id 1616.
+Netstack AES link layer encryption enabled
+CC2538 IEEE802154 PANID 21577
+nullrdc/CSMA 128 26
+IPv6 fe80:0000:0000:0000:0012:7400:0001:5006
+Tentative global IPv6 address fc00:0000:0000:0000:0012:7400:0001:5006
+AES encryption is enabled
+IPv6 addresses: fc00::12:7400:1:5006fe80::12:7400:1:5006
+Environode Debug!!!
+SHT21 temperature value: 27.66
+SHT21 humidity value: 71.81
+********* isReady OK, Websocket PROCESS STARTED *********
+SHT21 temperature value: 27.65
+SHT21 humidity value: 71.39
+Digital 1 = 1
+Digital 2 = 1
+Digital 3 = 1
+Dry In 1 = 1
+Dry In 2 = 1
+Dry In 3 = 1
+Dry In 4 = 1
+
+SP {"method":"put","resource":"/feeds/582702676","params":{},"headers":{"X-ApiKey":"B2S0Un5o2VTChjpVWyzElnxxehXjr8N9KSA9YG02HC5arqmd"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.65"},{"id" : "humidity","current_value" : "71.39"},{"id" : "digital1","current_value" : "1"}, {"id" : "digital2","current_value" : "
+websocket_send_str {"method":"put","resource":"/feeds/582702676","params":{},"headers":{"X-ApiKey":"B2S0Un5o2VTChjpVWyzElnxxehXjr8N9KSA9YG02HC5arqmd"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.65"},{"id" : "humidity","current_value" : "71.39"},{"id" : "digital1","current_value" : "1"}, {"id" : "digital2","current_value" : "
+=================================
+Contiki 2.6
+======================
+
+OpenMote-CC2538-Bonti
+
+Rime addr 2.18.116.0.0.1.80.6
+finish addr seting
+  turn RF on
+Node id 1616.
+Netstack AES link layer encryption enabled
+CC2538 IEEE802154 PANID 21577
+nullrdc/CSMA 128 26
+IPv6 fe80:0000:0000:0000:0012:7400:0001:5006
+Tentative global IPv6 address fc00:0000:0000:0000:0012:7400:0001:5006
+AES encryption is enabled
+IPv6 addresses: fc00::12:7400:1:5006fe80::12:7400:1:5006
+Environode Debug!!!
+SHT21 temperature value: 27.61
+SHT21 humidity value: 71.42
+********* isReady OK, Websocket PROCESS STARTED *********
+SHT21 temperature value: 27.56
+SHT21 humidity value: 71.63
+Digital 1 = 1
+Digital 2 = 1
+Digital 3 = 1
+Dry In 1 = 1
+Dry In 2 = 1
+Dry In 3 = 1
+Dry In 4 = 1
+
+SP {"method":"put","resource":"/feeds/582702676","params":{},"headers":{"X-ApiKey":"B2S0Un5o2VTChjpVWyzElnxxehXjr8N9KSA9YG02HC5arqmd"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.56"},{"id" : "humidity","current_value" : "71.63"},{"id" : "digital1","current_value" : "1"}, {"id" : "digital2","current_value" : "
+websocket_send_str {"method":"put","resource":"/feeds/582702676","params":{},"headers":{"X-ApiKey":"B2S0Un5o2VTChjpVWyzElnxxehXjr8N9KSA9YG02HC5arqmd"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.56"},{"id" : "humidity","current_value" : "71.63"},{"id" : "digital1","current_value" : "1"}, {"id" : "digital2","current_value" : "
+=================================
+Contiki 2.6
+======================
+
+OpenMote-CC2538-Bonti
+
+Rime addr 2.18.116.0.0.1.80.6
+finish addr seting
+  turn RF on
+Node id 1616.
+Netstack AES link layer encryption enabled
+CC2538 IEEE802154 PANID 21577
+nullrdc/CSMA 128 26
+IPv6 fe80:0000:0000:0000:0012:7400:0001:5006
+Tentative global IPv6 address fc00:0000:0000:0000:0012:7400:0001:5006
+AES encryption is enabled
+IPv6 addresses: fc00::12:7400:1:5006fe80::12:7400:1:5006
+Environode Debug!!!
+SHT21 temperature value: 27.63
+SHT21 humidity value: 71.63
+********* isReady OK, Websocket PROCESS STARTED *********
+SHT21 temperature value: 27.62
+SHT21 humidity value: 71.39
+Digital 1 = 1
+Digital 2 = 1
+Digital 3 = 1
+Dry In 1 = 1
+Dry In 2 = 1
+Dry In 3 = 1
+Dry In 4 = 1
+
+SP {"method":"put","resource":"/feeds/582702676","params":{},"headers":{"X-ApiKey":"B2S0Un5o2VTChjpVWyzElnxxehXjr8N9KSA9YG02HC5arqmd"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.62"},{"id" : "humidity","current_value" : "71.39"},{"id" : "digital1","current_value" : "1"}, {"id" : "digital2","current_value" : "
+websocket_send_str {"method":"put","resource":"/feeds/582702676","params":{},"headers":{"X-ApiKey":"B2S0Un5o2VTChjpVWyzElnxxehXjr8N9KSA9YG02HC5arqmd"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.62"},{"id" : "humidity","current_value" : "71.39"},{"id" : "digital1","current_value" : "1"}, {"id" : "digital2","current_value" : "
+=================================
+Contiki 2.6
+======================
+
+OpenMote-CC2538-Bonti
+
+Rime addr 2.18.116.0.0.1.80.6
+finish addr seting
+  turn RF on
+Node id 1616.
+Netstack AES link layer encryption enabled
+CC2538 IEEE802154 PANID 21577
+nullrdc/CSMA 128 26
+IPv6 fe80:0000:0000:0000:0012:7400:0001:5006
+Tentative global IPv6 address fc00:0000:0000:0000:0012:7400:0001:5006
+AES encryption is enabled
+IPv6 addresses: fc00::12:7400:1:5006fe80::12:7400:1:5006
+Environode Debug!!!
+SHT21 temperature value: 27.63
+SHT21 humidity value: 72.27
+********* isReady OK, Websocket PROCESS STARTED *********
+SHT21 temperature value: 27.62
+SHT21 humidity value: 71.48
+Digital 1 = 1
+Digital 2 = 1
+Digital 3 = 1
+Dry In 1 = 1
+Dry In 2 = 1
+Dry In 3 = 1
+Dry In 4 = 1
+
+SP {"method":"put","resource":"/feeds/582702676","params":{},"headers":{"X-ApiKey":"B2S0Un5o2VTChjpVWyzElnxxehXjr8N9KSA9YG02HC5arqmd"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.62"},{"id" : "humidity","current_value" : "71.48"},{"id" : "digital1","current_value" : "1"}, {"id" : "digital2","current_value" : "
+websocket_send_str {"method":"put","resource":"/feeds/582702676","params":{},"headers":{"X-ApiKey":"B2S0Un5o2VTChjpVWyzElnxxehXjr8N9KSA9YG02HC5arqmd"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.62"},{"id" : "humidity","current_value" : "71.48"},{"id" : "digital1","current_value" : "1"}, {"id" : "digital2","current_value" : "
+=================================
+Contiki 2.6
+======================
+
+OpenMote-CC2538-Bonti
+
+Rime addr 2.18.116.0.0.1.80.6
+finish addr seting
+  turn RF on
+Node id 1616.
+Netstack AES link layer encryption enabled
+CC2538 IEEE802154 PANID 21577
+nullrdc/CSMA 128 26
+IPv6 fe80:0000:0000:0000:0012:7400:0001:5006
+Tentative global IPv6 address fc00:0000:0000:0000:0012:7400:0001:5006
+AES encryption is enabled
+IPv6 addresses: fc00::12:7400:1:5006fe80::12:7400:1:5006
+Environode Debug!!!
+SHT21 temperature value: 27.49
+SHT21 humidity value: 71.57
+********* isReady OK, Websocket PROCESS STARTED *********
+SHT21 temperature value: 27.46
+SHT21 humidity value: 71.85
+Digital 1 = 1
+Digital 2 = 1
+Digital 3 = 1
+Dry In 1 = 1
+Dry In 2 = 1
+Dry In 3 = 1
+Dry In 4 = 1
+
+SP {"method":"put","resource":"/feeds/582702676","params":{},"headers":{"X-ApiKey":"B2S0Un5o2VTChjpVWyzElnxxehXjr8N9KSA9YG02HC5arqmd"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.46"},{"id" : "humidity","current_value" : "71.85"},{"id" : "digital1","current_value" : "1"}, {"id" : "digital2","current_value" : "
+websocket_send_str {"method":"put","resource":"/feeds/582702676","params":{},"headers":{"X-ApiKey":"B2S0Un5o2VTChjpVWyzElnxxehXjr8N9KSA9YG02HC5arqmd"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.46"},{"id" : "humidity","current_value" : "71.85"},{"id" : "digital1","current_value" : "1"}, {"id" : "digital2","current_value" : "
+=================================
+Contiki 2.6
+======================
+
+OpenMote-CC2538-Bonti
+
+Rime addr 2.18.116.0.0.1.80.6
+finish addr seting
+  turn RF on
+Node id 1616.
+Netstack AES link layer encryption enabled
+CC2538 IEEE802154 PANID 21577
+nullrdc/CSMA 128 26
+IPv6 fe80:0000:0000:0000:0012:7400:0001:5006
+Tentative global IPv6 address fc00:0000:0000:0000:0012:7400:0001:5006
+AES encryption is enabled
+IPv6 addresses: fc00::12:7400:1:5006fe80::12:7400:1:5006
+Environode Debug!!!
+SHT21 temperature value: 27.46
+SHT21 humidity value: 72.6
+********* isReady OK, Websocket PROCESS STARTED *********
+SHT21 temperature value: 27.44
+SHT21 humidity value: 71.94
+Digital 1 = 1
+Digital 2 = 1
+Digital 3 = 1
+Dry In 1 = 1
+Dry In 2 = 1
+Dry In 3 = 1
+Dry In 4 = 1
+
+SP {"method":"put","resource":"/feeds/582702676","params":{},"headers":{"X-ApiKey":"B2S0Un5o2VTChjpVWyzElnxxehXjr8N9KSA9YG02HC5arqmd"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.44"},{"id" : "humidity","current_value" : "71.94"},{"id" : "digital1","current_value" : "1"}, {"id" : "digital2","current_value" : "
+websocket_send_str {"method":"put","resource":"/feeds/582702676","params":{},"headers":{"X-ApiKey":"B2S0Un5o2VTChjpVWyzElnxxehXjr8N9KSA9YG02HC5arqmd"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.44"},{"id" : "humidity","current_value" : "71.94"},{"id" : "digital1","current_value" : "1"}, {"id" : "digital2","current_value" : "
+=================================
+Contiki 2.6
+======================
+
+OpenMote-CC2538-Bonti
+
+Rime addr 2.18.116.0.0.1.80.6
+finish addr seting
+  turn RF on
+Node id 1616.
+Netstack AES link layer encryption enabled
+CC2538 IEEE802154 PANID 21577
+nullrdc/CSMA 128 26
+IPv6 fe80:0000:0000:0000:0012:7400:0001:5006
+Tentative global IPv6 address fc00:0000:0000:0000:0012:7400:0001:5006
+AES encryption is enabled
+IPv6 addresses: fc00::12:7400:1:5006fe80::12:7400:1:5006
+Environode Debug!!!
+SHT21 temperature value: 27.39
+SHT21 humidity value: 72.30
+********* isReady OK, Websocket PROCESS STARTED *********
+SHT21 temperature value: 27.39
+SHT21 humidity value: 72.15
+Digital 1 = 1
+Digital 2 = 1
+Digital 3 = 1
+Dry In 1 = 1
+Dry In 2 = 1
+Dry In 3 = 1
+Dry In 4 = 1
+
+SP {"method":"put","resource":"/feeds/582702676","params":{},"headers":{"X-ApiKey":"B2S0Un5o2VTChjpVWyzElnxxehXjr8N9KSA9YG02HC5arqmd"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.39"},{"id" : "humidity","current_value" : "72.15"},{"id" : "digital1","current_value" : "1"}, {"id" : "digital2","current_value" : "
+websocket_send_str {"method":"put","resource":"/feeds/582702676","params":{},"headers":{"X-ApiKey":"B2S0Un5o2VTChjpVWyzElnxxehXjr8N9KSA9YG02HC5arqmd"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.39"},{"id" : "humidity","current_value" : "72.15"},{"id" : "digital1","current_value" : "1"}, {"id" : "digital2","current_value" : "
+=================================
+Contiki 2.6
+======================
+
+OpenMote-CC2538-Bonti
+
+Rime addr 2.18.116.0.0.1.80.6
+finish addr seting
+  turn RF on
+Node id 1616.
+Netstack AES link layer encryption enabled
+CC2538 IEEE802154 PANID 21577
+nullrdc/CSMA 128 26
+IPv6 fe80:0000:0000:0000:0012:7400:0001:5006
+Tentative global IPv6 address fc00:0000:0000:0000:0012:7400:0001:5006
+AES encryption is enabled
+IPv6 addresses: fc00::12:7400:1:5006fe80::12:7400:1:5006
+Environode Debug!!!
+SHT21 temperature value: 27.34
+SHT21 humidity value: 71.81
+********* isReady OK, Websocket PROCESS STARTED *********
+SHT21 temperature value: 27.33
+SHT21 humidity value: 71.14
+Digital 1 = 1
+Digital 2 = 1
+Digital 3 = 1
+Dry In 1 = 1
+Dry In 2 = 1
+Dry In 3 = 1
+Dry In 4 = 1
+
+SP {"method":"put","resource":"/feeds/582702676","params":{},"headers":{"X-ApiKey":"B2S0Un5o2VTChjpVWyzElnxxehXjr8N9KSA9YG02HC5arqmd"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.33"},{"id" : "humidity","current_value" : "71.14"},{"id" : "digital1","current_value" : "1"}, {"id" : "digital2","current_value" : "
+websocket_send_str {"method":"put","resource":"/feeds/582702676","params":{},"headers":{"X-ApiKey":"B2S0Un5o2VTChjpVWyzElnxxehXjr8N9KSA9YG02HC5arqmd"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.33"},{"id" : "humidity","current_value" : "71.14"},{"id" : "digital1","current_value" : "1"}, {"id" : "digital2","current_value" : "
+=================================
+Contiki 2.6
+======================
+
+OpenMote-CC2538-Bonti
+
+Rime addr 2.18.116.0.0.1.80.6
+finish addr seting
+  turn RF on
+Node id 1616.
+Netstack AES link layer encryption enabled
+CC2538 IEEE802154 PANID 21577
+nullrdc/CSMA 128 26
+IPv6 fe80:0000:0000:0000:0012:7400:0001:5006
+Tentative global IPv6 address fc00:0000:0000:0000:0012:7400:0001:5006
+AES encryption is enabled
+IPv6 addresses: fc00::12:7400:1:5006fe80::12:7400:1:5006
+Environode Debug!!!
+SHT21 temperature value: 27.29
+SHT21 humidity value: 70.81
+********* isReady OK, Websocket PROCESS STARTED *********
+SHT21 temperature value: 27.29
+SHT21 humidity value: 70.69
+Digital 1 = 1
+Digital 2 = 1
+Digital 3 = 1
+Dry In 1 = 1
+Dry In 2 = 1
+Dry In 3 = 1
+Dry In 4 = 1
+
+SP {"method":"put","resource":"/feeds/582702676","params":{},"headers":{"X-ApiKey":"B2S0Un5o2VTChjpVWyzElnxxehXjr8N9KSA9YG02HC5arqmd"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.29"},{"id" : "humidity","current_value" : "70.69"},{"id" : "digital1","current_value" : "1"}, {"id" : "digital2","current_value" : "
+websocket_send_str {"method":"put","resource":"/feeds/582702676","params":{},"headers":{"X-ApiKey":"B2S0Un5o2VTChjpVWyzElnxxehXjr8N9KSA9YG02HC5arqmd"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.29"},{"id" : "humidity","current_value" : "70.69"},{"id" : "digital1","current_value" : "1"}, {"id" : "digital2","current_value" : "
+=================================
+Contiki 2.6
+======================
+
+OpenMote-CC2538-Bonti
+
+Rime addr 2.18.116.0.0.1.80.6
+finish addr seting
+  turn RF on
+Node id 1616.
+Netstack AES link layer encryption enabled
+CC2538 IEEE802154 PANID 21577
+nullrdc/CSMA 128 26
+IPv6 fe80:0000:0000:0000:0012:7400:0001:5006
+Tentative global IPv6 address fc00:0000:0000:0000:0012:7400:0001:5006
+AES encryption is enabled
+IPv6 addresses: fc00::12:7400:1:5006fe80::12:7400:1:5006
+Environode Debug!!!
+SHT21 temperature value: 27.26
+SHT21 humidity value: 71.23
+********* isReady OK, Websocket PROCESS STARTED *********
+SHT21 temperature value: 27.24
+SHT21 humidity value: 71.48
+Digital 1 = 1
+Digital 2 = 1
+Digital 3 = 1
+Dry In 1 = 1
+Dry In 2 = 1
+Dry In 3 = 1
+Dry In 4 = 1
+
+SP {"method":"put","resource":"/feeds/582702676","params":{},"headers":{"X-ApiKey":"B2S0Un5o2VTChjpVWyzElnxxehXjr8N9KSA9YG02HC5arqmd"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.24"},{"id" : "humidity","current_value" : "71.48"},{"id" : "digital1","current_value" : "1"}, {"id" : "digital2","current_value" : "
+websocket_send_str {"method":"put","resource":"/feeds/582702676","params":{},"headers":{"X-ApiKey":"B2S0Un5o2VTChjpVWyzElnxxehXjr8N9KSA9YG02HC5arqmd"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.24"},{"id" : "humidity","current_value" : "71.48"},{"id" : "digital1","current_value" : "1"}, {"id" : "digital2","current_value" : "
+=================================
+Contiki 2.6
+======================
+
+OpenMote-CC2538-Bonti
+
+Rime addr 2.18.116.0.0.1.80.6
+finish addr seting
+  turn RF on
+Node id 1616.
+Netstack AES link layer encryption enabled
+CC2538 IEEE802154 PANID 21577
+nullrdc/CSMA 128 26
+IPv6 fe80:0000:0000:0000:0012:7400:0001:5006
+Tentative global IPv6 address fc00:0000:0000:0000:0012:7400:0001:5006
+AES encryption is enabled
+IPv6 addresses: fc00::12:7400:1:5006fe80::12:7400:1:5006
+Environode Debug!!!
+SHT21 temperature value: 27.24
+SHT21 humidity value: 71.91
+********* isReady OK, Websocket PROCESS STARTED *********
+SHT21 temperature value: 27.24
+SHT21 humidity value: 72.12
+Digital 1 = 1
+Digital 2 = 1
+Digital 3 = 1
+Dry In 1 = 1
+Dry In 2 = 1
+Dry In 3 = 1
+Dry In 4 = 1
+
+SP {"method":"put","resource":"/feeds/582702676","params":{},"headers":{"X-ApiKey":"B2S0Un5o2VTChjpVWyzElnxxehXjr8N9KSA9YG02HC5arqmd"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.24"},{"id" : "humidity","current_value" : "72.12"},{"id" : "digital1","current_value" : "1"}, {"id" : "digital2","current_value" : "
+websocket_send_str {"method":"put","resource":"/feeds/582702676","params":{},"headers":{"X-ApiKey":"B2S0Un5o2VTChjpVWyzElnxxehXjr8N9KSA9YG02HC5arqmd"},"body":{"version":"1.0.0","datastreams" : [ {"id" : "temperature","current_value" : "27.24"},{"id" : "humidity","current_value" : "72.12"},{"id" : "digital1","current_value" : "1"}, {"id" : "digital2","current_value" : "
+=================================
+Contiki 2.6
+======================
+
+OpenMote-CC2538-Bonti
+
+Rime addr 2.18.116.0.0.1.80.6
+finish addr seting
+  turn RF on
+Node id 1616.
+Netstack AES link layer encryption enabled
+CC2538 IEEE802154 PANID 21577
+nullrdc/CSMA 128 26
+IPv6 fe80:0000:0000:0000:0012:7400:0001:5006
+Tentative global IPv6 address fc00:0000:0000:0000:0012:7400:0001:5006
+AES encryption is enabled
+IPv6 addresses: fc00::12:7400:1:5006fe80::12:7400:1:5006
+Environode Debug!!!
+SHT21 temperature value: 27.27
+SHT21 humidity value: 72.15
+********* isReady OK, Websocket PROCESS STARTED *********
+SHT21 temperature value: 27.27
+SHT21 humidity value: 72.61
+x
